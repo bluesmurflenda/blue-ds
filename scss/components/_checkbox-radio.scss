@@ -53,8 +53,11 @@
 }
 
 $choice-size: 20px;
-$choice-border-width: 2px;
-$checkbox-radius: 6px;
+
+// 2026-09-11 실측: 글리프 테두리는 border/thick(2), 체크박스 모서리는 radius/xsm(4) 이다.
+// 반경이 리터럴 6px 이었다 — 값도 토큰도 어긋나 있었다.
+$choice-border-width: $border-thick;
+$checkbox-radius: $radius-xsm;
 
 // 2026-08-28 확인(inputs-spec): valid/invalid는 unselected 테두리 색만 바꾼다 — selected(checked·
 // indeterminate)는 검증 상태와 무관하게 항상 normal의 브랜드색을 유지한다(실측 확인). 그래서
@@ -249,7 +252,7 @@ $choice-description-fg: var(--bds-choice-description-fg);
 $toggle-width: 36px; // 예외: space 스케일에 36 없음(step*4px 이라 32·40뿐) — 리터럴 유지
 $toggle-height: $space-5; // 20px = space-5(step 5*4px)
 $toggle-knob-size: $space-4; // 16px = space-4(step 4*4px)
-$toggle-knob-inset: 2px; // 예외: space 스케일 최소 단위가 4px(space-1) — 2px 없음, 리터럴 유지
+$toggle-knob-inset: $space-0-5; // 실측: Track 패딩이 space/0-5 다. 절반 단계가 생기기 전엔 리터럴이었다
 
 $toggle-colors: (
   bg-on: var(--bds-toggle-track-bg-on),

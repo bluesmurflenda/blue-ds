@@ -2351,12 +2351,12 @@ table {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  border: 2px solid var(--bds-choice-box-border);
+  border: var(--bds-border-thick) solid var(--bds-choice-box-border);
   background-color: var(--bds-choice-box-bg);
   transition: background-color var(--bds-motion-fast), border-color var(--bds-motion-fast), box-shadow var(--bds-motion-fast);
 }
 .bds-choice-checkbox .bds-choice__box {
-  border-radius: 6px;
+  border-radius: var(--bds-radius-xsm);
 }
 .bds-choice-checkbox .bds-choice__input:checked + .bds-choice__box::after {
   content: "";
@@ -2492,8 +2492,8 @@ table {
 }
 .bds-toggle__knob {
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: var(--bds-space-0-5);
+  left: var(--bds-space-0-5);
   width: var(--bds-space-4);
   height: var(--bds-space-4);
   border-radius: var(--bds-radius-full);
@@ -2528,7 +2528,7 @@ table {
   background-color: var(--bds-toggle-track-bg-on);
 }
 .bds-toggle__input:checked + .bds-toggle__track .bds-toggle__knob {
-  transform: translateX(calc(36px - var(--bds-space-4) - 2px * 2));
+  transform: translateX(calc(36px - var(--bds-space-4) - var(--bds-space-0-5) * 2));
 }
 .bds-toggle__input:checked:hover:not(:disabled) + .bds-toggle__track {
   background-color: var(--bds-toggle-track-bg-on-hover);
