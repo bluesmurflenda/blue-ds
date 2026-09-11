@@ -155,7 +155,9 @@ $modal-shadow: 0 20px 24px -4px rgb(0 0 0 / 8%), 0 8px 8px -4px rgb(0 0 0 / 3%);
     align-items: center;
     justify-content: center;
     width: 100%;
-    border: 1px dashed var(--bds-modal-slot-border);
+
+    // 실측: 실선이다(strokeDashes 없음). 리터럴 1px 에 dashed 로 그리고 있었다
+    border: $border-hairline solid var(--bds-modal-slot-border);
     border-radius: $radius-sm;
     background-color: var(--bds-modal-slot-bg);
     color: $modal-description-fg;
@@ -187,12 +189,14 @@ $modal-icon-colors: (
   flex-shrink: 0;
   border-radius: $radius-full;
 
+  // 실측: 패딩이 space/2-5(10) · space/3(12) 에 물려 있다. 리터럴이었다 —
+  // 절반 단계가 생기기 전엔 스케일에 10 이 없었다.
   &.bds-modal-featured-icon-sm {
-    padding: 10px;
+    padding: $space-2-5;
   }
 
   &.bds-modal-featured-icon-md {
-    padding: 12px;
+    padding: $space-3;
   }
 }
 

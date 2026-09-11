@@ -2247,7 +2247,7 @@ table {
   align-items: center;
   justify-content: center;
   width: 100%;
-  border: 1px dashed var(--bds-modal-slot-border);
+  border: var(--bds-border-hairline) solid var(--bds-modal-slot-border);
   border-radius: var(--bds-radius-sm);
   background-color: var(--bds-modal-slot-bg);
   color: var(--bds-modal-fg-supporting);
@@ -2263,10 +2263,10 @@ table {
   border-radius: var(--bds-radius-full);
 }
 .bds-modal-featured-icon.bds-modal-featured-icon-sm {
-  padding: 10px;
+  padding: var(--bds-space-2-5);
 }
 .bds-modal-featured-icon.bds-modal-featured-icon-md {
-  padding: 12px;
+  padding: var(--bds-space-3);
 }
 
 .bds-modal-featured-icon-brand {
