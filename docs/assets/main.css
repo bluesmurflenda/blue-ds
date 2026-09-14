@@ -967,15 +967,11 @@ table {
   --bds-btn-ghost-brand-fg-disabled: var(--bds-text-disabled);
   /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
   --bds-btn-ghost-white-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  --bds-btn-ghost-white-bg-hover: var(--bds-neutral-100);
-  --bds-btn-ghost-white-bg-pressed: var(--bds-neutral-200);
+  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
+  --bds-btn-ghost-white-bg-hover: #ffffff1a; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
+  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
+  --bds-btn-ghost-white-bg-pressed: #ffffff29; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
   --bds-btn-ghost-white-fg: var(--bds-white);
-}
-
-[data-theme=dark] {
-  --bds-btn-ghost-white-bg-hover: var(--bds-neutral-900);
-  --bds-btn-ghost-white-bg-pressed: var(--bds-neutral-800);
-  --bds-btn-ghost-white-fg: var(--bds-neutral-950);
 }
 
 .bds-icon-btn {
@@ -4257,6 +4253,7 @@ table {
   color: var(--bds-nav-fg-hover);
 }
 .bds-side-nav-item-light.bds-side-nav-item-selected {
+  background-color: var(--bds-nav-item-bg-selected);
   color: var(--bds-nav-fg-selected);
 }
 .bds-side-nav-item-dark {
@@ -4270,7 +4267,8 @@ table {
   background-color: var(--bds-nav-dark-item-bg-hover);
 }
 .bds-side-nav-item-dark.bds-side-nav-item-selected {
-  color: var(--bds-nav-fg-selected);
+  background-color: var(--bds-nav-dark-item-bg-selected);
+  color: var(--bds-nav-dark-fg);
 }
 
 :root {

@@ -289,3 +289,7 @@ body {
    채워진 도형 위에 불필요한 2px 윤곽선이 겹쳐 보이는 버그가 있었다 — 사이즈만 지정한다. */
 .bds-icon { width: 20px; height: 20px; }
 .icon-sm { width: 16px; height: 16px; }
+
+/* 문서 사이트 왼쪽 하위 메뉴는 이 컴포넌트를 그대로 쓰지만 선택 배경은 깔지 않는다.
+   목차의 현재 위치 표시일 뿐이라 글자색만으로 충분하다 — 컴포넌트 규칙이 아니라 이 사이트의 표시 방식이다. */
+.doc-nav-group__children .bds-side-nav-item-selected { background: transparent; }

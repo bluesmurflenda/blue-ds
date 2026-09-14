@@ -26,15 +26,11 @@
   --bds-btn-ghost-brand-fg-disabled: var(--bds-text-disabled);
   /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
   --bds-btn-ghost-white-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  --bds-btn-ghost-white-bg-hover: var(--bds-neutral-100);
-  --bds-btn-ghost-white-bg-pressed: var(--bds-neutral-200);
+  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
+  --bds-btn-ghost-white-bg-hover: #ffffff1a; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
+  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
+  --bds-btn-ghost-white-bg-pressed: #ffffff29; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
   --bds-btn-ghost-white-fg: var(--bds-white);
-}
-
-[data-theme='dark'] {
-  --bds-btn-ghost-white-bg-hover: var(--bds-neutral-900);
-  --bds-btn-ghost-white-bg-pressed: var(--bds-neutral-800);
-  --bds-btn-ghost-white-fg: var(--bds-neutral-950);
 }
 
 // 2026-08-28 확인(bluesoft-buttons-spec.md 4장): 아이콘 크기는 박스 크기와 별개로 18/20/24/24 —

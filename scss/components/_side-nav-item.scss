@@ -93,9 +93,8 @@
         }
 
         &.bds-side-nav-item-selected {
+            background-color: var(--bds-nav-item-bg-selected);
             color: var(--bds-nav-fg-selected);
-
-            // background-color: var(--bds-nav-item-bg-selected);
         }
     }
 
@@ -111,10 +110,11 @@
             background-color: var(--bds-nav-dark-item-bg-hover);
         }
 
+        // 선택 배경이 blue/600 이라 글자를 brand(같은 blue/600)로 두면 파랑 위 파랑이 된다.
+        // dark 타입은 라이트·다크 어느 모드에서도 배경이 고정이므로 글자는 항상 흰색이다.
         &.bds-side-nav-item-selected {
-            color: var(--bds-nav-fg-selected);
-
-            // background-color: var(--bds-nav-dark-item-bg-selected);
+            background-color: var(--bds-nav-dark-item-bg-selected);
+            color: var(--bds-nav-dark-fg);
         }
     }
 }
