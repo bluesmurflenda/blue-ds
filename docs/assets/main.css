@@ -2692,7 +2692,7 @@ table {
   bottom: 0;
   border-radius: var(--bds-radius-full);
   background-color: var(--bds-avatar-online);
-  box-shadow: 0 0 0 2px var(--bds-surface-default);
+  box-shadow: 0 0 0 var(--bds-border-hairline) var(--bds-surface-default);
 }
 
 .bds-avatar-xs {
@@ -2813,7 +2813,7 @@ table {
 }
 .bds-avatar-group > * {
   margin-left: -8px;
-  box-shadow: 0 0 0 2px var(--bds-surface-default);
+  box-shadow: 0 0 0 var(--bds-border-hairline) var(--bds-surface-default);
 }
 .bds-avatar-group > *:first-child {
   margin-left: 0;
@@ -2823,6 +2823,7 @@ table {
   /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- 더보기 칩은 아바타와 같은 크기·모양을 그대로 쓴다. 플레이스홀더로 빼면 .bds-avatar 쪽에 같은 규칙이 한 벌 더 생기고, 마크업에 클래스를 세 개 붙이는 방식은 이 칩이 쓰이는 자리와 안 맞는다 */
   /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder -- 위와 같은 이유 */
   font-weight: var(--bds-font-weight-semibold);
+  box-shadow: 0 0 0 var(--bds-border-thick) var(--bds-surface-default);
 }
 
 :root {

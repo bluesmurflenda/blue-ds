@@ -125,7 +125,8 @@ $avatar-sizes: (
     // 링은 surface/default 다 — Figma 가 Online 노드 15자리 전부 그렇게 물고 있다(2026-09-10 실측).
     // 예전에는 프리미티브 흰색이었고 ADR-019 예외로 통과시켰는데, 그 근거가 없어졌다.
     // 아래 Avatar Group 의 겹침 링과 같은 형태다.
-    box-shadow: 0 0 0 2px $surface-default;
+    // 2026-09-14 실측: 링 두께는 1(border/hairline) 이다. 2px 로 그리고 있었다.
+    box-shadow: 0 0 0 $border-hairline $surface-default;
   }
 }
 
@@ -160,7 +161,10 @@ $avatar-group-overlap: -8px;
 
   > * {
     margin-left: $avatar-group-overlap;
-    box-shadow: 0 0 0 2px $surface-default; // outside 스트로크 — border 대신 box-shadow(겹침 계산 보존)
+
+    // outside 스트로크 — border 대신 box-shadow(겹침 계산 보존).
+    // 실측: 아바타는 1(border/hairline), 아래 더보기 칩만 2(border/thick) 다.
+    box-shadow: 0 0 0 $border-hairline $surface-default;
 
     &:first-child {
       margin-left: 0;
@@ -175,4 +179,7 @@ $avatar-group-overlap: -8px;
   @extend .bds-avatar-sm;
 
   font-weight: $font-weight-semibold;
+
+  // 실측: 더보기 칩만 링이 두껍다(border/thick). 위 .bds-avatar-group > * 를 덮는다.
+  box-shadow: 0 0 0 $border-thick $surface-default;
 }
