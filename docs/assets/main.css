@@ -2030,10 +2030,10 @@ table {
   flex-direction: column;
   gap: var(--bds-space-5);
   width: 354px;
-  min-width: 280px;
-  max-width: 420px;
-  min-height: 354px;
-  max-height: 474px;
+  min-width: var(--bds-calendar-min-width);
+  max-width: var(--bds-calendar-max-width);
+  min-height: var(--bds-calendar-min-height);
+  max-height: var(--bds-calendar-max-height);
   padding: var(--bds-space-5);
   border-radius: var(--bds-calendar-radius);
 }
@@ -2058,7 +2058,7 @@ table {
 }
 .bds-calendar__weekday-row {
   display: flex;
-  gap: 4px;
+  gap: var(--bds-calendar-gap-cell);
 }
 .bds-calendar__weekday {
   display: flex;
@@ -2080,11 +2080,11 @@ table {
 .bds-calendar__weeks {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--bds-calendar-gap-row);
 }
 .bds-calendar__week {
   display: flex;
-  gap: 4px;
+  gap: var(--bds-calendar-gap-cell);
 }
 
 .bds-calendar-day {

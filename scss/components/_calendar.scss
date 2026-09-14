@@ -48,8 +48,11 @@ $calendar-saturday-fg: var(--bds-calendar-saturday-fg);
 $calendar-sunday-fg: var(--bds-calendar-sunday-fg);
 $calendar-day-fg: var(--bds-calendar-day-fg);
 $calendar-cell-bg: var(--bds-calendar-cell-bg);
-$calendar-gap-cell: 4px;
-$calendar-gap-row: 4px;
+
+// 2026-09-14 실측: 주 안의 칸 간격은 calendar/gap/cell, 주 사이 간격은 calendar/gap/row 에
+// 물려 있다. 둘 다 리터럴 4px 이었다 — Shape 토큰이 있는데 안 쓰고 있었다.
+$calendar-gap-cell: var(--bds-calendar-gap-cell);
+$calendar-gap-row: var(--bds-calendar-gap-row);
 $calendar-cell-size: 44px;
 $calendar-cell-selected-bg: var(--bds-calendar-cell-selected-bg);
 $calendar-cell-selected-fg: var(--bds-calendar-cell-selected-fg);
@@ -66,10 +69,12 @@ $calendar-today-fg: var(--bds-calendar-today-fg);
   flex-direction: column;
   gap: $space-5;
   width: 354px;
-  min-width: 280px;
-  max-width: 420px;
-  min-height: 354px;
-  max-height: 474px;
+
+  // 최소·최대 치수도 Shape 컬렉션에 있다(calendar/min-width 등). 값은 같고 리터럴이었다.
+  min-width: var(--bds-calendar-min-width);
+  max-width: var(--bds-calendar-max-width);
+  min-height: var(--bds-calendar-min-height);
+  max-height: var(--bds-calendar-max-height);
   padding: $space-5;
   border-radius: $calendar-radius;
 
