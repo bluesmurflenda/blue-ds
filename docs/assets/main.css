@@ -3310,6 +3310,7 @@ table {
 .bds-dropdown__trigger {
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--bds-space-2);
   border: var(--bds-border-hairline) solid var(--bds-field-border);
   background-color: var(--bds-field-bg);
@@ -3414,6 +3415,9 @@ table {
   border: var(--bds-border-hairline) solid var(--bds-list-panel-border);
   border-radius: var(--bds-radius-md);
   background-color: var(--bds-list-panel-bg);
+}
+.bds-list-panel[hidden] {
+  display: none;
 }
 
 .bds-list-item {

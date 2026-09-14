@@ -18,15 +18,10 @@
   </div>
 
   <section class="doc-section">
-    <h2>Dropdown — Trigger 사이즈</h2>
-    <p class="doc-desc">닫힌 상태(<code>aria-expanded="false"</code>)의 트리거만 사이즈별로 나열합니다.</p>
-    <div class="doc-matrix" id="dropdown-trigger-matrix" style="--doc-cols:4"></div>
-  </section>
-
-  <section class="doc-section">
-    <h2>Dropdown — 조립 예시(열림 상태)</h2>
-    <p class="doc-desc"><code>.bds-dropdown__trigger[aria-expanded="true"]</code> + <code>.bds-list-panel</code> 조합. 옵션 상태는 default/selected(<code>.bds-list-item-selected</code>)/disabled(<code>.bds-list-item-disabled</code>)입니다.</p>
-    <div class="doc-card" id="dropdown-assembled" style="display:inline-block;"></div>
+    <h2>Dropdown</h2>
+    <p class="doc-desc">트리거를 눌러 직접 열고 닫을 수 있습니다. 상태는 트리거의 <code>aria-expanded</code>와 패널의 <code>hidden</code> 속성 둘로만 표현합니다 — 디자인시스템은 CSS만 배포하므로 토글 스크립트는 이 페이지에 있습니다(사이드바·Accordion과 같은 방식). md는 열어 둬서 닫힘·열림을 한 화면에서 비교할 수 있습니다. 옵션 상태는 default/selected(<code>.bds-list-item-selected</code>)/disabled(<code>.bds-list-item-disabled</code>)입니다.</p>
+    <p class="doc-desc">패널은 트리거를 덮지 않고 아래에 흐름대로 쌓입니다(<code>.bds-dropdown</code>이 세로 flex). Figma 조립 예시도 같은 모양입니다.</p>
+    <div class="doc-matrix" id="dropdown-matrix" style="--doc-cols:4;--doc-cell-min:220px"></div>
   </section>
 
   <section class="doc-section">
@@ -67,36 +62,38 @@
   }
 
   (function () {
-    var el = document.getElementById('dropdown-trigger-matrix');
+    var el = document.getElementById('dropdown-matrix');
     ['sm', 'md', 'lg', 'xl'].forEach(function (size) {
+      var open = size === 'md';
       var cls = 'bds-dropdown bds-dropdown-' + size;
       var cell = document.createElement('div');
       cell.className = 'doc-cell';
+      // 폭을 칸에 맞춘다 — 트리거가 내용폭이면 space-between 이 하는 일이 안 보인다
       cell.innerHTML =
-        '<div class="' + cls + '">' +
-        '<button type="button" class="bds-dropdown__trigger" aria-expanded="false">' +
+        '<div class="' + cls + '" style="width:100%;">' +
+        '<button type="button" class="bds-dropdown__trigger" aria-expanded="' + open + '">' +
         '<span>옵션 선택</span>' + chevronDown('bds-dropdown__chevron') +
         '</button>' +
+        '<div class="bds-list-panel"' + (open ? '' : ' hidden') + '>' +
+        '<div class="bds-list-item">기본 옵션</div>' +
+        '<div class="bds-list-item bds-list-item-selected">선택된 옵션' + iconSvg('bds-list-item__check', 'check') + '</div>' +
+        '<div class="bds-list-item bds-list-item-disabled">비활성 옵션</div>' +
+        '</div>' +
         '</div>' +
         '<span class="doc-cell__caption">' + cls + '</span>';
       el.appendChild(cell);
     });
   })();
 
-  (function () {
-    var el = document.getElementById('dropdown-assembled');
-    el.innerHTML =
-      '<div class="bds-dropdown bds-dropdown-md">' +
-      '<button type="button" class="bds-dropdown__trigger" aria-expanded="true">' +
-      '<span>옵션 선택됨</span>' + chevronDown('bds-dropdown__chevron') +
-      '</button>' +
-      '<div class="bds-list-panel">' +
-      '<div class="bds-list-item">기본 옵션</div>' +
-      '<div class="bds-list-item bds-list-item-selected">선택된 옵션' + iconSvg('bds-list-item__check', 'check') + '</div>' +
-      '<div class="bds-list-item bds-list-item-disabled">비활성 옵션</div>' +
-      '</div>' +
-      '</div>';
-  })();
+  // 컴포넌트 CSS 는 aria-expanded 와 hidden 만 읽는다 — 토글은 문서 페이지가 한다(Accordion 과 같다).
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('.bds-dropdown__trigger');
+    if (!trigger) return;
+    var expanded = trigger.getAttribute('aria-expanded') === 'true';
+    trigger.setAttribute('aria-expanded', String(!expanded));
+    var panel = trigger.nextElementSibling;
+    if (panel) panel.hidden = expanded;
+  });
 
   var SELECT_SIZES = ['sm', 'md', 'lg', 'xl'];
   var VALIDATIONS = ['normal', 'invalid', 'valid'];

@@ -62,6 +62,11 @@ $list-item-fg-selected: var(--bds-list-item-fg-selected);
   &__trigger {
     display: inline-flex;
     align-items: center;
+
+    // 폭을 키우면 라벨과 chevron 이 왼쪽에 몰린다. Select 는 .bds-select__content 에 flex:1 을
+    // 줘서 밀어내지만 트리거 라벨에는 클래스가 없어 그 방식을 못 쓴다 — 라벨에 클래스를 두게 되면
+    // Select 쪽에 맞춘다.
+    justify-content: space-between;
     gap: $space-2;
     border: $border-hairline solid $dropdown-border;
     background-color: var(--bds-field-bg);
@@ -153,6 +158,12 @@ $list-item-font: (
   border: $border-hairline solid $list-panel-border;
   border-radius: $radius-md;
   background-color: $list-panel-bg;
+
+  // 열림 여부는 트리거의 aria-expanded 로 읽고 패널은 hidden 속성으로 감춘다 — JS 전용 상태
+  // 클래스를 새로 만들지 않는다. 브라우저 기본 display:none 이 위 display:flex 에 지므로 되돌린다.
+  &[hidden] {
+    display: none;
+  }
 }
 
 .bds-list-item {
