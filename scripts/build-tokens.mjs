@@ -43,7 +43,7 @@ function render(t) {
 }
 
 const entries = (d) => Object.entries(d).filter(([k]) => !k.startsWith('_'));
-// 스냅샷에 적힌 순서 = Figma 에 등록된 순서
+// 스냅샷에 적힌 순서를 그대로 쓴다. 그 순서는 이름순으로 고정돼 있다(snapshot-tokens.mjs).
 const orderOf = (pairs) => new Map(pairs.map(([k], i) => [k, i]));
 
 function nest(pairs, typeFn) {

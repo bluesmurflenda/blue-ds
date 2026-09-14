@@ -33,62 +33,40 @@ Figma 퍼블리시할 때마다 다시 뽑으면 낡지 않는다.
 
 ### 생성 방법
 
-**Figma MCP 로 직접 뽑는다.** 사람이 옮겨 적지 않는다.
-**컬렉션 하나씩 돌려서 파일 하나씩 만든다.**
+**추출 코드는 `scripts/figma-extract.js` 에 있다.** Figma MCP 에 그 파일 본문을 넣어 돌린다.
+**여기에 옮겨 적지 않는다** — 옮겨 적은 코드는 반드시 실제와 어긋난다. 실제로 어긋나 있었다.
 
-```js
-// Figma MCP 에서 실행
-const cols = await figma.variables.getLocalVariableCollectionsAsync();
-const vars = await figma.variables.getLocalVariablesAsync();
-const byId = {};
-vars.forEach((v) => (byId[v.id] = v));
-const hex = (c) => {
-    if (!c || typeof c.r !== "number") return c;
-    if (c.a != null && c.a < 1) return `rgba(${Math.round(c.r * 255)},${Math.round(c.g * 255)},${Math.round(c.b * 255)},${+c.a.toFixed(3)})`;
-    return (
-        "#" +
-        [c.r, c.g, c.b]
-            .map((x) =>
-                Math.round(x * 255)
-                    .toString(16)
-                    .padStart(2, "0"),
-            )
-            .join("")
-    );
-};
-const cssVar = (n) => "var(--" + n.replace(/\//g, "-") + ")";
+1. 컬렉션마다 한 번씩 돌리고, 반환값을 `figma/.staging/<컬렉션>.json` 에 그대로 저장한다
+2. 출력이 잘리면 구간을 나눠 `<컬렉션>.1.json` · `<컬렉션>.2.json` 로 저장한다
+3. id 맵을 한 번 돌려 `figma/.staging/ids.json` 에 저장한다
+4. `npm run snapshot`
 
-// TARGET 을 컬렉션 이름으로 바꿔가며 한 번씩 돌린다. 파일 하나가 컬렉션 하나다.
-const c = cols.find((x) => x.name === TARGET);
-const out = {
-    _meta: { exportedAt: "", source: "", collection: c.name, count: c.variableIds.length },
-    _modes: c.modes.map((m) => m.name),
-};
-for (const vid of c.variableIds) {
-    const v = byId[vid];
-    if (!v) continue;
-    const e = {};
-    for (const m of c.modes) {
-        const raw = v.valuesByMode[m.modeId];
-        e[m.name] = raw === undefined ? null : raw && raw.type === "VARIABLE_ALIAS" ? cssVar((byId[raw.id] || {}).name || "?") : v.resolvedType === "COLOR" ? hex(raw) : raw;
-    }
-    out[v.name] = c.modes.length === 1 ? e[c.modes[0].name] : e;
-}
-return { json: JSON.stringify(out, null, 2) };
-```
+`npm run snapshot` 이 정렬과 `_meta` 와 개수를 맞춰 다섯 파일을 다시 쓴다.
+**아래 중 하나라도 걸리면 아무 파일도 쓰지 않고 멈춘다.**
 
-`_meta` 에 뽑은 날짜와 개수를 남긴다.
-**개수가 맞는지 먼저 확인한다** — 잘렸으면 개수가 안 맞는다.
-`tokens.ids.json` 의 컬렉션별 개수와도 맞아야 한다. 어긋나면 한쪽이 낡은 것이다.
+| 걸리는 것 | 무엇이 잘못된 것인가 |
+| --- | --- |
+| 값 파일과 id 파일의 이름이 다르다 | 한쪽이 덜 받아졌다 — 출력이 잘린 경우가 여기 걸린다 |
+| 별칭이 없는 변수를 가리킨다 | 잘렸거나 이름이 바뀌었다 |
+| 모드 하나에 값이 없다 | 덜 받아졌다 |
+| 같은 이름이 조각 두 곳에 있다 | 같은 구간을 두 번 받았다 |
+
+통과하면 이전 파일과 비교해 **추가·삭제·값이 바뀐 항목을 줄 단위로 낸다.** 그것을 보고 커밋한다.
+
+**스냅샷을 손으로 고치지 않는다.** 새로 생긴 변수만 끼워 넣으면 나머지 값이 언제 확정된
+것인지 알 수 없게 된다. 실제로 그렇게 해서 한동안 확인되지 않은 채로 있었다.
 
 ### 형식
 
-| 컬렉션                | 형식                                                                     |
-| --------------------- | ------------------------------------------------------------------------ |
-| 단일 모드 (Primitive) | `"neutral/900": "#171717"`                                               |
-| 다중 모드             | `"card/bg": { "Default": "var(--white)", "Dark": "var(--neutral-800)" }` |
+| 컬렉션 | 형식 |
+| --- | --- |
+| 단일 모드 (Primitive) | `"neutral/900": "#171717"` |
+| 다중 모드 | `"card/bg": { "Default": "var(--white)", "Dark": "var(--neutral-800)" }` |
 
 **별칭은 CSS 변수 문자열로 저장한다.** 그래야 SCSS 와 그대로 대조된다.
+**반투명 색은 8자리 hex 다.** `rgba()` 가 아니다.
+**키는 이름순으로 고정한다** — 순서가 흔들리면 생성되는 SCSS 의 줄 순서까지 흔들려
+diff 에서 무엇이 바뀌었는지 못 읽는다.
 
 ### id 맵 — `figma/tokens.ids.json`
 
@@ -99,16 +77,6 @@ return { json: JSON.stringify(out, null, 2) };
 그래서 **id→이름 맵을 별도 파일로 둔다**: `figma/tokens.ids.json`.
 컬렉션별로 나눠 담되(어느 컬렉션 소속인지가 D1 판정에 필요) 한 파일에 합쳐 커밋한다.
 키는 `VariableID:` 접두사를 뗀 나머지(`"997:12"`)다.
-
-```js
-// 컬렉션 하나당 이렇게 뽑는다(값 없이 id/이름만이라 가볍다)
-const col = collections.find((c) => c.name === TARGET);
-const out = {};
-for (const vid of col.variableIds) {
-    const v = await figma.variables.getVariableByIdAsync(vid);
-    if (v) out[vid.replace("VariableID:", "")] = v.name;
-}
-```
 
 `check-nodes.mjs` 는 `boundVariables` 의 id로 이 맵을 찾아 `{name, collection}` 을 얻고,
 `collection === 'Primitive'` 이면서 `tokens.primitive.json` 에서 그 이름의 값이 hex 색이면
@@ -123,19 +91,14 @@ for (const vid of col.variableIds) {
 
 ## 스크립트
 
-| 스크립트           | 검사군 | 실행      |
-| ------------------ | ------ | --------- |
-| `check-nodes.mjs`  | N      | REST API  |
-| `check-tokens.mjs` | T · S  | 로컬 파일 |
+| 스크립트              | 하는 일                        | 실행      |
+| --------------------- | ------------------------------ | --------- |
+| `check-nodes.mjs`     | N 군 검사                      | REST API  |
+| `check-tokens.mjs`    | T · S 군 검사                  | 로컬 파일 |
+| `figma-extract.js`    | 변수 추출                      | Figma MCP |
+| `snapshot-tokens.mjs` | 추출 결과 → `figma/tokens.*.json` | 로컬 파일 |
 
-```json
-// package.json
-"scripts": {
-  "check:nodes": "node scripts/check-nodes.mjs",
-  "check:tokens": "node scripts/check-tokens.mjs",
-  "check": "npm run check:nodes && npm run check:tokens"
-}
-```
+**명령 이름은 `package.json` 에서 본다.** 여기에 옮겨 적지 않는다.
 
 ### Figma 토큰
 

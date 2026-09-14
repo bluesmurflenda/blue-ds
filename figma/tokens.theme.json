@@ -845,6 +845,10 @@
     "Default": "var(--text-tertiary)",
     "Dark": "var(--text-tertiary)"
   },
+  "field/hint/fg-invalid": {
+    "Default": "var(--red-500)",
+    "Dark": "var(--red-300)"
+  },
   "field/label/fg": {
     "Default": "var(--text-primary)",
     "Dark": "var(--text-primary)"
@@ -978,6 +982,10 @@
     "Dark": "var(--text-primary)"
   },
   "nav/fg-hover": {
+    "Default": "var(--text-brand)",
+    "Dark": "var(--text-brand)"
+  },
+  "nav/fg-selected": {
     "Default": "var(--text-brand)",
     "Dark": "var(--text-brand)"
   },
@@ -1284,13 +1292,5 @@
   "tooltip/light/fg-supporting": {
     "Default": "var(--neutral-600)",
     "Dark": "var(--neutral-600)"
-  },
-  "field/hint/fg-invalid": {
-    "Default": "var(--red-500)",
-    "Dark": "var(--red-300)"
-  },
-  "nav/fg-selected": {
-    "Default": "var(--text-brand)",
-    "Dark": "var(--text-brand)"
   }
 }

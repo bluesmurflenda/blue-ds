@@ -179,14 +179,18 @@
   --bds-social-kakao: #ffcd00;
   --bds-social-naver: #03c75a;
   --bds-space-0: 0;
+  --bds-space-0-5: 2px;
   --bds-space-1: 4px;
+  --bds-space-1-5: 6px;
   --bds-space-10: 40px;
   --bds-space-12: 48px;
   --bds-space-16: 64px;
   --bds-space-2: 8px;
+  --bds-space-2-5: 10px;
   --bds-space-20: 80px;
   --bds-space-24: 96px;
   --bds-space-3: 12px;
+  --bds-space-3-5: 14px;
   --bds-space-32: 128px;
   --bds-space-4: 16px;
   --bds-space-40: 160px;
@@ -210,10 +214,6 @@
   --bds-yellow-800: #854d0e;
   --bds-yellow-900: #713f12;
   --bds-yellow-950: #422006;
-  --bds-space-0-5: 2px;
-  --bds-space-1-5: 6px;
-  --bds-space-2-5: 10px;
-  --bds-space-3-5: 14px;
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -394,14 +394,18 @@ $social-apple: var(--bds-social-apple);
 $social-kakao: var(--bds-social-kakao);
 $social-naver: var(--bds-social-naver);
 $space-0: var(--bds-space-0);
+$space-0-5: var(--bds-space-0-5);
 $space-1: var(--bds-space-1);
+$space-1-5: var(--bds-space-1-5);
 $space-10: var(--bds-space-10);
 $space-12: var(--bds-space-12);
 $space-16: var(--bds-space-16);
 $space-2: var(--bds-space-2);
+$space-2-5: var(--bds-space-2-5);
 $space-20: var(--bds-space-20);
 $space-24: var(--bds-space-24);
 $space-3: var(--bds-space-3);
+$space-3-5: var(--bds-space-3-5);
 $space-32: var(--bds-space-32);
 $space-4: var(--bds-space-4);
 $space-40: var(--bds-space-40);
@@ -425,7 +429,3 @@ $yellow-700: var(--bds-yellow-700);
 $yellow-800: var(--bds-yellow-800);
 $yellow-900: var(--bds-yellow-900);
 $yellow-950: var(--bds-yellow-950);
-$space-0-5: var(--bds-space-0-5);
-$space-1-5: var(--bds-space-1-5);
-$space-2-5: var(--bds-space-2-5);
-$space-3-5: var(--bds-space-3-5);

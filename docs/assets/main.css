@@ -174,14 +174,18 @@
   --bds-social-kakao: #ffcd00;
   --bds-social-naver: #03c75a;
   --bds-space-0: 0;
+  --bds-space-0-5: 2px;
   --bds-space-1: 4px;
+  --bds-space-1-5: 6px;
   --bds-space-10: 40px;
   --bds-space-12: 48px;
   --bds-space-16: 64px;
   --bds-space-2: 8px;
+  --bds-space-2-5: 10px;
   --bds-space-20: 80px;
   --bds-space-24: 96px;
   --bds-space-3: 12px;
+  --bds-space-3-5: 14px;
   --bds-space-32: 128px;
   --bds-space-4: 16px;
   --bds-space-40: 160px;
@@ -205,10 +209,6 @@
   --bds-yellow-800: #854d0e;
   --bds-yellow-900: #713f12;
   --bds-yellow-950: #422006;
-  --bds-space-0-5: 2px;
-  --bds-space-1-5: 6px;
-  --bds-space-2-5: 10px;
-  --bds-space-3-5: 14px;
 }
 
 :root {

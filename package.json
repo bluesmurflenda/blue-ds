@@ -7,6 +7,7 @@
   },
   "description": "BLUESOFT 디자인시스템 — 컴파일된 CSS · SCSS 원본 · 아이콘",
   "scripts": {
+    "snapshot": "node scripts/snapshot-tokens.mjs",
     "build:tokens": "node scripts/build-tokens.mjs",
     "prebuild": "node scripts/build-tokens.mjs && node scripts/build-icons.mjs",
     "build": "sass scss/main.scss:dist/main.css --no-source-map",

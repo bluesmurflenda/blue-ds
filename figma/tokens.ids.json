@@ -181,14 +181,18 @@
     "421:55": "social/kakao",
     "421:56": "social/naver",
     "5:12": "space/0",
+    "2034:2": "space/0-5",
     "5:13": "space/1",
+    "2034:3": "space/1-5",
     "5:20": "space/10",
     "5:21": "space/12",
     "5:22": "space/16",
     "5:14": "space/2",
+    "2034:4": "space/2-5",
     "5:23": "space/20",
     "5:24": "space/24",
     "5:15": "space/3",
+    "2034:5": "space/3-5",
     "5:25": "space/32",
     "5:16": "space/4",
     "223:1895": "space/40",
@@ -211,11 +215,7 @@
     "66:26": "yellow/700",
     "5:70": "yellow/800",
     "66:27": "yellow/900",
-    "66:28": "yellow/950",
-    "2034:2": "space/0-5",
-    "2034:3": "space/1-5",
-    "2034:4": "space/2-5",
-    "2034:5": "space/3-5"
+    "66:28": "yellow/950"
   },
   "Theme": {
     "997:3": "accent/100",
@@ -427,6 +427,7 @@
     "1457:383": "field/fg-placeholder",
     "2003:3": "field/fg-placeholder-disabled",
     "1457:385": "field/hint/fg",
+    "2042:2": "field/hint/fg-invalid",
     "1457:384": "field/label/fg",
     "2001:2": "field/ring-invalid",
     "2001:3": "field/ring-valid",
@@ -461,6 +462,7 @@
     "831:38": "nav/dark/fg",
     "831:34": "nav/fg",
     "831:35": "nav/fg-hover",
+    "2131:2": "nav/fg-selected",
     "1298:2": "nav/item/bg-hover",
     "1298:3": "nav/item/bg-selected",
     "354:6": "pagination/current/bg",
@@ -536,9 +538,7 @@
     "744:4": "tooltip/dark/fg-supporting",
     "744:5": "tooltip/light/bg",
     "744:6": "tooltip/light/fg",
-    "744:7": "tooltip/light/fg-supporting",
-    "2042:2": "field/hint/fg-invalid",
-    "2131:2": "nav/fg-selected"
+    "744:7": "tooltip/light/fg-supporting"
   },
   "Shape": {
     "1788:254": "accordion/rounded/radius",
@@ -572,6 +572,8 @@
     "1004:5723": "modal/width/sm",
     "1004:5726": "modal/width/xl",
     "426:2": "pagination/radius",
+    "2115:170": "pagination/wrap/radius",
+    "2115:171": "pagination/wrap/radius-sm",
     "1114:4": "scrollbar/radius",
     "1106:9021": "table/cell/min-height/lg",
     "1106:9020": "table/cell/min-height/md",
@@ -580,9 +582,7 @@
     "1046:9": "table/cell/padding-x/md",
     "1046:8": "table/cell/padding-x/sm",
     "983:3": "tabs/gap/pill",
-    "983:2": "tabs/gap/underline",
-    "2115:170": "pagination/wrap/radius",
-    "2115:171": "pagination/wrap/radius-sm"
+    "983:2": "tabs/gap/underline"
   },
   "Breakpoint": {
     "242:539": "breakpoint",
