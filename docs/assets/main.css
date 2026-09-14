@@ -471,7 +471,6 @@
   --bds-table-cell-padding-x-sm: var(--bds-space-4);
   --bds-tabs-gap-pill: var(--bds-space-2);
   --bds-tabs-gap-underline: var(--bds-space-2);
-  --bds-tabs-radius: var(--bds-radius-lg);
 }
 
 [data-shape=square] {
@@ -487,7 +486,6 @@
   --bds-pagination-wrap-radius: var(--bds-radius-none);
   --bds-pagination-wrap-radius-sm: var(--bds-radius-none);
   --bds-scrollbar-radius: var(--bds-radius-none);
-  --bds-tabs-radius: var(--bds-radius-none);
 }
 
 [data-shape=pill] {
@@ -502,7 +500,6 @@
   --bds-pagination-radius: var(--bds-radius-full);
   --bds-pagination-wrap-radius: var(--bds-radius-full);
   --bds-pagination-wrap-radius-sm: var(--bds-radius-full);
-  --bds-tabs-radius: var(--bds-radius-full);
 }
 
 *,

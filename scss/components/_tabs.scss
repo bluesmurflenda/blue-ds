@@ -87,9 +87,9 @@ $tabs-segmented-sizes: (
   xl: (padding-y: $space-3, padding-x: $space-7),
 );
 $tabs-gap: $space-2; // Shape 컬렉션 tabs-gap-pill/underline — 3모드 전부 동일해 모드 무관 상수로 취급
-// 2026-09-11 실측: pill·segmented 아이템과 Segment 컨테이너 전부 Primitive/radius/full 을 문다.
-// Shape 의 tabs/radius 는 Rounded 에서 radius/lg(16)라 값이 다르다 — 노드가 그 토큰을 안 쓰고 있다.
-// SCSS.md 「값의 출처」대로 라이브를 따른다. Figma 가 tabs/radius 를 물게 고치면 그때 되돌린다.
+// ADR-037: Tabs 는 Shape 모드를 따르지 않는다 — 각진·Pill 에서도 완전 둥글다.
+// 실측도 pill·segmented 아이템과 Segment 컨테이너 전부 Primitive/radius/full 을 문다.
+// 아무도 안 무는 토큰이라 tabs/radius 는 Shape 에서 지웠다(되돌리는 방법은 ADR 에 있다).
 $tabs-radius: $radius-full;
 
 // 2026-09-11 실측: 둘 다 space/0-5 에 물려 있다. 절반 단계가 생기기 전엔 리터럴이었다.

@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "exportedAt": "2026-09-11",
+    "exportedAt": "2026-09-14",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Shape",
-    "count": 43
+    "count": 42
   },
   "_modes": [
     "Rounded",
@@ -219,10 +219,5 @@
     "Rounded": "var(--space-2)",
     "Square": "var(--space-2)",
     "Pill": "var(--space-2)"
-  },
-  "tabs/radius": {
-    "Rounded": "var(--radius-lg)",
-    "Square": "var(--radius-none)",
-    "Pill": "var(--radius-full)"
   }
 }
