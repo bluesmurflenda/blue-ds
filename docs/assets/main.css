@@ -1668,8 +1668,8 @@ table {
 }
 
 .bds-tabs-item-pill {
-  border: 1px solid var(--bds-tabs-pill-border);
-  border-radius: var(--bds-tabs-radius);
+  border: var(--bds-border-hairline) solid var(--bds-tabs-pill-border);
+  border-radius: var(--bds-radius-full);
   color: var(--bds-tabs-pill-fg);
   background-color: transparent;
 }
@@ -1688,27 +1688,27 @@ table {
 }
 
 .bds-tabs-item-pill.bds-tabs-item-sm {
-  padding-block: 6px;
+  padding-block: var(--bds-space-1-5);
   padding-inline: var(--bds-space-4);
 }
 
 .bds-tabs-item-pill.bds-tabs-item-md {
-  padding-block: 8px;
+  padding-block: var(--bds-space-2);
   padding-inline: var(--bds-space-5);
 }
 
 .bds-tabs-item-pill.bds-tabs-item-lg {
-  padding-block: 12px;
+  padding-block: var(--bds-space-3);
   padding-inline: var(--bds-space-6);
 }
 
 .bds-tabs-item-pill.bds-tabs-item-xl {
-  padding-block: 14px;
+  padding-block: var(--bds-space-3-5);
   padding-inline: var(--bds-space-7);
 }
 
 .bds-tabs-item-segmented {
-  border-radius: var(--bds-tabs-radius);
+  border-radius: var(--bds-radius-full);
   color: var(--bds-tabs-segmented-fg);
   background-color: transparent;
 }
@@ -1725,32 +1725,32 @@ table {
 }
 
 .bds-tabs-item-segmented.bds-tabs-item-sm {
-  padding-block: 4px;
+  padding-block: var(--bds-space-1);
   padding-inline: var(--bds-space-3);
 }
 
 .bds-tabs-item-segmented.bds-tabs-item-md {
-  padding-block: 6px;
+  padding-block: var(--bds-space-1-5);
   padding-inline: var(--bds-space-4);
 }
 
 .bds-tabs-item-segmented.bds-tabs-item-lg {
-  padding-block: 10px;
+  padding-block: var(--bds-space-2-5);
   padding-inline: var(--bds-space-6);
 }
 
 .bds-tabs-item-segmented.bds-tabs-item-xl {
-  padding-block: 12px;
+  padding-block: var(--bds-space-3);
   padding-inline: var(--bds-space-7);
 }
 
 .bds-tabs-segment {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 2px;
-  border: 1px solid var(--bds-tabs-border);
-  border-radius: var(--bds-tabs-radius);
+  gap: var(--bds-space-0-5);
+  padding: var(--bds-space-0-5);
+  border: var(--bds-border-hairline) solid var(--bds-tabs-border);
+  border-radius: var(--bds-radius-full);
   background-color: var(--bds-tabs-track-bg);
 }
 
