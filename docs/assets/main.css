@@ -935,6 +935,25 @@ table {
   color: var(--bds-btn-link-fg-disabled);
 }
 
+.bds-button-group {
+  display: inline-flex;
+  background-color: var(--bds-button-group-bg);
+}
+.bds-button-group .bds-btn {
+  border-radius: 0;
+}
+.bds-button-group .bds-btn:not(:last-child) {
+  border-right: var(--bds-border-hairline) solid var(--bds-button-group-divider);
+}
+.bds-button-group .bds-btn:first-child {
+  border-start-start-radius: var(--bds-btn-radius);
+  border-end-start-radius: var(--bds-btn-radius);
+}
+.bds-button-group .bds-btn:last-child {
+  border-start-end-radius: var(--bds-btn-radius);
+  border-end-end-radius: var(--bds-btn-radius);
+}
+
 :root {
   --bds-btn-ghost-inverse-fg: var(--bds-white);
   /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */

@@ -117,6 +117,8 @@ $btn-link-fg: var(--bds-btn-link-fg);
 $btn-link-fg-hover: var(--bds-btn-link-fg-hover);
 $btn-link-fg-pressed: var(--bds-btn-link-fg-pressed);
 $btn-link-fg-disabled: var(--bds-btn-link-fg-disabled);
+$button-group-bg: var(--bds-button-group-bg);
+$button-group-divider: var(--bds-button-group-divider);
 
 .bds-btn {
   display: inline-flex;
@@ -207,5 +209,37 @@ $btn-link-fg-disabled: var(--bds-btn-link-fg-disabled);
   &:disabled,
   &[aria-disabled='true'] {
     color: $btn-link-fg-disabled;
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
+// ButtonGroup — 버튼을 붙여 한 덩어리로 쓴다(node 1860:455, 2026-09-14 실측).
+// 항목은 .bds-btn .bds-btn-secondary 를 그대로 쓰고 바깥 모서리만 둥글게 남긴다.
+// 사이즈는 항목의 .bds-btn-{size} 가 정하므로 그룹 쪽에 사이즈 축을 두지 않는다.
+
+// Figma 는 항목 사이에 1px Divider 노드를 따로 둔다 — 오토레이아웃이 음수 간격을 못 줘서
+// 테두리를 겹쳐 없애는 방법을 쓸 수 없기 때문이다(figma-work-principles F7).
+// CSS 에서는 border-right 한 줄로 끝나므로 그 노드를 마크업으로 옮기지 않는다.
+// ──────────────────────────────────────────────────────────────
+.bds-button-group {
+  display: inline-flex;
+  background-color: $button-group-bg;
+
+  .bds-btn {
+    border-radius: 0;
+
+    &:not(:last-child) {
+      border-right: $border-hairline solid $button-group-divider;
+    }
+
+    &:first-child {
+      border-start-start-radius: $btn-radius;
+      border-end-start-radius: $btn-radius;
+    }
+
+    &:last-child {
+      border-start-end-radius: $btn-radius;
+      border-end-end-radius: $btn-radius;
+    }
   }
 }
