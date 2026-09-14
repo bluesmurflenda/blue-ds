@@ -223,10 +223,12 @@ body {
 .doc-matrix {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  /* 열 수는 페이지가 --doc-cols 로 정한다. auto-fill 로 두면 창 폭에 따라 열이 흔들려
+     행이 의미를 잃는다 — 축이 있는 나열에서 사람이 비교를 못 한다. 안 주면 종전대로 동작한다. */
+  grid-template-columns: repeat(var(--doc-cols, auto-fill), minmax(var(--doc-cell-min, 160px), 1fr));
 }
 .doc-matrix-wide {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  --doc-cell-min: 240px;
 }
 .doc-cell {
   display: flex;
@@ -245,6 +247,33 @@ body {
 .doc-scroll-x {
   overflow-x: auto;
   padding-bottom: 4px;
+}
+
+/* ---------- 두 축짜리 나열(변형 × 사이즈)은 매트릭스가 아니라 표로 그린다.
+   행 머리에 변형이 한 번, 열 머리에 사이즈가 한 번 나오면 되므로 셀마다 클래스명을
+   반복하지 않는다. 좁은 화면을 위해 .doc-scroll-x 로 감싸 쓴다. ---------- */
+.doc-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.doc-table th,
+.doc-table td {
+  text-align: left;
+  padding: 8px 16px;
+  vertical-align: top;
+}
+.doc-table thead th {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--bds-text-tertiary);
+}
+.doc-table tbody th {
+  padding-left: 0;
+  font-size: 11px;
+  font-weight: 400;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  white-space: nowrap;
+  color: var(--bds-text-tertiary);
 }
 
 /* ---------- 사용법 블록 — 코드 예시·주석·키 목록. 색은 디자인시스템 토큰을 그대로 참조하므로

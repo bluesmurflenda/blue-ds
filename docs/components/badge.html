@@ -20,7 +20,14 @@
 
   <section class="doc-section">
     <h2>Color × Size</h2>
-    <div class="doc-matrix" id="chip-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th></tr>
+        </thead>
+        <tbody id="chip-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
@@ -32,7 +39,14 @@
   <section class="doc-section">
     <h2>Chip Dot(독립 컴포넌트)</h2>
     <p class="doc-desc"><code>.bds-badge-dot</code> — Chip과 별개 컴포넌트입니다(<code>_chip.scss</code> 주석: "배경 없이 점+텍스트만 있다"). 배경색이 없고 <code>.bds-badge-dot__dot</code>과 텍스트 색만 컬러를 따릅니다. padding-x·dot 지름이 Chip의 <code>.bds-badge__dot</code>과 다릅니다.</p>
-    <div class="doc-matrix" id="chip-dot-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th></tr>
+        </thead>
+        <tbody id="chip-dot-matrix"></tbody>
+      </table>
+    </div>
   </section>
 </main>
 
@@ -44,15 +58,19 @@
   var LABEL_TEXT = { brand: 'Brand', neutral: 'Neutral', success: 'Success', warning: 'Warning', error: 'Error', info: 'Info' };
 
   (function () {
-    var el = document.getElementById('chip-matrix');
+    var tbody = document.getElementById('chip-matrix');
     COLORS.forEach(function (color) {
+      var row = document.createElement('tr');
+      var head = document.createElement('th');
+      head.scope = 'row';
+      head.textContent = 'bds-badge-' + color;
+      row.appendChild(head);
       SIZES.forEach(function (size) {
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
-        cell.innerHTML = '<span class="bds-badge bds-badge-' + size + ' bds-badge-' + color + '">' + LABEL_TEXT[color] + '</span>' +
-          '<span class="doc-cell__caption">chip-' + size + ' bds-badge-' + color + '</span>';
-        el.appendChild(cell);
+        var cell = document.createElement('td');
+        cell.innerHTML = '<span class="bds-badge bds-badge-' + size + ' bds-badge-' + color + '">' + LABEL_TEXT[color] + '</span>';
+        row.appendChild(cell);
       });
+      tbody.appendChild(row);
     });
   })();
 
@@ -68,16 +86,20 @@
   })();
 
   (function () {
-    var el = document.getElementById('chip-dot-matrix');
+    var tbody = document.getElementById('chip-dot-matrix');
     COLORS.forEach(function (color) {
+      var row = document.createElement('tr');
+      var head = document.createElement('th');
+      head.scope = 'row';
+      head.textContent = 'bds-badge-dot-' + color;
+      row.appendChild(head);
       SIZES.forEach(function (size) {
         var cls = 'bds-badge-dot bds-badge-dot-' + size + ' bds-badge-dot-' + color;
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
-        cell.innerHTML = '<span class="' + cls + '"><span class="bds-badge-dot__dot"></span><span>' + LABEL_TEXT[color] + '</span></span>' +
-          '<span class="doc-cell__caption">' + cls + '</span>';
-        el.appendChild(cell);
+        var cell = document.createElement('td');
+        cell.innerHTML = '<span class="' + cls + '"><span class="bds-badge-dot__dot"></span><span>' + LABEL_TEXT[color] + '</span></span>';
+        row.appendChild(cell);
       });
+      tbody.appendChild(row);
     });
   })();
 </script>

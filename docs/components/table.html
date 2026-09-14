@@ -20,7 +20,14 @@
 
   <section class="doc-section">
     <h2>Cell 매트릭스</h2>
-    <div class="doc-matrix" id="cell-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th></tr>
+        </thead>
+        <tbody id="cell-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
@@ -80,19 +87,23 @@
   var ALIGNS = [['center', ''], ['left', 'bds-table-cell-align-left']];
 
   (function () {
-    var el = document.getElementById('cell-matrix');
+    var tbody = document.getElementById('cell-matrix');
     ROLES.forEach(function (role) {
-      SIZES.forEach(function (size) {
-        ALIGNS.forEach(function (align) {
-          var cell = document.createElement('div');
-          cell.className = 'doc-cell';
+      ALIGNS.forEach(function (align) {
+        var row = document.createElement('tr');
+        var head = document.createElement('th');
+        head.scope = 'row';
+        head.textContent = 'bds-table-cell-' + role[0] + (align[1] ? ' ' + align[1] : '');
+        row.appendChild(head);
+        SIZES.forEach(function (size) {
+          var cell = document.createElement('td');
+          // 셀 경계를 눈으로 보려고 두른 선이다 — 컴포넌트가 아니라 이 예시의 표시용
           cell.innerHTML =
-            '<div style="width:100%;display:flex;">' +
-            '<div class="bds-table-cell bds-table-cell-' + size + ' bds-table-cell-' + role[0] + ' ' + align[1] + '" style="width:100%;border:1px solid var(--bds-neutral-200);">' + role[2] + '</div>' +
-            '</div>' +
-            '<span class="doc-cell__caption">table-cell-' + size + ' bds-table-cell-' + role[0] + (align[1] ? ' ' + align[1] : '') + '</span>';
-          el.appendChild(cell);
+            '<div class="bds-table-cell bds-table-cell-' + size + ' bds-table-cell-' + role[0] + ' ' + align[1] +
+            '" style="min-width:120px;border:1px solid var(--bds-border-default);">' + role[2] + '</div>';
+          row.appendChild(cell);
         });
+        tbody.appendChild(row);
       });
     });
   })();

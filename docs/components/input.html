@@ -21,19 +21,26 @@
   <section class="doc-section">
     <h2>Size × Validation</h2>
     <p class="doc-desc">filled(값이 채워진 상태)는 border/bg가 normal과 동일합니다 — 실제 <code>&lt;input&gt;</code>을 쓰므로 <code>::placeholder</code>로 자연히 구분되고 별도 클래스가 없습니다.</p>
-    <div class="doc-matrix" id="input-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+        </thead>
+        <tbody id="input-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
     <h2>Disabled</h2>
     <p class="doc-desc">검증 상태별로 확인합니다(md 사이즈). <code>.bds-input-disabled</code>를 검증 modifier와 함께 사용하며, 힌트 텍스트가 흐려집니다.</p>
-    <div class="doc-matrix" id="bds-input-disabled"></div>
+    <div class="doc-matrix" id="bds-input-disabled" style="--doc-cols:3;--doc-cell-min:220px"></div>
   </section>
 
   <section class="doc-section">
     <h2>선행 아이콘 슬롯</h2>
     <p class="doc-desc"><code>.bds-input__icon</code>. 사이드바 검색창(<code>docs/assets/nav.js</code>)이 쓰는 실제 조합입니다.</p>
-    <div class="doc-matrix" id="input-icon"></div>
+    <div class="doc-matrix" id="input-icon" style="--doc-cols:3;--doc-cell-min:220px"></div>
   </section>
 
   <section class="doc-section">
@@ -73,15 +80,19 @@
   }
 
   (function () {
-    var el = document.getElementById('input-matrix');
-    SIZES.forEach(function (size) {
-      VALIDATIONS.forEach(function (validation) {
-        var cls = 'bds-input bds-input-' + size + ' bds-input-' + validation;
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
-        cell.innerHTML = inputHtml(cls) + '<span class="doc-cell__caption">' + cls + '</span>';
-        el.appendChild(cell);
+    var tbody = document.getElementById('input-matrix');
+    VALIDATIONS.forEach(function (validation) {
+      var row = document.createElement('tr');
+      var head = document.createElement('th');
+      head.scope = 'row';
+      head.textContent = 'bds-input-' + validation;
+      row.appendChild(head);
+      SIZES.forEach(function (size) {
+        var cell = document.createElement('td');
+        cell.innerHTML = inputHtml('bds-input bds-input-' + size + ' bds-input-' + validation);
+        row.appendChild(cell);
       });
+      tbody.appendChild(row);
     });
   })();
 

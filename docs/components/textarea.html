@@ -21,13 +21,20 @@
   <section class="doc-section">
     <h2>Size × Validation 매트릭스</h2>
     <p class="doc-desc">라벨 + 필드(textarea) + 힌트 텍스트로 구성된 기본 조립. 힌트 색상은 검증 상태를 따릅니다.</p>
-    <div class="doc-matrix" id="textarea-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th></tr>
+        </thead>
+        <tbody id="textarea-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
     <h2>Disabled</h2>
     <p class="doc-desc">검증 상태별로 확인합니다(md 사이즈). 실제 <code>&lt;textarea disabled&gt;</code>를 사용하며 힌트 텍스트가 흐려집니다.</p>
-    <div class="doc-matrix" id="bds-textarea-disabled"></div>
+    <div class="doc-matrix" id="bds-textarea-disabled" style="--doc-cols:3;--doc-cell-min:220px"></div>
   </section>
 </main>
 
@@ -50,15 +57,19 @@
   }
 
   (function () {
-    var el = document.getElementById('textarea-matrix');
-    SIZES.forEach(function (size) {
-      VALIDATIONS.forEach(function (validation) {
-        var cls = 'bds-textarea bds-textarea-' + size + ' bds-textarea-' + validation;
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
-        cell.innerHTML = textareaHtml(cls, false) + '<span class="doc-cell__caption">' + cls + '</span>';
-        el.appendChild(cell);
+    var tbody = document.getElementById('textarea-matrix');
+    VALIDATIONS.forEach(function (validation) {
+      var row = document.createElement('tr');
+      var head = document.createElement('th');
+      head.scope = 'row';
+      head.textContent = 'bds-textarea-' + validation;
+      row.appendChild(head);
+      SIZES.forEach(function (size) {
+        var cell = document.createElement('td');
+        cell.innerHTML = textareaHtml('bds-textarea bds-textarea-' + size + ' bds-textarea-' + validation, false);
+        row.appendChild(cell);
       });
+      tbody.appendChild(row);
     });
   })();
 

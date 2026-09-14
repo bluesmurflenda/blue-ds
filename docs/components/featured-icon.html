@@ -21,7 +21,14 @@
   <section class="doc-section">
     <h2>Color × Size</h2>
     <p class="doc-desc">구조: <code>.bds-featured-icon.featured-icon-{size}.bds-featured-icon-{color} &gt; svg.featured-icon__icon</code>.</p>
-    <div class="doc-matrix" id="featured-icon-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th></tr>
+        </thead>
+        <tbody id="featured-icon-matrix"></tbody>
+      </table>
+    </div>
   </section>
 </main>
 
@@ -39,18 +46,22 @@
   var SIZES = ['sm', 'md'];
 
   (function () {
-    var el = document.getElementById('featured-icon-matrix');
-    SIZES.forEach(function (size) {
-      COLORS.forEach(function (c) {
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
+    var tbody = document.getElementById('featured-icon-matrix');
+    COLORS.forEach(function (c) {
+      var row = document.createElement('tr');
+      var head = document.createElement('th');
+      head.scope = 'row';
+      head.textContent = 'bds-featured-icon-' + c[0];
+      row.appendChild(head);
+      SIZES.forEach(function (size) {
+        var cell = document.createElement('td');
         cell.innerHTML =
           '<div class="bds-featured-icon bds-featured-icon-' + size + ' bds-featured-icon-' + c[0] + '">' +
           '<svg class="bds-icon bds-featured-icon__icon"><use href="../assets/icons/sprite.svg#icon-base-' + c[1] + '"></use></svg>' +
-          '</div>' +
-          '<span class="doc-cell__caption">featured-icon featured-icon-' + size + ' bds-featured-icon-' + c[0] + '</span>';
-        el.appendChild(cell);
+          '</div>';
+        row.appendChild(cell);
       });
+      tbody.appendChild(row);
     });
   })();
 </script>

@@ -21,7 +21,14 @@
   <section class="doc-section">
     <h2>Variant × Size (default)</h2>
     <p class="doc-desc">scrim-dark·ghost-inverse·ghost-white은 어두운 배경 위에서, scrim-light은 밝은 배경 위에서만 아이콘이 보여 각각 배경을 얹었습니다.</p>
-    <div class="doc-matrix" id="iconbtn-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+        </thead>
+        <tbody id="iconbtn-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
@@ -52,15 +59,19 @@
   }
 
   (function () {
-    var el = document.getElementById('iconbtn-matrix');
+    var tbody = document.getElementById('iconbtn-matrix');
     VARIANTS.forEach(function (variant) {
+      var row = document.createElement('tr');
+      var head = document.createElement('th');
+      head.scope = 'row';
+      head.textContent = 'bds-icon-btn-' + variant;
+      row.appendChild(head);
       SIZES.forEach(function (size) {
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
-        cell.innerHTML = iconBtnHtml(variant, size, false) +
-          '<span class="doc-cell__caption">icon-btn-' + size + ' bds-icon-btn-' + variant + '</span>';
-        el.appendChild(cell);
+        var cell = document.createElement('td');
+        cell.innerHTML = iconBtnHtml(variant, size, false);
+        row.appendChild(cell);
       });
+      tbody.appendChild(row);
     });
   })();
 

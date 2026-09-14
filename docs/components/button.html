@@ -22,14 +22,14 @@
     <h2>Variant × Size (default)</h2>
     <p class="doc-desc">scrim-dark/scrim-light은 배경 위에서만 의미가 있어 각각 어두운/밝은 배경 위에 올렸습니다.</p>
     <div class="doc-scroll-x">
-      <table style="border-collapse:collapse;width:100%;">
+      <table class="doc-table">
         <thead>
           <tr>
-            <th style="text-align:left;padding:8px 16px 8px 0;font-size:12px;color:var(--bds-neutral-500);"></th>
-            <th style="text-align:left;padding:8px 16px;font-size:12px;color:var(--bds-neutral-500);">sm</th>
-            <th style="text-align:left;padding:8px 16px;font-size:12px;color:var(--bds-neutral-500);">md</th>
-            <th style="text-align:left;padding:8px 16px;font-size:12px;color:var(--bds-neutral-500);">lg</th>
-            <th style="text-align:left;padding:8px 16px;font-size:12px;color:var(--bds-neutral-500);">xl</th>
+            <th></th>
+            <th>sm</th>
+            <th>md</th>
+            <th>lg</th>
+            <th>xl</th>
           </tr>
         </thead>
         <tbody id="btn-matrix"></tbody>
@@ -69,13 +69,12 @@
     var tbody = document.getElementById('btn-matrix');
     VARIANTS.forEach(function (variant) {
       var row = document.createElement('tr');
-      var labelCell = document.createElement('td');
-      labelCell.style.cssText = 'padding:8px 16px 8px 0;font-size:12px;font-family:monospace;color:var(--bds-neutral-600);white-space:nowrap;';
+      var labelCell = document.createElement('th');
+      labelCell.scope = 'row';
       labelCell.textContent = 'bds-btn-' + variant;
       row.appendChild(labelCell);
       SIZES.forEach(function (size) {
         var cell = document.createElement('td');
-        cell.style.cssText = 'padding:8px 16px;';
         var btnHtml = '<button class="bds-btn bds-btn-' + size + ' bds-btn-' + variant + '">Button</button>';
         if (variant === 'scrim-dark') btnHtml = darkWrap(btnHtml);
         if (variant === 'scrim-light') btnHtml = lightWrap(btnHtml);

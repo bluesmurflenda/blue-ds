@@ -21,7 +21,7 @@
   <section class="doc-section">
     <h2>Orientation × Style</h2>
     <p class="doc-desc">Default=box-shadow만, Outline=card/border 보더, Tinted=card/bg-tinted 배경(보더·섀도 없음) — 컴포넌트 설명에 명시된 Style 구분입니다.</p>
-    <div class="doc-matrix doc-matrix-wide" id="card-matrix"></div>
+    <div class="doc-matrix doc-matrix-wide" id="card-matrix" style="--doc-cols:3"></div>
   </section>
 
   <section class="doc-section">
@@ -33,7 +33,7 @@
   <section class="doc-section">
     <h2>State — Disabled</h2>
     <p class="doc-desc"><code>.bds-card-disabled</code> — 투명도를 낮추고 <code>pointer-events: none</code>을 적용합니다. Style 축과 독립적으로 적용됩니다.</p>
-    <div class="doc-matrix doc-matrix-wide" id="card-disabled-matrix"></div>
+    <div class="doc-matrix doc-matrix-wide" id="card-disabled-matrix" style="--doc-cols:3"></div>
   </section>
 </main>
 
@@ -94,7 +94,7 @@
       cell.style.width = '100%';
       cell.innerHTML =
         '<div class="bds-card bds-card-vertical bds-card-' + style + ' bds-card-disabled" style="width:100%;">' +
-        '<div class="bds-card__media" style="background:var(--bds-neutral-100);width:100%;height:200px;"></div>' +
+        '<div class="bds-card__media" style="background:var(--bds-surface-muted);width:100%;height:200px;"></div>' +
         cardBody() +
         '</div>' +
         '<span class="doc-cell__caption">card card-vertical card-' + style + ' card-disabled</span>';

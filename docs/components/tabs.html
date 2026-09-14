@@ -21,25 +21,53 @@
   <section class="doc-section">
     <h2>Underline</h2>
     <p class="doc-desc"><code>.bds-tabs-item-underline</code> — 내부 <code>.bds-tabs-item__content</code>(레이블) + <code>.bds-tabs-item__underline</code>(하단 밑줄 바) 구조가 필수입니다.</p>
-    <div class="doc-matrix" id="tabs-underline-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+        </thead>
+        <tbody id="tabs-underline-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
     <h2>Underline (Brand)</h2>
     <p class="doc-desc"><code>.bds-tabs-item-underline-brand</code> — 구조는 underline과 동일, selected 색만 브랜드 블루로 바뀝니다.</p>
-    <div class="doc-matrix" id="tabs-underline-brand-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+        </thead>
+        <tbody id="tabs-underline-brand-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
     <h2>Pill</h2>
     <p class="doc-desc"><code>.bds-tabs-item-pill</code> — 내부 슬롯 구조 없이 텍스트만 직접 넣습니다.</p>
-    <div class="doc-matrix" id="tabs-pill-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+        </thead>
+        <tbody id="tabs-pill-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
     <h2>Segmented</h2>
     <p class="doc-desc"><code>.bds-tabs-item-segmented</code> — 트랙 배경·보더를 담당하는 <code>.bds-tabs-segment</code> 컨테이너로 감싸야 정상적으로 보입니다.</p>
-    <div class="doc-matrix" id="tabs-segmented-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+        </thead>
+        <tbody id="tabs-segmented-matrix"></tbody>
+      </table>
+    </div>
   </section>
 </main>
 
@@ -67,25 +95,28 @@
     return html;
   }
 
-  function captionFor(type, size, state) {
-    var caption = 'bds-tabs-item-' + type + ' bds-tabs-item-' + size;
-    if (state === 'selected') caption += ' bds-is-selected';
-    if (state === 'disabled') caption += ' aria-disabled="true"';
-    return caption;
+  function stateLabel(state) {
+    if (state === 'selected') return 'bds-is-selected';
+    if (state === 'disabled') return 'aria-disabled="true"';
+    return 'default';
   }
 
   (function () {
     TYPES.forEach(function (pair) {
       var type = pair[0];
-      var el = document.getElementById(pair[1]);
-      SIZES.forEach(function (size) {
-        STATES.forEach(function (state) {
-          var cell = document.createElement('div');
-          cell.className = 'doc-cell';
-          cell.innerHTML = tabsItemHtml(type, size, state) +
-            '<span class="doc-cell__caption">' + captionFor(type, size, state) + '</span>';
-          el.appendChild(cell);
+      var tbody = document.getElementById(pair[1]);
+      STATES.forEach(function (state) {
+        var row = document.createElement('tr');
+        var head = document.createElement('th');
+        head.scope = 'row';
+        head.textContent = stateLabel(state);
+        row.appendChild(head);
+        SIZES.forEach(function (size) {
+          var cell = document.createElement('td');
+          cell.innerHTML = tabsItemHtml(type, size, state);
+          row.appendChild(cell);
         });
+        tbody.appendChild(row);
       });
     });
   })();

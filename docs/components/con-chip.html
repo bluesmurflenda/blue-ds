@@ -21,7 +21,14 @@
   <section class="doc-section">
     <h2>Theme × Size × State</h2>
     <p class="doc-desc">white 테마는 배경이 흰색이라 밝은 페이지 위에서 보이지 않아, 파란 배경(<code>--bds-blue-800</code>) 위에 올렸습니다.</p>
-    <div class="doc-matrix" id="con-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th></tr>
+        </thead>
+        <tbody id="con-matrix"></tbody>
+      </table>
+    </div>
   </section>
 </main>
 
@@ -44,17 +51,21 @@
   }
 
   (function () {
-    var el = document.getElementById('con-matrix');
+    var tbody = document.getElementById('con-matrix');
     THEMES.forEach(function (theme) {
-      SIZES.forEach(function (size) {
-        STATES.forEach(function (state) {
-          var cell = document.createElement('div');
-          cell.className = 'doc-cell';
-          var caption = 'bds-con-' + size + ' bds-con-' + theme +
-            (state === 'selected' ? ' bds-con-selected' : state === 'disabled' ? ' bds-con-disabled' : '');
-          cell.innerHTML = conHtml(theme, size, state) + '<span class="doc-cell__caption">' + caption + '</span>';
-          el.appendChild(cell);
+      STATES.forEach(function (state) {
+        var row = document.createElement('tr');
+        var head = document.createElement('th');
+        head.scope = 'row';
+        head.textContent = 'bds-con-' + theme +
+          (state === 'selected' ? ' bds-con-selected' : state === 'disabled' ? ' bds-con-disabled' : '');
+        row.appendChild(head);
+        SIZES.forEach(function (size) {
+          var cell = document.createElement('td');
+          cell.innerHTML = conHtml(theme, size, state);
+          row.appendChild(cell);
         });
+        tbody.appendChild(row);
       });
     });
   })();

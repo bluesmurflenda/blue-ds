@@ -20,7 +20,7 @@
   <section class="doc-section">
     <h2>Dropdown — Trigger 사이즈</h2>
     <p class="doc-desc">닫힌 상태(<code>aria-expanded="false"</code>)의 트리거만 사이즈별로 나열합니다.</p>
-    <div class="doc-matrix" id="dropdown-trigger-matrix"></div>
+    <div class="doc-matrix" id="dropdown-trigger-matrix" style="--doc-cols:4"></div>
   </section>
 
   <section class="doc-section">
@@ -32,19 +32,26 @@
   <section class="doc-section">
     <h2>Select — Size × Validation</h2>
     <p class="doc-desc">라벨 + 필드(콘텐츠 텍스트 + chevron) + 힌트로 구성. 패널·옵션은 Dropdown의 <code>.bds-list-panel</code>/<code>.bds-list-item</code>을 재사용합니다.</p>
-    <div class="doc-matrix" id="select-matrix"></div>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+        </thead>
+        <tbody id="select-matrix"></tbody>
+      </table>
+    </div>
   </section>
 
   <section class="doc-section">
     <h2>Select — Disabled</h2>
     <p class="doc-desc">검증 상태별로 확인합니다(md 사이즈). <code>.bds-select-disabled</code>를 검증 modifier와 함께 사용합니다.</p>
-    <div class="doc-matrix" id="bds-select-disabled"></div>
+    <div class="doc-matrix" id="bds-select-disabled" style="--doc-cols:3;--doc-cell-min:220px"></div>
   </section>
 
   <section class="doc-section">
     <h2>Select — 선행 아이콘 슬롯</h2>
     <p class="doc-desc"><code>.bds-select__icon</code> — <code>.bds-select__chevron</code>과 나란히 필드 안에 놓이는 선택적 슬롯입니다(사이즈와 무관하게 고정 크기입니다).</p>
-    <div class="doc-matrix" id="select-icon"></div>
+    <div class="doc-matrix" id="select-icon" style="--doc-cols:3;--doc-cell-min:220px"></div>
   </section>
 </main>
 
@@ -108,15 +115,19 @@
   }
 
   (function () {
-    var el = document.getElementById('select-matrix');
-    SELECT_SIZES.forEach(function (size) {
-      VALIDATIONS.forEach(function (validation) {
-        var cls = 'bds-select bds-select-' + size + ' bds-select-' + validation;
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
-        cell.innerHTML = selectHtml(cls, false) + '<span class="doc-cell__caption">' + cls + '</span>';
-        el.appendChild(cell);
+    var tbody = document.getElementById('select-matrix');
+    VALIDATIONS.forEach(function (validation) {
+      var row = document.createElement('tr');
+      var head = document.createElement('th');
+      head.scope = 'row';
+      head.textContent = 'bds-select-' + validation;
+      row.appendChild(head);
+      SELECT_SIZES.forEach(function (size) {
+        var cell = document.createElement('td');
+        cell.innerHTML = selectHtml('bds-select bds-select-' + size + ' bds-select-' + validation, false);
+        row.appendChild(cell);
       });
+      tbody.appendChild(row);
     });
   })();
 

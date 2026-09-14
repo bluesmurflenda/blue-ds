@@ -21,13 +21,13 @@
   <section class="doc-section">
     <h2>Type × Theme × State 매트릭스</h2>
     <p class="doc-desc">dark 테마는 hover/selected 배경이 brand 계열로 실측되어, 그보다 어두운 <code>var(--bds-blue-900)</code> 배경 위에 올려 자연스러운 밝기 단계를 보여줍니다. light 테마는 흰 배경 위에 올렸습니다.</p>
-    <div class="doc-matrix" id="nav-item-matrix"></div>
+    <div class="doc-matrix" id="nav-item-matrix" style="--doc-cols:4"></div>
   </section>
 
   <section class="doc-section">
     <h2>Hover — light/dark 비대칭</h2>
     <p class="doc-desc">아래 항목에 실제로 마우스를 올려 확인하세요(인라인 스타일로 흉내낸 것이 아니라 <code>:hover</code> CSS를 그대로 씁니다). <strong>light</strong>는 배경과 글자·아이콘 색이 함께 <code>nav-fg-hover</code>로 바뀌지만, <strong>dark</strong>는 배경만 바뀌고 글자·아이콘 색은 흰색 그대로 고정입니다(<code>_side-nav-item.scss</code>의 light/dark 규칙 참고).</p>
-    <div class="doc-matrix" id="nav-item-hover-demo"></div>
+    <div class="doc-matrix" id="nav-item-hover-demo" style="--doc-cols:2"></div>
   </section>
 
   <section class="doc-section">
@@ -85,7 +85,7 @@
 
           var wrapStyle = th[0] === 'dark'
             ? 'background:var(--bds-blue-900);padding:12px;border-radius:8px;width:100%;'
-            : 'background:var(--bds-surface-default);padding:12px;border-radius:8px;width:100%;border:1px solid var(--bds-neutral-200);';
+            : 'background:var(--bds-surface-default);padding:12px;border-radius:8px;width:100%;border:1px solid var(--bds-border-default);';
 
           var itemHtml = '<a class="' + classStr + '" href="javascript:void(0)">' + contentHtml(t[0], t[2]) + '</a>';
 
@@ -105,7 +105,7 @@
     THEMES.forEach(function (th) {
       var wrapStyle = th[0] === 'dark'
         ? 'background:var(--bds-blue-900);padding:12px;border-radius:8px;width:100%;'
-        : 'background:var(--bds-surface-default);padding:12px;border-radius:8px;width:100%;border:1px solid var(--bds-neutral-200);';
+        : 'background:var(--bds-surface-default);padding:12px;border-radius:8px;width:100%;border:1px solid var(--bds-border-default);';
       var itemHtml = '<a class="bds-side-nav-item ' + th[1] + '" href="javascript:void(0)">' + contentHtml('default', '마우스를 올려보세요') + '</a>';
       var cell = document.createElement('div');
       cell.className = 'doc-cell';
