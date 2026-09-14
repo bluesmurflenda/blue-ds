@@ -282,7 +282,7 @@ body {
   table-layout: fixed;
   width: 100%;
 }
-.doc-table-fixed tbody th {
+.doc-table-fixed thead th:first-child {
   width: 140px;
 }
 

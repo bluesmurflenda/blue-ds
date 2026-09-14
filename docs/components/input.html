@@ -63,7 +63,7 @@
 
   function inputHtml(cls, opts) {
     opts = opts || {};
-    var placeholder = opts.disabled ? '입력 불가' : '내용을 입력하세요';
+    var placeholder = opts.disabled ? '입력 불가' : '내용 입력';
     var hint = opts.disabled ? '비활성화된 필드입니다' : 'Hint text가 표시되는 영역입니다';
     return (
       '<div class="' + cls + '" style="width:100%;">' +
@@ -125,7 +125,7 @@
         '<div class="bds-input bds-input-' + size + ' bds-input-normal">' +
         '<div class="bds-input__field">' +
         '<div class="bds-input__content">' +
-        '<input class="bds-input__control" placeholder="내용을 입력하세요" />' +
+        '<input class="bds-input__control" placeholder="내용 입력" />' +
         '</div></div></div>'
       );
     }
