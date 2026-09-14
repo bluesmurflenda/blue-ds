@@ -48,6 +48,12 @@
     <p class="doc-desc">Icon Left/Right 슬롯 — <code>&lt;svg&gt;</code>를 라벨 앞뒤에 배치합니다.</p>
     <div class="doc-card doc-row" id="btn-icons"></div>
   </section>
+
+  <section class="doc-section">
+    <h2>ButtonGroup</h2>
+    <p class="doc-desc">버튼을 붙여 한 덩어리로 씁니다. 사이즈는 항목의 <code>bds-btn-{size}</code>가 정하고, 바깥 모서리만 둥글게 남습니다. 항목 사이 구분선은 <code>border-right</code>로 그려 별도 마크업이 없습니다.</p>
+    <div class="doc-col" id="btn-group"></div>
+  </section>
 </main>
 
 <script>window.DOCS_BASE = '../';</script>
@@ -108,6 +114,31 @@
       btn.className = 'bds-btn bds-btn-md ' + cls;
       btn.innerHTML = left + '<span>' + c[3] + '</span>' + right;
       el.appendChild(btn);
+    });
+  })();
+
+  (function () {
+    var el = document.getElementById('btn-group');
+    [
+      { size: 'sm', labels: ['왼쪽', '가운데', '오른쪽'] },
+      { size: 'md', labels: ['일간', '주간', '월간'] },
+      { size: 'lg', labels: ['목록', '카드'] },
+    ].forEach(function (row) {
+      var group = document.createElement('div');
+      group.className = 'bds-button-group';
+      group.innerHTML = row.labels
+        .map(function (t) {
+          return '<button type="button" class="bds-btn bds-btn-' + row.size + ' bds-btn-secondary">' + t + '</button>';
+        })
+        .join('');
+      var wrap = document.createElement('div');
+      wrap.className = 'doc-cell';
+      wrap.appendChild(group);
+      var cap = document.createElement('span');
+      cap.className = 'doc-cell__caption';
+      cap.textContent = 'button-group + btn-' + row.size + ' btn-secondary × ' + row.labels.length;
+      wrap.appendChild(cap);
+      el.appendChild(wrap);
     });
   })();
 </script>

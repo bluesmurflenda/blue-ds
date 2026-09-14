@@ -35,6 +35,12 @@
     <p class="doc-desc"><code>.bds-input__icon</code>. 사이드바 검색창(<code>docs/assets/nav.js</code>)이 쓰는 실제 조합입니다.</p>
     <div class="doc-matrix" id="input-icon"></div>
   </section>
+
+  <section class="doc-section">
+    <h2>Field/Group</h2>
+    <p class="doc-desc">필드 앞뒤에 버튼이나 아이콘 버튼을 붙입니다. 클래스는 <code>bds-field-group</code> 하나뿐입니다 — 사이즈는 안에 들어가는 <code>bds-input-{size}</code>·<code>bds-btn-{size}</code>가, 애드온 위치는 자식 순서가, 종류는 <code>bds-btn</code>이냐 <code>bds-icon-btn</code>이냐가 정합니다.</p>
+    <div class="doc-col" id="field-group"></div>
+  </section>
 </main>
 
 <script>window.DOCS_BASE = '../';</script>
@@ -97,6 +103,42 @@
     cell.className = 'doc-cell';
     cell.innerHTML = inputHtml(cls, { icon: 'search' }) + '<span class="doc-cell__caption">' + cls + ' + input__icon</span>';
     el.appendChild(cell);
+  })();
+
+  (function () {
+    var el = document.getElementById('field-group');
+
+    // 그룹 안에서는 라벨·힌트 없이 필드만 쓴다 — 애드온과 높이를 맞춰야 하기 때문이다.
+    function bareField(size) {
+      return (
+        '<div class="bds-input bds-input-' + size + ' bds-input-normal">' +
+        '<div class="bds-input__field">' +
+        '<div class="bds-input__content">' +
+        '<input class="bds-input__control" placeholder="내용을 입력하세요" />' +
+        '</div></div></div>'
+      );
+    }
+    function iconBtn(size) {
+      return (
+        '<button type="button" class="bds-icon-btn bds-icon-btn-' + size + ' bds-icon-btn-outline">' +
+        iconSvg('bds-icon', 'search') +
+        '</button>'
+      );
+    }
+
+    [
+      { size: 'md', addon: 'leading', html: function (s) { return '<button type="button" class="bds-btn bds-btn-' + s + ' bds-btn-outline">https://</button>' + bareField(s); } },
+      { size: 'md', addon: 'trailing', html: function (s) { return bareField(s) + iconBtn(s); } },
+      { size: 'lg', addon: 'both', html: function (s) { return '<button type="button" class="bds-btn bds-btn-' + s + ' bds-btn-outline">https://</button>' + bareField(s) + iconBtn(s); } },
+    ].forEach(function (row) {
+      var wrap = document.createElement('div');
+      wrap.className = 'doc-cell';
+      wrap.style.width = '100%';
+      wrap.innerHTML =
+        '<div class="bds-field-group">' + row.html(row.size) + '</div>' +
+        '<span class="doc-cell__caption">field-group · Addon=' + row.addon + ' · ' + row.size + '</span>';
+      el.appendChild(wrap);
+    });
   })();
 </script>
 </body>
