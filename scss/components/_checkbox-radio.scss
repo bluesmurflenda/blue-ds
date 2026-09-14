@@ -167,7 +167,10 @@ $choice-description-fg: var(--bds-choice-description-fg);
     white-space: nowrap;
     border: 0;
 
-    &:hover:not(:disabled) + .bds-choice__box {
+    // selected·indeterminate 는 hover 여도 테두리가 없다(2026-09-14 Figma 실측: State=hover 의
+    // Type=selected·indeterminate 변형에 stroke 자체가 없고 배경만 bg-selected 다). 여기서 빼지 않으면
+    // 이 규칙이 아래 :checked 의 transparent 보다 특정도가 높아 선택된 칸에 회색 테두리가 돌아온다.
+    &:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
       background-color: $choice-bg-hover;
       border-color: map.get(map.get($choice-colors, normal), border-hover);
     }
@@ -227,7 +230,8 @@ $choice-description-fg: var(--bds-choice-description-fg);
 
       // .bds-choice__input 내부에 상태를 한 번 더 중첩하면 4단이 되므로(.bds-choice > &--bds-valid > .bds-choice__input > &:hover)
       // 복합 선택자로 펼쳐 3단을 유지한다. 컴파일 결과는 기존과 동일하다.
-      .bds-choice__input:hover:not(:disabled) + .bds-choice__box {
+      // selected·indeterminate 를 빼는 이유는 normal 쪽과 같다 — 검증 상태여도 선택되면 테두리가 없다.
+      .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
         border-color: map.get($c, border-hover);
       }
 
