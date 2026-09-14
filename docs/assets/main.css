@@ -4087,8 +4087,8 @@ table {
   gap: var(--bds-space-3);
   width: 100%;
   padding: var(--bds-space-4) var(--bds-space-6);
-  border: 1px solid var(--bds-border-default);
-  border-radius: var(--bds-radius-sm);
+  border: var(--bds-border-hairline) solid var(--bds-border-default);
+  border-radius: var(--bds-field-radius);
   background-color: var(--bds-surface-default);
   text-align: center;
 }
@@ -4116,17 +4116,17 @@ table {
   gap: var(--bds-space-4);
   width: 100%;
   padding: var(--bds-space-4);
-  border-radius: var(--bds-radius-sm);
+  border-radius: var(--bds-field-radius);
   background-color: var(--bds-surface-default);
 }
 .bds-upload-item-uploading {
-  border: 1px solid var(--bds-border-default);
+  border: var(--bds-border-hairline) solid var(--bds-border-default);
 }
 .bds-upload-item-done {
-  border: 1px solid var(--bds-border-brand);
+  border: var(--bds-border-hairline) solid var(--bds-border-brand);
 }
 .bds-upload-item-error {
-  border: 1px solid var(--bds-border-danger);
+  border: var(--bds-border-hairline) solid var(--bds-border-danger);
 }
 .bds-upload-item__icon {
   flex-shrink: 0;
@@ -4135,8 +4135,8 @@ table {
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: var(--bds-radius-full);
-  border: 4px solid var(--bds-brand-100);
+  border-radius: var(--bds-radius-3xl);
+  border: var(--bds-border-thick) solid var(--bds-brand-100);
   background-color: var(--bds-surface-brand-subtle);
 }
 .bds-upload-item__icon .bds-icon {
