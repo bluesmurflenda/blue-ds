@@ -16,10 +16,12 @@
     "lint:css": "stylelint \"scss/**/*.scss\"",
     "check:nodes": "node scripts/check-nodes.mjs",
     "check:tokens": "node scripts/check-tokens.mjs",
+    "check:visual": "node scripts/check-visual.mjs",
     "check": "npm run lint:css && npm run check:nodes && npm run check:tokens",
     "build:icons": "node scripts/build-icons.mjs"
   },
   "devDependencies": {
+    "playwright": "^1.63.0",
     "postcss": "^8.5.26",
     "sass": "^1.103.1",
     "style-dictionary": "^5.5.3",
