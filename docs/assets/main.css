@@ -728,8 +728,6 @@ table {
   --bds-btn-ghost-bg-hover: var(--bds-neutral-900);
   --bds-btn-ghost-bg-pressed: var(--bds-neutral-800);
   --bds-btn-disabled-bg: var(--bds-neutral-900);
-  --bds-btn-scrim-dark-fg: var(--bds-neutral-950);
-  --bds-btn-scrim-light-fg: var(--bds-neutral-100);
   --bds-btn-tertiary-fg: var(--bds-neutral-950);
 }
 
@@ -973,7 +971,6 @@ table {
 }
 
 [data-theme=dark] {
-  --bds-btn-ghost-inverse-fg: var(--bds-neutral-950);
   --bds-btn-ghost-white-bg-hover: var(--bds-neutral-900);
   --bds-btn-ghost-white-bg-pressed: var(--bds-neutral-800);
   --bds-btn-ghost-white-fg: var(--bds-neutral-950);
@@ -3260,6 +3257,7 @@ table {
   flex-direction: column;
   gap: var(--bds-space-3);
   padding: var(--bds-space-4);
+  min-width: 0;
 }
 .bds-card__content {
   display: flex;
@@ -4126,7 +4124,6 @@ table {
 }
 
 .bds-upload-item {
-  position: relative;
   display: flex;
   align-items: flex-start;
   gap: var(--bds-space-4);
@@ -4180,9 +4177,8 @@ table {
   line-height: var(--bds-font-leading-body-sm);
 }
 .bds-upload-item__action {
-  position: absolute;
-  top: -8px;
-  right: -8px;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 :root {

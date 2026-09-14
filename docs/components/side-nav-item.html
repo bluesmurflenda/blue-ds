@@ -85,7 +85,7 @@
 
           var wrapStyle = th[0] === 'dark'
             ? 'background:var(--bds-blue-900);padding:12px;border-radius:8px;width:100%;'
-            : 'background:#fff;padding:12px;border-radius:8px;width:100%;border:1px solid var(--bds-neutral-200);';
+            : 'background:var(--bds-surface-default);padding:12px;border-radius:8px;width:100%;border:1px solid var(--bds-neutral-200);';
 
           var itemHtml = '<a class="' + classStr + '" href="javascript:void(0)">' + contentHtml(t[0], t[2]) + '</a>';
 
@@ -105,7 +105,7 @@
     THEMES.forEach(function (th) {
       var wrapStyle = th[0] === 'dark'
         ? 'background:var(--bds-blue-900);padding:12px;border-radius:8px;width:100%;'
-        : 'background:#fff;padding:12px;border-radius:8px;width:100%;border:1px solid var(--bds-neutral-200);';
+        : 'background:var(--bds-surface-default);padding:12px;border-radius:8px;width:100%;border:1px solid var(--bds-neutral-200);';
       var itemHtml = '<a class="bds-side-nav-item ' + th[1] + '" href="javascript:void(0)">' + contentHtml('default', '마우스를 올려보세요') + '</a>';
       var cell = document.createElement('div');
       cell.className = 'doc-cell';

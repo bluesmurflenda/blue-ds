@@ -25,6 +25,12 @@
   </section>
 
   <section class="doc-section">
+    <h2>Orientation — Horizontal</h2>
+    <p class="doc-desc">가로형은 미디어가 160px 고정이라 좁은 칸에 넣으면 본문이 잘립니다. 한 줄에 하나씩 두고 폭을 다 쓰게 합니다.</p>
+    <div class="doc-col" id="card-horizontal"></div>
+  </section>
+
+  <section class="doc-section">
     <h2>State — Disabled</h2>
     <p class="doc-desc"><code>.bds-card-disabled</code> — 투명도를 낮추고 <code>pointer-events: none</code>을 적용합니다. Style 축과 독립적으로 적용됩니다.</p>
     <div class="doc-matrix doc-matrix-wide" id="card-disabled-matrix"></div>
@@ -50,24 +56,33 @@
       '</div>';
   }
 
+  function cardCell(orientation, style) {
+    var cell = document.createElement('div');
+    cell.className = 'doc-cell';
+    cell.style.width = '100%';
+    var mediaStyle = orientation === 'horizontal'
+      ? 'background:var(--bds-surface-muted);width:160px;flex-shrink:0;height:200px;'
+      : 'background:var(--bds-surface-muted);width:100%;height:200px;';
+    cell.innerHTML =
+      '<div class="bds-card bds-card-' + orientation + ' bds-card-' + style + '" style="width:100%;">' +
+      '<div class="bds-card__media" style="' + mediaStyle + '"></div>' +
+      cardBody() +
+      '</div>' +
+      '<span class="doc-cell__caption">card card-' + orientation + ' bds-card-' + style + '</span>';
+    return cell;
+  }
+
   (function () {
     var el = document.getElementById('card-matrix');
-    ORIENTATIONS.forEach(function (orientation) {
-      STYLES.forEach(function (style) {
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
-        cell.style.width = '100%';
-        var mediaStyle = orientation === 'horizontal'
-          ? 'background:var(--bds-neutral-100);width:160px;flex-shrink:0;height:200px;'
-          : 'background:var(--bds-neutral-100);width:100%;height:200px;';
-        cell.innerHTML =
-          '<div class="bds-card bds-card-' + orientation + ' bds-card-' + style + '" style="width:100%;">' +
-          '<div class="bds-card__media" style="' + mediaStyle + '"></div>' +
-          cardBody() +
-          '</div>' +
-          '<span class="doc-cell__caption">card card-' + orientation + ' bds-card-' + style + '</span>';
-        el.appendChild(cell);
-      });
+    STYLES.forEach(function (style) {
+      el.appendChild(cardCell('vertical', style));
+    });
+  })();
+
+  (function () {
+    var el = document.getElementById('card-horizontal');
+    STYLES.forEach(function (style) {
+      el.appendChild(cardCell('horizontal', style));
     });
   })();
 

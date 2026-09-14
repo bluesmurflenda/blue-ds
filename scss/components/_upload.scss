@@ -68,7 +68,6 @@ $upload-item-state-border: (
 }
 
 .bds-upload-item {
-  position: relative;
   display: flex;
   align-items: flex-start;
   gap: $space-4;
@@ -125,11 +124,12 @@ $upload-item-state-border: (
     line-height: $font-leading-body-sm;
   }
 
-  // uploading/error 상태의 취소·설정 아이콘버튼 — 콘텐츠 우상단 모서리에 -8px 겹침(실측)
+  // 2026-09-14 재실측: 취소·삭제 버튼은 카드 밖이 아니라 안쪽이다. 세 상태(done·uploading·error)
+  // 모두 루트의 자식으로 Content 와 나란히 있고, done 의 체크박스도 같은 자리다.
+  // 카드 밖으로 -8px 겹쳐 그리고 있어 error 상태에서 빨간 테두리를 가로질렀다.
   &__action {
-    position: absolute;
-    top: -8px;
-    right: -8px;
+    flex-shrink: 0;
+    margin-left: auto;
   }
 }
 
