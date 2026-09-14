@@ -43,8 +43,10 @@
 - **스냅샷을 전면 재추출해야 한다** — 2026-09-11 에 새로 생긴 변수(Shape 2 · Primitive 4 ·
   Theme 1)만 넣었다. 기존 항목의 값이 그 사이 바뀌었는지는 확인하지 않았다
 - 목록 항목·목록 패널의 반경에 맞는 Shape 토큰이 없다 — 각진·Pill 모드를 쓸 때 걸린다
-- **Figma 쪽** — Select 트리거와 Scrollbar 는 Shape 토큰이 있는데도 노드가 프리미티브 반경을
-  문다. 코드는 Shape 토큰을 쓰고 있어 값은 같지만 모드 전환에서 Figma 만 안 따라온다
+- **Figma 쪽 — 노드가 Shape 반경 토큰을 안 문다.** Select 트리거 · Scrollbar 는 값이 같아
+  모드 전환만 Figma 가 안 따라온다. **Tabs 는 값도 다르다** — tabs/radius 는 Rounded 에서
+  radius/lg(16)인데 노드는 radius/full 이다. 코드는 라이브를 따랐고, 그래서 Tabs 는 지금
+  [data-shape] 전환을 못 한다. Figma 가 토큰을 물면 코드도 되돌린다
 - `scripts/README.md` 의 스냅샷 추출 방법이 실제와 다르다
 - 코드에서 색과 간격이 바뀐 뒤 **아직 사람이 눈으로 확인하지 않았다** — 커서도 나도 브라우저가 없다
 - 눈금 사이 절반 값을 스케일에 넣은 것을 ADR 로 남길지
