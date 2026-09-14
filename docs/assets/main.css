@@ -3132,7 +3132,7 @@ table {
 .bds-featured-icon-sm {
   width: 40px;
   height: 40px;
-  padding: 10px;
+  padding: var(--bds-space-2-5);
 }
 .bds-featured-icon-sm .bds-featured-icon__icon {
   width: 20px;
@@ -3142,7 +3142,7 @@ table {
 .bds-featured-icon-md {
   width: 48px;
   height: 48px;
-  padding: 12px;
+  padding: var(--bds-space-3);
 }
 .bds-featured-icon-md .bds-featured-icon__icon {
   width: 24px;

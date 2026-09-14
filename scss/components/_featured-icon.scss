@@ -9,9 +9,11 @@
 @use '../tokens/primitive' as *;
 @use 'sass:map';
 
+// 2026-09-14 실측: 패딩이 space/2-5(10) · space/3(12) 에 물려 있다. 리터럴이었다 —
+// 절반 단계가 생기기 전엔 스케일에 10 이 없었다(Modal 안 같은 아이콘도 같이 고쳤다).
 $featured-icon-sizes: (
-  sm: (box: 40px, icon: 20px, padding: 10px),
-  md: (box: 48px, icon: 24px, padding: 12px),
+  sm: (box: 40px, icon: 20px, padding: $space-2-5),
+  md: (box: 48px, icon: 24px, padding: $space-3),
 );
 $featured-icon-colors: (
   brand: (bg: var(--bds-badge-brand-bg), fg: var(--bds-badge-brand-fg)),
