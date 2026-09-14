@@ -276,6 +276,16 @@ body {
   color: var(--bds-text-tertiary);
 }
 
+/* 칸 안에 라벨·필드·힌트가 다 든 폼 계열은 내용 길이로 폭이 정해지면 표가 화면을 넘긴다.
+   표 폭에서 칸 폭이 나오게 뒤집는다 — 힌트 문구는 두 줄로 접히지만 열은 화면 안에 들어온다. */
+.doc-table-fixed {
+  table-layout: fixed;
+  width: 100%;
+}
+.doc-table-fixed tbody th {
+  width: 140px;
+}
+
 /* ---------- 사용법 블록 — 코드 예시·주석·키 목록. 색은 디자인시스템 토큰을 그대로 참조하므로
    라이트/다크 모드를 따라간다. ---------- */
 .doc-code {
