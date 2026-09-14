@@ -21,7 +21,7 @@
   --bds-choice-box-border-disabled: var(--bds-border-default);
   --bds-choice-label-fg: var(--bds-text-primary);
   --bds-choice-label-fg-invalid: var(--bds-text-danger);
-  --bds-choice-label-fg-valid: var(--bds-green-600);
+  --bds-choice-label-fg-valid: var(--bds-text-success);
   --bds-choice-description-fg: var(--bds-text-tertiary);
   --bds-toggle-track-bg-off: var(--bds-neutral-300);
   --bds-toggle-track-bg-off-hover: var(--bds-neutral-400);
@@ -40,7 +40,6 @@
 [data-theme='dark'] {
   --bds-choice-box-bg-hover: var(--bds-neutral-700);
   --bds-choice-box-border-hover: var(--bds-neutral-500);
-  --bds-choice-label-fg-valid: var(--bds-green-400);
   --bds-toggle-track-bg-off: var(--bds-neutral-700);
   --bds-toggle-track-bg-off-hover: var(--bds-neutral-600);
   --bds-toggle-knob-bg: var(--bds-neutral-950);

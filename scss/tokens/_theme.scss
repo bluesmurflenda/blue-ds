@@ -49,6 +49,7 @@
   --bds-text-inverse: var(--bds-white);
   --bds-text-primary: var(--bds-neutral-800);
   --bds-text-secondary: var(--bds-neutral-700);
+  --bds-text-success: var(--bds-green-700);
   --bds-text-tertiary: var(--bds-neutral-600);
 }
 
@@ -92,6 +93,7 @@
   --bds-text-inverse: var(--bds-neutral-900);
   --bds-text-primary: var(--bds-neutral-50);
   --bds-text-secondary: var(--bds-neutral-300);
+  --bds-text-success: var(--bds-green-400);
   --bds-text-tertiary: var(--bds-neutral-400);
 }
 
@@ -144,4 +146,5 @@ $text-disabled: var(--bds-text-disabled);
 $text-inverse: var(--bds-text-inverse);
 $text-primary: var(--bds-text-primary);
 $text-secondary: var(--bds-text-secondary);
+$text-success: var(--bds-text-success);
 $text-tertiary: var(--bds-text-tertiary);

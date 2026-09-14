@@ -257,6 +257,7 @@
   --bds-text-inverse: var(--bds-white);
   --bds-text-primary: var(--bds-neutral-800);
   --bds-text-secondary: var(--bds-neutral-700);
+  --bds-text-success: var(--bds-green-700);
   --bds-text-tertiary: var(--bds-neutral-600);
 }
 
@@ -300,6 +301,7 @@
   --bds-text-inverse: var(--bds-neutral-900);
   --bds-text-primary: var(--bds-neutral-50);
   --bds-text-secondary: var(--bds-neutral-300);
+  --bds-text-success: var(--bds-green-400);
   --bds-text-tertiary: var(--bds-neutral-400);
 }
 
@@ -2318,7 +2320,7 @@ table {
   --bds-choice-box-border-disabled: var(--bds-border-default);
   --bds-choice-label-fg: var(--bds-text-primary);
   --bds-choice-label-fg-invalid: var(--bds-text-danger);
-  --bds-choice-label-fg-valid: var(--bds-green-600);
+  --bds-choice-label-fg-valid: var(--bds-text-success);
   --bds-choice-description-fg: var(--bds-text-tertiary);
   --bds-toggle-track-bg-off: var(--bds-neutral-300);
   --bds-toggle-track-bg-off-hover: var(--bds-neutral-400);
@@ -2337,7 +2339,6 @@ table {
 [data-theme=dark] {
   --bds-choice-box-bg-hover: var(--bds-neutral-700);
   --bds-choice-box-border-hover: var(--bds-neutral-500);
-  --bds-choice-label-fg-valid: var(--bds-green-400);
   --bds-toggle-track-bg-off: var(--bds-neutral-700);
   --bds-toggle-track-bg-off-hover: var(--bds-neutral-600);
   --bds-toggle-knob-bg: var(--bds-neutral-950);
@@ -4290,7 +4291,7 @@ table {
   --bds-field-border-valid-disabled: var(--bds-green-200);
   --bds-field-border-valid-hover: var(--bds-green-700);
   --bds-field-fg-placeholder-disabled: var(--bds-neutral-300);
-  --bds-field-hint-fg-invalid: var(--bds-red-500);
+  --bds-field-hint-fg-invalid: var(--bds-text-danger);
   --bds-field-ring-invalid: var(--bds-red-200);
   --bds-field-ring-valid: var(--bds-green-200);
 }
@@ -4306,7 +4307,6 @@ table {
   --bds-field-border-valid-disabled: var(--bds-green-700);
   --bds-field-border-valid-hover: var(--bds-green-300);
   --bds-field-fg-placeholder-disabled: var(--bds-neutral-600);
-  --bds-field-hint-fg-invalid: var(--bds-red-300);
   --bds-field-ring-invalid: var(--bds-red-700);
   --bds-field-ring-valid: var(--bds-green-700);
 }

@@ -3,7 +3,7 @@
     "exportedAt": "2026-09-14",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
-    "count": 321
+    "count": 322
   },
   "_modes": [
     "Default",
@@ -391,23 +391,23 @@
   },
   "btn/ghost-inverse/fg": {
     "Default": "var(--white)",
-    "Dark": "var(--neutral-950)"
+    "Dark": "var(--white)"
   },
   "btn/ghost-white/bg": {
     "Default": "#ffffff00",
     "Dark": "#ffffff00"
   },
   "btn/ghost-white/bg-hover": {
-    "Default": "var(--neutral-100)",
-    "Dark": "var(--neutral-900)"
+    "Default": "#ffffff1a",
+    "Dark": "#ffffff1a"
   },
   "btn/ghost-white/bg-pressed": {
-    "Default": "var(--neutral-200)",
-    "Dark": "var(--neutral-800)"
+    "Default": "#ffffff29",
+    "Dark": "#ffffff29"
   },
   "btn/ghost-white/fg": {
     "Default": "var(--white)",
-    "Dark": "var(--neutral-950)"
+    "Dark": "var(--white)"
   },
   "btn/ghost/bg": {
     "Default": "#ffffff00",
@@ -491,7 +491,7 @@
   },
   "btn/scrim-dark/fg": {
     "Default": "var(--white)",
-    "Dark": "var(--neutral-950)"
+    "Dark": "var(--white)"
   },
   "btn/scrim-light/bg": {
     "Default": "#ffffff4d",
@@ -507,7 +507,7 @@
   },
   "btn/scrim-light/fg": {
     "Default": "var(--neutral-900)",
-    "Dark": "var(--neutral-100)"
+    "Dark": "var(--neutral-900)"
   },
   "btn/secondary/bg": {
     "Default": "var(--brand-50)",
@@ -706,8 +706,8 @@
     "Dark": "var(--text-danger)"
   },
   "choice/label/fg-valid": {
-    "Default": "var(--green-600)",
-    "Dark": "var(--green-400)"
+    "Default": "var(--text-success)",
+    "Dark": "var(--text-success)"
   },
   "con/bg-selected": {
     "Default": "var(--brand-100)",
@@ -846,8 +846,8 @@
     "Dark": "var(--text-tertiary)"
   },
   "field/hint/fg-invalid": {
-    "Default": "var(--red-500)",
-    "Dark": "var(--red-300)"
+    "Default": "var(--text-danger)",
+    "Dark": "var(--text-danger)"
   },
   "field/label/fg": {
     "Default": "var(--text-primary)",
@@ -1240,6 +1240,10 @@
   "text/secondary": {
     "Default": "var(--neutral-700)",
     "Dark": "var(--neutral-300)"
+  },
+  "text/success": {
+    "Default": "var(--green-700)",
+    "Dark": "var(--green-400)"
   },
   "text/tertiary": {
     "Default": "var(--neutral-600)",
