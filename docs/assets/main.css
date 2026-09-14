@@ -4643,6 +4643,31 @@ table {
   border-color: var(--bds-field-border-valid-disabled);
 }
 
+.bds-field-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+.bds-field-group .bds-input {
+  flex: 1 0 0;
+  min-width: 0;
+}
+.bds-field-group .bds-btn,
+.bds-field-group .bds-icon-btn,
+.bds-field-group .bds-input__field {
+  border-radius: 0;
+}
+.bds-field-group > :first-child,
+.bds-field-group > :first-child .bds-input__field {
+  border-start-start-radius: var(--bds-btn-radius);
+  border-end-start-radius: var(--bds-btn-radius);
+}
+.bds-field-group > :last-child,
+.bds-field-group > :last-child .bds-input__field {
+  border-start-end-radius: var(--bds-btn-radius);
+  border-end-end-radius: var(--bds-btn-radius);
+}
+
 .bds-logo {
   display: inline-block;
   height: 15px;

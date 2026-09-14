@@ -1,0 +1,46 @@
+// Figma DS Master > Field/Group (node 1865:592), 2026-09-14 라이브 실측.
+// Size(sm/md/lg/xl) × Addon(leading/trailing/both) × Type(button/icon) 24변형.
+
+// 세 축 모두 클래스를 두지 않는다 — 마크업이 그대로 표현한다.
+// Size 는 안에 들어가는 .bds-btn-{size}·.bds-input-{size} 가 정하고,
+// Addon 위치는 자식 순서가, Type 은 .bds-btn 이냐 .bds-icon-btn 이냐가 가른다.
+// 그래서 이 파일은 "붙여 놓고 바깥 모서리만 남기는" 규칙 하나로 24변형을 덮는다.
+
+// Addon 의 색은 정하지 않는다. 실측에서 leading 이 btn/primary/bg, trailing 이 btn/tertiary/bg 로
+// 서로 달랐다 — 시안이 보여준 예시일 뿐 고정된 규칙이 아니라서, 변형은 마크업에서 고른다.
+
+@use '../tokens/primitive' as *;
+@use 'button' as btn;
+
+.bds-field-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+
+  // 필드가 남는 폭을 가져간다. Addon 은 자기 크기를 유지한다(HUG).
+  .bds-input {
+    flex: 1 0 0;
+    min-width: 0;
+  }
+
+  // 붙은 자리의 모서리를 없앤다 — 실측도 가운데 요소는 radius/none 이다.
+  .bds-btn,
+  .bds-icon-btn,
+  .bds-input__field {
+    border-radius: 0;
+  }
+
+  // 바깥 모서리만 남긴다. 첫 자식이 버튼이면 그 자체에, 필드면 안쪽 __field 에 걸린다 —
+  // 둘 다 적어도 무해하다(버튼엔 __field 가 없고 .bds-input 자체는 테두리가 없다).
+  > :first-child,
+  > :first-child .bds-input__field {
+    border-start-start-radius: btn.$btn-radius;
+    border-end-start-radius: btn.$btn-radius;
+  }
+
+  > :last-child,
+  > :last-child .bds-input__field {
+    border-start-end-radius: btn.$btn-radius;
+    border-end-end-radius: btn.$btn-radius;
+  }
+}
