@@ -669,14 +669,6 @@
     "Default": "var(--white)",
     "Dark": "var(--white)"
   },
-  "choice/box/ring-invalid": {
-    "Default": "var(--red-200)",
-    "Dark": "var(--red-700)"
-  },
-  "choice/box/ring-valid": {
-    "Default": "var(--green-200)",
-    "Dark": "var(--green-700)"
-  },
   "choice/description/fg": {
     "Default": "var(--text-tertiary)",
     "Dark": "var(--text-tertiary)"
@@ -769,9 +761,25 @@
     "Default": "#2563eb4d",
     "Dark": "#60a5fa4d"
   },
+  "effect/focus-halo-invalid": {
+    "Default": "#ef44444d",
+    "Dark": "#fca5a54d"
+  },
+  "effect/focus-halo-valid": {
+    "Default": "#16a34a4d",
+    "Dark": "#4ade804d"
+  },
   "effect/focus-ring": {
     "Default": "var(--brand-600)",
     "Dark": "var(--brand-600)"
+  },
+  "effect/focus-ring-invalid": {
+    "Default": "var(--field-border-invalid)",
+    "Dark": "var(--field-border-invalid)"
+  },
+  "effect/focus-ring-valid": {
+    "Default": "var(--field-border-valid)",
+    "Dark": "var(--field-border-valid)"
   },
   "field/bg": {
     "Default": "var(--white)",
@@ -844,14 +852,6 @@
   "field/label/fg": {
     "Default": "var(--text-primary)",
     "Dark": "var(--text-primary)"
-  },
-  "field/ring-invalid": {
-    "Default": "var(--red-200)",
-    "Dark": "var(--red-700)"
-  },
-  "field/ring-valid": {
-    "Default": "var(--green-200)",
-    "Dark": "var(--green-700)"
   },
   "icon/brand": {
     "Default": "var(--brand-600)",

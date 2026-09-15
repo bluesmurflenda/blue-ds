@@ -231,6 +231,12 @@ $choice-description-fg: var(--bds-choice-description-fg);
         border-color: map.get($c, border-hover);
       }
 
+      // 링 색도 테두리를 따라간다(ADR-038). normal 쪽 규칙보다 특정도가 높아 여기서 이긴다.
+      .bds-choice__input:focus-visible + .bds-choice__box,
+      .bds-choice__input:active:not(:disabled) + .bds-choice__box {
+        @include mix.focus-ring($validation);
+      }
+
       // checked·indeterminate(selected)는 검증 상태와 무관하게 normal의 브랜드색을 그대로 쓴다 —
       // 여기서 배경색을 덮어쓰지 않는다(문서 실측: "selected는 브랜드색을 유지한다").
 
