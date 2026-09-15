@@ -3,7 +3,7 @@
     "exportedAt": "2026-09-15",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
-    "count": 320
+    "count": 319
   },
   "_modes": [
     "Default",
@@ -645,6 +645,10 @@
     "Default": "var(--border-default)",
     "Dark": "var(--border-default)"
   },
+  "choice/box/border-focus": {
+    "Default": "var(--brand-500)",
+    "Dark": "var(--brand-500)"
+  },
   "choice/box/border-hover": {
     "Default": "var(--neutral-400)",
     "Dark": "var(--neutral-500)"
@@ -772,14 +776,6 @@
   "effect/focus-ring": {
     "Default": "var(--brand-600)",
     "Dark": "var(--brand-600)"
-  },
-  "effect/focus-ring-invalid": {
-    "Default": "var(--field-border-invalid)",
-    "Dark": "var(--field-border-invalid)"
-  },
-  "effect/focus-ring-valid": {
-    "Default": "var(--field-border-valid)",
-    "Dark": "var(--field-border-valid)"
   },
   "field/bg": {
     "Default": "var(--white)",

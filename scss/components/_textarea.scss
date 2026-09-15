@@ -116,7 +116,7 @@ $textarea-validation-colors: (
       &:focus-within {
         border-color: map.get($c, border-focus);
 
-        @include mix.focus-ring($validation);
+        @include mix.focus-ring($validation, $soft: true);
       }
     }
 

@@ -20,6 +20,7 @@
   --bds-choice-box-fg-selected: var(--bds-white);
   --bds-choice-box-bg-disabled: var(--bds-surface-muted);
   --bds-choice-box-border-disabled: var(--bds-border-default);
+  --bds-choice-box-border-focus: var(--bds-brand-500);
   --bds-choice-label-fg: var(--bds-text-primary);
   --bds-choice-label-fg-invalid: var(--bds-text-danger);
   --bds-choice-label-fg-valid: var(--bds-text-success);
@@ -169,11 +170,14 @@ $choice-description-fg: var(--bds-choice-description-fg);
       border-color: map.get(map.get($choice-colors, normal), border-hover);
     }
 
-    /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
     // 누르는 중에도 링이 뜬다 — Figma 의 pressed 변형이 focus 와 같은 링을 갖는다.
+    // 링은 반투명 한 겹이라 대비를 지지 않는다 — 테두리가 진다(choice/box/border-focus).
+    /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
     &:focus-visible + .bds-choice__box,
     &:active:not(:disabled) + .bds-choice__box {
-      @include mix.focus-ring;
+      border-color: var(--bds-choice-box-border-focus);
+
+      @include mix.focus-ring($soft: true);
     }
 
     /* stylelint-disable no-descending-specificity -- disabled 는 :not() 으로 이미 빠져 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
@@ -232,9 +236,13 @@ $choice-description-fg: var(--bds-choice-description-fg);
       }
 
       // 링 색도 테두리를 따라간다(ADR-038). normal 쪽 규칙보다 특정도가 높아 여기서 이긴다.
+      // 테두리를 다시 못박는 이유는 그 normal 규칙이 border-focus 를 주기 때문이다 —
+      // 안 적으면 검증 상태의 빨강·초록이 초점에서 파랑으로 덮여 대비를 지는 쪽이 사라진다.
       .bds-choice__input:focus-visible + .bds-choice__box,
       .bds-choice__input:active:not(:disabled) + .bds-choice__box {
-        @include mix.focus-ring($validation);
+        border-color: map.get($c, border);
+
+        @include mix.focus-ring($validation, $soft: true);
       }
 
       // checked·indeterminate(selected)는 검증 상태와 무관하게 normal의 브랜드색을 그대로 쓴다 —
@@ -312,6 +320,7 @@ $toggle-colors: (
     }
 
     /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
+    // 토글은 버튼 계열이다 — 검증 축이 없어 두 겹 중립을 쓴다.
     &:focus-visible + .bds-toggle__track {
       @include mix.focus-ring;
     }

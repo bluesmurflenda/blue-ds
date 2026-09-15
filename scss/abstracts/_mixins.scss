@@ -59,14 +59,17 @@
   gap: var(--bds-sections-gap);
 }
 
-// 초점 링 — 라이브러리 전체가 이 한 모양을 쓴다(ADR-038).
-// 불투명 2px 가 대비를 지고 반투명 3px 가 그 바깥에 번진다. 사이 간격은 두지 않는다 —
-// 링이 요소에 바로 붙고 바깥 경계가 페이지 배경과 맞닿아 거기서 기준을 넘는다.
-// 두께와 구조는 어느 상태에서도 같다. 색만 갈린다 — 테두리가 빨강·초록인데 링만 파랑이면
-// 둘이 어긋나 보이기 때문이다. normal 과 null 은 같게 다뤄 컴포넌트가 루프 변수를 그대로 넘길 수 있다.
+// 초점 링 — ADR-038. 계열이 둘이고 그 밖의 모양은 만들지 않는다.
+// $soft: true  — 폼 요소(Input · Textarea · Select · Checkbox · Radio).
+//   반투명 한 겹 2px 뿐이다. 대비는 초점일 때 바뀌는 테두리 색이 지고 링은 장식이다.
+//   검증 상태는 여기서만 생긴다.
+// $soft: false — 버튼 계열(Button · Icon Button · Social Button · Con · List/Item · Toggle).
+//   불투명 2px 가 대비를 지고 반투명 3px 가 그 바깥에 번진다. 검증 축이 없어 늘 중립이다.
+// 사이 간격은 두지 않는다 — 링이 요소에 바로 붙고 바깥 경계가 페이지 배경과 맞닿아
+// 거기서 기준을 넘는다. normal 과 null 은 같게 다뤄 컴포넌트가 루프 변수를 그대로 넘길 수 있다.
 $focus-ring-states: (normal, valid, invalid);
 
-@mixin focus-ring($state: null) {
+@mixin focus-ring($state: null, $soft: false) {
   @if $state != null and not list.index($focus-ring-states, $state) {
     @error "focus-ring(#{$state}) — 쓸 수 있는 값: null · #{$focus-ring-states}";
   }
@@ -78,7 +81,17 @@ $focus-ring-states: (normal, valid, invalid);
     $suffix: '-#{$state}';
   }
 
-  box-shadow:
-    0 0 0 2px var(--bds-effect-focus-ring#{$suffix}),
-    0 0 0 3px var(--bds-effect-focus-halo#{$suffix});
+  // 낼 수 있는 조합은 넷뿐이다 — soft×중립 · soft×valid · soft×invalid · not-soft×중립.
+  // 버튼 계열에 검증 상태가 들어오면 설계가 어긋난 것이라 여기서 멈춘다(불투명 검증 링은 없다).
+  @if $suffix != '' and not $soft {
+    @error "focus-ring(#{$state}) — 검증 상태는 폼 요소($soft: true)에만 있다. 버튼 계열에는 검증 축이 없다";
+  }
+
+  @if $soft {
+    box-shadow: 0 0 0 2px var(--bds-effect-focus-halo#{$suffix});
+  } @else {
+    box-shadow:
+      0 0 0 2px var(--bds-effect-focus-ring),
+      0 0 0 3px var(--bds-effect-focus-halo);
+  }
 }
