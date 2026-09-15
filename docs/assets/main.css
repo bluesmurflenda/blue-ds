@@ -241,7 +241,6 @@
   --bds-effect-focus-halo: #2563eb4d;
   --bds-effect-focus-halo-invalid: #ef44444d;
   --bds-effect-focus-halo-valid: #16a34a4d;
-  --bds-effect-focus-ring: var(--bds-brand-600);
   --bds-icon-brand: var(--bds-brand-600);
   --bds-icon-disabled: var(--bds-neutral-300);
   --bds-icon-inverse: var(--bds-white);
@@ -2431,6 +2430,8 @@ table {
   --bds-toggle-track-bg-off: var(--bds-neutral-700);
   --bds-toggle-track-bg-off-hover: var(--bds-neutral-600);
   --bds-toggle-knob-bg: var(--bds-neutral-950);
+  --bds-toggle-track-bg-on: var(--bds-blue-600);
+  --bds-toggle-track-bg-on-hover: var(--bds-blue-500);
   --bds-choice-box-border-invalid: var(--bds-red-300);
   --bds-choice-box-border-invalid-hover: var(--bds-red-400);
   --bds-choice-box-border-valid: var(--bds-green-400);
@@ -3110,6 +3111,9 @@ table {
 .bds-accordion__item {
   background-color: var(--bds-accordion-trigger-bg);
 }
+.bds-accordion__item:has(.bds-accordion__trigger:focus) {
+  box-shadow: inset 0 0 0 1px var(--bds-field-border-focus), 0 0 0 2px var(--bds-effect-focus-halo);
+}
 .bds-accordion__trigger {
   display: flex;
   align-items: center;
@@ -3128,7 +3132,6 @@ table {
 }
 .bds-accordion__trigger:focus {
   outline: none;
-  box-shadow: inset 0 0 0 1px currentcolor, 0 0 0 2px var(--bds-effect-focus-halo);
 }
 .bds-accordion__title {
   flex: 1 0 0;
@@ -3175,7 +3178,8 @@ table {
 }
 .bds-accordion-rounded {
   border-radius: var(--bds-accordion-rounded-radius);
-  overflow: hidden;
+  overflow: clip;
+  overflow-clip-margin: 4px;
 }
 .bds-accordion-each {
   gap: var(--bds-space-2);

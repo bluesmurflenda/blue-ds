@@ -43,6 +43,11 @@
   --bds-toggle-track-bg-off: var(--bds-neutral-700);
   --bds-toggle-track-bg-off-hover: var(--bds-neutral-600);
   --bds-toggle-knob-bg: var(--bds-neutral-950);
+
+  // 다크에서 켜진 트랙이 라이트와 같은 파랑이라 그 위 초점 선이 3:1 에 못 미쳤다. 한 단계 진하게
+  // 하고 hover 도 한 단계 내려, 기본보다 한 단계 밝은 관계를 지킨다(Figma 실측).
+  --bds-toggle-track-bg-on: var(--bds-blue-600);
+  --bds-toggle-track-bg-on-hover: var(--bds-blue-500);
   --bds-choice-box-border-invalid: var(--bds-red-300);
   --bds-choice-box-border-invalid-hover: var(--bds-red-400);
   --bds-choice-box-border-valid: var(--bds-green-400);
