@@ -470,7 +470,10 @@ Figma Dev Mode가 보여주는 이름과 코드의 변수 이름이 같아야 �
 
 ## ADR-019 · D1(컬러 프리미티브 직접 참조) 예외 2건 — Checkbox 유효성 색·Avatar Online 링
 
-상태: Accepted 확신도: 높음 날짜: 2026-08-30
+상태: **Superseded — 예외가 없어졌다** 확신도: 높음 날짜: 2026-08-30
+
+**2026-09-14 확인: `scripts/lib/allowlist.mjs` 의 `D1_NODE_EXCEPTIONS` 가 빈 배열이다.**
+이 기록이 등록하기로 한 예외 2건이 코드에 없다. 아래는 그 시점의 판단으로 남긴다.
 
 ### 맥락
 
@@ -1120,30 +1123,6 @@ Field/Group 의 애드온 버튼 크기가 크기 변형을 따라가지 않았�
 교체 속성은 집합 전체에 값이 하나여서 변형별 차이를 담지 못한다.
 둘 다 필요하면 축을 하나 더 만든다 — 변형 수가 늘어나는 것이 그 대가다.
 설계 단계에서 정해야 한다. 나중에 고칠 수 있는 문제가 아니다.
-
----
-
-## 미결 — 결정이 필요할 때 여기에 추가한다
-
-| # | 항목 | 성격 |
-|---|---|---|
-| 1 | `Con` · `Card` · `Social Button` 의 disabled 표현 부재 | Figma 에 상태 추가 vs 코드에서 `opacity` |
-| 2 | `_List/Item` focus 표시 부재 | Figma 추가 vs 코드에서 ring |
-| ~~3~~ | ~~`Chip` · `Alert` 의 `brand` 와 `info` 중복~~ | **해소**: 다르다. brand는 브랜드 램프를 따라가고 info는 blue 고정 — 다크에서 `chip/brand/fg`=#93c5fd vs `chip/info/fg`=#60a5fa로 갈린다. 브랜드 색을 바꿔도 info는 파랑을 유지해야 하므로 의도된 설계. |
-| ~~4~~ | ~~`Calendar` `Type=Card` 와 `default` 동일~~ | **해소**: 다르다. fills의 visible 플래그로 갈린다 — Card=배경 보임, default=투명. 스크린샷으로 확인. |
-| ~~5~~ | ~~`Pagination` `simple` 과 `numbers` 규격 동일~~ | **해소**: 다르다. Size가 내부 요소를 바꾼다(셀 32/40/48, gap 2/2/4). Type은 구성 자체가 다르다(simple=텍스트+버튼, numbers=화살표+번호목록). |
-| 6 | `Checkbox` radius 하드값 | 토큰화 vs 유지 |
-| ~~7~~ | ~~`Toggle` track radius · padding 하드값~~ | **해소**: radius는 이미 토큰화됨(`$radius-full`). space 스케일은 `space-N = N*4px`(step 값이지 리터럴 px가 아님) — `$toggle-height`(20px)는 `$space-5`, `$toggle-knob-size`(16px)는 `$space-4`로 토큰화했다. `$toggle-width`(36px)·`$toggle-knob-inset`(2px)은 스케일에 대응 step이 없어(각각 32/40 사이, 4px 미만) 리터럴로 유지하고 주석으로 이유를 남겼다. |
-| 8 | `Tooltip` radius 하드값 | 토큰화 vs 유지 |
-| 9 | `Modal` alert 계열에 lg·xl 부재 | 의도 확인 |
-| 10 | `Featured Icon` 에 `info` 색 부재 | 추가 vs 유지 |
-| ~~11~~ | ~~`ALL_SCOPES` 토큰의 scopes 조이기~~ | **해소(ADR-021)**: Theme 77건을 역할별로 조였다. 충돌 0 확인. `surface/default`는 실사용이 넓어 4개 전부 유지, `border/default`는 `STROKE_COLOR`+`SHAPE_FILL`(구분선 도형 채움 45곳)로 예외 유지. |
-| ~~12~~ | ~~`board-row` `notice` 텍스트가 `post` 보다 작음~~ | **해소**: batch 4 에서 확인. title 크기는 동일하고 차이는 Notice 배지 유무였다. |
-| ~~13~~ | ~~`site-header` 가 폭을 `breakpoint` 에 바인딩하고 있다~~ | **해소(ADR-026)**: 아트보드 폭 바인딩은 파일 전체의 설계 패턴이었다. description 을 실제에 맞게 고쳤고, FILL 이라 모순 상태였던 `site-header`·`site-footer` 두 건만 바인딩을 풀었다. |
-| 14 | SCSS 토큰 파일이 Figma 최신 상태보다 뒤처져 있다 | 재생성 방식 결정 — ADR-027·ADR-028 의 "남은 일" 참고 |
-
-**이 목록은 코드 작업을 막지 않는다.** 대부분 "의도인지 확인"이다.
-**예외는 14번이다** — 스냅샷이 낡은 상태라 그 값을 근거로 코드를 쓰면 안 된다.
 
 ---
 

@@ -23,7 +23,7 @@
 
 | 알고 싶은 것 | 어디 |
 | --- | --- |
-| 왜 그렇게 정했나 · 미결 사항 | `DECISIONS.md` |
+| 왜 그렇게 정했나 | `DECISIONS.md` — 정해진 것만 있다. 아직 안 정한 것은 `STATUS.md` |
 | 검사 항목이 무엇이고 왜 생겼나 | `scripts/README.md` |
 | 값 | Figma 를 조회한다. 못 쓰면 `figma/tokens.*.json` |
 
