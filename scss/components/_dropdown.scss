@@ -81,7 +81,8 @@ $list-item-fg-selected: var(--bds-list-item-fg-selected);
 
     &[aria-expanded='true'] {
       border-color: var(--bds-field-border-focus);
-      box-shadow: 0 0 0 2px $effect-focus-ring;
+
+      @include mix.focus-ring;
     }
 
     // &[aria-expanded='true'] 안에 .bds-dropdown__chevron을 한 번 더 중첩하면 4단이 되므로
@@ -186,7 +187,8 @@ $list-item-font: (
   // 없어도 되는 것은 다르다). 다른 포커스 링과 같은 컨벤션(2px, effect/focus-ring).
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px $effect-focus-ring;
+
+    @include mix.focus-ring;
   }
 
   &.bds-list-item-selected {

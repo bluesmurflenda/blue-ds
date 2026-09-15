@@ -3,6 +3,7 @@
 // ghost-white 는 2026-09-15 Figma 에서 삭제됐다 — 네 값이 ghost-inverse 와 같아져 둘을 나눌 이유가 없어졌다.
 
 @use '../tokens/primitive' as *;
+@use '../abstracts/mixins' as mix;
 @use 'button' as btn;
 @use 'sass:map';
 
@@ -57,7 +58,8 @@ $icon-button-extra-variants: (
 
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px var(--bds-surface-default), 0 0 0 4px $effect-focus-ring;
+
+    @include mix.focus-ring;
   }
 
   // 아래 세 변형은 @each 뒤에 따로 열려 있었다(중복 선택자). @each 가 내는 공유 8변형과 이름이 겹치지 않아 여기로 합쳐도 결과가 같다.

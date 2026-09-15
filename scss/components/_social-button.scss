@@ -58,7 +58,8 @@ $social-brand-colors: (
 
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px $effect-focus-ring;
+
+    @include mix.focus-ring;
   }
 
   // Type=label: 좌우 패딩 있음, 폭은 내용에 따라 자동(HUG)

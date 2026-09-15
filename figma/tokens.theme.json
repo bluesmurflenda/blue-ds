@@ -3,7 +3,7 @@
     "exportedAt": "2026-09-15",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
-    "count": 318
+    "count": 320
   },
   "_modes": [
     "Default",
@@ -764,6 +764,14 @@
   "con/white/fg-selected": {
     "Default": "var(--white)",
     "Dark": "var(--white)"
+  },
+  "effect/focus-halo": {
+    "Default": "#2563eb4d",
+    "Dark": "#60a5fa4d"
+  },
+  "effect/focus-ring": {
+    "Default": "var(--brand-600)",
+    "Dark": "var(--brand-600)"
   },
   "field/bg": {
     "Default": "var(--white)",

@@ -34,9 +34,9 @@ $select-bg: var(--bds-field-bg);
 // "30%"가 붙어있어도 실제로는 solid — get_variable_defs로 재확인, 2026-08-30).
 // 유효성 색(빨강/초록)은 프리미티브 직접 참조가 정상이다 — 대응 시맨틱이 없다.
 $select-validation-colors: (
-  normal: (border: var(--bds-field-border), border-hover: var(--bds-field-border-hover), border-focus: var(--bds-field-border-focus), ring: $effect-focus-ring, border-disabled: var(--bds-field-border-disabled)),
-  invalid: (border: var(--bds-field-border-invalid), border-hover: var(--bds-field-border-invalid-hover), border-focus: var(--bds-field-border-invalid), ring: var(--bds-field-ring-invalid), border-disabled: var(--bds-field-border-invalid-disabled)),
-  valid: (border: var(--bds-field-border-valid), border-hover: var(--bds-field-border-valid-hover), border-focus: var(--bds-field-border-valid), ring: var(--bds-field-ring-valid), border-disabled: var(--bds-field-border-valid-disabled)),
+  normal: (border: var(--bds-field-border), border-hover: var(--bds-field-border-hover), border-focus: var(--bds-field-border-focus), border-disabled: var(--bds-field-border-disabled)),
+  invalid: (border: var(--bds-field-border-invalid), border-hover: var(--bds-field-border-invalid-hover), border-focus: var(--bds-field-border-invalid), border-disabled: var(--bds-field-border-invalid-disabled)),
+  valid: (border: var(--bds-field-border-valid), border-hover: var(--bds-field-border-valid-hover), border-focus: var(--bds-field-border-valid), border-disabled: var(--bds-field-border-valid-disabled)),
 );
 
 .bds-select {
@@ -133,7 +133,8 @@ $select-validation-colors: (
 
       &:focus-within {
         border-color: map.get($c, border-focus);
-        box-shadow: 0 0 0 2px map.get($c, ring);
+
+        @include mix.focus-ring;
       }
     }
   }

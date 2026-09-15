@@ -72,9 +72,9 @@ $input-shadow: 0 1px 2px rgb(0 0 0 / 5%);
 // invalid/valid의 ring은 스타일 이름이 "30%"라도 실제 바인딩은 solid red-200/green-100이다
 // (get_variable_defs로 확인 — 이름과 실제 alpha가 다르다).
 $input-validation-colors: (
-  normal: (border: var(--bds-field-border), border-hover: var(--bds-field-border-hover), border-focus: var(--bds-field-border-focus), ring: $effect-focus-ring, border-disabled: var(--bds-field-border-disabled), hint-fg: var(--bds-field-hint-fg)),
-  invalid: (border: var(--bds-field-border-invalid), border-hover: var(--bds-field-border-invalid-hover), border-focus: var(--bds-field-border-invalid), ring: var(--bds-field-ring-invalid), border-disabled: var(--bds-field-border-invalid-disabled), hint-fg: var(--bds-field-hint-fg-invalid)),
-  valid: (border: var(--bds-field-border-valid), border-hover: var(--bds-field-border-valid-hover), border-focus: var(--bds-field-border-valid), ring: var(--bds-field-ring-valid), border-disabled: var(--bds-field-border-valid-disabled), hint-fg: var(--bds-field-hint-fg)),
+  normal: (border: var(--bds-field-border), border-hover: var(--bds-field-border-hover), border-focus: var(--bds-field-border-focus), border-disabled: var(--bds-field-border-disabled), hint-fg: var(--bds-field-hint-fg)),
+  invalid: (border: var(--bds-field-border-invalid), border-hover: var(--bds-field-border-invalid-hover), border-focus: var(--bds-field-border-invalid), border-disabled: var(--bds-field-border-invalid-disabled), hint-fg: var(--bds-field-hint-fg-invalid)),
+  valid: (border: var(--bds-field-border-valid), border-hover: var(--bds-field-border-valid-hover), border-focus: var(--bds-field-border-valid), border-disabled: var(--bds-field-border-valid-disabled), hint-fg: var(--bds-field-hint-fg)),
 );
 
 .bds-input {
@@ -186,7 +186,8 @@ $input-validation-colors: (
 
       &:focus-within {
         border-color: map.get($c, border-focus);
-        box-shadow: 0 0 0 2px map.get($c, ring);
+
+        @include mix.focus-ring;
       }
     }
 

@@ -4,6 +4,7 @@
 // disabled는 Figma에서도 대부분 opacity 50%로 처리돼 있어 동일하게 통일 적용한다.
 
 @use '../tokens/primitive' as *;
+@use '../abstracts/mixins' as mix;
 @use 'sass:map';
 
 // get_variable_defs로 재확인(2026-08-30): choice/box/bg-selected는 blue-500이 아니라 blue-600
@@ -66,7 +67,6 @@ $choice-colors: (
   normal: (
     border: var(--bds-choice-box-border),
     border-hover: var(--bds-choice-box-border-hover),
-    ring: $effect-focus-ring,
     selected-bg: var(--bds-choice-box-bg-selected),
     selected-bg-hover: var(--bds-choice-box-bg-selected),
     label-fg: var(--bds-choice-label-fg),
@@ -74,13 +74,11 @@ $choice-colors: (
   valid: (
     border: var(--bds-choice-box-border-valid),
     border-hover: var(--bds-choice-box-border-valid-hover),
-    ring: var(--bds-choice-box-ring-valid),
     label-fg: var(--bds-choice-label-fg-valid),
   ),
   invalid: (
     border: var(--bds-choice-box-border-invalid),
     border-hover: var(--bds-choice-box-border-invalid-hover),
-    ring: var(--bds-choice-box-ring-invalid),
     label-fg: var(--bds-choice-label-fg-invalid),
   ),
 );
@@ -176,8 +174,10 @@ $choice-description-fg: var(--bds-choice-description-fg);
     }
 
     /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-    &:focus-visible + .bds-choice__box {
-      box-shadow: 0 0 0 2px map.get(map.get($choice-colors, normal), ring);
+    // 누르는 중에도 링이 뜬다 — Figma 의 pressed 변형이 focus 와 같은 링을 갖는다.
+    &:focus-visible + .bds-choice__box,
+    &:active:not(:disabled) + .bds-choice__box {
+      @include mix.focus-ring;
     }
 
     /* stylelint-disable no-descending-specificity -- disabled 는 :not() 으로 이미 빠져 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
@@ -233,10 +233,6 @@ $choice-description-fg: var(--bds-choice-description-fg);
       // selected·indeterminate 를 빼는 이유는 normal 쪽과 같다 — 검증 상태여도 선택되면 테두리가 없다.
       .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
         border-color: map.get($c, border-hover);
-      }
-
-      .bds-choice__input:focus-visible + .bds-choice__box {
-        box-shadow: 0 0 0 2px map.get($c, ring);
       }
 
       // checked·indeterminate(selected)는 검증 상태와 무관하게 normal의 브랜드색을 그대로 쓴다 —
@@ -315,7 +311,7 @@ $toggle-colors: (
 
     /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
     &:focus-visible + .bds-toggle__track {
-      box-shadow: 0 0 0 3px $effect-focus-ring;
+      @include mix.focus-ring;
     }
 
     /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */

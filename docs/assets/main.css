@@ -15,7 +15,6 @@
   --bds-blue-950: #172554;
   --bds-border-hairline: 1px;
   --bds-border-thick: 2px;
-  --bds-effect-focus-ring: #2563eb4d;
   --bds-font-family-display: 'Pretendard';
   --bds-font-family-primary: 'Pretendard';
   --bds-font-leading-body-2xl: 28px;
@@ -239,6 +238,8 @@
   --bds-brand-700: var(--bds-blue-700);
   --bds-brand-800: var(--bds-blue-800);
   --bds-brand-900: var(--bds-blue-900);
+  --bds-effect-focus-halo: #2563eb4d;
+  --bds-effect-focus-ring: var(--bds-brand-600);
   --bds-icon-brand: var(--bds-brand-600);
   --bds-icon-disabled: var(--bds-neutral-300);
   --bds-icon-inverse: var(--bds-white);
@@ -285,6 +286,7 @@
   --bds-brand-700: var(--bds-blue-300);
   --bds-brand-800: var(--bds-blue-200);
   --bds-brand-900: var(--bds-blue-100);
+  --bds-effect-focus-halo: #60a5fa4d;
   --bds-icon-disabled: var(--bds-neutral-700);
   --bds-icon-inverse: var(--bds-neutral-900);
   --bds-icon-primary: var(--bds-neutral-400);
@@ -746,7 +748,7 @@ table {
 }
 .bds-btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bds-surface-default), 0 0 0 4px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 
 .bds-btn-sm {
@@ -980,7 +982,7 @@ table {
 }
 .bds-icon-btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bds-surface-default), 0 0 0 4px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-icon-btn-ghost-inverse {
   background-color: var(--bds-btn-ghost-inverse-bg);
@@ -1202,7 +1204,7 @@ table {
 }
 .bds-social-btn:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-social-btn-label {
   padding-inline: var(--bds-btn-padding-x-lg);
@@ -2489,8 +2491,8 @@ table {
 .bds-choice__input {
   /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
 }
-.bds-choice__input:focus-visible + .bds-choice__box {
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+.bds-choice__input:focus-visible + .bds-choice__box, .bds-choice__input:active:not(:disabled) + .bds-choice__box {
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-choice__input {
   /* stylelint-disable no-descending-specificity -- disabled 는 :not() 으로 이미 빠져 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
@@ -2534,9 +2536,6 @@ table {
 .bds-choice--valid .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
   border-color: var(--bds-choice-box-border-valid-hover);
 }
-.bds-choice--valid .bds-choice__input:focus-visible + .bds-choice__box {
-  box-shadow: 0 0 0 2px var(--bds-choice-box-ring-valid);
-}
 .bds-choice--valid .bds-choice__label {
   color: var(--bds-choice-label-fg-valid);
 }
@@ -2545,9 +2544,6 @@ table {
 }
 .bds-choice--invalid .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
   border-color: var(--bds-choice-box-border-invalid-hover);
-}
-.bds-choice--invalid .bds-choice__input:focus-visible + .bds-choice__box {
-  box-shadow: 0 0 0 2px var(--bds-choice-box-ring-invalid);
 }
 .bds-choice--invalid .bds-choice__label {
   color: var(--bds-choice-label-fg-invalid);
@@ -2601,7 +2597,7 @@ table {
   /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
 }
 .bds-toggle__input:focus-visible + .bds-toggle__track {
-  box-shadow: 0 0 0 3px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-toggle__input {
   /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
@@ -3090,7 +3086,7 @@ table {
 }
 .bds-accordion__trigger:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-accordion__title {
   flex: 1 0 0;
@@ -3394,7 +3390,7 @@ table {
 }
 .bds-dropdown__trigger[aria-expanded=true] {
   border-color: var(--bds-field-border-focus);
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-dropdown__trigger[aria-expanded=true] .bds-dropdown__chevron {
   transform: rotate(180deg);
@@ -3509,7 +3505,7 @@ table {
 }
 .bds-list-item:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-list-item.bds-list-item-selected {
   background-color: var(--bds-list-item-bg-hover);
@@ -3655,7 +3651,7 @@ table {
 }
 .bds-select-normal .bds-select__field:focus-within {
   border-color: var(--bds-field-border-focus);
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 
 .bds-select-normal.bds-select-disabled .bds-select__field {
@@ -3670,7 +3666,7 @@ table {
 }
 .bds-select-invalid .bds-select__field:focus-within {
   border-color: var(--bds-field-border-invalid);
-  box-shadow: 0 0 0 2px var(--bds-field-ring-invalid);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 
 .bds-select-invalid.bds-select-disabled .bds-select__field {
@@ -3685,7 +3681,7 @@ table {
 }
 .bds-select-valid .bds-select__field:focus-within {
   border-color: var(--bds-field-border-valid);
-  box-shadow: 0 0 0 2px var(--bds-field-ring-valid);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 
 .bds-select-valid.bds-select-disabled .bds-select__field {
@@ -4130,7 +4126,7 @@ table {
   color: var(--bds-con-fg-selected);
 }
 .bds-con-color:focus-visible {
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 
 .bds-con-gray {
@@ -4146,7 +4142,7 @@ table {
   color: var(--bds-con-fg-selected);
 }
 .bds-con-gray:focus-visible {
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 
 .bds-con-white {
@@ -4164,7 +4160,7 @@ table {
   color: var(--bds-con-white-fg-selected);
 }
 .bds-con-white:focus-visible {
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 
 .bds-upload-dropzone {
@@ -4526,7 +4522,7 @@ table {
 }
 .bds-input-normal .bds-input__field:focus-within {
   border-color: var(--bds-field-border-focus);
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-input-normal .bds-input__hint {
   color: var(--bds-field-hint-fg);
@@ -4544,7 +4540,7 @@ table {
 }
 .bds-input-invalid .bds-input__field:focus-within {
   border-color: var(--bds-field-border-invalid);
-  box-shadow: 0 0 0 2px var(--bds-field-ring-invalid);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-input-invalid .bds-input__hint {
   color: var(--bds-field-hint-fg-invalid);
@@ -4562,7 +4558,7 @@ table {
 }
 .bds-input-valid .bds-input__field:focus-within {
   border-color: var(--bds-field-border-valid);
-  box-shadow: 0 0 0 2px var(--bds-field-ring-valid);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-input-valid .bds-input__hint {
   color: var(--bds-field-hint-fg);
@@ -4667,7 +4663,7 @@ table {
 }
 .bds-textarea-normal .bds-textarea__field:focus-within {
   border-color: var(--bds-field-border-focus);
-  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-textarea-normal .bds-textarea__hint {
   color: var(--bds-field-hint-fg);
@@ -4684,7 +4680,7 @@ table {
 }
 .bds-textarea-invalid .bds-textarea__field:focus-within {
   border-color: var(--bds-field-border-invalid);
-  box-shadow: 0 0 0 2px var(--bds-field-ring-invalid);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-textarea-invalid .bds-textarea__hint {
   color: var(--bds-field-hint-fg-invalid);
@@ -4701,7 +4697,7 @@ table {
 }
 .bds-textarea-valid .bds-textarea__field:focus-within {
   border-color: var(--bds-field-border-valid);
-  box-shadow: 0 0 0 2px var(--bds-field-ring-valid);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 6px var(--bds-effect-focus-halo);
 }
 .bds-textarea-valid .bds-textarea__hint {
   color: var(--bds-field-hint-fg);

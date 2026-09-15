@@ -31,6 +31,8 @@
   --bds-brand-700: var(--bds-blue-700);
   --bds-brand-800: var(--bds-blue-800);
   --bds-brand-900: var(--bds-blue-900);
+  --bds-effect-focus-halo: #2563eb4d;
+  --bds-effect-focus-ring: var(--bds-brand-600);
   --bds-icon-brand: var(--bds-brand-600);
   --bds-icon-disabled: var(--bds-neutral-300);
   --bds-icon-inverse: var(--bds-white);
@@ -77,6 +79,7 @@
   --bds-brand-700: var(--bds-blue-300);
   --bds-brand-800: var(--bds-blue-200);
   --bds-brand-900: var(--bds-blue-100);
+  --bds-effect-focus-halo: #60a5fa4d;
   --bds-icon-disabled: var(--bds-neutral-700);
   --bds-icon-inverse: var(--bds-neutral-900);
   --bds-icon-primary: var(--bds-neutral-400);
@@ -128,6 +131,8 @@ $brand-600: var(--bds-brand-600);
 $brand-700: var(--bds-brand-700);
 $brand-800: var(--bds-brand-800);
 $brand-900: var(--bds-brand-900);
+$effect-focus-halo: var(--bds-effect-focus-halo);
+$effect-focus-ring: var(--bds-effect-focus-ring);
 $icon-brand: var(--bds-icon-brand);
 $icon-disabled: var(--bds-icon-disabled);
 $icon-inverse: var(--bds-icon-inverse);

@@ -71,7 +71,8 @@ $accordion-radius: var(--bds-accordion-rounded-radius);
 
     &:focus-visible {
       outline: none;
-      box-shadow: 0 0 0 2px $effect-focus-ring;
+
+      @include mix.focus-ring;
     }
   }
 

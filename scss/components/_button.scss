@@ -138,7 +138,8 @@ $button-group-divider: var(--bds-button-group-divider);
 
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px var(--bds-surface-default), 0 0 0 4px $effect-focus-ring;
+
+    @include mix.focus-ring;
   }
 }
 

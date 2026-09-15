@@ -3,7 +3,7 @@
     "exportedAt": "2026-09-15",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Primitive",
-    "count": 209
+    "count": 208
   },
   "_modes": [
     "Primitive"
@@ -23,7 +23,6 @@
   "blue/950": "#172554",
   "border/hairline": 1,
   "border/thick": 2,
-  "effect/focus-ring": "#2563eb4d",
   "font/family/display": "Pretendard",
   "font/family/primary": "Pretendard",
   "font/leading/body/2xl": 28,

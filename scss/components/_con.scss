@@ -122,7 +122,7 @@ $con-themes: (
     }
 
     &:focus-visible {
-      box-shadow: 0 0 0 2px $effect-focus-ring;
+      @include mix.focus-ring;
     }
   }
 }

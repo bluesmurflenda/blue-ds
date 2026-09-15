@@ -17,7 +17,7 @@ const TMP = path.join(ROOT, 'node_modules', '.cache', 'bds-tokens');
 
 // ── 어느 것을 내보내나 ──────────────────────────────────────────────
 // Theme 은 일반 시맨틱만 내보낸다. 컴포넌트별 시맨틱은 각 컴포넌트 SCSS 가 채운다.
-const THEME_GROUPS = ['accent', 'border', 'brand', 'icon', 'surface', 'text'];
+const THEME_GROUPS = ['accent', 'border', 'brand', 'effect', 'icon', 'surface', 'text'];
 // ADR-015 — Button Size xs 는 코드에서 제외한다.
 const SHAPE_EXCLUDE = new Set(['btn/radius-xs', 'btn/padding-x/xs']);
 
