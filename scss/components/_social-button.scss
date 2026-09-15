@@ -56,16 +56,20 @@ $social-brand-colors: (
     pointer-events: none;
   }
 
-  &:hover:not(:disabled, [aria-disabled='true'])::after {
-    background-color: $social-overlay-hover;
+  @include mix.state(hover, 'bds-social-btn') {
+    &::after {
+      background-color: $social-overlay-hover;
+    }
   }
 
   // :hover 와 특정도가 같아 순서로만 갈린다 — 눌렀을 때 진한 쪽이 이기려면 반드시 뒤에 와야 한다.
-  &:active:not(:disabled, [aria-disabled='true'])::after {
-    background-color: $social-overlay-pressed;
+  @include mix.state(pressed, 'bds-social-btn') {
+    &::after {
+      background-color: $social-overlay-pressed;
+    }
   }
 
-  &:focus-visible {
+  @include mix.state(focus, 'bds-social-btn') {
     outline: none;
 
     @include mix.focus-ring;
@@ -149,7 +153,8 @@ $social-brand-colors: (
 // disabled 는 소셜·테마와 무관하게 공통 톤이다. 위 brand 규칙(.bds-social-btn-brand.bds-social-btn-naver)과
 // 특정도가 같아(둘 다 클래스 2개분) 순서로 이겨야 하므로 테마 규칙 뒤에 둔다.
 .bds-social-btn:disabled,
-.bds-social-btn[aria-disabled='true'] {
+.bds-social-btn[aria-disabled='true'],
+.bds-social-btn.bds-social-btn-disabled {
   cursor: not-allowed;
   background-color: var(--bds-btn-disabled-bg);
   border: 1px solid var(--bds-btn-disabled-border);
@@ -158,6 +163,7 @@ $social-brand-colors: (
 
 // 브랜드 로고는 색을 바꿀 수 없어 투명도로 낮춘다. Figma 에도 토큰이 아니라 직접 적은 값이다.
 .bds-social-btn:disabled .bds-social-btn__logo,
-.bds-social-btn[aria-disabled='true'] .bds-social-btn__logo {
+.bds-social-btn[aria-disabled='true'] .bds-social-btn__logo,
+.bds-social-btn.bds-social-btn-disabled .bds-social-btn__logo {
   opacity: 0.4;
 }

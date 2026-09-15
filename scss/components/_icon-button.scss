@@ -51,12 +51,11 @@ $icon-button-extra-variants: (
   cursor: pointer;
   transition: background-color $motion-fast, border-color $motion-fast, color $motion-fast;
 
-  &:disabled,
-  &[aria-disabled='true'] {
+  @include mix.state(disabled, 'bds-icon-btn') {
     cursor: not-allowed;
   }
 
-  &:focus-visible {
+  @include mix.state(focus, 'bds-icon-btn') {
     outline: none;
 
     @include mix.focus-ring;
@@ -70,17 +69,15 @@ $icon-button-extra-variants: (
     background-color: map.get($c, bg);
     color: map.get($c, fg);
 
-    &:hover:not(:disabled, [aria-disabled='true']) {
+    @include mix.state(hover, 'bds-icon-btn') {
       background-color: map.get($c, bg-hover);
     }
 
-    &:active:not(:disabled, [aria-disabled='true']) {
+    @include mix.state(pressed, 'bds-icon-btn') {
       background-color: map.get($c, bg-pressed);
     }
 
-    /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-    &:disabled,
-    &[aria-disabled='true'] {
+    @include mix.state(disabled, 'bds-icon-btn') {
       background-color: transparent;
       color: btn.$btn-disabled-fg;
     }
@@ -93,17 +90,15 @@ $icon-button-extra-variants: (
     background-color: map.get($c, bg);
     color: map.get($c, fg);
 
-    &:hover:not(:disabled, [aria-disabled='true']) {
+    @include mix.state(hover, 'bds-icon-btn') {
       background-color: map.get($c, bg-hover);
     }
 
-    &:active:not(:disabled, [aria-disabled='true']) {
+    @include mix.state(pressed, 'bds-icon-btn') {
       background-color: map.get($c, bg-pressed);
     }
 
-    /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-    &:disabled,
-    &[aria-disabled='true'] {
+    @include mix.state(disabled, 'bds-icon-btn') {
       background-color: transparent;
       color: var(--bds-btn-ghost-brand-fg-disabled);
     }
@@ -134,16 +129,15 @@ $icon-button-extra-variants: (
       border: $border-hairline solid map.get($colors, border);
     }
 
-    &:hover:not(:disabled, [aria-disabled='true']) {
+    @include mix.state(hover, 'bds-icon-btn') {
       background-color: map.get($colors, bg-hover);
     }
 
-    &:active:not(:disabled, [aria-disabled='true']) {
+    @include mix.state(pressed, 'bds-icon-btn') {
       background-color: map.get($colors, bg-pressed);
     }
 
-    &:disabled,
-    &[aria-disabled='true'] {
+    @include mix.state(disabled, 'bds-icon-btn') {
       background-color: btn.$btn-disabled-bg;
       color: btn.$btn-disabled-fg;
 

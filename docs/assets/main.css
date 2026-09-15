@@ -747,10 +747,10 @@ table {
   cursor: pointer;
   transition: background-color var(--bds-motion-fast), border-color var(--bds-motion-fast), color var(--bds-motion-fast);
 }
-.bds-btn:disabled, .bds-btn[aria-disabled=true] {
+.bds-btn:disabled, .bds-btn[aria-disabled=true], .bds-btn.bds-btn-disabled {
   cursor: not-allowed;
 }
-.bds-btn:focus-visible {
+.bds-btn:focus-visible:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn.bds-btn-focus:not(:disabled, [aria-disabled=true]) {
   outline: none;
   box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 3px var(--bds-effect-focus-halo);
 }
@@ -799,13 +799,13 @@ table {
   background-color: var(--bds-btn-primary-bg);
   color: var(--bds-btn-primary-fg);
 }
-.bds-btn-primary:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-primary:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-primary.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-primary-bg-hover);
 }
-.bds-btn-primary:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-primary:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-primary.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-primary-bg-pressed);
 }
-.bds-btn-primary:disabled, .bds-btn-primary[aria-disabled=true] {
+.bds-btn-primary:disabled, .bds-btn-primary[aria-disabled=true], .bds-btn-primary.bds-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -814,13 +814,13 @@ table {
   background-color: var(--bds-btn-secondary-bg);
   color: var(--bds-btn-secondary-fg);
 }
-.bds-btn-secondary:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-secondary:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-secondary.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-secondary-bg-hover);
 }
-.bds-btn-secondary:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-secondary:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-secondary.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-secondary-bg-pressed);
 }
-.bds-btn-secondary:disabled, .bds-btn-secondary[aria-disabled=true] {
+.bds-btn-secondary:disabled, .bds-btn-secondary[aria-disabled=true], .bds-btn-secondary.bds-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -829,13 +829,13 @@ table {
   background-color: var(--bds-btn-tertiary-bg);
   color: var(--bds-btn-tertiary-fg);
 }
-.bds-btn-tertiary:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-tertiary:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-tertiary.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-tertiary-bg-hover);
 }
-.bds-btn-tertiary:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-tertiary:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-tertiary.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-tertiary-bg-pressed);
 }
-.bds-btn-tertiary:disabled, .bds-btn-tertiary[aria-disabled=true] {
+.bds-btn-tertiary:disabled, .bds-btn-tertiary[aria-disabled=true], .bds-btn-tertiary.bds-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -845,13 +845,13 @@ table {
   color: var(--bds-btn-outline-fg);
   border: var(--bds-border-hairline) solid var(--bds-btn-outline-border);
 }
-.bds-btn-outline:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-outline:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-outline.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-outline-bg-hover);
 }
-.bds-btn-outline:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-outline:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-outline.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-outline-bg-pressed);
 }
-.bds-btn-outline:disabled, .bds-btn-outline[aria-disabled=true] {
+.bds-btn-outline:disabled, .bds-btn-outline[aria-disabled=true], .bds-btn-outline.bds-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
   border-color: var(--bds-btn-disabled-border);
@@ -861,13 +861,13 @@ table {
   background-color: var(--bds-btn-ghost-bg);
   color: var(--bds-btn-ghost-fg);
 }
-.bds-btn-ghost:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-ghost:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-ghost.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-ghost-bg-hover);
 }
-.bds-btn-ghost:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-ghost:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-ghost.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-ghost-bg-pressed);
 }
-.bds-btn-ghost:disabled, .bds-btn-ghost[aria-disabled=true] {
+.bds-btn-ghost:disabled, .bds-btn-ghost[aria-disabled=true], .bds-btn-ghost.bds-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -876,13 +876,13 @@ table {
   background-color: var(--bds-btn-danger-bg);
   color: var(--bds-btn-danger-fg);
 }
-.bds-btn-danger:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-danger:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-danger.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-danger-bg-hover);
 }
-.bds-btn-danger:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-danger:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-danger.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-danger-bg-pressed);
 }
-.bds-btn-danger:disabled, .bds-btn-danger[aria-disabled=true] {
+.bds-btn-danger:disabled, .bds-btn-danger[aria-disabled=true], .bds-btn-danger.bds-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -891,13 +891,13 @@ table {
   background-color: var(--bds-btn-scrim-dark-bg);
   color: var(--bds-btn-scrim-dark-fg);
 }
-.bds-btn-scrim-dark:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-scrim-dark:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-scrim-dark.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-scrim-dark-bg-hover);
 }
-.bds-btn-scrim-dark:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-scrim-dark:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-scrim-dark.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-scrim-dark-bg-pressed);
 }
-.bds-btn-scrim-dark:disabled, .bds-btn-scrim-dark[aria-disabled=true] {
+.bds-btn-scrim-dark:disabled, .bds-btn-scrim-dark[aria-disabled=true], .bds-btn-scrim-dark.bds-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -906,13 +906,13 @@ table {
   background-color: var(--bds-btn-scrim-light-bg);
   color: var(--bds-btn-scrim-light-fg);
 }
-.bds-btn-scrim-light:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-scrim-light:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-scrim-light.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-scrim-light-bg-hover);
 }
-.bds-btn-scrim-light:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-scrim-light:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-scrim-light.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-scrim-light-bg-pressed);
 }
-.bds-btn-scrim-light:disabled, .bds-btn-scrim-light[aria-disabled=true] {
+.bds-btn-scrim-light:disabled, .bds-btn-scrim-light[aria-disabled=true], .bds-btn-scrim-light.bds-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -924,16 +924,13 @@ table {
   color: var(--bds-btn-link-fg);
   text-decoration: underline;
 }
-.bds-btn-link:hover:not(:disabled, [aria-disabled=true]) {
+.bds-btn-link:hover:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-link.bds-btn-hover:not(:disabled, [aria-disabled=true]) {
   color: var(--bds-btn-link-fg-hover);
 }
-.bds-btn-link:active:not(:disabled, [aria-disabled=true]) {
+.bds-btn-link:active:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn-link.bds-btn-pressed:not(:disabled, [aria-disabled=true]) {
   color: var(--bds-btn-link-fg-pressed);
 }
-.bds-btn-link {
-  /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-}
-.bds-btn-link:disabled, .bds-btn-link[aria-disabled=true] {
+.bds-btn-link:disabled, .bds-btn-link[aria-disabled=true], .bds-btn-link.bds-btn-disabled {
   color: var(--bds-btn-link-fg-disabled);
 }
 
@@ -981,10 +978,10 @@ table {
   cursor: pointer;
   transition: background-color var(--bds-motion-fast), border-color var(--bds-motion-fast), color var(--bds-motion-fast);
 }
-.bds-icon-btn:disabled, .bds-icon-btn[aria-disabled=true] {
+.bds-icon-btn:disabled, .bds-icon-btn[aria-disabled=true], .bds-icon-btn.bds-icon-btn-disabled {
   cursor: not-allowed;
 }
-.bds-icon-btn:focus-visible {
+.bds-icon-btn:focus-visible:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn.bds-icon-btn-focus:not(:disabled, [aria-disabled=true]) {
   outline: none;
   box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 3px var(--bds-effect-focus-halo);
 }
@@ -992,16 +989,13 @@ table {
   background-color: var(--bds-btn-ghost-inverse-bg);
   color: var(--bds-btn-ghost-inverse-fg);
 }
-.bds-icon-btn-ghost-inverse:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-ghost-inverse:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-ghost-inverse.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-ghost-inverse-bg-hover);
 }
-.bds-icon-btn-ghost-inverse:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-ghost-inverse:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-ghost-inverse.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-ghost-inverse-bg-pressed);
 }
-.bds-icon-btn-ghost-inverse {
-  /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-}
-.bds-icon-btn-ghost-inverse:disabled, .bds-icon-btn-ghost-inverse[aria-disabled=true] {
+.bds-icon-btn-ghost-inverse:disabled, .bds-icon-btn-ghost-inverse[aria-disabled=true], .bds-icon-btn-ghost-inverse.bds-icon-btn-disabled {
   background-color: transparent;
   color: var(--bds-btn-disabled-fg);
 }
@@ -1009,16 +1003,13 @@ table {
   background-color: var(--bds-btn-ghost-brand-bg);
   color: var(--bds-btn-ghost-brand-fg);
 }
-.bds-icon-btn-ghost-brand:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-ghost-brand:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-ghost-brand.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-ghost-brand-bg-hover);
 }
-.bds-icon-btn-ghost-brand:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-ghost-brand:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-ghost-brand.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-ghost-brand-bg-pressed);
 }
-.bds-icon-btn-ghost-brand {
-  /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-}
-.bds-icon-btn-ghost-brand:disabled, .bds-icon-btn-ghost-brand[aria-disabled=true] {
+.bds-icon-btn-ghost-brand:disabled, .bds-icon-btn-ghost-brand[aria-disabled=true], .bds-icon-btn-ghost-brand.bds-icon-btn-disabled {
   background-color: transparent;
   color: var(--bds-btn-ghost-brand-fg-disabled);
 }
@@ -1063,13 +1054,13 @@ table {
   background-color: var(--bds-btn-primary-bg);
   color: var(--bds-btn-primary-fg);
 }
-.bds-icon-btn-primary:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-primary:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-primary.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-primary-bg-hover);
 }
-.bds-icon-btn-primary:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-primary:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-primary.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-primary-bg-pressed);
 }
-.bds-icon-btn-primary:disabled, .bds-icon-btn-primary[aria-disabled=true] {
+.bds-icon-btn-primary:disabled, .bds-icon-btn-primary[aria-disabled=true], .bds-icon-btn-primary.bds-icon-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -1078,13 +1069,13 @@ table {
   background-color: var(--bds-btn-secondary-bg);
   color: var(--bds-btn-secondary-fg);
 }
-.bds-icon-btn-secondary:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-secondary:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-secondary.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-secondary-bg-hover);
 }
-.bds-icon-btn-secondary:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-secondary:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-secondary.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-secondary-bg-pressed);
 }
-.bds-icon-btn-secondary:disabled, .bds-icon-btn-secondary[aria-disabled=true] {
+.bds-icon-btn-secondary:disabled, .bds-icon-btn-secondary[aria-disabled=true], .bds-icon-btn-secondary.bds-icon-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -1093,13 +1084,13 @@ table {
   background-color: var(--bds-btn-tertiary-bg);
   color: var(--bds-btn-tertiary-fg);
 }
-.bds-icon-btn-tertiary:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-tertiary:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-tertiary.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-tertiary-bg-hover);
 }
-.bds-icon-btn-tertiary:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-tertiary:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-tertiary.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-tertiary-bg-pressed);
 }
-.bds-icon-btn-tertiary:disabled, .bds-icon-btn-tertiary[aria-disabled=true] {
+.bds-icon-btn-tertiary:disabled, .bds-icon-btn-tertiary[aria-disabled=true], .bds-icon-btn-tertiary.bds-icon-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -1109,13 +1100,13 @@ table {
   color: var(--bds-btn-outline-fg);
   border: var(--bds-border-hairline) solid var(--bds-btn-outline-border);
 }
-.bds-icon-btn-outline:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-outline:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-outline.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-outline-bg-hover);
 }
-.bds-icon-btn-outline:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-outline:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-outline.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-outline-bg-pressed);
 }
-.bds-icon-btn-outline:disabled, .bds-icon-btn-outline[aria-disabled=true] {
+.bds-icon-btn-outline:disabled, .bds-icon-btn-outline[aria-disabled=true], .bds-icon-btn-outline.bds-icon-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
   border-color: var(--bds-btn-disabled-border);
@@ -1125,13 +1116,13 @@ table {
   background-color: var(--bds-btn-ghost-bg);
   color: var(--bds-btn-ghost-fg);
 }
-.bds-icon-btn-ghost:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-ghost:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-ghost.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-ghost-bg-hover);
 }
-.bds-icon-btn-ghost:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-ghost:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-ghost.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-ghost-bg-pressed);
 }
-.bds-icon-btn-ghost:disabled, .bds-icon-btn-ghost[aria-disabled=true] {
+.bds-icon-btn-ghost:disabled, .bds-icon-btn-ghost[aria-disabled=true], .bds-icon-btn-ghost.bds-icon-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -1140,13 +1131,13 @@ table {
   background-color: var(--bds-btn-danger-bg);
   color: var(--bds-btn-danger-fg);
 }
-.bds-icon-btn-danger:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-danger:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-danger.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-danger-bg-hover);
 }
-.bds-icon-btn-danger:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-danger:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-danger.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-danger-bg-pressed);
 }
-.bds-icon-btn-danger:disabled, .bds-icon-btn-danger[aria-disabled=true] {
+.bds-icon-btn-danger:disabled, .bds-icon-btn-danger[aria-disabled=true], .bds-icon-btn-danger.bds-icon-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -1155,13 +1146,13 @@ table {
   background-color: var(--bds-btn-scrim-dark-bg);
   color: var(--bds-btn-scrim-dark-fg);
 }
-.bds-icon-btn-scrim-dark:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-scrim-dark:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-scrim-dark.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-scrim-dark-bg-hover);
 }
-.bds-icon-btn-scrim-dark:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-scrim-dark:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-scrim-dark.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-scrim-dark-bg-pressed);
 }
-.bds-icon-btn-scrim-dark:disabled, .bds-icon-btn-scrim-dark[aria-disabled=true] {
+.bds-icon-btn-scrim-dark:disabled, .bds-icon-btn-scrim-dark[aria-disabled=true], .bds-icon-btn-scrim-dark.bds-icon-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -1170,13 +1161,13 @@ table {
   background-color: var(--bds-btn-scrim-light-bg);
   color: var(--bds-btn-scrim-light-fg);
 }
-.bds-icon-btn-scrim-light:hover:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-scrim-light:hover:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-scrim-light.bds-icon-btn-hover:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-scrim-light-bg-hover);
 }
-.bds-icon-btn-scrim-light:active:not(:disabled, [aria-disabled=true]) {
+.bds-icon-btn-scrim-light:active:not(:disabled, [aria-disabled=true], .bds-icon-btn-disabled), .bds-icon-btn-scrim-light.bds-icon-btn-pressed:not(:disabled, [aria-disabled=true]) {
   background-color: var(--bds-btn-scrim-light-bg-pressed);
 }
-.bds-icon-btn-scrim-light:disabled, .bds-icon-btn-scrim-light[aria-disabled=true] {
+.bds-icon-btn-scrim-light:disabled, .bds-icon-btn-scrim-light[aria-disabled=true], .bds-icon-btn-scrim-light.bds-icon-btn-disabled {
   background-color: var(--bds-btn-disabled-bg);
   color: var(--bds-btn-disabled-fg);
 }
@@ -1204,13 +1195,13 @@ table {
   transition: background-color var(--bds-motion-fast);
   pointer-events: none;
 }
-.bds-social-btn:hover:not(:disabled, [aria-disabled=true])::after {
+.bds-social-btn:hover:not(:disabled, [aria-disabled=true], .bds-social-btn-disabled)::after, .bds-social-btn.bds-social-btn-hover:not(:disabled, [aria-disabled=true])::after {
   background-color: rgba(0, 0, 0, 0.08);
 }
-.bds-social-btn:active:not(:disabled, [aria-disabled=true])::after {
+.bds-social-btn:active:not(:disabled, [aria-disabled=true], .bds-social-btn-disabled)::after, .bds-social-btn.bds-social-btn-pressed:not(:disabled, [aria-disabled=true])::after {
   background-color: rgba(0, 0, 0, 0.16);
 }
-.bds-social-btn:focus-visible {
+.bds-social-btn:focus-visible:not(:disabled, [aria-disabled=true], .bds-social-btn-disabled), .bds-social-btn.bds-social-btn-focus:not(:disabled, [aria-disabled=true]) {
   outline: none;
   box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 3px var(--bds-effect-focus-halo);
 }
@@ -1350,7 +1341,8 @@ table {
 }
 
 .bds-social-btn:disabled,
-.bds-social-btn[aria-disabled=true] {
+.bds-social-btn[aria-disabled=true],
+.bds-social-btn.bds-social-btn-disabled {
   cursor: not-allowed;
   background-color: var(--bds-btn-disabled-bg);
   border: 1px solid var(--bds-btn-disabled-border);
@@ -1358,7 +1350,8 @@ table {
 }
 
 .bds-social-btn:disabled .bds-social-btn__logo,
-.bds-social-btn[aria-disabled=true] .bds-social-btn__logo {
+.bds-social-btn[aria-disabled=true] .bds-social-btn__logo,
+.bds-social-btn.bds-social-btn-disabled .bds-social-btn__logo {
   opacity: 0.4;
 }
 

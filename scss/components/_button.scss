@@ -131,12 +131,11 @@ $button-group-divider: var(--bds-button-group-divider);
   cursor: pointer;
   transition: background-color $motion-fast, border-color $motion-fast, color $motion-fast;
 
-  &:disabled,
-  &[aria-disabled='true'] {
+  @include mix.state(disabled) {
     cursor: not-allowed;
   }
 
-  &:focus-visible {
+  @include mix.state(focus) {
     outline: none;
 
     @include mix.focus-ring;
@@ -168,16 +167,15 @@ $button-group-divider: var(--bds-button-group-divider);
       border: $border-hairline solid map.get($colors, border);
     }
 
-    &:hover:not(:disabled, [aria-disabled='true']) {
+    @include mix.state(hover) {
       background-color: map.get($colors, bg-hover);
     }
 
-    &:active:not(:disabled, [aria-disabled='true']) {
+    @include mix.state(pressed) {
       background-color: map.get($colors, bg-pressed);
     }
 
-    &:disabled,
-    &[aria-disabled='true'] {
+    @include mix.state(disabled) {
       background-color: $btn-disabled-bg;
       color: $btn-disabled-fg;
 
@@ -196,17 +194,15 @@ $button-group-divider: var(--bds-button-group-divider);
   color: $btn-link-fg;
   text-decoration: underline;
 
-  &:hover:not(:disabled, [aria-disabled='true']) {
+  @include mix.state(hover) {
     color: $btn-link-fg-hover;
   }
 
-  &:active:not(:disabled, [aria-disabled='true']) {
+  @include mix.state(pressed) {
     color: $btn-link-fg-pressed;
   }
 
-  /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-  &:disabled,
-  &[aria-disabled='true'] {
+  @include mix.state(disabled) {
     color: $btn-link-fg-disabled;
   }
 }
