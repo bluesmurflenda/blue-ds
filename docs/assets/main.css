@@ -2496,7 +2496,7 @@ table {
 .bds-choice__input {
   /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
 }
-.bds-choice__input:focus-visible + .bds-choice__box, .bds-choice__input:active:not(:disabled) + .bds-choice__box {
+.bds-choice__input:focus-visible + .bds-choice__box {
   border-color: var(--bds-choice-box-border-focus);
   box-shadow: 0 0 0 2px var(--bds-effect-focus-halo);
 }
@@ -2542,8 +2542,7 @@ table {
 .bds-choice--valid .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
   border-color: var(--bds-choice-box-border-valid-hover);
 }
-.bds-choice--valid .bds-choice__input:focus-visible + .bds-choice__box,
-.bds-choice--valid .bds-choice__input:active:not(:disabled) + .bds-choice__box {
+.bds-choice--valid .bds-choice__input:focus-visible + .bds-choice__box {
   border-color: var(--bds-choice-box-border-valid);
   box-shadow: 0 0 0 2px var(--bds-effect-focus-halo-valid);
 }
@@ -2556,8 +2555,7 @@ table {
 .bds-choice--invalid .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
   border-color: var(--bds-choice-box-border-invalid-hover);
 }
-.bds-choice--invalid .bds-choice__input:focus-visible + .bds-choice__box,
-.bds-choice--invalid .bds-choice__input:active:not(:disabled) + .bds-choice__box {
+.bds-choice--invalid .bds-choice__input:focus-visible + .bds-choice__box {
   border-color: var(--bds-choice-box-border-invalid);
   box-shadow: 0 0 0 2px var(--bds-effect-focus-halo-invalid);
 }
@@ -2608,9 +2606,6 @@ table {
 }
 .bds-toggle__input:hover:not(:disabled) + .bds-toggle__track {
   background-color: var(--bds-toggle-track-bg-off-hover);
-}
-.bds-toggle__input {
-  /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
 }
 .bds-toggle__input:focus-visible + .bds-toggle__track {
   box-shadow: 0 0 0 2px var(--bds-effect-focus-ring), 0 0 0 3px var(--bds-effect-focus-halo);
