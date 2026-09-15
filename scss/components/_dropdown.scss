@@ -79,10 +79,13 @@ $list-item-fg-selected: var(--bds-list-item-fg-selected);
       border-color: var(--bds-field-border-hover);
     }
 
+    // 드롭다운 트리거는 폼 요소다 — Select 와 같은 물건이고 테두리 색이 이미 바뀐다.
+    // 테두리가 신호를 지므로 안쪽 선을 얹지 않는다(ADR-038). 버튼 갈래를 부르면 파란 테두리
+    // 안쪽에 글자색 선이 하나 더 그어져 두 방식이 겹친다.
     &[aria-expanded='true'] {
       border-color: var(--bds-field-border-focus);
 
-      @include mix.focus-ring;
+      @include mix.focus-ring($soft: true);
     }
 
     // &[aria-expanded='true'] 안에 .bds-dropdown__chevron을 한 번 더 중첩하면 4단이 되므로

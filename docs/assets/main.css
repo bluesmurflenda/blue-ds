@@ -3432,7 +3432,7 @@ table {
 }
 .bds-dropdown__trigger[aria-expanded=true] {
   border-color: var(--bds-field-border-focus);
-  box-shadow: inset 0 0 0 1px currentcolor, 0 0 0 2px var(--bds-effect-focus-halo);
+  box-shadow: 0 0 0 2px var(--bds-effect-focus-halo);
 }
 .bds-dropdown__trigger[aria-expanded=true] .bds-dropdown__chevron {
   transform: rotate(180deg);
