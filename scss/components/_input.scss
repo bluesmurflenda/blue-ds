@@ -30,8 +30,6 @@
   --bds-field-border-valid-hover: var(--bds-green-700);
   --bds-field-fg-placeholder-disabled: var(--bds-neutral-300);
   --bds-field-hint-fg-invalid: var(--bds-text-danger);
-  --bds-field-ring-invalid: var(--bds-red-200);
-  --bds-field-ring-valid: var(--bds-green-200);
 }
 
 [data-theme='dark'] {
@@ -45,8 +43,6 @@
   --bds-field-border-valid-disabled: var(--bds-green-700);
   --bds-field-border-valid-hover: var(--bds-green-300);
   --bds-field-fg-placeholder-disabled: var(--bds-neutral-600);
-  --bds-field-ring-invalid: var(--bds-red-700);
-  --bds-field-ring-valid: var(--bds-green-700);
 }
 
 // 2026-08-29: $type-scale 키로 전환(값은 동일, size/lh 중복 제거).

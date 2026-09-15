@@ -34,8 +34,6 @@
   --bds-choice-box-border-invalid-hover: var(--bds-red-600);
   --bds-choice-box-border-valid: var(--bds-green-600);
   --bds-choice-box-border-valid-hover: var(--bds-green-700);
-  --bds-choice-box-ring-invalid: var(--bds-red-200);
-  --bds-choice-box-ring-valid: var(--bds-green-200);
 }
 
 [data-theme='dark'] {
@@ -48,8 +46,6 @@
   --bds-choice-box-border-invalid-hover: var(--bds-red-400);
   --bds-choice-box-border-valid: var(--bds-green-400);
   --bds-choice-box-border-valid-hover: var(--bds-green-300);
-  --bds-choice-box-ring-invalid: var(--bds-red-700);
-  --bds-choice-box-ring-valid: var(--bds-green-700);
 }
 
 $choice-size: 20px;

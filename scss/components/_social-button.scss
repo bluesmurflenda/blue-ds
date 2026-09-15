@@ -1,14 +1,17 @@
 // Figma DS Master > Social Button (node 422:6313), 2026-08-27 실측 · 2026-09-15 사이즈·disabled 추가
 // 신규 컴포넌트(기존 CHH2 코드 없음). Social 4종(naver/kakao/apple/google) × Theme 2(brand/outline)
-// × Type 2(icon/label) × Size 4(sm~xl) × State(default/hover/focus/disabled).
-// hover는 배경색이 바뀌는 게 아니라 검정 8% 오버레이가 얹히는 방식(실측 확인) — 모든 소셜·테마 공통.
+// × Type 2(icon/label) × Size 4(sm~xl) × State(default/hover/pressed/focus/disabled).
+// hover·pressed는 배경색이 바뀌는 게 아니라 검정 덮개(8%/16%)가 얹히는 방식 — 모든 소셜·테마 공통.
 
 @use '../tokens/primitive' as *;
 @use '../abstracts/mixins' as mix;
 @use 'button' as btn;
 @use 'sass:map';
 
-$social-hover-overlay: rgb(0 0 0 / 8%);
+// hover·pressed 둘 다 배경색을 바꾸는 게 아니라 검정 덮개를 얹는다(실측) — 세기만 두 배다.
+// 이름에 hover 를 남겨 두면 pressed 가 hover 변수를 쓰는 꼴이 되어 다음에 읽는 사람이 헷갈린다.
+$social-overlay-hover: rgb(0 0 0 / 8%);
+$social-overlay-pressed: rgb(0 0 0 / 16%);
 
 // 2026-09-15 실측. logo 는 label 형, icon-logo 는 정사각 icon 형에서의 로고 크기다 — 둘이 다르다.
 // lg 의 좌우 여백이 20(space/5) → btn/padding-x/lg(24)로 바뀌었다. 코드가 갖고 있던 값이 낡은 것이었다.
@@ -40,8 +43,9 @@ $social-brand-colors: (
 
   @include mix.text(map.get($social-default-size, type), semibold);
 
+  white-space: nowrap; // .bds-btn 에는 있고 여기만 빠져 있었다 — 「네이버 로그인」이 두 줄로 끊겼다
   cursor: pointer;
-  overflow: hidden; // hover 오버레이가 radius 밖으로 안 나가도록
+  overflow: hidden; // 덮개가 radius 밖으로 안 나가도록
 
   &::after {
     content: '';
@@ -53,7 +57,12 @@ $social-brand-colors: (
   }
 
   &:hover:not(:disabled, [aria-disabled='true'])::after {
-    background-color: $social-hover-overlay;
+    background-color: $social-overlay-hover;
+  }
+
+  // :hover 와 특정도가 같아 순서로만 갈린다 — 눌렀을 때 진한 쪽이 이기려면 반드시 뒤에 와야 한다.
+  &:active:not(:disabled, [aria-disabled='true'])::after {
+    background-color: $social-overlay-pressed;
   }
 
   &:focus-visible {
