@@ -131,11 +131,38 @@ $choice-description-fg: var(--bds-choice-description-fg);
       inset: 44.25% 25% 43.75%;
       background-color: var(--bds-choice-box-fg-selected);
     }
+
+    // 라디오의 :indeterminate 는 「그룹에 선택된 것이 없음」이다 — 체크박스의 중간 상태가 아니다.
+    // 두 개를 한 선택자에 묶으면 아직 안 고른 라디오가 전부 선택된 모양이 된다. 그래서 여기서만 낸다.
+    .bds-choice__input:indeterminate + .bds-choice__box {
+      border-color: transparent;
+      background-color: map.get(map.get($choice-colors, normal), selected-bg);
+    }
+
+    .bds-choice__input:indeterminate:hover:not(:disabled) + .bds-choice__box {
+      background-color: map.get(map.get($choice-colors, normal), selected-bg-hover);
+    }
+
+    // hover 는 두 컨트롤이 갈린다 — 체크박스만 :indeterminate 를 빼야 중간 상태가 hover 로 덮이지 않는다.
+    /* stylelint-disable-next-line no-descending-specificity -- 위 :indeterminate 규칙과 :not() 으로 서로 배타적이라 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
+    .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
+      background-color: $choice-bg-hover;
+      border-color: map.get(map.get($choice-colors, normal), border-hover);
+    }
   }
 
   &-radio {
+    /* stylelint-disable-next-line no-descending-specificity -- 앞의 체크박스 규칙과 변형 클래스가 동시에 안 붙어 배타적이라 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
     .bds-choice__box {
       border-radius: $radius-full;
+    }
+
+    // :indeterminate 를 빼지 않는다 — 라디오에서 그것은 「아직 아무것도 안 고름」이라
+    // 오히려 hover 가 나와야 하는 상태다. 이 가드에 넣었더니 hover 표현이 통째로 죽어 있었다.
+    /* stylelint-disable-next-line no-descending-specificity -- 앞의 체크박스 규칙과 변형 클래스가 동시에 안 붙어 배타적이라 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
+    .bds-choice__input:hover:not(:disabled, :checked) + .bds-choice__box {
+      background-color: $choice-bg-hover;
+      border-color: map.get(map.get($choice-colors, normal), border-hover);
     }
 
     .bds-choice__input:checked + .bds-choice__box::after {
@@ -162,13 +189,9 @@ $choice-description-fg: var(--bds-choice-description-fg);
     white-space: nowrap;
     border: 0;
 
-    // selected·indeterminate 는 hover 여도 테두리가 없다(2026-09-14 Figma 실측: State=hover 의
-    // Type=selected·indeterminate 변형에 stroke 자체가 없고 배경만 bg-selected 다). 여기서 빼지 않으면
-    // 이 규칙이 아래 :checked 의 transparent 보다 특정도가 높아 선택된 칸에 회색 테두리가 돌아온다.
-    &:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
-      background-color: $choice-bg-hover;
-      border-color: map.get(map.get($choice-colors, normal), border-hover);
-    }
+    // hover 는 .bds-choice-checkbox · .bds-choice-radio 블록에서 따로 낸다.
+    // selected 는 hover 여도 테두리가 없어(2026-09-14 실측: State=hover 의 Type=selected 변형에
+    // stroke 가 없다) 양쪽 다 :checked 를 빼지만, :indeterminate 는 체크박스에서만 뺀다.
 
     // 링은 초점에만 둔다 — 2026-09-15 실측: pressed 변형에는 이펙트가 0건이고 테두리만 hover 와
     // 같은 값으로 바뀐다(그 테두리는 위 :hover 규칙이 이미 준다). 누르는 중인 것과 초점이 있는 것은
@@ -182,15 +205,14 @@ $choice-description-fg: var(--bds-choice-description-fg);
     }
 
     /* stylelint-disable no-descending-specificity -- disabled 는 :not() 으로 이미 빠져 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-    &:checked + .bds-choice__box,
-    &:indeterminate + .bds-choice__box {
+    &:checked + .bds-choice__box {
       border-color: transparent;
       background-color: map.get(map.get($choice-colors, normal), selected-bg);
     }
     /* stylelint-enable no-descending-specificity */
 
-    &:checked:hover:not(:disabled) + .bds-choice__box,
-    &:indeterminate:hover:not(:disabled) + .bds-choice__box {
+    /* stylelint-disable-next-line no-descending-specificity -- :checked 와 :indeterminate 는 한 요소에 동시에 서지 않아 배타적이라 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
+    &:checked:hover:not(:disabled) + .bds-choice__box {
       background-color: map.get(map.get($choice-colors, normal), selected-bg-hover);
     }
 
@@ -230,9 +252,10 @@ $choice-description-fg: var(--bds-choice-description-fg);
       }
 
       // .bds-choice__input 내부에 상태를 한 번 더 중첩하면 4단이 되므로(.bds-choice > &--bds-valid > .bds-choice__input > &:hover)
-      // 복합 선택자로 펼쳐 3단을 유지한다. 컴파일 결과는 기존과 동일하다.
-      // selected·indeterminate 를 빼는 이유는 normal 쪽과 같다 — 검증 상태여도 선택되면 테두리가 없다.
-      .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
+      // 복합 선택자로 펼쳐 3단을 유지한다.
+      // 여기서도 두 컨트롤이 갈린다 — 라디오의 :indeterminate 는 hover 가 나와야 하는 상태다.
+      &.bds-choice-checkbox .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box,
+      &.bds-choice-radio .bds-choice__input:hover:not(:disabled, :checked) + .bds-choice__box {
         border-color: map.get($c, border-hover);
       }
 

@@ -56,7 +56,7 @@
     ['invalid', ' bds-choice--invalid'],
   ];
 
-  function choiceCell(type, validationCls, labelText, state) {
+  function choiceCell(type, validationCls, labelText, state, name) {
     var cls = 'bds-choice bds-choice-' + type + validationCls;
     var attrs = '';
     var stateLabel = state;
@@ -66,7 +66,7 @@
     return (
       '<span class="doc-label">' + stateLabel + '</span>' +
       '<label class="' + cls + '">' +
-      '<input class="bds-choice__input" type="' + inputType + '"' + attrs + '>' +
+      '<input class="bds-choice__input" type="' + inputType + '"' + (name ? ' name="' + name + '"' : '') + attrs + '>' +
       '<span class="bds-choice__box"></span>' +
       '<span class="bds-choice__text"><span class="bds-choice__label">' + labelText + '</span></span>' +
       '</label>' +
@@ -113,7 +113,7 @@
       STATES.forEach(function (state) {
         var cell = document.createElement('div');
         cell.className = 'doc-cell';
-        cell.innerHTML = choiceCell('radio', v[1], '옵션 선택', state);
+        cell.innerHTML = choiceCell('radio', v[1], '옵션 선택', state, 'doc-radio-' + v[0]);
         el.appendChild(cell);
       });
     });
@@ -161,7 +161,7 @@
   })();
 
   // indeterminate는 HTML 속성이 없으므로 렌더 후 DOM 프로퍼티로 설정한다.
-  document.querySelectorAll('.choice__input[data-indeterminate]').forEach(function (el) {
+  document.querySelectorAll('.bds-choice__input[data-indeterminate]').forEach(function (el) {
     el.indeterminate = true;
   });
 </script>

@@ -2476,8 +2476,32 @@ table {
   inset: 44.25% 25% 43.75%;
   background-color: var(--bds-choice-box-fg-selected);
 }
+.bds-choice-checkbox .bds-choice__input:indeterminate + .bds-choice__box {
+  border-color: transparent;
+  background-color: var(--bds-choice-box-bg-selected);
+}
+.bds-choice-checkbox .bds-choice__input:indeterminate:hover:not(:disabled) + .bds-choice__box {
+  background-color: var(--bds-choice-box-bg-selected);
+}
+.bds-choice-checkbox {
+  /* stylelint-disable-next-line no-descending-specificity -- 위 :indeterminate 규칙과 :not() 으로 서로 배타적이라 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
+}
+.bds-choice-checkbox .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
+  background-color: var(--bds-choice-box-bg-hover);
+  border-color: var(--bds-choice-box-border-hover);
+}
+.bds-choice-radio {
+  /* stylelint-disable-next-line no-descending-specificity -- 앞의 체크박스 규칙과 변형 클래스가 동시에 안 붙어 배타적이라 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
+}
 .bds-choice-radio .bds-choice__box {
   border-radius: var(--bds-radius-full);
+}
+.bds-choice-radio {
+  /* stylelint-disable-next-line no-descending-specificity -- 앞의 체크박스 규칙과 변형 클래스가 동시에 안 붙어 배타적이라 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
+}
+.bds-choice-radio .bds-choice__input:hover:not(:disabled, :checked) + .bds-choice__box {
+  background-color: var(--bds-choice-box-bg-hover);
+  border-color: var(--bds-choice-box-border-hover);
 }
 .bds-choice-radio .bds-choice__input:checked + .bds-choice__box::after {
   content: "";
@@ -2500,12 +2524,6 @@ table {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-.bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
-  background-color: var(--bds-choice-box-bg-hover);
-  border-color: var(--bds-choice-box-border-hover);
-}
-.bds-choice__input {
   /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
 }
 .bds-choice__input:focus + .bds-choice__box {
@@ -2515,14 +2533,15 @@ table {
 .bds-choice__input {
   /* stylelint-disable no-descending-specificity -- disabled 는 :not() 으로 이미 빠져 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
 }
-.bds-choice__input:checked + .bds-choice__box, .bds-choice__input:indeterminate + .bds-choice__box {
+.bds-choice__input:checked + .bds-choice__box {
   border-color: transparent;
   background-color: var(--bds-choice-box-bg-selected);
 }
 .bds-choice__input {
   /* stylelint-enable no-descending-specificity */
+  /* stylelint-disable-next-line no-descending-specificity -- :checked 와 :indeterminate 는 한 요소에 동시에 서지 않아 배타적이라 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
 }
-.bds-choice__input:checked:hover:not(:disabled) + .bds-choice__box, .bds-choice__input:indeterminate:hover:not(:disabled) + .bds-choice__box {
+.bds-choice__input:checked:hover:not(:disabled) + .bds-choice__box {
   background-color: var(--bds-choice-box-bg-selected);
 }
 .bds-choice__input {
@@ -2551,7 +2570,7 @@ table {
 .bds-choice--valid .bds-choice__box {
   border-color: var(--bds-choice-box-border-valid);
 }
-.bds-choice--valid .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
+.bds-choice--valid.bds-choice-checkbox .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box, .bds-choice--valid.bds-choice-radio .bds-choice__input:hover:not(:disabled, :checked) + .bds-choice__box {
   border-color: var(--bds-choice-box-border-valid-hover);
 }
 .bds-choice--valid .bds-choice__input:focus + .bds-choice__box {
@@ -2564,7 +2583,7 @@ table {
 .bds-choice--invalid .bds-choice__box {
   border-color: var(--bds-choice-box-border-invalid);
 }
-.bds-choice--invalid .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box {
+.bds-choice--invalid.bds-choice-checkbox .bds-choice__input:hover:not(:disabled, :checked, :indeterminate) + .bds-choice__box, .bds-choice--invalid.bds-choice-radio .bds-choice__input:hover:not(:disabled, :checked) + .bds-choice__box {
   border-color: var(--bds-choice-box-border-invalid-hover);
 }
 .bds-choice--invalid .bds-choice__input:focus + .bds-choice__box {
