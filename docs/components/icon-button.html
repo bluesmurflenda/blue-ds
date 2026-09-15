@@ -15,12 +15,12 @@
   <div class="doc-breadcrumb"><a href="../index.html">기본 컴포넌트</a> / Icon Button</div>
   <div class="doc-page-header">
     <h1>Icon Button</h1>
-    <p>변형은 button과 공유하는 것(primary/secondary/tertiary/outline/ghost/danger/scrim-dark/scrim-light)과 아이콘버튼 전용(ghost-inverse/ghost-brand/ghost-white)으로 나뉩니다. hover·pressed·focus는 정적 페이지로 재현할 수 없는 상호작용 상태라 제외하고, 실제 클래스로 켤 수 있는 default/disabled만 나열합니다.</p>
+    <p>변형은 button과 공유하는 것(primary/secondary/tertiary/outline/ghost/danger/scrim-dark/scrim-light)과 아이콘버튼 전용(ghost-inverse/ghost-brand)으로 나뉩니다. hover·pressed·focus는 정적 페이지로 재현할 수 없는 상호작용 상태라 제외하고, 실제 클래스로 켤 수 있는 default/disabled만 나열합니다.</p>
   </div>
 
   <section class="doc-section">
     <h2>Variant × Size (default)</h2>
-    <p class="doc-desc">scrim-dark·ghost-inverse·ghost-white은 어두운 배경 위에서, scrim-light은 밝은 배경 위에서만 아이콘이 보여 각각 배경을 얹었습니다.</p>
+    <p class="doc-desc">scrim-dark·ghost-inverse는 어두운 배경 위에서, scrim-light은 밝은 배경 위에서만 아이콘이 보여 각각 배경을 얹었습니다.</p>
     <div class="doc-scroll-x">
       <table class="doc-table">
         <thead>
@@ -41,9 +41,9 @@
 <script>window.DOCS_BASE = '../';</script>
 <script src="../assets/nav.js"></script>
 <script>
-  var VARIANTS = ['primary', 'secondary', 'tertiary', 'outline', 'ghost', 'danger', 'scrim-dark', 'scrim-light', 'ghost-inverse', 'ghost-brand', 'ghost-white'];
+  var VARIANTS = ['primary', 'secondary', 'tertiary', 'outline', 'ghost', 'danger', 'scrim-dark', 'scrim-light', 'ghost-inverse', 'ghost-brand'];
   var SIZES = ['sm', 'md', 'lg', 'xl'];
-  var DARK_WRAP_VARIANTS = ['scrim-dark', 'ghost-inverse', 'ghost-white'];
+  var DARK_WRAP_VARIANTS = ['scrim-dark', 'ghost-inverse'];
   var LIGHT_WRAP_VARIANTS = ['scrim-light'];
 
   function darkWrap(html) { return '<div style="background:#111;padding:8px;border-radius:8px;display:inline-block;">' + html + '</div>'; }

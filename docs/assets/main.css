@@ -455,7 +455,7 @@
   --bds-calendar-min-width: 280px;
   --bds-calendar-radius: var(--bds-radius-lg);
   --bds-card-radius: var(--bds-radius-lg);
-  --bds-con-radius: var(--bds-radius-sm);
+  --bds-con-radius: var(--bds-radius-full);
   --bds-field-radius: var(--bds-radius-sm);
   --bds-modal-width-lg: 800px;
   --bds-modal-width-md: 500px;
@@ -497,7 +497,6 @@
   --bds-btn-radius: var(--bds-radius-full);
   --bds-calendar-radius: var(--bds-radius-2xl);
   --bds-card-radius: var(--bds-radius-2xl);
-  --bds-con-radius: var(--bds-radius-full);
   --bds-field-radius: var(--bds-radius-full);
   --bds-pagination-radius: var(--bds-radius-full);
   --bds-pagination-wrap-radius: var(--bds-radius-full);
@@ -965,13 +964,6 @@ table {
   --bds-btn-ghost-brand-bg-pressed: var(--bds-brand-100);
   --bds-btn-ghost-brand-fg: var(--bds-text-brand);
   --bds-btn-ghost-brand-fg-disabled: var(--bds-text-disabled);
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-white-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-white-bg-hover: #ffffff1a; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-white-bg-pressed: #ffffff29; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  --bds-btn-ghost-white-fg: var(--bds-white);
 }
 
 .bds-icon-btn {
@@ -1023,23 +1015,6 @@ table {
 .bds-icon-btn-ghost-brand:disabled, .bds-icon-btn-ghost-brand[aria-disabled=true] {
   background-color: transparent;
   color: var(--bds-btn-ghost-brand-fg-disabled);
-}
-.bds-icon-btn-ghost-white {
-  background-color: var(--bds-btn-ghost-white-bg);
-  color: var(--bds-btn-ghost-white-fg);
-}
-.bds-icon-btn-ghost-white:hover:not(:disabled, [aria-disabled=true]) {
-  background-color: var(--bds-btn-ghost-white-bg-hover);
-}
-.bds-icon-btn-ghost-white:active:not(:disabled, [aria-disabled=true]) {
-  background-color: var(--bds-btn-ghost-white-bg-pressed);
-}
-.bds-icon-btn-ghost-white {
-  /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-}
-.bds-icon-btn-ghost-white:disabled, .bds-icon-btn-ghost-white[aria-disabled=true] {
-  background-color: transparent;
-  color: var(--bds-btn-disabled-fg);
 }
 
 .bds-icon-btn-sm {
@@ -1208,9 +1183,9 @@ table {
   height: 48px;
   gap: var(--bds-space-2);
   border-radius: var(--bds-btn-radius);
+  font-size: var(--bds-type-body-lg-size);
+  line-height: var(--bds-type-body-lg-leading);
   font-weight: var(--bds-font-weight-semibold);
-  font-size: var(--bds-font-size-body-lg);
-  line-height: var(--bds-font-leading-body-lg);
   cursor: pointer;
   overflow: hidden;
 }
@@ -1225,16 +1200,12 @@ table {
 .bds-social-btn:hover:not(:disabled, [aria-disabled=true])::after {
   background-color: rgba(0, 0, 0, 0.08);
 }
-.bds-social-btn:disabled, .bds-social-btn[aria-disabled=true] {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
 .bds-social-btn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--bds-effect-focus-ring);
 }
 .bds-social-btn-label {
-  padding-inline: var(--bds-space-5);
+  padding-inline: var(--bds-btn-padding-x-lg);
 }
 .bds-social-btn-icon {
   width: 48px;
@@ -1246,7 +1217,95 @@ table {
   flex-shrink: 0;
 }
 
-.bds-social-btn-icon.bds-social-btn-google .bds-social-btn__logo {
+.bds-social-btn-icon .bds-social-btn__logo {
+  width: 24px;
+  height: 24px;
+}
+
+.bds-social-btn-sm {
+  height: 32px;
+  gap: var(--bds-space-1);
+  font-size: var(--bds-font-size-body-sm);
+  line-height: var(--bds-font-leading-body-sm);
+  font-weight: var(--bds-font-weight-semibold);
+}
+.bds-social-btn-sm.bds-social-btn-label {
+  padding-inline: var(--bds-btn-padding-x-sm);
+}
+.bds-social-btn-sm.bds-social-btn-icon {
+  width: 32px;
+}
+.bds-social-btn-sm .bds-social-btn__logo {
+  width: 16px;
+  height: 16px;
+}
+.bds-social-btn-sm.bds-social-btn-icon .bds-social-btn__logo {
+  width: 18px;
+  height: 18px;
+}
+
+.bds-social-btn-md {
+  height: 40px;
+  gap: var(--bds-space-2);
+  font-size: var(--bds-font-size-body-md);
+  line-height: var(--bds-font-leading-body-md);
+  font-weight: var(--bds-font-weight-semibold);
+}
+.bds-social-btn-md.bds-social-btn-label {
+  padding-inline: var(--bds-btn-padding-x-md);
+}
+.bds-social-btn-md.bds-social-btn-icon {
+  width: 40px;
+}
+.bds-social-btn-md .bds-social-btn__logo {
+  width: 16px;
+  height: 16px;
+}
+.bds-social-btn-md.bds-social-btn-icon .bds-social-btn__logo {
+  width: 20px;
+  height: 20px;
+}
+
+.bds-social-btn-lg {
+  height: 48px;
+  gap: var(--bds-space-2);
+  font-size: var(--bds-type-body-lg-size);
+  line-height: var(--bds-type-body-lg-leading);
+  font-weight: var(--bds-font-weight-semibold);
+}
+.bds-social-btn-lg.bds-social-btn-label {
+  padding-inline: var(--bds-btn-padding-x-lg);
+}
+.bds-social-btn-lg.bds-social-btn-icon {
+  width: 48px;
+}
+.bds-social-btn-lg .bds-social-btn__logo {
+  width: 20px;
+  height: 20px;
+}
+.bds-social-btn-lg.bds-social-btn-icon .bds-social-btn__logo {
+  width: 24px;
+  height: 24px;
+}
+
+.bds-social-btn-xl {
+  height: 56px;
+  gap: var(--bds-space-2);
+  font-size: var(--bds-type-body-xl-size);
+  line-height: var(--bds-type-body-xl-leading);
+  font-weight: var(--bds-font-weight-semibold);
+}
+.bds-social-btn-xl.bds-social-btn-label {
+  padding-inline: var(--bds-btn-padding-x-xl);
+}
+.bds-social-btn-xl.bds-social-btn-icon {
+  width: 56px;
+}
+.bds-social-btn-xl .bds-social-btn__logo {
+  width: 20px;
+  height: 20px;
+}
+.bds-social-btn-xl.bds-social-btn-icon .bds-social-btn__logo {
   width: 24px;
   height: 24px;
 }
@@ -1278,6 +1337,19 @@ table {
 
 .bds-social-btn-brand.bds-social-btn-kakao {
   color: var(--bds-black);
+}
+
+.bds-social-btn:disabled,
+.bds-social-btn[aria-disabled=true] {
+  cursor: not-allowed;
+  background-color: var(--bds-btn-disabled-bg);
+  border: 1px solid var(--bds-btn-disabled-border);
+  color: var(--bds-btn-disabled-fg);
+}
+
+.bds-social-btn:disabled .bds-social-btn__logo,
+.bds-social-btn[aria-disabled=true] .bds-social-btn__logo {
+  opacity: 0.4;
 }
 
 :root {
@@ -2021,7 +2093,7 @@ table {
   --bds-calendar-cell-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴(완전 투명) */
   --bds-calendar-cell-selected-bg: var(--bds-brand-600);
   --bds-calendar-cell-selected-fg: var(--bds-text-inverse);
-  --bds-calendar-cell-available-bg: var(--bds-brand-100);
+  --bds-calendar-cell-available-bg: var(--bds-brand-50);
   --bds-calendar-cell-unavailable-bg: var(--bds-neutral-100);
   --bds-calendar-cell-unavailable-fg: var(--bds-text-disabled);
   --bds-calendar-cell-unavailable-border: var(--bds-neutral-400);
@@ -3195,7 +3267,7 @@ table {
 
 [data-theme=dark] {
   --bds-card-bg: var(--bds-neutral-800);
-  --bds-card-bg-tinted: var(--bds-neutral-700);
+  --bds-card-bg-tinted: var(--bds-neutral-900);
 }
 
 .bds-card {

@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "exportedAt": "2026-09-14",
+    "exportedAt": "2026-09-15",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
-    "count": 322
+    "count": 318
   },
   "_modes": [
     "Default",
@@ -393,22 +393,6 @@
     "Default": "var(--white)",
     "Dark": "var(--white)"
   },
-  "btn/ghost-white/bg": {
-    "Default": "#ffffff00",
-    "Dark": "#ffffff00"
-  },
-  "btn/ghost-white/bg-hover": {
-    "Default": "#ffffff1a",
-    "Dark": "#ffffff1a"
-  },
-  "btn/ghost-white/bg-pressed": {
-    "Default": "#ffffff29",
-    "Dark": "#ffffff29"
-  },
-  "btn/ghost-white/fg": {
-    "Default": "var(--white)",
-    "Dark": "var(--white)"
-  },
   "btn/ghost/bg": {
     "Default": "#ffffff00",
     "Dark": "#ffffff00"
@@ -554,8 +538,8 @@
     "Dark": "var(--surface-subtle)"
   },
   "calendar/cell/available-bg": {
-    "Default": "var(--brand-100)",
-    "Dark": "var(--brand-100)"
+    "Default": "var(--brand-50)",
+    "Dark": "var(--brand-50)"
   },
   "calendar/cell/bg": {
     "Default": "#ffffff00",
@@ -619,7 +603,7 @@
   },
   "card/bg-tinted": {
     "Default": "var(--neutral-50)",
-    "Dark": "var(--neutral-700)"
+    "Dark": "var(--neutral-900)"
   },
   "card/border": {
     "Default": "var(--border-default)",

@@ -1,16 +1,26 @@
-// Figma DS Master > Social Button (node 422:6313), 2026-08-27 라이브 인스턴스 실측
+// Figma DS Master > Social Button (node 422:6313), 2026-08-27 실측 · 2026-09-15 사이즈·disabled 추가
 // 신규 컴포넌트(기존 CHH2 코드 없음). Social 4종(naver/kakao/apple/google) × Theme 2(brand/outline)
-// × Type 2(icon/label) × State 3(default/hover/focus — disabled 축 자체가 없음). Size 축 없음, 높이 48 고정.
+// × Type 2(icon/label) × Size 4(sm~xl) × State(default/hover/focus/disabled).
 // hover는 배경색이 바뀌는 게 아니라 검정 8% 오버레이가 얹히는 방식(실측 확인) — 모든 소셜·테마 공통.
 
 @use '../tokens/primitive' as *;
+@use '../abstracts/mixins' as mix;
 @use 'button' as btn;
+@use 'sass:map';
 
-$social-height: 48px;
-$social-padding-x: $space-5;
-$social-gap: $space-2;
-$social-logo-size: 20px;
 $social-hover-overlay: rgb(0 0 0 / 8%);
+
+// 2026-09-15 실측. logo 는 label 형, icon-logo 는 정사각 icon 형에서의 로고 크기다 — 둘이 다르다.
+// lg 의 좌우 여백이 20(space/5) → btn/padding-x/lg(24)로 바뀌었다. 코드가 갖고 있던 값이 낡은 것이었다.
+$social-sizes: (
+  sm: (height: 32px, padding-x: var(--bds-btn-padding-x-sm), gap: $space-1, type: body-sm, logo: 16px, icon-logo: 18px),
+  md: (height: 40px, padding-x: var(--bds-btn-padding-x-md), gap: $space-2, type: body-md, logo: 16px, icon-logo: 20px),
+  lg: (height: 48px, padding-x: var(--bds-btn-padding-x-lg), gap: $space-2, type: body-lg, logo: 20px, icon-logo: 24px),
+  xl: (height: 56px, padding-x: var(--bds-btn-padding-x-xl), gap: $space-2, type: body-xl, logo: 20px, icon-logo: 24px),
+);
+
+// 사이즈 클래스가 없으면 lg 로 떨어진다 — 이 컴포넌트가 사이즈 축 없이 48 하나로 쓰이던 때와 같은 모습이다.
+$social-default-size: map.get($social-sizes, lg);
 
 // google은 브랜드 테마에서도 outline과 동일 처리(문서·실측 공통) — 별도 브랜드색 없음.
 $social-brand-colors: (
@@ -24,12 +34,12 @@ $social-brand-colors: (
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: $social-height;
-  gap: $social-gap;
+  height: map.get($social-default-size, height);
+  gap: map.get($social-default-size, gap);
   border-radius: btn.$btn-radius;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-body-lg;
-  line-height: $font-leading-body-lg;
+
+  @include mix.text(map.get($social-default-size, type), semibold);
+
   cursor: pointer;
   overflow: hidden; // hover 오버레이가 radius 밖으로 안 나가도록
 
@@ -46,12 +56,6 @@ $social-brand-colors: (
     background-color: $social-hover-overlay;
   }
 
-  &:disabled,
-  &[aria-disabled='true'] {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-
   &:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px $effect-focus-ring;
@@ -59,26 +63,53 @@ $social-brand-colors: (
 
   // Type=label: 좌우 패딩 있음, 폭은 내용에 따라 자동(HUG)
   &-label {
-    padding-inline: $social-padding-x;
+    padding-inline: map.get($social-default-size, padding-x);
   }
 
-  // Type=icon: 48×48 정사각, 패딩 없음
+  // Type=icon: 정사각, 패딩 없음
   &-icon {
-    width: $social-height;
+    width: map.get($social-default-size, height);
     padding-inline: 0;
   }
 
   &__logo {
-    width: $social-logo-size;
-    height: $social-logo-size;
+    width: map.get($social-default-size, logo);
+    height: map.get($social-default-size, logo);
     flex-shrink: 0;
   }
 }
 
-// google의 아이콘 전용 로고(Icon/social-google)는 실측상 24px — label 타입은 20px 그대로.
-.bds-social-btn-icon.bds-social-btn-google .bds-social-btn__logo {
-  width: 24px;
-  height: 24px;
+// icon 형은 로고가 label 형보다 크다(18/20/24/24 대 16/16/20/20) — 사이즈마다 두 값이 따로 논다.
+.bds-social-btn-icon .bds-social-btn__logo {
+  width: map.get($social-default-size, icon-logo);
+  height: map.get($social-default-size, icon-logo);
+}
+
+@each $size, $props in $social-sizes {
+  .bds-social-btn-#{$size} {
+    height: map.get($props, height);
+    gap: map.get($props, gap);
+
+    @include mix.text(map.get($props, type), semibold);
+
+    &.bds-social-btn-label {
+      padding-inline: map.get($props, padding-x);
+    }
+
+    &.bds-social-btn-icon {
+      width: map.get($props, height);
+    }
+
+    .bds-social-btn__logo {
+      width: map.get($props, logo);
+      height: map.get($props, logo);
+    }
+
+    &.bds-social-btn-icon .bds-social-btn__logo {
+      width: map.get($props, icon-logo);
+      height: map.get($props, icon-logo);
+    }
+  }
 }
 
 // outline 테마 — 4개 소셜 공통(naver/kakao/apple의 outline 변형 + google 전체)
@@ -103,4 +134,20 @@ $social-brand-colors: (
 // 2026-08-28 재실측: kakao만 글자색이 검정으로 바뀌어 있다(카카오 공식 가이드와 일치, 이전 실측의 흰색은 stale).
 .bds-social-btn-brand.bds-social-btn-kakao {
   color: $black;
+}
+
+// disabled 는 소셜·테마와 무관하게 공통 톤이다. 위 brand 규칙(.bds-social-btn-brand.bds-social-btn-naver)과
+// 특정도가 같아(둘 다 클래스 2개분) 순서로 이겨야 하므로 테마 규칙 뒤에 둔다.
+.bds-social-btn:disabled,
+.bds-social-btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  background-color: var(--bds-btn-disabled-bg);
+  border: 1px solid var(--bds-btn-disabled-border);
+  color: var(--bds-btn-disabled-fg);
+}
+
+// 브랜드 로고는 색을 바꿀 수 없어 투명도로 낮춘다. Figma 에도 토큰이 아니라 직접 적은 값이다.
+.bds-social-btn:disabled .bds-social-btn__logo,
+.bds-social-btn[aria-disabled='true'] .bds-social-btn__logo {
+  opacity: 0.4;
 }

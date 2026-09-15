@@ -15,7 +15,7 @@
   <div class="doc-breadcrumb"><a href="../index.html">기본 컴포넌트</a> / Social Button</div>
   <div class="doc-page-header">
     <h1>Social Button</h1>
-    <p>Disabled 축 자체가 없는 컴포넌트라(hover는 검정 오버레이일 뿐) default 상태만 나열합니다. 로고는 스프라이트에 실제 브랜드 마크가 없어 placeholder 아이콘(message-circle/smile/globe)을 사용합니다.</p>
+    <p>사이즈는 sm/md/lg/xl이며 클래스를 안 붙이면 lg입니다. 로고 크기가 label형(16/16/20/20)과 icon형(18/20/24/24)에서 따로 놉니다. 로고는 스프라이트에 실제 브랜드 마크가 없어 placeholder 아이콘(message-circle/smile/globe)을 사용합니다.</p>
   </div>
 
   <section class="doc-section">
@@ -29,6 +29,25 @@
     <p class="doc-desc">별도 브랜드 테마가 없어 outline과 동일 규칙(<code>.bds-social-btn-outline, .bds-social-btn-google</code>)을 공유합니다.</p>
     <div class="doc-matrix" id="social-google-matrix" style="--doc-cols:2"></div>
   </section>
+
+  <section class="doc-section">
+    <h2>Size</h2>
+    <p class="doc-desc">한 행에 사이즈 축이 통째로 들어갑니다. 높이는 32/40/48/56이고 label형은 좌우 여백이 <code>btn/padding-x/{size}</code>를 따릅니다 — lg가 20에서 24로 바뀌었습니다. icon형은 높이와 같은 폭의 정사각입니다.</p>
+    <div class="doc-scroll-x">
+      <table class="doc-table">
+        <thead>
+          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+        </thead>
+        <tbody id="social-size-matrix"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="doc-section">
+    <h2>Disabled</h2>
+    <p class="doc-desc">소셜·테마와 무관하게 공통 톤입니다 — 배경 <code>btn/disabled/bg</code>, 글자 <code>btn/disabled/fg</code>, 테두리 <code>btn/disabled/border</code>. 브랜드 로고는 색을 바꿀 수 없어 <code>opacity: 0.4</code>로 낮춥니다(Figma에도 토큰이 아니라 직접 적은 값입니다).</p>
+    <div class="doc-matrix" id="social-disabled" style="--doc-cols:4;--doc-cell-min:200px"></div>
+  </section>
 </main>
 
 <script>window.DOCS_BASE = '../';</script>
@@ -40,14 +59,18 @@
   var LOGO = { naver: 'message-circle', kakao: 'message-circle', apple: 'smile', google: 'globe' };
   var LABEL_TEXT = { naver: '네이버 로그인', kakao: '카카오 로그인', apple: '애플 로그인', google: '구글 로그인' };
 
-  function socialBtnHtml(social, theme, type) {
+  function socialBtnHtml(social, theme, type, opts) {
+    opts = opts || {};
     var classes = ['bds-social-btn', 'bds-social-btn-' + type];
+    if (opts.size) classes.push('bds-social-btn-' + opts.size);
     if (theme) classes.push('bds-social-btn-' + theme);
     classes.push('bds-social-btn-' + social);
     var logo = '<svg class="bds-icon bds-social-btn__logo"><use href="../assets/icons/sprite.svg#icon-base-' + LOGO[social] + '"></use></svg>';
     var text = type === 'label' ? '<span>' + LABEL_TEXT[social] + '</span>' : '';
-    return '<button class="' + classes.join(' ') + '">' + logo + text + '</button>';
+    return '<button class="' + classes.join(' ') + '"' + (opts.disabled ? ' disabled' : '') + '>' + logo + text + '</button>';
   }
+
+  var SIZES = ['sm', 'md', 'lg', 'xl'];
 
   (function () {
     var el = document.getElementById('social-matrix');
@@ -71,6 +94,41 @@
       cell.className = 'doc-cell';
       cell.innerHTML = socialBtnHtml('google', null, type) +
         '<span class="doc-cell__caption">social-btn-' + type + ' social-btn-google</span>';
+      el.appendChild(cell);
+    });
+  })();
+
+  // 사이즈는 소셜·테마와 무관하므로 한 종류(naver brand)로 두 타입만 비교한다.
+  (function () {
+    var tbody = document.getElementById('social-size-matrix');
+    TYPES.forEach(function (type) {
+      var row = document.createElement('tr');
+      var head = document.createElement('th');
+      head.scope = 'row';
+      head.textContent = 'bds-social-btn-' + type;
+      row.appendChild(head);
+      SIZES.forEach(function (size) {
+        var cell = document.createElement('td');
+        cell.innerHTML = socialBtnHtml('naver', 'brand', type, { size: size });
+        row.appendChild(cell);
+      });
+      tbody.appendChild(row);
+    });
+  })();
+
+  (function () {
+    var el = document.getElementById('social-disabled');
+    var rows = [
+      ['naver', 'brand'],
+      ['kakao', 'brand'],
+      ['apple', 'outline'],
+      ['google', null],
+    ];
+    rows.forEach(function (r) {
+      var cell = document.createElement('div');
+      cell.className = 'doc-cell';
+      cell.innerHTML = socialBtnHtml(r[0], r[1], 'label', { size: 'md', disabled: true }) +
+        '<span class="doc-cell__caption">' + (r[1] ? 'bds-social-btn-' + r[1] + ' ' : '') + 'bds-social-btn-' + r[0] + ' + disabled</span>';
       el.appendChild(cell);
     });
   })();

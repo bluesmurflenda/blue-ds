@@ -1,14 +1,14 @@
 // Figma DS Master > Icon Button (node 390:5196), 2026-08-27 라이브 인스턴스 실측
-// 변형 11종(button과 8종 공유 + ghost-inverse·ghost-brand·ghost-white 전용) × 사이즈 4(xs 없음) × 상태 5
-// ghost-white: 2026-08-27 요청으로 Figma에 신규 추가(button/ghost-white/* 변수, Icon Button Variant 옵션 20개)
+// 변형 10종(button과 8종 공유 + ghost-inverse·ghost-brand 전용) × 사이즈 4(xs 없음) × 상태 5
+// ghost-white 는 2026-09-15 Figma 에서 삭제됐다 — 네 값이 ghost-inverse 와 같아져 둘을 나눌 이유가 없어졌다.
 
 @use '../tokens/primitive' as *;
 @use 'button' as btn;
 @use 'sass:map';
 
-// ghost-inverse/ghost-brand/ghost-white 전용 토큰(공유 8변형은 button.scss가 처리).
-// 실제 Figma 변수명은 icon-btn-* 가 아니라 button/ghost-inverse·button/ghost-brand·
-// button/ghost-white 다(get_variable_defs로 확인, 2026-08-30) — Icon Button 전용
+// ghost-inverse/ghost-brand 전용 토큰(공유 8변형은 button.scss가 처리).
+// 실제 Figma 변수명은 icon-btn-* 가 아니라 button/ghost-inverse·button/ghost-brand 다
+// (get_variable_defs로 확인, 2026-08-30) — Icon Button 전용
 // 그룹이 아니라 button 네임스페이스를 공유한다. 커스텀 프로퍼티 이름도 그대로 맞춘다.
 :root {
   --bds-btn-ghost-inverse-fg: var(--bds-white);
@@ -24,13 +24,6 @@
   --bds-btn-ghost-brand-bg-pressed: var(--bds-brand-100);
   --bds-btn-ghost-brand-fg: var(--bds-text-brand);
   --bds-btn-ghost-brand-fg-disabled: var(--bds-text-disabled);
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-white-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-white-bg-hover: #ffffff1a; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-white-bg-pressed: #ffffff29; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  --bds-btn-ghost-white-fg: var(--bds-white);
 }
 
 // 2026-08-28 확인(bluesoft-buttons-spec.md 4장): 아이콘 크기는 박스 크기와 별개로 18/20/24/24 —
@@ -42,12 +35,10 @@ $icon-button-sizes: (
   xl: (box: 56px, icon: 24px),
 );
 
-// ghost-inverse·ghost-brand·ghost-white을 제외한 8개 변형은 button과 완전히 동일한 토큰을 공유한다.
+// ghost-inverse·ghost-brand를 제외한 8개 변형은 button과 완전히 동일한 토큰을 공유한다.
 $icon-button-extra-variants: (
   ghost-inverse: (bg: var(--bds-btn-ghost-inverse-bg), bg-hover: var(--bds-btn-ghost-inverse-bg-hover), bg-pressed: var(--bds-btn-ghost-inverse-bg-pressed), fg: var(--bds-btn-ghost-inverse-fg)),
   ghost-brand: (bg: var(--bds-btn-ghost-brand-bg), bg-hover: var(--bds-btn-ghost-brand-bg-hover), bg-pressed: var(--bds-btn-ghost-brand-bg-pressed), fg: var(--bds-btn-ghost-brand-fg)),
-  // ghost와 배경 처리 동일(회색계 hover/pressed), 아이콘만 흰색 — 어둡거나 색 있는 배경 위에서 사용
-  ghost-white: (bg: var(--bds-btn-ghost-white-bg), bg-hover: var(--bds-btn-ghost-white-bg-hover), bg-pressed: var(--bds-btn-ghost-white-bg-pressed), fg: var(--bds-btn-ghost-white-fg)),
 );
 
 .bds-icon-btn {
@@ -113,29 +104,6 @@ $icon-button-extra-variants: (
     &[aria-disabled='true'] {
       background-color: transparent;
       color: var(--bds-btn-ghost-brand-fg-disabled);
-    }
-  }
-
-  // ghost-white: ghost와 배경 처리 동일, 아이콘만 흰색. disabled는 배경 투명 유지 + 공용 disabled 톤(다른 공유 변형과 동일 처리).
-  &-ghost-white {
-    $c: map.get($icon-button-extra-variants, ghost-white);
-
-    background-color: map.get($c, bg);
-    color: map.get($c, fg);
-
-    &:hover:not(:disabled, [aria-disabled='true']) {
-      background-color: map.get($c, bg-hover);
-    }
-
-    &:active:not(:disabled, [aria-disabled='true']) {
-      background-color: map.get($c, bg-pressed);
-    }
-
-    /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-    &:disabled,
-    &[aria-disabled='true'] {
-      background-color: transparent;
-      color: btn.$btn-disabled-fg;
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "_meta": {
-    "exportedAt": "2026-09-14",
+    "exportedAt": "2026-09-15",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "purpose": "check-nodes.mjs가 REST boundVariables의 VariableID:<id>를 이름·컬렉션으로 해석하는 데 쓴다. Variables REST API(Enterprise 전용)를 못 쓰는 대신 MCP로 추출.",
     "note": "키는 'VariableID:' 접두사를 뺀 나머지(예: '997:12')다.",
-    "count": 610
+    "count": 606
   },
   "Primitive": {
     "5:75": "black",
@@ -314,10 +314,6 @@
     "847:4": "btn/ghost-inverse/bg-hover",
     "847:5": "btn/ghost-inverse/bg-pressed",
     "847:2": "btn/ghost-inverse/fg",
-    "1320:3": "btn/ghost-white/bg",
-    "1320:4": "btn/ghost-white/bg-hover",
-    "1320:5": "btn/ghost-white/bg-pressed",
-    "1320:6": "btn/ghost-white/fg",
     "174:39": "btn/ghost/bg",
     "174:30": "btn/ghost/bg-hover",
     "174:31": "btn/ghost/bg-pressed",

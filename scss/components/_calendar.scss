@@ -25,7 +25,7 @@
   --bds-calendar-cell-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴(완전 투명) */
   --bds-calendar-cell-selected-bg: var(--bds-brand-600);
   --bds-calendar-cell-selected-fg: var(--bds-text-inverse);
-  --bds-calendar-cell-available-bg: var(--bds-brand-100);
+  --bds-calendar-cell-available-bg: var(--bds-brand-50);
   --bds-calendar-cell-unavailable-bg: var(--bds-neutral-100);
   --bds-calendar-cell-unavailable-fg: var(--bds-text-disabled);
   --bds-calendar-cell-unavailable-border: var(--bds-neutral-400);
