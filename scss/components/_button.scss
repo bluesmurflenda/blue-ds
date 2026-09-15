@@ -183,6 +183,13 @@ $button-group-divider: var(--bds-button-group-divider);
         border-color: $btn-disabled-border;
       }
     }
+
+    // 테두리가 있는 변형만 다시 낸다 — 루트의 인셋 규칙을 이겨 1px 을 지킨다.
+    @if map.has-key($colors, border) {
+      @include mix.state(focus) {
+        @include mix.focus-ring($bordered: true);
+      }
+    }
   }
 }
 
@@ -193,6 +200,14 @@ $button-group-divider: var(--bds-button-group-divider);
   background: none;
   color: $btn-link-fg;
   text-decoration: underline;
+
+  // 링크는 글자에 딱 맞아 링이 글자를 문다. outline 으로 2px 띄운다 —
+  // Figma 는 이 간격을 표현할 수 없어 붙은 테두리로 그려져 있다. 의도된 차이다.
+  @include mix.state(focus) {
+    box-shadow: none;
+    outline: 1px solid currentcolor;
+    outline-offset: 2px;
+  }
 
   @include mix.state(hover) {
     color: $btn-link-fg-hover;

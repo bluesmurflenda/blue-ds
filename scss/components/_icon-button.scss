@@ -145,5 +145,12 @@ $icon-button-extra-variants: (
         border-color: btn.$btn-disabled-border;
       }
     }
+
+    // 테두리가 있는 변형만 다시 낸다 — 루트의 인셋 규칙을 이겨 1px 을 지킨다.
+    @if map.has-key($colors, border) {
+      @include mix.state(focus, 'bds-icon-btn') {
+        @include mix.focus-ring($bordered: true);
+      }
+    }
   }
 }

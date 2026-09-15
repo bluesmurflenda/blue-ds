@@ -134,6 +134,11 @@ $social-brand-colors: (
   background-color: var(--bds-surface-default);
   border: 1px solid var(--bds-btn-outline-border);
   color: var(--bds-btn-outline-fg);
+
+  // 테두리가 있으므로 인셋 대신 테두리 색을 바꾼다 — 루트의 인셋 규칙을 이긴다.
+  @include mix.state(focus, 'bds-social-btn') {
+    @include mix.focus-ring($bordered: true);
+  }
 }
 
 // brand 테마 — naver/kakao/apple만 (google은 위 outline 규칙을 그대로 씀)
