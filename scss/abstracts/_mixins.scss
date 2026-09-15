@@ -71,7 +71,12 @@ $focus-ring-states: (normal, valid, invalid);
     @error "focus-ring(#{$state}) — 쓸 수 있는 값: null · #{$focus-ring-states}";
   }
 
-  $suffix: if($state == null or $state == normal, '', '-#{$state}');
+  // if() 함수는 sass 가 폐기 예고했다(modern CSS if() 와 충돌) — @if 로 쓴다.
+  $suffix: '';
+
+  @if $state != null and $state != normal {
+    $suffix: '-#{$state}';
+  }
 
   box-shadow:
     0 0 0 2px var(--bds-effect-focus-ring#{$suffix}),
