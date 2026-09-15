@@ -175,7 +175,7 @@ $choice-description-fg: var(--bds-choice-description-fg);
     // 다른 사실이라 같은 표시로 알리면 구분이 사라진다(ADR-038).
     // 링은 반투명 한 겹이라 대비를 지지 않는다 — 테두리가 진다(choice/box/border-focus).
     /* stylelint-disable-next-line no-descending-specificity -- 짝이 되는 선택자와 서로 배타적이라(disabled 는 :not() 으로 빠진다, 변형 클래스는 동시에 안 붙는다) 이 순서가 결과를 바꾸지 않는다. 상태 흐름 순서를 지킨다 */
-    &:focus-visible + .bds-choice__box {
+    &:focus + .bds-choice__box {
       border-color: var(--bds-choice-box-border-focus);
 
       @include mix.focus-ring($soft: true);
@@ -239,7 +239,7 @@ $choice-description-fg: var(--bds-choice-description-fg);
       // 링 색도 테두리를 따라간다(ADR-038). normal 쪽 규칙보다 특정도가 높아 여기서 이긴다.
       // 테두리를 다시 못박는 이유는 그 normal 규칙이 border-focus 를 주기 때문이다 —
       // 안 적으면 검증 상태의 빨강·초록이 초점에서 파랑으로 덮여 대비를 지는 쪽이 사라진다.
-      .bds-choice__input:focus-visible + .bds-choice__box {
+      .bds-choice__input:focus + .bds-choice__box {
         border-color: map.get($c, border);
 
         @include mix.focus-ring($validation, $soft: true);
@@ -320,7 +320,7 @@ $toggle-colors: (
     }
 
     // 토글은 버튼 계열이다 — 검증 축이 없어 두 겹 중립을 쓴다.
-    &:focus-visible + .bds-toggle__track {
+    &:focus + .bds-toggle__track {
       @include mix.focus-ring;
     }
 

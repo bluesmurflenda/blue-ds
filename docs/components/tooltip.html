@@ -32,7 +32,7 @@
   <section class="doc-section">
     <h2>Help Icon</h2>
     <p class="doc-desc">
-      <code>_help-icon.scss</code>는 <code>.bds-tooltip</code>을 <code>:hover</code>/<code>:focus-visible</code>에서만 <code>display:flex</code>로 보여줍니다.
+      <code>_help-icon.scss</code>는 <code>.bds-tooltip</code>을 <code>:hover</code>/<code>:focus</code>에서만 <code>display:flex</code>로 보여줍니다.
       정적 문서에서는 상호작용을 재현할 수 없어 <code>.bds-tooltip</code> 엘리먼트에 인라인 <code>style="display:flex; position:static;"</code>를 직접 얹어 강제로 표시했습니다.
       또한 <code>_help-icon.scss</code> 자체는 테마를 고정하지 않습니다(어떤 <code>.bds-tooltip-light</code>/<code>.bds-tooltip-dark</code>를 조합할지는 사용하는 쪽 자유) — 아래 예시는 관례적으로 <code>bds-tooltip-dark</code>를 사용했습니다.
       Figma의 Property 축(top-left/top-right/top-no-arrow 포함)도 Tooltip 쪽 arrow 클래스와 1:1로 대응하지 않아, 실제 존재하는 클래스만으로 대표(top/bottom/right)만 나열합니다.

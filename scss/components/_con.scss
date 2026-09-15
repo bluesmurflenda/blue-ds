@@ -121,7 +121,7 @@ $con-themes: (
       color: map.get($c, fg-selected);
     }
 
-    &:focus-visible {
+    &:focus {
       @include mix.focus-ring;
     }
   }

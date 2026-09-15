@@ -19,7 +19,7 @@
   }
 
   &:hover .bds-tooltip,
-  &:focus-visible .bds-tooltip {
+  &:focus .bds-tooltip {
     display: flex;
   }
 }

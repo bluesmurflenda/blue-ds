@@ -69,7 +69,7 @@ $accordion-radius: var(--bds-accordion-rounded-radius);
       background-color: $accordion-bg-hover;
     }
 
-    &:focus-visible {
+    &:focus {
       outline: none;
 
       @include mix.focus-ring;
