@@ -3112,7 +3112,9 @@ table {
   background-color: var(--bds-accordion-trigger-bg);
 }
 .bds-accordion__item:has(.bds-accordion__trigger:focus) {
-  box-shadow: inset 0 0 0 1px var(--bds-field-border-focus), 0 0 0 2px var(--bds-effect-focus-halo);
+  position: relative;
+  outline: 1px solid var(--bds-field-border-focus);
+  outline-offset: -1px;
 }
 .bds-accordion__trigger {
   display: flex;
@@ -3178,8 +3180,7 @@ table {
 }
 .bds-accordion-rounded {
   border-radius: var(--bds-accordion-rounded-radius);
-  overflow: clip;
-  overflow-clip-margin: 4px;
+  overflow: hidden;
 }
 .bds-accordion-each {
   gap: var(--bds-space-2);

@@ -55,8 +55,14 @@ $accordion-radius: var(--bds-accordion-rounded-radius);
     // 초점을 받는 것은 여전히 트리거(button)다. 접근성상 바뀌면 안 되므로 :has() 로 조상 항목에
     // 링만 옮긴다. 안쪽 1px 은 currentColor 가 아니라 폼 요소가 쓰는 브랜드 초점 테두리색이다
     // — Figma 가 brand/500 을 쓴다(field/border-focus · choice/box/border-focus 와 같은 출처).
+    // 링은 안쪽에만 그린다. 붙은 아코디언에는 바깥 여유가 없고, 여유를 만들려고 잘라내기를
+    // 넓히면 둥근 모서리가 사라진다. inset 그림자는 자식 배경에 덮이므로 outline 을 쓴다
+    // — outline 은 자식보다 위에 칠해지고 바깥으로 나가지 않는다. 헤일로는 이 컴포넌트에서만 빠진다.
+    // position: relative 만 둔다 — 정적 형제보다 위에 칠해지므로 z-index 는 필요 없다.
     &:has(.bds-accordion__trigger:focus) {
-      box-shadow: inset 0 0 0 1px var(--bds-field-border-focus), 0 0 0 2px var(--bds-effect-focus-halo);
+      position: relative;
+      outline: 1px solid var(--bds-field-border-focus);
+      outline-offset: -1px;
     }
   }
 
@@ -144,10 +150,9 @@ $accordion-radius: var(--bds-accordion-rounded-radius);
   &-rounded {
     border-radius: $accordion-radius;
 
-    // 아이템 배경이 라운드 밖으로 새지 않게 자른다. hidden 으로 자르면 항목의 초점 헤일로가
-    // 바깥 2px 이라 같이 잘린다 — 여유를 둘 수 있는 clip 을 쓴다.
-    overflow: clip;
-    overflow-clip-margin: 4px;
+    // 아이템 배경이 라운드 밖으로 새지 않게 자른다. 초점 링이 항목 안쪽에만 그려지므로
+    // 바깥 여유가 필요 없다 — 잘라내기를 넓히면 잘라내는 모양이 사각형이 되어 모서리가 각진다.
+    overflow: hidden;
   }
 
   // each — 아이템마다 테두리와 반경을 갖고 사이가 space/2 만큼 떨어진다(실측: items 의 gap).
