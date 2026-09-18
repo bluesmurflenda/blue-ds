@@ -14,12 +14,17 @@
 ## 지금 하는 일
 
 **넘길 준비가 끝났다.** 컴포넌트 전수가 Figma 와 맞춰졌고, 토큰 SCSS 는 스냅샷에서
-생성되며, 코드 규약·값·화면을 각각 도구가 본다(`npm run check` · `npm run check:visual`).
+생성되며(`_breakpoint.scss` 만 예외로 손으로 맞춘다 — 빌드가 만들지 않는다),
+코드 규약·값·화면을 각각 도구가 본다(`npm run check` · `npm run check:visual`).
 
 **Figma 와 다시 맞췄다.** 퍼블리시된 변경을 코드가 따라잡았다.
 컴포넌트를 다시 손볼 일이 생기면 그건 Figma 가 바뀐 것이므로
 `SCSS.md` 「컴포넌트 하나를 끝내는 흐름」으로 돌아간다.
 다음은 아래 「Figma 에서 한 번에 고친다」이다.
+
+**v0.3.0 에서 토큰이 하나 사라졌다 — `--bds-calendar-cell-unavailable-border`.**
+쓰는 쪽이 고쳐야 한다. 정의가 없어지면 그 값을 쓴 선언 전체가 무효가 되므로 조용히 깨진다.
+minor 를 올린 이유가 이것이다. 같은 묶음에서 `--bds-calendar-cell-available-fg` 가 새로 생겼다.
 
 **제외 대상** — logo · login-header · con · header · side-nav-item.
 
