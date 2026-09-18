@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "exportedAt": "2026-09-15",
+    "exportedAt": "2026-09-18",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "purpose": "check-nodes.mjs가 REST boundVariables의 VariableID:<id>를 이름·컬렉션으로 해석하는 데 쓴다. Variables REST API(Enterprise 전용)를 못 쓰는 대신 MCP로 추출.",
     "note": "키는 'VariableID:' 접두사를 뺀 나머지(예: '997:12')다.",
@@ -350,12 +350,12 @@
     "1858:357": "button-group/divider",
     "947:2": "calendar/bg",
     "947:9": "calendar/cell/available-bg",
+    "2308:2043": "calendar/cell/available-fg",
     "947:13": "calendar/cell/bg",
     "960:2": "calendar/cell/past-fg",
     "947:10": "calendar/cell/selected-bg",
     "947:11": "calendar/cell/selected-fg",
     "955:2": "calendar/cell/unavailable-bg",
-    "965:2": "calendar/cell/unavailable-border",
     "947:8": "calendar/cell/unavailable-fg",
     "947:7": "calendar/day/fg",
     "947:3": "calendar/header/fg",

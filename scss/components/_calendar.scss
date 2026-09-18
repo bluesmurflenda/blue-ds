@@ -1,43 +1,46 @@
-// Figma DS Master > Calendar(954:5704, Type=default/Card) + Day Cell(947:95), 2026-08-31 재실측
+// Figma DS Master > Calendar(954:5704, Type=default/Card) + Day Cell(947:95), 2026-09-17 갱신분 반영
 // 셀은 44×44 원형(radius full), gap 4(행·열 공통). Type=Card만 배경(surface/subtle)이 있고
 // Type=default는 투명 — 둘 다 패딩·라운드는 동일.
 
-// Day Cell의 State×Day 우선순위: default·today·available은 Day(요일) 색이 이기고, selected·past·
-// unavailable은 State 색이 이긴다 — 아래 클래스 선언 순서가 이미 이 규칙대로다(동일 특정도에서
+// Day Cell의 State×Day 우선순위: default·available·today는 주말 색이 이기고, selected·unavailable·
+// past는 State 색이 이긴다 — 아래 클래스 선언 순서가 이미 이 규칙대로다(동일 특정도에서
 // 나중에 선언된 쪽이 이긴다): is-saturday/is-sunday를 먼저 두고, is-past/is-unavailable/is-selected를
-// 그 뒤에 둬서 State가 Day를 덮게 하고, is-available은 색을 아예 안 건드려 Day가 그대로 보이게
-// 하고, is-today는 State색을 먼저 깔고 그 안에서 다시 is-saturday/is-sunday로 Day가 이기게 한다.
+// 그 뒤에 둬서 State가 Day를 덮게 하고, is-available과 is-today는 State색을 먼저 깔고 그 안에서
+// 다시 is-saturday/is-sunday로 주말이 이기게 한다.
 // 순서를 바꾸지 마라 — 바꾸면 이 우선순위가 깨진다.
 
 @use '../tokens/primitive' as *;
 @use '../abstracts/mixins' as mix;
 
-// figma/tokens.theme.json의 calendar/* 를 그대로 옮겼다. sunday/fg·cell/unavailable-bg만
-// 라이트·다크 별칭 대상이 달라 오버라이드가 있다.
+// figma/tokens.theme.json의 calendar/* 를 그대로 옮겼다. saturday/fg·sunday/fg·
+// cell/available-bg·cell/available-fg·cell/unavailable-bg만 라이트·다크 별칭 대상이 달라
+// 오버라이드가 있다.
 :root {
   --bds-calendar-bg: var(--bds-surface-subtle);
   --bds-calendar-header-fg: var(--bds-text-primary);
   --bds-calendar-weekday-fg: var(--bds-text-tertiary);
-  --bds-calendar-saturday-fg: var(--bds-text-brand);
+  --bds-calendar-saturday-fg: var(--bds-brand-700);
   --bds-calendar-sunday-fg: var(--bds-red-700);
   --bds-calendar-day-fg: var(--bds-text-primary);
   /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
   --bds-calendar-cell-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴(완전 투명) */
   --bds-calendar-cell-selected-bg: var(--bds-brand-600);
   --bds-calendar-cell-selected-fg: var(--bds-text-inverse);
-  --bds-calendar-cell-available-bg: var(--bds-brand-50);
+  --bds-calendar-cell-available-bg: var(--bds-brand-100);
+  --bds-calendar-cell-available-fg: var(--bds-brand-700);
   --bds-calendar-cell-unavailable-bg: var(--bds-neutral-100);
   --bds-calendar-cell-unavailable-fg: var(--bds-text-disabled);
-  --bds-calendar-cell-unavailable-border: var(--bds-neutral-400);
   --bds-calendar-cell-past-fg: var(--bds-text-disabled);
-  --bds-calendar-today-border: var(--bds-brand-400);
+  --bds-calendar-today-border: var(--bds-brand-500);
   --bds-calendar-today-fg: var(--bds-brand-600);
 }
 
 [data-theme='dark'] {
+  --bds-calendar-saturday-fg: var(--bds-text-brand);
   --bds-calendar-sunday-fg: var(--bds-red-400);
+  --bds-calendar-cell-available-bg: var(--bds-brand-50);
+  --bds-calendar-cell-available-fg: var(--bds-text-primary);
   --bds-calendar-cell-unavailable-bg: var(--bds-neutral-900);
-  --bds-calendar-cell-unavailable-border: var(--bds-neutral-600);
 }
 
 $calendar-radius: var(--bds-calendar-radius); // 2026-08-28: [data-shape] 런타임 전환 반영
@@ -57,9 +60,9 @@ $calendar-cell-size: 44px;
 $calendar-cell-selected-bg: var(--bds-calendar-cell-selected-bg);
 $calendar-cell-selected-fg: var(--bds-calendar-cell-selected-fg);
 $calendar-cell-available-bg: var(--bds-calendar-cell-available-bg);
+$calendar-cell-available-fg: var(--bds-calendar-cell-available-fg);
 $calendar-cell-unavailable-bg: var(--bds-calendar-cell-unavailable-bg);
 $calendar-cell-unavailable-fg: var(--bds-calendar-cell-unavailable-fg);
-$calendar-cell-unavailable-border: var(--bds-calendar-cell-unavailable-border);
 $calendar-cell-past-fg: var(--bds-calendar-cell-past-fg);
 $calendar-today-border: var(--bds-calendar-today-border);
 $calendar-today-fg: var(--bds-calendar-today-fg);
@@ -146,7 +149,7 @@ $calendar-today-fg: var(--bds-calendar-today-fg);
   align-items: center;
   justify-content: center;
   border-radius: var(--bds-calendar-cell-radius);
-  border: $border-hairline solid transparent; // unavailable에서만 채워진다 — 미리 선점해 레이아웃 시프트 방지
+  border: $border-hairline solid transparent; // today에서만 채워진다 — 미리 선점해 레이아웃 시프트 방지
   background-color: $calendar-cell-bg;
 
   @include mix.text(body-sm, medium);
@@ -169,16 +172,23 @@ $calendar-today-fg: var(--bds-calendar-today-fg);
     color: $calendar-cell-past-fg;
   }
 
-  // available은 배경만 추가되고 글자색은 default와 동일하게 요일별 색을 따른다(실측 확인).
+  // available은 배경과 함께 자기 글자색을 갖는다. 토·일은 아래에서 다시 덮어 주말 색이 이긴다.
   &.bds-is-available {
     background-color: $calendar-cell-available-bg;
+    color: $calendar-cell-available-fg;
+
+    &.bds-is-saturday {
+      color: $calendar-saturday-fg;
+    }
+
+    &.bds-is-sunday {
+      color: $calendar-sunday-fg;
+    }
   }
 
-  // 2026-08-31 신규 발견(get_variable_defs, State=unavailable 947:88): 배경·글자색뿐 아니라
-  // border-hairline 테두리도 있다 — 기존 코드는 배경·글자만 반영하고 있었다.
+  // 테두리는 없다 — 배경과 글자색뿐이다. 토·일도 이 색으로 덮인다.
   &.bds-is-unavailable {
     background-color: $calendar-cell-unavailable-bg;
-    border-color: $calendar-cell-unavailable-border;
     color: $calendar-cell-unavailable-fg;
   }
 

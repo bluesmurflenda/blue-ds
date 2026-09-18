@@ -2103,26 +2103,28 @@ table {
   --bds-calendar-bg: var(--bds-surface-subtle);
   --bds-calendar-header-fg: var(--bds-text-primary);
   --bds-calendar-weekday-fg: var(--bds-text-tertiary);
-  --bds-calendar-saturday-fg: var(--bds-text-brand);
+  --bds-calendar-saturday-fg: var(--bds-brand-700);
   --bds-calendar-sunday-fg: var(--bds-red-700);
   --bds-calendar-day-fg: var(--bds-text-primary);
   /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
   --bds-calendar-cell-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴(완전 투명) */
   --bds-calendar-cell-selected-bg: var(--bds-brand-600);
   --bds-calendar-cell-selected-fg: var(--bds-text-inverse);
-  --bds-calendar-cell-available-bg: var(--bds-brand-50);
+  --bds-calendar-cell-available-bg: var(--bds-brand-100);
+  --bds-calendar-cell-available-fg: var(--bds-brand-700);
   --bds-calendar-cell-unavailable-bg: var(--bds-neutral-100);
   --bds-calendar-cell-unavailable-fg: var(--bds-text-disabled);
-  --bds-calendar-cell-unavailable-border: var(--bds-neutral-400);
   --bds-calendar-cell-past-fg: var(--bds-text-disabled);
-  --bds-calendar-today-border: var(--bds-brand-400);
+  --bds-calendar-today-border: var(--bds-brand-500);
   --bds-calendar-today-fg: var(--bds-brand-600);
 }
 
 [data-theme=dark] {
+  --bds-calendar-saturday-fg: var(--bds-text-brand);
   --bds-calendar-sunday-fg: var(--bds-red-400);
+  --bds-calendar-cell-available-bg: var(--bds-brand-50);
+  --bds-calendar-cell-available-fg: var(--bds-text-primary);
   --bds-calendar-cell-unavailable-bg: var(--bds-neutral-900);
-  --bds-calendar-cell-unavailable-border: var(--bds-neutral-600);
 }
 
 .bds-calendar {
@@ -2215,10 +2217,16 @@ table {
 }
 .bds-calendar-day.bds-is-available {
   background-color: var(--bds-calendar-cell-available-bg);
+  color: var(--bds-calendar-cell-available-fg);
+}
+.bds-calendar-day.bds-is-available.bds-is-saturday {
+  color: var(--bds-calendar-saturday-fg);
+}
+.bds-calendar-day.bds-is-available.bds-is-sunday {
+  color: var(--bds-calendar-sunday-fg);
 }
 .bds-calendar-day.bds-is-unavailable {
   background-color: var(--bds-calendar-cell-unavailable-bg);
-  border-color: var(--bds-calendar-cell-unavailable-border);
   color: var(--bds-calendar-cell-unavailable-fg);
 }
 .bds-calendar-day.bds-is-today {

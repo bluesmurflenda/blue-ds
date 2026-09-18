@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "exportedAt": "2026-09-15",
+    "exportedAt": "2026-09-18",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
     "count": 318
@@ -538,8 +538,12 @@
     "Dark": "var(--surface-subtle)"
   },
   "calendar/cell/available-bg": {
-    "Default": "var(--brand-50)",
+    "Default": "var(--brand-100)",
     "Dark": "var(--brand-50)"
+  },
+  "calendar/cell/available-fg": {
+    "Default": "var(--brand-700)",
+    "Dark": "var(--text-primary)"
   },
   "calendar/cell/bg": {
     "Default": "#ffffff00",
@@ -561,10 +565,6 @@
     "Default": "var(--neutral-100)",
     "Dark": "var(--neutral-900)"
   },
-  "calendar/cell/unavailable-border": {
-    "Default": "var(--neutral-400)",
-    "Dark": "var(--neutral-600)"
-  },
   "calendar/cell/unavailable-fg": {
     "Default": "var(--text-disabled)",
     "Dark": "var(--text-disabled)"
@@ -578,7 +578,7 @@
     "Dark": "var(--text-primary)"
   },
   "calendar/saturday/fg": {
-    "Default": "var(--text-brand)",
+    "Default": "var(--brand-700)",
     "Dark": "var(--text-brand)"
   },
   "calendar/sunday/fg": {
@@ -586,8 +586,8 @@
     "Dark": "var(--red-400)"
   },
   "calendar/today/border": {
-    "Default": "var(--brand-400)",
-    "Dark": "var(--brand-400)"
+    "Default": "var(--brand-500)",
+    "Dark": "var(--brand-500)"
   },
   "calendar/today/fg": {
     "Default": "var(--brand-600)",
