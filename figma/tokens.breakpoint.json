@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "exportedAt": "2026-09-15",
+    "exportedAt": "2026-09-18",
     "source": "use_figma (Plugin API) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Breakpoint",
     "count": 37
@@ -43,16 +43,16 @@
   "field/body-gap": {
     "Wide": "var(--space-6)",
     "Desktop": "var(--space-6)",
-    "Laptop": "var(--space-4)",
-    "Tablet": "var(--space-4)",
-    "Mobile": "var(--space-2)"
+    "Laptop": "var(--space-6)",
+    "Tablet": "var(--space-6)",
+    "Mobile": "var(--space-6)"
   },
   "field/gap": {
     "Wide": "var(--space-6)",
     "Desktop": "var(--space-6)",
-    "Laptop": "var(--space-4)",
-    "Tablet": "var(--space-4)",
-    "Mobile": "var(--space-2)"
+    "Laptop": "var(--space-6)",
+    "Tablet": "var(--space-6)",
+    "Mobile": "var(--space-6)"
   },
   "grid/columns": {
     "Wide": 12,
@@ -125,11 +125,11 @@
     "Mobile": "var(--space-6)"
   },
   "sub-visual/height": {
-    "Wide": 240,
-    "Desktop": 240,
-    "Laptop": 200,
-    "Tablet": 160,
-    "Mobile": 160
+    "Wide": 200,
+    "Desktop": 200,
+    "Laptop": 160,
+    "Tablet": 120,
+    "Mobile": 120
   },
   "table/col-label-width": {
     "Wide": 360,
