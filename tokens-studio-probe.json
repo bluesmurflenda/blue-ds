@@ -14241,18 +14241,8 @@
           "description": "반응형 display-2xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.display.2xl}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-display-2xl-leading)"
-            }
-          },
-          "description": "반응형 display-2xl 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "84",
+          "type": "lineHeights"
         }
       },
       "display-xl": {
@@ -14271,18 +14261,8 @@
           "description": "반응형 display-xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.display.xl}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-display-xl-leading)"
-            }
-          },
-          "description": "반응형 display-xl 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "72",
+          "type": "lineHeights"
         }
       },
       "display-lg": {
@@ -14301,18 +14281,8 @@
           "description": "반응형 display-lg 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.display.lg}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-display-lg-leading)"
-            }
-          },
-          "description": "반응형 display-lg 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "60",
+          "type": "lineHeights"
         }
       },
       "display-md": {
@@ -14331,18 +14301,8 @@
           "description": "반응형 display-md 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.display.md}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-display-md-leading)"
-            }
-          },
-          "description": "반응형 display-md 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "48",
+          "type": "lineHeights"
         }
       },
       "display-sm": {
@@ -14361,18 +14321,8 @@
           "description": "반응형 display-sm 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.display.sm}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-display-sm-leading)"
-            }
-          },
-          "description": "반응형 display-sm 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "42",
+          "type": "lineHeights"
         }
       },
       "display-xs": {
@@ -14391,18 +14341,8 @@
           "description": "반응형 display-xs 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.display.xs}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-display-xs-leading)"
-            }
-          },
-          "description": "반응형 display-xs 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "36",
+          "type": "lineHeights"
         }
       },
       "body-2xl": {
@@ -14421,18 +14361,8 @@
           "description": "반응형 body-2xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.body.2xl}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-body-2xl-leading)"
-            }
-          },
-          "description": "반응형 body-2xl 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "28",
+          "type": "lineHeights"
         }
       },
       "body-xl": {
@@ -14451,18 +14381,8 @@
           "description": "반응형 body-xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.body.xl}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-body-xl-leading)"
-            }
-          },
-          "description": "반응형 body-xl 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "26",
+          "type": "lineHeights"
         }
       },
       "body-lg": {
@@ -14481,18 +14401,8 @@
           "description": "반응형 body-lg 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.body.lg}",
-          "type": "number",
-          "$extensions": {
-            "com.figma.scopes": [
-              "LINE_HEIGHT"
-            ],
-            "com.figma.hiddenFromPublishing": false,
-            "com.figma.codeSyntax": {
-              "Web": "var(--bds-type-body-lg-leading)"
-            }
-          },
-          "description": "반응형 body-lg 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
+          "value": "24",
+          "type": "lineHeights"
         }
       }
     },
@@ -14512,7 +14422,7 @@
         "description": "섹션 하단 여백. 프로젝트 파일에서 사용."
       },
       "padding-top": {
-        "value": "{space.16}",
+        "value": "{space.20}",
         "type": "number",
         "$extensions": {
           "com.figma.scopes": [
@@ -16195,7 +16105,7 @@
         "description": "섹션 하단 여백. 프로젝트 파일에서 사용."
       },
       "padding-top": {
-        "value": "{space.16}",
+        "value": "{space.20}",
         "type": "number",
         "$extensions": {
           "com.figma.scopes": [
