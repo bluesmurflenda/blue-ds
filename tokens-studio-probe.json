@@ -14241,8 +14241,18 @@
           "description": "반응형 display-2xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "84",
-          "type": "lineHeights"
+          "value": "{font.leading.display.2xl}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-display-2xl-leading)"
+            }
+          },
+          "description": "반응형 display-2xl 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       },
       "display-xl": {
@@ -14261,8 +14271,18 @@
           "description": "반응형 display-xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "72",
-          "type": "lineHeights"
+          "value": "{font.leading.display.xl}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-display-xl-leading)"
+            }
+          },
+          "description": "반응형 display-xl 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       },
       "display-lg": {
@@ -14281,8 +14301,18 @@
           "description": "반응형 display-lg 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "60",
-          "type": "lineHeights"
+          "value": "{font.leading.display.lg}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-display-lg-leading)"
+            }
+          },
+          "description": "반응형 display-lg 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       },
       "display-md": {
@@ -14301,8 +14331,18 @@
           "description": "반응형 display-md 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "48",
-          "type": "lineHeights"
+          "value": "{font.leading.display.md}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-display-md-leading)"
+            }
+          },
+          "description": "반응형 display-md 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       },
       "display-sm": {
@@ -14321,8 +14361,18 @@
           "description": "반응형 display-sm 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "42",
-          "type": "lineHeights"
+          "value": "{font.leading.display.sm}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-display-sm-leading)"
+            }
+          },
+          "description": "반응형 display-sm 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       },
       "display-xs": {
@@ -14341,8 +14391,18 @@
           "description": "반응형 display-xs 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "36",
-          "type": "lineHeights"
+          "value": "{font.leading.display.xs}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-display-xs-leading)"
+            }
+          },
+          "description": "반응형 display-xs 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       },
       "body-2xl": {
@@ -14361,8 +14421,18 @@
           "description": "반응형 body-2xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "28",
-          "type": "lineHeights"
+          "value": "{font.leading.body.2xl}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-body-2xl-leading)"
+            }
+          },
+          "description": "반응형 body-2xl 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       },
       "body-xl": {
@@ -14381,8 +14451,18 @@
           "description": "반응형 body-xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "26",
-          "type": "lineHeights"
+          "value": "{font.leading.body.xl}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-body-xl-leading)"
+            }
+          },
+          "description": "반응형 body-xl 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       },
       "body-lg": {
@@ -14401,8 +14481,18 @@
           "description": "반응형 body-lg 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "24",
-          "type": "lineHeights"
+          "value": "{font.leading.body.lg}",
+          "type": "number",
+          "$extensions": {
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.hiddenFromPublishing": false,
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-type-body-lg-leading)"
+            }
+          },
+          "description": "반응형 body-lg 행간. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         }
       }
     },
@@ -14422,7 +14512,7 @@
         "description": "섹션 하단 여백. 프로젝트 파일에서 사용."
       },
       "padding-top": {
-        "value": "{space.20}",
+        "value": "{space.16}",
         "type": "number",
         "$extensions": {
           "com.figma.scopes": [
@@ -14508,6 +14598,216 @@
           }
         },
         "description": "서브페이지 sub-visual 영역 높이."
+      }
+    },
+    "lineHeights": {
+      "0": {
+        "value": 72,
+        "type": "lineHeights"
+      },
+      "1": {
+        "value": 72,
+        "type": "lineHeights"
+      },
+      "2": {
+        "value": 72,
+        "type": "lineHeights"
+      },
+      "3": {
+        "value": 72,
+        "type": "lineHeights"
+      },
+      "4": {
+        "value": 60,
+        "type": "lineHeights"
+      },
+      "5": {
+        "value": 60,
+        "type": "lineHeights"
+      },
+      "6": {
+        "value": 60,
+        "type": "lineHeights"
+      },
+      "7": {
+        "value": 60,
+        "type": "lineHeights"
+      },
+      "8": {
+        "value": 48,
+        "type": "lineHeights"
+      },
+      "9": {
+        "value": 48,
+        "type": "lineHeights"
+      },
+      "10": {
+        "value": 48,
+        "type": "lineHeights"
+      },
+      "11": {
+        "value": 48,
+        "type": "lineHeights"
+      },
+      "12": {
+        "value": 42,
+        "type": "lineHeights"
+      },
+      "13": {
+        "value": 42,
+        "type": "lineHeights"
+      },
+      "14": {
+        "value": 42,
+        "type": "lineHeights"
+      },
+      "15": {
+        "value": 42,
+        "type": "lineHeights"
+      },
+      "16": {
+        "value": 36,
+        "type": "lineHeights"
+      },
+      "17": {
+        "value": 36,
+        "type": "lineHeights"
+      },
+      "18": {
+        "value": 36,
+        "type": "lineHeights"
+      },
+      "19": {
+        "value": 36,
+        "type": "lineHeights"
+      },
+      "20": {
+        "value": 36,
+        "type": "lineHeights"
+      },
+      "21": {
+        "value": 36,
+        "type": "lineHeights"
+      },
+      "22": {
+        "value": 36,
+        "type": "lineHeights"
+      },
+      "23": {
+        "value": 36,
+        "type": "lineHeights"
+      },
+      "24": {
+        "value": 28,
+        "type": "lineHeights"
+      },
+      "25": {
+        "value": 28,
+        "type": "lineHeights"
+      },
+      "26": {
+        "value": 28,
+        "type": "lineHeights"
+      },
+      "27": {
+        "value": 28,
+        "type": "lineHeights"
+      },
+      "28": {
+        "value": 26,
+        "type": "lineHeights"
+      },
+      "29": {
+        "value": 26,
+        "type": "lineHeights"
+      },
+      "30": {
+        "value": 26,
+        "type": "lineHeights"
+      },
+      "31": {
+        "value": 26,
+        "type": "lineHeights"
+      },
+      "32": {
+        "value": 24,
+        "type": "lineHeights"
+      },
+      "33": {
+        "value": 24,
+        "type": "lineHeights"
+      },
+      "34": {
+        "value": 24,
+        "type": "lineHeights"
+      },
+      "35": {
+        "value": 24,
+        "type": "lineHeights"
+      },
+      "36": {
+        "value": 22,
+        "type": "lineHeights"
+      },
+      "37": {
+        "value": 22,
+        "type": "lineHeights"
+      },
+      "38": {
+        "value": 22,
+        "type": "lineHeights"
+      },
+      "39": {
+        "value": 22,
+        "type": "lineHeights"
+      },
+      "40": {
+        "value": 20,
+        "type": "lineHeights"
+      },
+      "41": {
+        "value": 20,
+        "type": "lineHeights"
+      },
+      "42": {
+        "value": 20,
+        "type": "lineHeights"
+      },
+      "43": {
+        "value": 20,
+        "type": "lineHeights"
+      },
+      "44": {
+        "value": 18,
+        "type": "lineHeights"
+      },
+      "45": {
+        "value": 18,
+        "type": "lineHeights"
+      },
+      "46": {
+        "value": 18,
+        "type": "lineHeights"
+      },
+      "47": {
+        "value": 18,
+        "type": "lineHeights"
+      },
+      "48": {
+        "value": 16,
+        "type": "lineHeights"
+      },
+      "49": {
+        "value": 16,
+        "type": "lineHeights"
+      },
+      "50": {
+        "value": 16,
+        "type": "lineHeights"
+      },
+      "51": {
+        "value": 16,
+        "type": "lineHeights"
       }
     }
   },
@@ -16105,7 +16405,7 @@
         "description": "섹션 하단 여백. 프로젝트 파일에서 사용."
       },
       "padding-top": {
-        "value": "{space.20}",
+        "value": "{space.16}",
         "type": "number",
         "$extensions": {
           "com.figma.scopes": [
