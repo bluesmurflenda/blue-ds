@@ -97,8 +97,8 @@
     "Mobile": "var(--space-16)"
   },
   "sections-sub/padding-top": {
-    "Wide": "var(--space-20)",
-    "Desktop": "var(--space-20)",
+    "Wide": "var(--space-16)",
+    "Desktop": "var(--space-16)",
     "Laptop": "var(--space-16)",
     "Tablet": "var(--space-16)",
     "Mobile": "var(--space-12)"
@@ -118,11 +118,11 @@
     "Mobile": "var(--space-12)"
   },
   "sections/padding-top": {
-    "Wide": "var(--space-16)",
-    "Desktop": "var(--space-16)",
-    "Laptop": "var(--space-16)",
-    "Tablet": "var(--space-16)",
-    "Mobile": "var(--space-16)"
+    "Wide": "var(--space-20)",
+    "Desktop": "var(--space-20)",
+    "Laptop": "var(--space-10)",
+    "Tablet": "var(--space-10)",
+    "Mobile": "var(--space-6)"
   },
   "sub-visual/height": {
     "Wide": 200,
