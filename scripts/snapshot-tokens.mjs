@@ -1,13 +1,13 @@
 // figma/tokens-studio.json 으로 figma/tokens.*.json 네 개를 다시 쓴다.
 //
-// 입력은 Tokens Studio 플러그인이 GitHub 로 직접 민 파일 하나다. 사람이 MCP 로 추출해
-// figma/.staging/ 에 붙여넣던 방식을 대체한다 — 붙여넣는 단계가 없어져 조각이 잘리거나
-// 겹치는 실패가 사라졌다. 대신 아래 대조는 그대로 남긴다. 입력 경로가 바뀌어도
-// "낡은 채로 커밋된다" 는 실패는 그대로 남기 때문이다.
+// 입력은 Tokens Studio 플러그인이 tokens 브랜치로 직접 민 파일 하나다.
+// 가져오는 법은 scripts/README.md 「생성 방법」에 있다.
 //
-// Tokens Studio 출력에는 변수 id 가 없다. 이 파일은 변수가 추가·삭제됐을 때만
-// 별도로 다시 뽑는다 — figma/tokens.ids.json 은 이 스크립트가 만들지 않고,
-// 있는 파일을 읽어 이름 대조에만 쓴다. 다시 뽑는 코드는 scripts/figma-extract.js 의 C 부분이다.
+// 값이 어디서 오든 "낡은 채로 커밋된다" 는 실패는 남으므로 아래 대조는 그대로 둔다.
+//
+// Tokens Studio 출력에는 변수 id 가 없다. figma/tokens.ids.json 은 이 스크립트가 만들지 않고,
+// 있는 파일을 읽어 이름 대조에만 쓴다. 변수가 추가·삭제·개명됐을 때만 따로 다시 뽑는다 —
+// 추출 코드는 scripts/figma-extract.js 다.
 //
 // 출력 형식은 바꾸지 않는다. build-tokens.mjs · check-*.mjs 가 그대로 읽는다.
 
@@ -149,7 +149,7 @@ const sortKeys = (o) => Object.fromEntries(Object.keys(o).sort().map((k) => [k, 
 
 // ── id 맵 — 읽기만 한다 ─────────────────────────────────────────────
 const IDS_FILE = path.join(OUT, 'tokens.ids.json');
-if (!fs.existsSync(IDS_FILE)) die('figma/tokens.ids.json 이 없다 — scripts/figma-extract.js 의 C 부분으로 다시 뽑는다');
+if (!fs.existsSync(IDS_FILE)) die('figma/tokens.ids.json 이 없다 — scripts/figma-extract.js 를 Figma MCP 로 돌려 다시 뽑는다');
 const idsRaw = Object.fromEntries(
   Object.entries(JSON.parse(fs.readFileSync(IDS_FILE, 'utf8'))).filter(([k]) => !k.startsWith('_')),
 );
@@ -176,7 +176,7 @@ for (const c of COLLECTIONS) {
 if (problems.length) {
   problems.push(
     '변수가 추가·삭제됐다는 뜻이다. figma/tokens.ids.json 을 다시 뽑아야 한다 — ' +
-    'scripts/figma-extract.js 의 C 부분을 Figma MCP 로 돌려 그 결과로 그 파일을 덮는다. ' +
+    'scripts/figma-extract.js 를 Figma MCP 로 돌려 그 결과로 그 파일을 덮는다. ' +
     '이 스크립트는 id 맵을 만들 수 없다(Tokens Studio 출력에 변수 id 가 없다).',
   );
   stop();

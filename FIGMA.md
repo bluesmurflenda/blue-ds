@@ -209,7 +209,7 @@ Figma 교체 드롭다운은 이름의 `/` 경로로 그룹핑된다. 그래서 
 ```
 프로젝트 파일의 참조 정리 (삭제·이름변경한 토큰)
   → DS Master 퍼블리시
-  → figma/tokens.*.json 재추출
+  → Tokens Studio 에서 Push · 코드 쪽에서 npm run snapshot
   → 프로젝트에서 라이브러리 업데이트 수락
   → 인스턴스 재조회로 실측
   → 코드 반영

@@ -17,42 +17,51 @@
 
 ### 변수 스냅샷
 
-Variables API 를 못 쓰므로 **MCP 로 뽑은 변수 목록을 파일로 둔다.**
-**컬렉션당 한 파일이다** — 한 번에 받으면 출력이 잘린다.
+Variables API 를 못 쓰므로 **Tokens Studio 플러그인이 내보낸 파일을 값의 기준으로 둔다.**
 
 ```
+figma/tokens-studio.json          입력 — Tokens Studio 가 tokens 브랜치로 직접 민다
+        ↓  npm run snapshot
 figma/tokens.primitive.json     ┐
 figma/tokens.theme.json         │ 이름 → 값
 figma/tokens.shape.json         │
 figma/tokens.breakpoint.json    ┘
-figma/tokens.ids.json             변수 id → 이름 (컬렉션별로 나눠 담는다)
+figma/tokens.ids.json             변수 id → 이름. 이 명령이 만들지 않는다 — 아래 「id 맵」
 ```
 
 `scripts/build-tokens.mjs` 가 이 파일들에서 `scss/tokens/*.scss` 를 만든다.
-**퍼블리시 시점이 곧 값이 확정된 시점**이므로
-Figma 퍼블리시할 때마다 다시 뽑으면 낡지 않는다.
+**퍼블리시 시점이 곧 값이 확정된 시점**이므로 퍼블리시할 때마다 다시 뽑으면 낡지 않는다.
 
 ### 생성 방법
 
-**추출 코드는 `scripts/figma-extract.js` 에 있다.** Figma MCP 에 그 파일 본문을 넣어 돌린다.
-**여기에 옮겨 적지 않는다** — 옮겨 적은 코드는 반드시 실제와 어긋난다. 실제로 어긋나 있었다.
+```
+Figma 변수 수정
+  → Tokens Studio 플러그인에서 Push (tokens 브랜치)
+  → git checkout origin/tokens -- figma/tokens-studio.json
+  → npm run snapshot
+  → npm run build
+  → npm run check
+  → 커밋
+```
 
-1. 컬렉션마다 한 번씩 돌리고, 반환값을 `figma/.staging/<컬렉션>.json` 에 그대로 저장한다
-2. 출력이 잘리면 구간을 나눠 `<컬렉션>.1.json` · `<컬렉션>.2.json` 로 저장한다
-3. id 맵을 한 번 돌려 `figma/.staging/ids.json` 에 저장한다
-4. `npm run snapshot`
-
-`npm run snapshot` 이 정렬과 `_meta` 와 개수를 맞춰 다섯 파일을 다시 쓴다.
-**아래 중 하나라도 걸리면 아무 파일도 쓰지 않고 멈춘다.**
+`npm run snapshot` 이 별칭을 CSS 변수 표기로 바꾸고, 정렬과 `_meta` 와 개수를 맞춰
+네 파일을 다시 쓴다. **아래 중 하나라도 걸리면 아무 파일도 쓰지 않고 멈춘다.**
 
 | 걸리는 것 | 무엇이 잘못된 것인가 |
 | --- | --- |
-| 값 파일과 id 파일의 이름이 다르다 | 한쪽이 덜 받아졌다 — 출력이 잘린 경우가 여기 걸린다 |
-| 별칭이 없는 변수를 가리킨다 | 잘렸거나 이름이 바뀌었다 |
-| 모드 하나에 값이 없다 | 덜 받아졌다 |
-| 같은 이름이 조각 두 곳에 있다 | 같은 구간을 두 번 받았다 |
+| 입력 파일이 없다 | Tokens Studio 에서 Push 하지 않았거나 가져오지 않았다 |
+| 세트가 `MODES` 와 다르다 | Figma 에서 모드를 추가·삭제·개명했다 — 스크립트의 `MODES` 를 고친다 |
+| 값 파일과 id 파일의 이름이 다르다 | 변수가 추가·삭제됐다 — id 맵을 다시 뽑아야 한다 |
+| 별칭이 없는 변수를 가리킨다 | 이름이 바뀌었거나 가리키는 쪽이 지워졌다 |
+| 모드 하나에 값이 없다 | 그 모드의 세트에 그 토큰이 없다 |
 
 통과하면 이전 파일과 비교해 **추가·삭제·값이 바뀐 항목을 줄 단위로 낸다.** 그것을 보고 커밋한다.
+**Figma 변수가 아닌 토큰은 버린다** — `$extensions` 에 `com.figma.*` 가 하나도 없는 것이 그렇다.
+텍스트 스타일의 행간처럼 변수가 아닌 것이 같은 파일에 딸려 나온다. 버린 개수를 함께 출력하므로
+그 수가 갑자기 달라지면 Figma 쪽에서 무언가 바뀐 것이다.
+
+**모드 순서는 스크립트의 `MODES` 가 정한다.** 입력에는 Figma 모드 순서가 없다 —
+`$metadata.tokenSetOrder` 는 플러그인 안에서 세트를 나열한 순서일 뿐이라 실제로 갈렸다.
 
 **스냅샷을 손으로 고치지 않는다.** 새로 생긴 변수만 끼워 넣으면 나머지 값이 언제 확정된
 것인지 알 수 없게 된다. 실제로 그렇게 해서 한동안 확인되지 않은 채로 있었다.
@@ -82,6 +91,14 @@ diff 에서 무엇이 바뀌었는지 못 읽는다.
 `check-nodes.mjs` 는 `boundVariables` 의 id로 이 맵을 찾아 `{name, collection}` 을 얻고,
 `collection === 'Primitive'` 이면서 `tokens.primitive.json` 에서 그 이름의 값이 hex 색이면
 "컬러 프리미티브 직접 참조"로 판정한다(D1).
+
+**이 파일은 `npm run snapshot` 이 만들지 않는다.** Tokens Studio 출력에 변수 id 가 없어서다.
+**변수를 추가·삭제·개명했을 때만 따로 다시 뽑는다** — 추출 코드는 `scripts/figma-extract.js` 에
+있고 Figma MCP 에 그 파일 본문을 넣어 돌린 뒤 반환값으로 이 파일을 덮는다.
+**여기에 옮겨 적지 않는다** — 옮겨 적은 코드는 반드시 실제와 어긋난다. 실제로 어긋나 있었다.
+
+언제 다시 뽑아야 하는지는 **`npm run snapshot` 이 알려 준다.** 값 파일과 이 파일의 이름
+집합이 어긋나면 거기서 멈추고 무엇을 해야 하는지 출력한다. 값만 바뀐 날에는 돌릴 필요가 없다.
 
 ### V군을 언제 돌리나
 
@@ -127,8 +144,8 @@ CI 에서 조이려면 `--strict` 를 준다.
 | `check-nodes.mjs`     | N 군 검사                      | REST API  |
 | `check-tokens.mjs`    | T · S 군 검사                  | 로컬 파일 |
 | `check-visual.mjs`    | R 군 검사                      | 헤드리스 브라우저 |
-| `figma-extract.js`    | 변수 추출                      | Figma MCP |
-| `snapshot-tokens.mjs` | 추출 결과 → `figma/tokens.*.json` | 로컬 파일 |
+| `figma-extract.js`    | 변수 id 맵 추출 — 변수가 추가·삭제·개명됐을 때만 | Figma MCP |
+| `snapshot-tokens.mjs` | `figma/tokens-studio.json` → `figma/tokens.*.json` | 로컬 파일 |
 
 **명령 이름은 `package.json` 에서 본다.** 여기에 옮겨 적지 않는다.
 

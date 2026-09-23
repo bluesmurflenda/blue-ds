@@ -7,3 +7,7 @@
 # 주석 안에 적어 둔 hex 가 S1 위반으로 잡힌다. 검사 입력은 LF 로 고정한다.
 *.scss text eol=lf
 *.mjs text eol=lf
+
+# Tokens Studio 가 GitHub API 로 직접 쓰는 파일이라 LF 로 들어온다. Windows 쪽 도구가
+# CRLF 로 다시 쓰면 전체 줄이 바뀐 것으로 잡혀 무엇이 달라졌는지 읽을 수 없다.
+figma/tokens-studio.json text eol=lf

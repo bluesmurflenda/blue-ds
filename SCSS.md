@@ -36,7 +36,8 @@ figma/tokens.*.json        변수 스냅샷 = 값의 기준
 
 **Figma Variables REST API 는 Enterprise 전용이라 이 계정에서 못 쓴다.**
 그래서 `figma/tokens.*.json` 스냅샷이 값의 기준이고, **퍼블리시할 때마다 다시 뽑는다.**
-추출 방법은 `scripts/README.md`.
+값은 Tokens Studio 플러그인이 `tokens` 브랜치로 밀고, 그것을 가져와 `npm run snapshot` 이
+스냅샷을 다시 쓴다. 절차는 `scripts/README.md` 「생성 방법」.
 **`scss/tokens/*.scss` 는 그 스냅샷에서 생성한다** — `npm run build:tokens`(빌드가 먼저 부른다).
 손으로 고치지 않는다. `_breakpoint.scss` 만 예외로 손으로 쓴다(미디어쿼리 계산과 컴파일타임 상수).
 
