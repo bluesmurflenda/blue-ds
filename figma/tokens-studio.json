@@ -2086,175 +2086,58 @@
       "leading": {
         "display": {
           "2xl": {
-            "value": 84,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-display-2xl)"
-              }
-            }
+            "value": "84",
+            "type": "lineHeights"
           },
           "xl": {
-            "value": 72,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-display-xl)"
-              }
-            }
+            "value": "72",
+            "type": "lineHeights"
           },
           "lg": {
-            "value": 60,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-display-lg)"
-              }
-            }
+            "value": "60",
+            "type": "lineHeights"
           },
           "md": {
-            "value": 48,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-display-md)"
-              }
-            }
+            "value": "48",
+            "type": "lineHeights"
           },
           "sm": {
-            "value": 42,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-display-sm)"
-              }
-            }
+            "value": "42",
+            "type": "lineHeights"
           },
           "xs": {
-            "value": 36,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-display-xs)"
-              }
-            }
+            "value": "36",
+            "type": "lineHeights"
           }
         },
         "body": {
           "xl": {
-            "value": 26,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-body-xl)"
-              }
-            }
+            "value": "26",
+            "type": "lineHeights"
           },
           "lg": {
-            "value": 24,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-body-lg)"
-              }
-            }
+            "value": "24",
+            "type": "lineHeights"
           },
           "md": {
-            "value": 22,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-body-md)"
-              }
-            }
+            "value": "22",
+            "type": "lineHeights"
           },
           "sm": {
-            "value": 20,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-body-sm)"
-              }
-            }
+            "value": "20",
+            "type": "lineHeights"
           },
           "xs": {
-            "value": 18,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-body-xs)"
-              }
-            }
+            "value": "18",
+            "type": "lineHeights"
           },
           "2xs": {
-            "value": 16,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-body-2xs)"
-              }
-            }
+            "value": "16",
+            "type": "lineHeights"
           },
           "2xl": {
-            "value": 28,
-            "type": "number",
-            "$extensions": {
-              "com.figma.scopes": [
-                "ALL_SCOPES"
-              ],
-              "com.figma.hiddenFromPublishing": false,
-              "com.figma.codeSyntax": {
-                "Web": "var(--bds-font-leading-body-2xl)"
-              }
-            }
+            "value": "28",
+            "type": "lineHeights"
           }
         },
         "prose": {
@@ -7913,7 +7796,7 @@
         "description": "경고·응급 맥락 블록의 테두리. red/600. surface/subtle 위 4.63:1로 검증됨. 빨간 배경 면적 대신 이 테두리를 쓴다."
       },
       "control": {
-        "value": "{neutral.200}",
+        "value": "{neutral.300}",
         "type": "color",
         "$extensions": {
           "com.figma.scopes": [
