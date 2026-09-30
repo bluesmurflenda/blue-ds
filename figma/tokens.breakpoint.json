@@ -149,43 +149,43 @@
     "Wide": "var(--font-leading-body-2xl)",
     "Desktop": "var(--font-leading-body-2xl)",
     "Laptop": "var(--font-leading-body-2xl)",
-    "Tablet": "var(--font-leading-body-xl)",
-    "Mobile": "var(--font-leading-body-lg)"
+    "Tablet": "var(--font-leading-body-2xl)",
+    "Mobile": "var(--font-leading-body-2xl)"
   },
   "type/body-2xl/size": {
     "Wide": "var(--font-size-body-2xl)",
     "Desktop": "var(--font-size-body-2xl)",
     "Laptop": "var(--font-size-body-2xl)",
-    "Tablet": "var(--font-size-body-xl)",
-    "Mobile": "var(--font-size-body-lg)"
+    "Tablet": "var(--font-size-body-2xl)",
+    "Mobile": "var(--font-size-body-2xl)"
   },
   "type/body-lg/leading": {
     "Wide": "var(--font-leading-body-lg)",
     "Desktop": "var(--font-leading-body-lg)",
     "Laptop": "var(--font-leading-body-lg)",
     "Tablet": "var(--font-leading-body-lg)",
-    "Mobile": "var(--font-leading-body-sm)"
+    "Mobile": "var(--font-leading-body-lg)"
   },
   "type/body-lg/size": {
     "Wide": "var(--font-size-body-lg)",
     "Desktop": "var(--font-size-body-lg)",
     "Laptop": "var(--font-size-body-lg)",
     "Tablet": "var(--font-size-body-lg)",
-    "Mobile": "var(--font-size-body-sm)"
+    "Mobile": "var(--font-size-body-lg)"
   },
   "type/body-xl/leading": {
     "Wide": "var(--font-leading-body-xl)",
     "Desktop": "var(--font-leading-body-xl)",
     "Laptop": "var(--font-leading-body-xl)",
-    "Tablet": "var(--font-leading-body-lg)",
-    "Mobile": "var(--font-leading-body-lg)"
+    "Tablet": "var(--font-leading-body-xl)",
+    "Mobile": "var(--font-leading-body-xl)"
   },
   "type/body-xl/size": {
     "Wide": "var(--font-size-body-xl)",
     "Desktop": "var(--font-size-body-xl)",
     "Laptop": "var(--font-size-body-xl)",
-    "Tablet": "var(--font-size-body-lg)",
-    "Mobile": "var(--font-size-body-lg)"
+    "Tablet": "var(--font-size-body-xl)",
+    "Mobile": "var(--font-size-body-xl)"
   },
   "type/display-2xl/leading": {
     "Wide": "var(--font-leading-display-2xl)",

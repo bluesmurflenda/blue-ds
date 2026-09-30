@@ -13431,7 +13431,7 @@
       },
       "body-2xl": {
         "size": {
-          "value": "{font.size.body.xl}",
+          "value": "{font.size.body.2xl}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -13445,7 +13445,7 @@
           "description": "반응형 body-2xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.body.xl}",
+          "value": "{font.leading.body.2xl}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -13461,7 +13461,7 @@
       },
       "body-xl": {
         "size": {
-          "value": "{font.size.body.lg}",
+          "value": "{font.size.body.xl}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -13475,7 +13475,7 @@
           "description": "반응형 body-xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.body.lg}",
+          "value": "{font.leading.body.xl}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -13992,7 +13992,7 @@
       },
       "body-2xl": {
         "size": {
-          "value": "{font.size.body.lg}",
+          "value": "{font.size.body.2xl}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -14006,7 +14006,7 @@
           "description": "반응형 body-2xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.body.lg}",
+          "value": "{font.leading.body.2xl}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -14022,7 +14022,7 @@
       },
       "body-xl": {
         "size": {
-          "value": "{font.size.body.lg}",
+          "value": "{font.size.body.xl}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -14036,7 +14036,7 @@
           "description": "반응형 body-xl 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.body.lg}",
+          "value": "{font.leading.body.xl}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -14052,7 +14052,7 @@
       },
       "body-lg": {
         "size": {
-          "value": "{font.size.body.sm}",
+          "value": "{font.size.body.lg}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
@@ -14066,7 +14066,7 @@
           "description": "반응형 body-lg 폰트 크기. 브레이크포인트별로 원시 스케일 단계를 내려간다."
         },
         "leading": {
-          "value": "{font.leading.body.sm}",
+          "value": "{font.leading.body.lg}",
           "type": "number",
           "$extensions": {
             "com.figma.scopes": [
