@@ -341,12 +341,12 @@
   --bds-type-display-sm-leading: var(--bds-font-leading-body-2xl);
   --bds-type-display-xs-size: var(--bds-font-size-body-xl);
   --bds-type-display-xs-leading: var(--bds-font-leading-body-xl);
-  --bds-type-body-2xl-size: var(--bds-font-size-body-lg);
-  --bds-type-body-2xl-leading: var(--bds-font-leading-body-lg);
-  --bds-type-body-xl-size: var(--bds-font-size-body-lg);
-  --bds-type-body-xl-leading: var(--bds-font-leading-body-lg);
-  --bds-type-body-lg-size: var(--bds-font-size-body-sm);
-  --bds-type-body-lg-leading: var(--bds-font-leading-body-sm);
+  --bds-type-body-2xl-size: var(--bds-font-size-body-2xl);
+  --bds-type-body-2xl-leading: var(--bds-font-leading-body-2xl);
+  --bds-type-body-xl-size: var(--bds-font-size-body-xl);
+  --bds-type-body-xl-leading: var(--bds-font-leading-body-xl);
+  --bds-type-body-lg-size: var(--bds-font-size-body-lg);
+  --bds-type-body-lg-leading: var(--bds-font-leading-body-lg);
   --bds-device: mobile;
 }
 
@@ -375,10 +375,6 @@
     --bds-type-display-sm-leading: var(--bds-font-leading-display-xs);
     --bds-type-display-xs-size: var(--bds-font-size-body-2xl);
     --bds-type-display-xs-leading: var(--bds-font-leading-body-2xl);
-    --bds-type-body-2xl-size: var(--bds-font-size-body-xl);
-    --bds-type-body-2xl-leading: var(--bds-font-leading-body-xl);
-    --bds-type-body-lg-size: var(--bds-font-size-body-lg);
-    --bds-type-body-lg-leading: var(--bds-font-leading-body-lg);
   }
 }
 @media (min-width: 1024px) {
@@ -400,10 +396,6 @@
     --bds-type-display-md-leading: var(--bds-font-leading-display-sm);
     --bds-type-display-xs-size: var(--bds-font-size-display-xs);
     --bds-type-display-xs-leading: var(--bds-font-leading-display-xs);
-    --bds-type-body-2xl-size: var(--bds-font-size-body-2xl);
-    --bds-type-body-2xl-leading: var(--bds-font-leading-body-2xl);
-    --bds-type-body-xl-size: var(--bds-font-size-body-xl);
-    --bds-type-body-xl-leading: var(--bds-font-leading-body-xl);
   }
 }
 @media (min-width: 1440px) {
