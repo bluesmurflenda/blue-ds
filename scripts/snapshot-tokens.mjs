@@ -6,8 +6,8 @@
 // 값이 어디서 오든 "낡은 채로 커밋된다" 는 실패는 남으므로 아래 대조는 그대로 둔다.
 //
 // Tokens Studio 출력에는 변수 id 가 없다. figma/tokens.ids.json 은 이 스크립트가 만들지 않고,
-// 있는 파일을 읽어 이름 대조에만 쓴다. 변수가 추가·삭제·개명됐을 때만 따로 다시 뽑는다 —
-// 추출 코드는 scripts/figma-extract.js 다.
+// 있는 파일을 읽어 쓴다 — 무엇이 변수인지 가르는 정본이자 이름 대조의 상대다.
+// 변수가 추가·삭제·개명됐을 때만 따로 다시 뽑는다 — 추출 코드는 scripts/figma-extract.js 다.
 //
 // 출력 형식은 바꾸지 않는다. build-tokens.mjs · check-*.mjs 가 그대로 읽는다.
 
@@ -56,13 +56,30 @@ if (missing.length) die(`tokenSetOrder 에 없는 세트가 있다: ${missing.jo
 const absent = order.filter((s) => !(s in raw));
 if (absent.length) die(`tokenSetOrder 에 있는데 파일에 없는 세트: ${absent.join(', ')}`);
 
+// ── id 맵 — 읽기만 한다. 무엇이 변수인지는 이 파일이 정한다 ─────────
+// 예전에는 $extensions 의 com.figma.* 유무로 갈랐다. 그 규칙이 실제 변수를 버렸다 —
+// Figma 에 변수로 살아 있는 font/leading/* 13개가 메타 없이 나왔다(2026-09-29).
+// 메타가 붙고 안 붙고는 Tokens Studio 사정이라 판별 근거가 못 된다.
+const IDS_FILE = path.join(OUT, 'tokens.ids.json');
+if (!fs.existsSync(IDS_FILE)) die('figma/tokens.ids.json 이 없다 — scripts/figma-extract.js 를 Figma MCP 로 돌려 다시 뽑는다');
+const idsRaw = Object.fromEntries(
+  Object.entries(JSON.parse(fs.readFileSync(IDS_FILE, 'utf8'))).filter(([k]) => !k.startsWith('_')),
+);
+const idNames = Object.fromEntries(COLLECTIONS.map((c) => [c, new Set(Object.values(idsRaw[c] ?? {}))]));
+
+// 이름이 몇백 개 쏟아지면 읽히지 않으므로 앞의 몇 개만 보여 준다.
+const few = (list, n = 6) =>
+  list.slice(0, n).join(', ') + (list.length > n ? ` … 외 ${list.length - n}개` : '');
+
 // ── 리프를 평평하게 편다 ────────────────────────────────────────────
 // 리프는 { value, type, description?, $extensions? } 다. 경로를 "/" 로 이으면 Figma 변수 이름이 된다.
 //
-// $extensions 에 com.figma.* 가 하나도 없으면 Figma 변수가 아니다 — 버린다.
-// 텍스트 스타일의 행간처럼 변수가 아닌 것이 같은 파일에 딸려 나온다.
+// 토큰 하나를 볼 때 셋 중 하나다.
+//   1) 그 컬렉션의 id 맵에 같은 이름이 있다 → 변수다. 채택한다
+//   2) 없는데 com.figma.* 메타가 있다 → 새로 만든 변수일 수 있다. 모아 두고 아래에서 멈춘다
+//   3) 없고 메타도 없다 → 스타일에서 딸려온 것이다. 버린다(개수만 보고한다)
 const isLeaf = (v) => v && typeof v === 'object' && !Array.isArray(v) && 'value' in v && 'type' in v;
-const isFigmaVariable = (leaf) =>
+const hasFigmaMeta = (leaf) =>
   Object.keys(leaf.$extensions ?? {}).some((k) => k.startsWith('com.figma.'));
 
 // 별칭 "{a.b.c}" 를 "var(--a-b-c)" 로 바꾼다. 기존 스냅샷과 같은 표기라 SCSS 와 그대로 대조된다.
@@ -74,14 +91,19 @@ const convert = (value) => {
 };
 
 const dropped = [];
-function flatten(setName) {
+const candidates = [];
+function flatten(setName, collection) {
   const out = {};
   const walk = (node, trail) => {
     for (const [k, v] of Object.entries(node)) {
       const trail2 = [...trail, k];
       if (isLeaf(v)) {
         const name = trail2.join('/');
-        if (!isFigmaVariable(v)) { dropped.push(`${setName}:${name}`); continue; }
+        if (!idNames[collection].has(name)) {
+          if (hasFigmaMeta(v)) candidates.push(`${setName}:${name}`);
+          else dropped.push(`${setName}:${name}`);
+          continue;
+        }
         if (name in out) die(`${setName}: '${name}' 가 두 번 나온다`);
         out[name] = convert(v.value);
       } else if (v && typeof v === 'object' && !Array.isArray(v)) {
@@ -106,7 +128,7 @@ for (const setName of order) {
   if (!COLLECTIONS.includes(collection)) die(`모르는 컬렉션: ${collection} (${setName})`);
   stage[collection] ??= { modes: MODES[collection], byMode: {} };
   if (mode in stage[collection].byMode) die(`${collection}: 모드 '${mode}' 가 두 번 나온다`);
-  stage[collection].byMode[mode] = flatten(setName);
+  stage[collection].byMode[mode] = flatten(setName, collection);
 }
 
 // 세트 대조 — MODES 에 적힌 모드와 입력의 세트가 정확히 맞아야 한다.
@@ -147,17 +169,17 @@ for (const c of COLLECTIONS) {
 // 그러면 생성되는 SCSS 의 줄 순서까지 같이 흔들려 diff 를 읽을 수 없게 된다.
 const sortKeys = (o) => Object.fromEntries(Object.keys(o).sort().map((k) => [k, o[k]]));
 
-// ── id 맵 — 읽기만 한다 ─────────────────────────────────────────────
-const IDS_FILE = path.join(OUT, 'tokens.ids.json');
-if (!fs.existsSync(IDS_FILE)) die('figma/tokens.ids.json 이 없다 — scripts/figma-extract.js 를 Figma MCP 로 돌려 다시 뽑는다');
-const idsRaw = Object.fromEntries(
-  Object.entries(JSON.parse(fs.readFileSync(IDS_FILE, 'utf8'))).filter(([k]) => !k.startsWith('_')),
-);
-
 // ── 대조 — 여기서 막지 못하면 낡은 채로 커밋된다 ────────────────────
-// 이름이 몇백 개 쏟아지면 읽히지 않으므로 앞의 몇 개만 보여 준다.
-const few = (list, n = 6) =>
-  list.slice(0, n).join(', ') + (list.length > n ? ` … 외 ${list.length - n}개` : '');
+
+// 0) id 맵에 없는데 변수 메타가 붙은 것. 새로 만든 변수일 수 있으므로 넘겨짚지 않고 멈춘다.
+//    여기서 걸린 이름을 버리면 Figma 에 있는 변수가 스냅샷에서 조용히 사라진다.
+if (candidates.length) {
+  die(
+    `id 맵에 없는 변수 후보 ${candidates.length}개 — figma-extract.js 의 결과로 ` +
+    `figma/tokens.ids.json 을 다시 뽑아야 한다. 아무 파일도 쓰지 않았다.\n  ` +
+    candidates.join('\n  '),
+  );
+}
 
 const problems = [];
 const stop = () => die(`대조에서 걸렸다. 아무 파일도 쓰지 않았다.\n  - ${problems.join('\n  - ')}`);

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "exportedAt": "2026-09-29",
+    "exportedAt": "2026-09-30",
     "source": "Tokens Studio (figma/tokens-studio.json) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
     "count": 318
@@ -794,7 +794,7 @@
     "Dark": "var(--brand-500)"
   },
   "field/border-hover": {
-    "Default": "var(--neutral-400)",
+    "Default": "var(--neutral-300)",
     "Dark": "var(--neutral-600)"
   },
   "field/border-invalid": {
