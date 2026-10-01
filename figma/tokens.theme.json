@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "exportedAt": "2026-09-30",
+    "exportedAt": "2026-10-01",
     "source": "Tokens Studio (figma/tokens-studio.json) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
     "count": 318
@@ -870,11 +870,11 @@
     "Dark": "var(--neutral-500)"
   },
   "list/item/bg-hover": {
-    "Default": "var(--surface-subtle)",
+    "Default": "var(--surface-muted)",
     "Dark": "var(--surface-subtle)"
   },
   "list/item/bg-selected": {
-    "Default": "var(--surface-subtle)",
+    "Default": "var(--surface-muted)",
     "Dark": "var(--surface-subtle)"
   },
   "list/item/fg": {

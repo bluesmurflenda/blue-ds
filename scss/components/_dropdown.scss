@@ -16,13 +16,15 @@
   --bds-list-item-fg-selected: var(--bds-brand-600);
   --bds-list-panel-border: var(--bds-border-default);
   --bds-list-panel-bg: var(--bds-white);
-  --bds-list-item-bg-hover: var(--bds-surface-subtle);
-  --bds-list-item-bg-selected: var(--bds-surface-subtle);
+  --bds-list-item-bg-hover: var(--bds-surface-muted);
+  --bds-list-item-bg-selected: var(--bds-surface-muted);
   --bds-list-item-fg-supporting: var(--bds-text-tertiary);
 }
 
 [data-theme='dark'] {
   --bds-list-panel-bg: var(--bds-neutral-800);
+  --bds-list-item-bg-hover: var(--bds-surface-subtle);
+  --bds-list-item-bg-selected: var(--bds-surface-subtle);
 }
 
 // 2026-08-28 확인(inputs-spec): 트리거 radius는 field/radius가 아니라 button/radius 공유.
