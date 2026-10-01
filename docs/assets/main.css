@@ -3458,9 +3458,9 @@ table {
   height: 12px;
 }
 .bds-dropdown-sm .bds-list-item {
-  height: 32px;
-  font-size: var(--bds-font-size-body-sm);
-  line-height: var(--bds-font-leading-body-sm);
+  height: 30px;
+  font-size: var(--bds-font-size-body-xs);
+  line-height: var(--bds-font-leading-body-xs);
 }
 
 .bds-dropdown-md .bds-dropdown__trigger {
@@ -3476,9 +3476,9 @@ table {
   height: 16px;
 }
 .bds-dropdown-md .bds-list-item {
-  height: 40px;
-  font-size: var(--bds-type-body-lg-size);
-  line-height: var(--bds-type-body-lg-leading);
+  height: 36px;
+  font-size: var(--bds-font-size-body-sm);
+  line-height: var(--bds-font-leading-body-sm);
 }
 
 .bds-dropdown-lg .bds-dropdown__trigger {
@@ -3495,8 +3495,8 @@ table {
 }
 .bds-dropdown-lg .bds-list-item {
   height: 48px;
-  font-size: var(--bds-type-body-xl-size);
-  line-height: var(--bds-type-body-xl-leading);
+  font-size: var(--bds-type-body-lg-size);
+  line-height: var(--bds-type-body-lg-leading);
 }
 
 .bds-dropdown-xl .bds-dropdown__trigger {
@@ -3513,8 +3513,8 @@ table {
 }
 .bds-dropdown-xl .bds-list-item {
   height: 56px;
-  font-size: var(--bds-type-body-xl-size);
-  line-height: var(--bds-type-body-xl-leading);
+  font-size: var(--bds-type-body-lg-size);
+  line-height: var(--bds-type-body-lg-leading);
 }
 
 .bds-list-panel {
@@ -3617,9 +3617,9 @@ table {
   font-weight: var(--bds-font-weight-regular);
 }
 .bds-select-sm .bds-list-item {
-  height: 32px;
-  font-size: var(--bds-font-size-body-sm);
-  line-height: var(--bds-font-leading-body-sm);
+  height: 30px;
+  font-size: var(--bds-font-size-body-xs);
+  line-height: var(--bds-font-leading-body-xs);
 }
 
 .bds-select-md .bds-select__field {
@@ -3638,9 +3638,9 @@ table {
   font-weight: var(--bds-font-weight-regular);
 }
 .bds-select-md .bds-list-item {
-  height: 40px;
-  font-size: var(--bds-type-body-lg-size);
-  line-height: var(--bds-type-body-lg-leading);
+  height: 36px;
+  font-size: var(--bds-font-size-body-sm);
+  line-height: var(--bds-font-leading-body-sm);
 }
 
 .bds-select-lg .bds-select__field {
@@ -3660,8 +3660,8 @@ table {
 }
 .bds-select-lg .bds-list-item {
   height: 48px;
-  font-size: var(--bds-type-body-xl-size);
-  line-height: var(--bds-type-body-xl-leading);
+  font-size: var(--bds-type-body-lg-size);
+  line-height: var(--bds-type-body-lg-leading);
 }
 
 .bds-select-xl .bds-select__field {
@@ -3681,8 +3681,8 @@ table {
 }
 .bds-select-xl .bds-list-item {
   height: 56px;
-  font-size: var(--bds-type-body-xl-size);
-  line-height: var(--bds-type-body-xl-leading);
+  font-size: var(--bds-type-body-lg-size);
+  line-height: var(--bds-type-body-lg-leading);
 }
 
 .bds-select-normal .bds-select__field {

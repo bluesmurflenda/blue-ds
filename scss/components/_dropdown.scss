@@ -34,11 +34,12 @@ $dropdown-sizes: (
   xl: (height: 56px, padding-x: $space-6, radius: var(--bds-btn-radius), chevron: 20px),
 );
 
-// _List/Item 높이 — 사이즈별 32/40/48/56. 문서 권고대로 padding-y(6/8/11/15, 폰트에서 파생된 값이라
-// 폰트가 바뀌면 어긋남) 대신 height + align-items:center로 구현한다.
+// _List/Item 높이 — 사이즈별 30/36/48/56. 2026-10-01 실측(Size=sm~xl 4개 노드 직접 조회).
+// padding-y 대신 height + align-items:center로 구현한다 — padding-y 는 폰트에서 파생된 값이라
+// 폰트가 바뀌면 어긋난다.
 $list-item-heights: (
-  sm: 32px,
-  md: 40px,
+  sm: 30px,
+  md: 36px,
   lg: 48px,
   xl: 56px,
 );
@@ -114,13 +115,15 @@ $dropdown-font: (
   xl: body-lg,
 );
 
-// _List/Item 폰트도 트리거보다 한 단계 위에서 사이즈별로 갈린다(실측 확인).
-// sm→Body/Sm, md→Body/Lg, lg·xl→Body/Xl(lg에서 멈춤, 트리거와 동일한 패턴).
+// _List/Item 폰트 — 2026-10-01 실측(Size=sm~xl 4개 노드 직접 조회):
+// sm→Body/Xs, md→Body/Sm, lg·xl→Body/Lg(lg에서 멈춤).
+// 값이 $dropdown-font 와 같아졌지만 두 맵은 합치지 않는다 — 트리거와 항목은 별개 컴포넌트라
+// 다시 갈릴 수 있다.
 $list-item-font: (
-  sm: body-sm,
-  md: body-lg,
-  lg: body-xl,
-  xl: body-xl,
+  sm: body-xs,
+  md: body-sm,
+  lg: body-lg,
+  xl: body-lg,
 );
 
 @each $size, $props in $dropdown-sizes {
