@@ -4704,7 +4704,7 @@
           }
         },
         "bg-hover": {
-          "value": "{surface.subtle}",
+          "value": "{surface.muted}",
           "type": "color",
           "$extensions": {
             "com.figma.scopes": [
@@ -4718,7 +4718,7 @@
           }
         },
         "bg-selected": {
-          "value": "{surface.subtle}",
+          "value": "{surface.muted}",
           "type": "color",
           "$extensions": {
             "com.figma.scopes": [
