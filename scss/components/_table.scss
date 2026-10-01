@@ -13,31 +13,6 @@
 @use '../abstracts/mixins' as mix;
 @use '../abstracts/maps' as maps;
 
-// figma/tokens.theme.json의 table/* 를 그대로 옮겼다(2026-08-31). 라이트·다크 별칭 대상이 전부
-// 동일해(둘 다 surface/subtle·text/primary 등) [data-theme=dark] 오버라이드가 없다 — 이전 코드는
-// slate 계열 하드코딩(#e2e8f0 등, ADR-001로 폐기된 램프)과 다크 전용 하드코딩을 따로 갖고 있었는데
-// get_variable_defs로 Table/Header(1046:1073)·Table/Row(1046:1036) 라이브 바인딩을 직접 재확인해
-// (둘 다 #fafafa=neutral-50=surface/subtle) 전부 제거했다. header-col/bg와 header-row/bg가 다른
-// 값이라던 기존 주석은 slate→neutral 정리 이전의 낡은 측정이었다.
-
-// table/header-col/* 의 codeSyntax가 깨져 있어(-col 누락, Figma Dev Mode엔 --bds-table-header-bg로
-// 표시된다) 실제 이름과 다르지만, 코드는 정상 이름(--bds-table-header-col-*)을 쓴다 — 7단계 후 Figma
-// 수정 예정(PROGRESS.md 막힌 것 참조). table/cell/fg-supporting도 기존 코드의 "muted" 대신
-// Figma 실제 이름 "supporting"으로 맞췄다(FIGMA.md 「토큰 위생」 — 보조 텍스트 접미사 통일).
-:root {
-  --bds-table-border: var(--bds-border-default);
-  --bds-table-header-col-bg: var(--bds-surface-accent-subtle);
-  --bds-table-header-col-fg: var(--bds-text-primary);
-  --bds-table-header-row-bg: var(--bds-surface-subtle);
-  --bds-table-header-row-fg: var(--bds-text-primary);
-  --bds-table-cell-fg: var(--bds-text-tertiary);
-  --bds-table-cell-fg-supporting: var(--bds-text-tertiary);
-  --bds-table-row-bg-hover: var(--bds-surface-subtle);
-  --bds-table-row-bg-alt: var(--bds-surface-subtle); // 신규 발견: 지그재그(zebra) 행 배경. markup.md 규칙대로 :nth-child(even)로 적용
-  --bds-table-border-strong: var(--bds-border-control);
-  --bds-table-header-row-border-top: var(--bds-border-strong);
-}
-
 $table-border: var(--bds-table-border);
 $table-header-col-bg: var(--bds-table-header-col-bg);
 $table-header-col-fg: var(--bds-table-header-col-fg);

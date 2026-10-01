@@ -16,8 +16,10 @@ const OUT = path.join(ROOT, 'scss', 'tokens');
 const TMP = path.join(ROOT, 'node_modules', '.cache', 'bds-tokens');
 
 // ── 어느 것을 내보내나 ──────────────────────────────────────────────
-// Theme 은 일반 시맨틱만 내보낸다. 컴포넌트별 시맨틱은 각 컴포넌트 SCSS 가 채운다.
-const THEME_GROUPS = ['accent', 'border', 'brand', 'effect', 'icon', 'surface', 'text'];
+// Theme 은 전부 내보낸다. 예전에는 일반 시맨틱 7그룹만 내보내고 컴포넌트별 시맨틱 268개는
+// 각 컴포넌트 SCSS 가 손으로 선언했는데, 같은 토큰이 스냅샷과 코드 양쪽에 있어 어긋나도
+// 검사가 통과했다(--bds-field-border-hover 가 실제 사례). 이제 Figma 에 있는 값은 여기서만
+// 선언하고 컴포넌트 SCSS 는 쓰기만 한다.
 // ADR-015 — Button Size xs 는 코드에서 제외한다.
 const SHAPE_EXCLUDE = new Set(['btn/radius-xs', 'btn/padding-x/xs']);
 
@@ -124,9 +126,9 @@ async function main() {
   const primScss = await block(nest(primPairs, typeOfPrimitive), ':root', 'primitive', orderOf(primPairs));
   const primOut = header('_primitive.scss') + primScss + aliasSection('_primitive.scss', rootNames(primScss));
 
-  // theme — 여섯 그룹만. 다크는 Default 와 값이 다른 것만 덮는다.
+  // theme — 전부. 다크는 Default 와 값이 다른 것만 덮는다.
   const theme = SNAP('tokens.theme.json');
-  const keep = entries(theme).filter(([k]) => THEME_GROUPS.includes(k.split('/')[0]));
+  const keep = entries(theme);
   const dark = keep.filter(([, v]) => JSON.stringify(v.Dark) !== JSON.stringify(v.Default));
   const themeScss =
     (await block(nest(keep.map(([k, v]) => [k, v.Default])), ':root', 'theme-default', orderOf(keep))) +

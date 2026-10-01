@@ -8,43 +8,6 @@
 @use '../abstracts/mixins' as mix;
 @use 'sass:map';
 
-// field/* 는 Input·Textarea·Select·Dropdown 이 공유하는 시맨틱이라 여기(입력 계열 중 처음
-// 다루는 파일)서만 선언한다 — 다른 파일은 var(--bds-field-*)만 참조한다(get_variable_defs로
-// Input 실제 바인딩 확인, 2026-08-30). 값이 같은 대상을 가리키는 항목은 다크 블록에 안 쓴다.
-:root {
-  --bds-field-bg: var(--bds-white);
-  --bds-field-bg-disabled: var(--bds-surface-muted);
-  --bds-field-border: var(--bds-border-control);
-  --bds-field-border-hover: var(--bds-neutral-400);
-  --bds-field-border-focus: var(--bds-brand-500);
-  --bds-field-border-disabled: var(--bds-border-default);
-  --bds-field-fg: var(--bds-text-primary);
-  --bds-field-fg-placeholder: var(--bds-neutral-400);
-  --bds-field-label-fg: var(--bds-text-primary);
-  --bds-field-hint-fg: var(--bds-text-tertiary);
-  --bds-field-border-invalid: var(--bds-red-500);
-  --bds-field-border-invalid-disabled: var(--bds-red-200);
-  --bds-field-border-invalid-hover: var(--bds-red-600);
-  --bds-field-border-valid: var(--bds-green-600);
-  --bds-field-border-valid-disabled: var(--bds-green-200);
-  --bds-field-border-valid-hover: var(--bds-green-700);
-  --bds-field-fg-placeholder-disabled: var(--bds-neutral-300);
-  --bds-field-hint-fg-invalid: var(--bds-text-danger);
-}
-
-[data-theme='dark'] {
-  --bds-field-bg: var(--bds-neutral-950);
-  --bds-field-border-hover: var(--bds-neutral-600);
-  --bds-field-fg-placeholder: var(--bds-neutral-500);
-  --bds-field-border-invalid: var(--bds-red-300);
-  --bds-field-border-invalid-disabled: var(--bds-red-700);
-  --bds-field-border-invalid-hover: var(--bds-red-400);
-  --bds-field-border-valid: var(--bds-green-400);
-  --bds-field-border-valid-disabled: var(--bds-green-700);
-  --bds-field-border-valid-hover: var(--bds-green-300);
-  --bds-field-fg-placeholder-disabled: var(--bds-neutral-600);
-}
-
 // 2026-08-29: $type-scale 키로 전환(값은 동일, size/lh 중복 제거).
 // hint 는 control 과 따로 간다 — 2026-09-11 실측: 힌트는 sm 만 13/18 이고 md·lg·xl 은 전부
 // 14/20 이다. control 이 16/24 로 올라가는 lg·xl 에서도 힌트는 그대로다. 한 키로 묶여 있었다.

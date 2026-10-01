@@ -6,44 +6,6 @@
 @use '../abstracts/mixins' as mix;
 @use 'sass:map';
 
-// figma/tokens.theme.json의 alert/* 를 그대로 옮겼다(2026-08-31) — 이전 값은 neutral이
-// 슬레이트 계열(ADR-001로 폐기된 램프)이었다.
-:root {
-  --bds-alert-brand-bg: var(--bds-brand-50);
-  --bds-alert-brand-border: var(--bds-brand-200);
-  --bds-alert-brand-fg: var(--bds-brand-700);
-  --bds-alert-neutral-bg: var(--bds-surface-subtle);
-  --bds-alert-neutral-border: var(--bds-border-default);
-  --bds-alert-neutral-fg: var(--bds-text-secondary);
-  --bds-alert-success-bg: var(--bds-green-50);
-  --bds-alert-success-border: var(--bds-green-200);
-  --bds-alert-success-fg: var(--bds-green-700);
-  --bds-alert-warning-bg: var(--bds-yellow-50);
-  --bds-alert-warning-border: var(--bds-yellow-200);
-  --bds-alert-warning-fg: var(--bds-yellow-700);
-  --bds-alert-error-bg: var(--bds-red-50);
-  --bds-alert-error-border: var(--bds-red-200);
-  --bds-alert-error-fg: var(--bds-red-700);
-  --bds-alert-info-bg: var(--bds-surface-brand-subtle);
-  --bds-alert-info-border: var(--bds-blue-200);
-  --bds-alert-info-fg: var(--bds-blue-700);
-  --bds-alert-fg-supporting: var(--bds-text-tertiary);
-}
-
-[data-theme='dark'] {
-  --bds-alert-success-bg: var(--bds-green-950);
-  --bds-alert-success-border: var(--bds-green-700);
-  --bds-alert-success-fg: var(--bds-green-400);
-  --bds-alert-warning-bg: var(--bds-yellow-950);
-  --bds-alert-warning-border: var(--bds-yellow-700);
-  --bds-alert-warning-fg: var(--bds-yellow-400);
-  --bds-alert-error-bg: var(--bds-red-950);
-  --bds-alert-error-border: var(--bds-red-700);
-  --bds-alert-error-fg: var(--bds-red-400);
-  --bds-alert-info-border: var(--bds-blue-700);
-  --bds-alert-info-fg: var(--bds-blue-400);
-}
-
 $alert-fg-supporting: var(--bds-alert-fg-supporting);
 $alert-colors: (
   brand: (bg: var(--bds-alert-brand-bg), fg: var(--bds-alert-brand-fg), border: var(--bds-alert-brand-border)),
@@ -145,4 +107,3 @@ $alert-colors: (
 .bds-alert-banner {
   border: none;
 }
-

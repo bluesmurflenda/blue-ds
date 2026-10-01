@@ -4,20 +4,6 @@
 @use "../tokens/primitive" as *;
 @use "../abstracts/mixins" as mix;
 
-// figma/tokens.theme.json의 nav/item/*·nav/dark-item/* 를 그대로 옮겼다. 전부 라이트·다크 별칭
-// 대상이 같아 [data-theme=dark] 오버라이드가 없다 — dark-item(Theme=dark 스타일)의 hover/selected가
-// 사이트 다크모드에서 밝은 하늘색으로 뒤집히며 흰 글자와 대비가 무너지던 게 바로 이 "같은 대상인데
-// 오버라이드가 잘못 걸려 있던" 버그였다(2026-08-28 당시 "⚠️ 확인 필요"로 남겨뒀던 것 — Figma
-// 문제가 아니라 코드가 Theme=dark를 진짜 다크모드처럼 반전시키고 있었다). blue-800/blue-600 고정으로
-// 바로잡으면 글자(항상 흰색)와의 대비도 정상으로 돌아온다.
-:root {
-    --bds-nav-item-bg-hover: var(--bds-surface-subtle);
-    --bds-nav-item-bg-selected: var(--bds-surface-muted);
-    --bds-nav-dark-item-bg-hover: var(--bds-blue-800);
-    --bds-nav-dark-item-bg-selected: var(--bds-blue-600);
-    --bds-nav-fg-selected: var(--bds-text-brand);
-}
-
 .bds-side-nav-item {
     display: flex;
     align-items: center;

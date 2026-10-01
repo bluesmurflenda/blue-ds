@@ -4,19 +4,6 @@
 
 @use '../tokens/primitive' as *;
 
-// figma/tokens.theme.json의 scrollbar/* 를 그대로 옮겼다(thumb-hover는 Figma에 대응 변수가
-// 없어 기존처럼 primitive 상수 유지).
-:root {
-  --bds-scrollbar-track-bg: var(--bds-neutral-100);
-  --bds-scrollbar-thumb-bg: var(--bds-neutral-400);
-  --bds-scrollbar-thumb-bg-hover: var(--bds-neutral-500);
-}
-
-[data-theme='dark'] {
-  --bds-scrollbar-track-bg: var(--bds-neutral-900);
-  --bds-scrollbar-thumb-bg: var(--bds-neutral-600);
-}
-
 $scrollbar-track-bg: var(--bds-scrollbar-track-bg);
 $scrollbar-thumb-bg: var(--bds-scrollbar-thumb-bg);
 $scrollbar-thumb-bg-hover: var(--bds-scrollbar-thumb-bg-hover);

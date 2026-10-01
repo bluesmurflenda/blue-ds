@@ -7,53 +7,6 @@
 @use '../abstracts/mixins' as mix;
 @use 'sass:map';
 
-// get_variable_defs로 재확인(2026-08-30): choice/box/bg-selected는 blue-500이 아니라 blue-600
-// (실제 #2563eb) — 기존 코드가 한 단계 낮은 값을 쓰고 있었다. 나머지는 값 자체는 맞았고
-// 하드코딩 hex → 별칭 참조로만 바꾼다. 라이트·다크 별칭 대상이 같은 토큰(예: bg-selected,
-// track/bg-on)은 다크 블록에 다시 안 쓴다.
-:root {
-  --bds-choice-box-bg: var(--bds-surface-default);
-  --bds-choice-box-border: var(--bds-border-control);
-  --bds-choice-box-bg-hover: var(--bds-neutral-200);
-  --bds-choice-box-border-hover: var(--bds-neutral-400);
-  --bds-choice-box-bg-selected: var(--bds-blue-600);
-  --bds-choice-box-fg-selected: var(--bds-white);
-  --bds-choice-box-bg-disabled: var(--bds-surface-muted);
-  --bds-choice-box-border-disabled: var(--bds-border-default);
-  --bds-choice-box-border-focus: var(--bds-brand-500);
-  --bds-choice-label-fg: var(--bds-text-primary);
-  --bds-choice-label-fg-invalid: var(--bds-text-danger);
-  --bds-choice-label-fg-valid: var(--bds-text-success);
-  --bds-choice-description-fg: var(--bds-text-tertiary);
-  --bds-toggle-track-bg-off: var(--bds-neutral-300);
-  --bds-toggle-track-bg-off-hover: var(--bds-neutral-400);
-  --bds-toggle-track-bg-on: var(--bds-brand-500);
-  --bds-toggle-track-bg-on-hover: var(--bds-brand-600);
-  --bds-toggle-knob-bg: var(--bds-white);
-  --bds-toggle-fg: var(--bds-icon-strong);
-  --bds-choice-box-border-invalid: var(--bds-red-500);
-  --bds-choice-box-border-invalid-hover: var(--bds-red-600);
-  --bds-choice-box-border-valid: var(--bds-green-600);
-  --bds-choice-box-border-valid-hover: var(--bds-green-700);
-}
-
-[data-theme='dark'] {
-  --bds-choice-box-bg-hover: var(--bds-neutral-700);
-  --bds-choice-box-border-hover: var(--bds-neutral-500);
-  --bds-toggle-track-bg-off: var(--bds-neutral-700);
-  --bds-toggle-track-bg-off-hover: var(--bds-neutral-600);
-  --bds-toggle-knob-bg: var(--bds-neutral-950);
-
-  // 다크에서 켜진 트랙이 라이트와 같은 파랑이라 그 위 초점 선이 3:1 에 못 미쳤다. 한 단계 진하게
-  // 하고 hover 도 한 단계 내려, 기본보다 한 단계 밝은 관계를 지킨다(Figma 실측).
-  --bds-toggle-track-bg-on: var(--bds-blue-600);
-  --bds-toggle-track-bg-on-hover: var(--bds-blue-500);
-  --bds-choice-box-border-invalid: var(--bds-red-300);
-  --bds-choice-box-border-invalid-hover: var(--bds-red-400);
-  --bds-choice-box-border-valid: var(--bds-green-400);
-  --bds-choice-box-border-valid-hover: var(--bds-green-300);
-}
-
 $choice-size: 20px;
 
 // 2026-09-11 실측: 글리프 테두리는 border/thick(2), 체크박스 모서리는 radius/xsm(4) 이다.

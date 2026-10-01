@@ -5,23 +5,6 @@
 @use '../tokens/primitive' as *;
 @use '../abstracts/mixins' as mix;
 
-// figma/tokens.theme.json의 tooltip/* 를 그대로 옮겼다(2026-08-31). 이전 코드는 반대로 돼
-// 있었다 — light가 반전되고 dark는 bg·fg까지 불필요하게 재선언돼 있었다. 실측은 그 반대다:
-// dark/light 둘 다 "스타일"이라 bg·fg는 고정이고, dark의 fg-supporting만 라이트(white)보다
-// 살짝 죽인 neutral-300으로 실제로 갈린다(대비 확보) — 이것만 진짜 오버라이드가 필요하다.
-:root {
-  --bds-tooltip-dark-bg: var(--bds-neutral-900);
-  --bds-tooltip-dark-fg: var(--bds-white);
-  --bds-tooltip-dark-fg-supporting: var(--bds-white);
-  --bds-tooltip-light-bg: var(--bds-white);
-  --bds-tooltip-light-fg: var(--bds-neutral-700);
-  --bds-tooltip-light-fg-supporting: var(--bds-neutral-600);
-}
-
-[data-theme='dark'] {
-  --bds-tooltip-dark-fg-supporting: var(--bds-neutral-300);
-}
-
 $tooltip-dark-bg: var(--bds-tooltip-dark-bg);
 $tooltip-dark-fg: var(--bds-tooltip-dark-fg);
 $tooltip-dark-fg-supporting: var(--bds-tooltip-dark-fg-supporting);

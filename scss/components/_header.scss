@@ -20,28 +20,6 @@
 @use '../abstracts/mixins' as mix;
 @use 'sass:map';
 
-// figma/tokens.theme.json의 nav/* 를 그대로 옮겼다. nav-announcement-bg만 라이트·다크 별칭
-// 대상이 달라(blue-800/blue-700) 오버라이드가 있다 — 나머지는 전부 동일 대상이라 이전 코드가
-// 갖고 있던 다크 전용 반전값(site-header-dark가 다크에서 밝은 배경으로 뒤집히던 것)을 없앴다.
-:root {
-  --bds-nav-bg: var(--bds-surface-default);
-  --bds-nav-fg: var(--bds-text-primary);
-  --bds-nav-fg-hover: var(--bds-text-brand);
-  --bds-nav-border: var(--bds-border-default);
-  --bds-nav-dark-bg: var(--bds-neutral-800);
-  --bds-nav-dark-fg: var(--bds-white);
-  --bds-nav-announcement-bg: var(--bds-blue-800);
-  --bds-nav-announcement-fg: var(--bds-white);
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-nav-bg-floating: #ffffffcc; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-nav-dark-bg-floating: #262626cc; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴, Theme=dark 스타일이라 라이트·다크 공통 */
-}
-
-[data-theme='dark'] {
-  --bds-nav-announcement-bg: var(--bds-blue-700);
-}
-
 $header-bg-light: var(--bds-nav-bg);
 $header-border-light: var(--bds-nav-border);
 $header-bg-dark: var(--bds-nav-dark-bg);

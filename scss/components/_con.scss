@@ -10,41 +10,6 @@
 @use '../abstracts/mixins' as mix;
 @use 'sass:map';
 
-// figma/tokens.theme.json의 con/* 를 그대로 옮겼다(2026-08-31, 손으로 만든 값 아님).
-// con/white/*-selected 3종(bg·fg·border)은 다크에서 반전하지 않는다 — fg는 white를 그대로
-// 참조해서(별칭 대상 이름이 라이트·다크 동일) 자동으로 안 바뀌고, bg·border는 라이트에서
-// brand-600(다크에서 반전되는 램프)을 참조하지만 다크 블록에서 blue-600으로 고정해 반전을
-// 막는다 — 이전 코드는 bg-selected만 고쳐져 있고 fg-selected·border-selected는 여전히
-// 반전되고 있었다(검정/밝은 파랑으로 바뀜, 대비 붕괴).
-:root {
-  --bds-con-fg: var(--bds-text-secondary);
-  --bds-con-gray-border: var(--bds-border-default);
-  --bds-con-gray-bg-hover: var(--bds-neutral-100);
-  --bds-con-bg-selected: var(--bds-brand-100);
-  --bds-con-fg-selected: var(--bds-brand-700);
-  --bds-con-border-selected: var(--bds-brand-200);
-  --bds-con-color-bg: var(--bds-brand-50);
-  --bds-con-color-bg-hover: var(--bds-brand-100);
-  --bds-con-color-border: var(--bds-brand-200);
-  --bds-con-white-bg: var(--bds-white);
-  --bds-con-white-border: var(--bds-border-default);
-  --bds-con-white-bg-hover: var(--bds-brand-100);
-  --bds-con-white-fg-hover: var(--bds-brand-600);
-  --bds-con-white-border-hover: var(--bds-brand-200);
-  --bds-con-white-fg-selected: var(--bds-white);
-  --bds-con-white-bg-selected: var(--bds-brand-600);
-  --bds-con-white-border-selected: var(--bds-brand-600);
-  --bds-con-gray-bg: var(--bds-surface-subtle);
-}
-
-[data-theme='dark'] {
-  --bds-con-gray-bg-hover: var(--bds-neutral-900);
-  --bds-con-color-border: var(--bds-brand-700);
-  --bds-con-white-bg: var(--bds-neutral-950);
-  --bds-con-white-bg-selected: var(--bds-blue-600);
-  --bds-con-white-border-selected: var(--bds-blue-600);
-}
-
 $con-sizes: (
   sm: (height: 32px, padding-x: $space-4, type: body-sm),
   md: (height: 40px, padding-x: $space-5, type: body-lg),

@@ -12,37 +12,6 @@
 @use '../tokens/primitive' as *;
 @use '../abstracts/mixins' as mix;
 
-// figma/tokens.theme.json의 calendar/* 를 그대로 옮겼다. saturday/fg·sunday/fg·
-// cell/available-bg·cell/available-fg·cell/unavailable-bg만 라이트·다크 별칭 대상이 달라
-// 오버라이드가 있다.
-:root {
-  --bds-calendar-bg: var(--bds-surface-subtle);
-  --bds-calendar-header-fg: var(--bds-text-primary);
-  --bds-calendar-weekday-fg: var(--bds-text-tertiary);
-  --bds-calendar-saturday-fg: var(--bds-brand-700);
-  --bds-calendar-sunday-fg: var(--bds-red-700);
-  --bds-calendar-day-fg: var(--bds-text-primary);
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-calendar-cell-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴(완전 투명) */
-  --bds-calendar-cell-selected-bg: var(--bds-brand-600);
-  --bds-calendar-cell-selected-fg: var(--bds-text-inverse);
-  --bds-calendar-cell-available-bg: var(--bds-brand-100);
-  --bds-calendar-cell-available-fg: var(--bds-brand-700);
-  --bds-calendar-cell-unavailable-bg: var(--bds-neutral-100);
-  --bds-calendar-cell-unavailable-fg: var(--bds-text-disabled);
-  --bds-calendar-cell-past-fg: var(--bds-text-disabled);
-  --bds-calendar-today-border: var(--bds-brand-500);
-  --bds-calendar-today-fg: var(--bds-brand-600);
-}
-
-[data-theme='dark'] {
-  --bds-calendar-saturday-fg: var(--bds-text-brand);
-  --bds-calendar-sunday-fg: var(--bds-red-400);
-  --bds-calendar-cell-available-bg: var(--bds-brand-50);
-  --bds-calendar-cell-available-fg: var(--bds-text-primary);
-  --bds-calendar-cell-unavailable-bg: var(--bds-neutral-900);
-}
-
 $calendar-radius: var(--bds-calendar-radius); // 2026-08-28: [data-shape] 런타임 전환 반영
 $calendar-bg: var(--bds-calendar-bg);
 $calendar-header-fg: var(--bds-calendar-header-fg);

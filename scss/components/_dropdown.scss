@@ -7,26 +7,6 @@
 @use '../abstracts/maps' as maps;
 @use 'sass:map';
 
-// list/* 는 dropdown.scss 가 소유(패널·옵션을 이 파일이 구현하므로) — select.scss 는 참조만
-// 한다. field/border 는 input.scss 소유라 여기서 다시 선언하지 않는다(2026-08-30 정리 —
-// 이전엔 select.scss·dropdown.scss·input.scss 세 곳에 흩어져 중복 선언돼 있었다).
-// dropdown 트리거 글자색은 list/item/fg 와 값이 같아 그 토큰을 공유한다(get_variable_defs 확인).
-:root {
-  --bds-list-item-fg: var(--bds-text-secondary);
-  --bds-list-item-fg-selected: var(--bds-brand-600);
-  --bds-list-panel-border: var(--bds-border-default);
-  --bds-list-panel-bg: var(--bds-white);
-  --bds-list-item-bg-hover: var(--bds-surface-muted);
-  --bds-list-item-bg-selected: var(--bds-surface-muted);
-  --bds-list-item-fg-supporting: var(--bds-text-tertiary);
-}
-
-[data-theme='dark'] {
-  --bds-list-panel-bg: var(--bds-neutral-800);
-  --bds-list-item-bg-hover: var(--bds-surface-subtle);
-  --bds-list-item-bg-selected: var(--bds-surface-subtle);
-}
-
 // 2026-08-28 확인(inputs-spec): 트리거 radius는 field/radius가 아니라 button/radius 공유.
 // 셰브론도 Select와 동일하게 12/16/20/20으로 사이즈별로 갈린다(문서: "트리거 규격은 _Select base와 동일").
 $dropdown-sizes: (

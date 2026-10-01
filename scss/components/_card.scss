@@ -10,22 +10,6 @@
 @use '../tokens/primitive' as *;
 @use '../abstracts/mixins' as mix;
 
-// figma/tokens.theme.json의 card/* 를 그대로 옮겼다(2026-08-31). card/fg는 문서상 "글자색"
-// 설명이지만 실측 별칭 대상은 icon/strong이다 — 라이브가 맞다고 보고 그대로 옮긴다.
-:root {
-  --bds-card-bg: var(--bds-white);
-  --bds-card-bg-tinted: var(--bds-neutral-50);
-  --bds-card-border: var(--bds-border-default);
-  --bds-card-border-hover: var(--bds-accent-400);
-  --bds-card-fg: var(--bds-icon-strong);
-  --bds-card-fg-supporting: var(--bds-text-tertiary);
-}
-
-[data-theme='dark'] {
-  --bds-card-bg: var(--bds-neutral-800);
-  --bds-card-bg-tinted: var(--bds-neutral-900);
-}
-
 // ADR-034: Shape 컬렉션의 card/radius 를 쓴다 — 실측(2026-09-11)에서 Figma 는 rectangleCornerRadii 에
 // Shape/card/radius 를 바인딩한다. 프리미티브(radius/lg)를 직접 물고 있어 각진·Pill 모드에서
 // 카드만 안 따라왔다(alert 과 같은 자리).

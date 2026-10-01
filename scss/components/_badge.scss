@@ -7,37 +7,6 @@
 @use '../abstracts/mixins' as mix;
 @use 'sass:map';
 
-// figma/tokens.theme.json의 chip/* 를 그대로 옮겼다(2026-08-31). 이전 값은 neutral이 슬레이트
-// 계열(#f8fafc 등, ADR-001로 폐기된 램프)이었다 — get_variable_defs로 재확인해 neutral로 교체.
-// info는 라이트에선 brand와 값이 같지만(둘 다 #eff6ff/#1d4ed8) 서로 다른 토큰이라 다크에서
-// 갈린다(brand는 brand-700이 다크에서 blue-300으로 반전, info는 blue-400으로 고정) — 우연히
-// 라이트만 같았던 것이지 별칭을 공유하는 게 아니다(ADR-010, 형제 참조 금지와 같은 이유로 각자
-// 독립 토큰을 쓴다).
-:root {
-  --bds-badge-brand-bg: var(--bds-brand-50);
-  --bds-badge-brand-fg: var(--bds-brand-700);
-  --bds-badge-neutral-bg: var(--bds-surface-subtle);
-  --bds-badge-neutral-fg: var(--bds-text-tertiary);
-  --bds-badge-success-bg: var(--bds-green-50);
-  --bds-badge-success-fg: var(--bds-green-700);
-  --bds-badge-warning-bg: var(--bds-yellow-50);
-  --bds-badge-warning-fg: var(--bds-yellow-700);
-  --bds-badge-error-bg: var(--bds-red-50);
-  --bds-badge-error-fg: var(--bds-red-700);
-  --bds-badge-info-bg: var(--bds-surface-brand-subtle);
-  --bds-badge-info-fg: var(--bds-blue-700);
-}
-
-[data-theme='dark'] {
-  --bds-badge-success-bg: var(--bds-green-950);
-  --bds-badge-success-fg: var(--bds-green-400);
-  --bds-badge-warning-bg: var(--bds-yellow-950);
-  --bds-badge-warning-fg: var(--bds-yellow-400);
-  --bds-badge-error-bg: var(--bds-red-950);
-  --bds-badge-error-fg: var(--bds-red-400);
-  --bds-badge-info-fg: var(--bds-blue-400);
-}
-
 // 2026-09-11 실측(18변형 전수): 좌우 패딩은 sm 만 space/2 이고 md·lg 는 space/3,
 // 항목 간격은 세 사이즈 모두 space/1 이다. md 가 리터럴 10px, lg 가 리터럴 6px 이었다.
 $badge-sizes: (

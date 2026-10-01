@@ -9,20 +9,6 @@
 @use 'sass:map';
 @use '../abstracts/maps' as maps;
 
-// figma/tokens.theme.json의 pagination/* 를 그대로 옮겼다. 전부 라이트·다크 별칭 대상이 같아
-// [data-theme=dark] 오버라이드가 없다. border는 Figma에 pagination/border가 따로 없고 numbers·
-// simple의 구분선과 button-group의 테두리가 전부 pagination/group/border 하나를 같이 쓴다
-// (get_variable_defs로 Type=numbers 확인) — 이름을 그에 맞게 group-border로 리네임.
-:root {
-  --bds-pagination-item-fg: var(--bds-text-tertiary);
-  --bds-pagination-item-fg-hover: var(--bds-text-secondary);
-  --bds-pagination-item-bg: var(--bds-surface-default);
-  --bds-pagination-item-bg-hover: var(--bds-surface-subtle);
-  --bds-pagination-current-fg: var(--bds-brand-600);
-  --bds-pagination-current-bg: var(--bds-brand-50);
-  --bds-pagination-group-border: var(--bds-border-control);
-}
-
 // 번호 간격은 사이즈 축이 아니다 — 2026-09-11 실측: Numbers 프레임의 itemSpacing 은 sm·md·lg
 // 전부 space/1 이다. 맵에 있던 gap 키는 @each 가 읽지 않는 죽은 값이었다(lg 만 space/2 로 적혀 있었다).
 $pagination-sizes: (

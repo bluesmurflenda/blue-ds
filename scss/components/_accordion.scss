@@ -14,18 +14,6 @@
 @use '../abstracts/mixins' as mix;
 @use 'sass:map';
 
-// figma/tokens.theme.json 의 accordion/* 를 그대로 옮겼다(2026-09-11).
-// 여섯 개 전부 Default·Dark 가 같은 대상을 가리켜 다크 오버라이드가 없다
-// (별칭 체인이 다크값을 물어온다 — 전역 「모드 오버라이드는 값이 다른 것만 쓴다」).
-:root {
-  --bds-accordion-trigger-bg: var(--bds-surface-default);
-  --bds-accordion-trigger-bg-hover: var(--bds-surface-subtle);
-  --bds-accordion-trigger-fg: var(--bds-text-primary);
-  --bds-accordion-icon-fg: var(--bds-icon-subtle);
-  --bds-accordion-panel-bg: var(--bds-surface-subtle);
-  --bds-accordion-border: var(--bds-border-default);
-}
-
 // 트리거 최소 높이와 라운드 반경은 Shape 컬렉션이 갖고 있다(accordion/trigger/min-height/*,
 // accordion/rounded/radius) — [data-shape] 전환을 따라가야 하므로 프리미티브를 직접 물지 않는다.
 $accordion-sizes: (

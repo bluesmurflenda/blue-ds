@@ -20,5 +20,16 @@
     "scss/dollar-variable-pattern": null,
     "scss/at-mixin-pattern": null,
     "scss/at-function-pattern": null
-  }
+  },
+  "overrides": [
+    {
+      "files": ["scss/components/**/*.scss"],
+      "rules": {
+        "property-disallowed-list": [
+          ["/^--bds-/"],
+          { "message": "컴포넌트는 --bds-* 를 선언하지 않는다 — Figma 에 있는 값은 scss/tokens/_theme.scss 가 생성한다(ADR-039). 코드 전용 값은 $변수나 맵으로 둔다" }
+        ]
+      }
+    }
+  ]
 }

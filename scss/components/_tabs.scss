@@ -12,47 +12,6 @@
 @use '../abstracts/maps' as maps;
 @use 'sass:map';
 
-// figma/tokens.theme.json의 tabs/* 를 그대로 옮겼다. underline의 fg-active(icon/strong 별칭)와
-// indicator(neutral-800 직접 참조)는 라이트에서 같은 값(#262626)이라 currentColor로 합치고 싶어지지만
-// 서로 다른 토큰이다 — 별개 프로퍼티로 유지한다(지시사항, ADR-010과 같은 이유).
-:root {
-  --bds-tabs-underline-fg: var(--bds-text-tertiary);
-  --bds-tabs-underline-fg-hover: var(--bds-text-secondary);
-  --bds-tabs-underline-fg-active: var(--bds-icon-strong);
-  --bds-tabs-underline-fg-disabled: var(--bds-text-disabled);
-  --bds-tabs-underline-indicator: var(--bds-neutral-800);
-  --bds-tabs-underline-brand-fg: var(--bds-text-tertiary);
-  --bds-tabs-underline-brand-fg-hover: var(--bds-brand-700);
-  --bds-tabs-underline-brand-fg-active: var(--bds-brand-600);
-  --bds-tabs-underline-brand-fg-disabled: var(--bds-text-disabled);
-  --bds-tabs-underline-brand-indicator: var(--bds-brand-600);
-  --bds-tabs-pill-fg: var(--bds-text-tertiary);
-  --bds-tabs-pill-fg-hover: var(--bds-text-secondary);
-  --bds-tabs-pill-fg-active: var(--bds-brand-600);
-  --bds-tabs-pill-fg-disabled: var(--bds-text-disabled);
-  --bds-tabs-pill-bg-hover: var(--bds-surface-subtle);
-  --bds-tabs-pill-bg-active: var(--bds-brand-50);
-  --bds-tabs-pill-border: var(--bds-border-default);
-  --bds-tabs-pill-border-hover: var(--bds-border-control);
-  --bds-tabs-pill-border-active: var(--bds-brand-200);
-  --bds-tabs-segmented-fg: var(--bds-text-tertiary);
-  --bds-tabs-segmented-fg-hover: var(--bds-text-secondary);
-  --bds-tabs-segmented-fg-active: var(--bds-neutral-900);
-  --bds-tabs-segmented-fg-disabled: var(--bds-text-disabled);
-  --bds-tabs-segmented-bg-active: var(--bds-white);
-  --bds-tabs-track-bg: var(--bds-neutral-100);
-  --bds-tabs-border: var(--bds-border-default);
-  --bds-tabs-underline-bg-hover: var(--bds-surface-subtle);
-  --bds-tabs-underline-border-hover: var(--bds-border-control);
-}
-
-[data-theme='dark'] {
-  --bds-tabs-underline-indicator: var(--bds-neutral-200);
-  --bds-tabs-segmented-fg-active: var(--bds-neutral-100);
-  --bds-tabs-segmented-bg-active: var(--bds-neutral-950);
-  --bds-tabs-track-bg: var(--bds-neutral-900);
-}
-
 // 사이즈별 텍스트 스케일 — Type(underline/pill/segmented) 공통이다(get_variable_defs로 4사이즈
 // 전부 재확인). sm=body-sm, md·lg=body-lg(같은 스케일), xl=body-xl.
 $tabs-type-by-size: (

@@ -7,26 +7,6 @@
 @use 'button' as btn;
 @use 'sass:map';
 
-// ghost-inverse/ghost-brand 전용 토큰(공유 8변형은 button.scss가 처리).
-// 실제 Figma 변수명은 icon-btn-* 가 아니라 button/ghost-inverse·button/ghost-brand 다
-// (get_variable_defs로 확인, 2026-08-30) — Icon Button 전용
-// 그룹이 아니라 button 네임스페이스를 공유한다. 커스텀 프로퍼티 이름도 그대로 맞춘다.
-:root {
-  --bds-btn-ghost-inverse-fg: var(--bds-white);
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-inverse-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-inverse-bg-hover: #ffffff1a; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-inverse-bg-pressed: #ffffff29; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  /* stylelint-disable-next-line color-no-hex -- Figma 원본이 별칭 아닌 리터럴이라 토큰으로 못 바꾼다(옆 주석 참고) */
-  --bds-btn-ghost-brand-bg: #ffffff00; /* 예외: 알파 — Figma 원본이 별칭 아닌 리터럴 */
-  --bds-btn-ghost-brand-bg-hover: var(--bds-brand-50);
-  --bds-btn-ghost-brand-bg-pressed: var(--bds-brand-100);
-  --bds-btn-ghost-brand-fg: var(--bds-text-brand);
-  --bds-btn-ghost-brand-fg-disabled: var(--bds-text-disabled);
-}
-
 // 2026-08-28 확인(bluesoft-buttons-spec.md 4장): 아이콘 크기는 박스 크기와 별개로 18/20/24/24 —
 // sm은 아이콘 마스터(24)를 축소한 18px, lg·xl은 박스만 다르고 아이콘은 둘 다 24로 동일.
 $icon-button-sizes: (
