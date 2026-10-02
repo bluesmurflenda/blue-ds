@@ -450,7 +450,7 @@
   --bds-nav-dark-bg-floating: #262626cc;
   --bds-nav-dark-fg: var(--bds-white);
   --bds-nav-fg: var(--bds-text-primary);
-  --bds-nav-fg-hover: var(--bds-text-brand);
+  --bds-nav-fg-hover: var(--bds-text-primary);
   --bds-nav-fg-selected: var(--bds-text-brand);
   --bds-nav-item-bg-hover: var(--bds-surface-subtle);
   --bds-nav-item-bg-selected: var(--bds-surface-muted);
@@ -4231,8 +4231,8 @@ table {
 }
 .bds-side-nav-item__icon {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
 }
 .bds-side-nav-item__label {
   overflow: hidden;

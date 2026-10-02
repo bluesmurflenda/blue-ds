@@ -5333,7 +5333,8 @@
             "com.figma.codeSyntax": {
               "Web": "var(--bds-toggle-track-bg-on)"
             }
-          }
+          },
+          "description": "다크에서 라이트와 같은 밝기를 쓰면 그 위에 올라가는 초점 표시가 3:1 에 못 미친다. 그래서 다크만 한 단계 진하게 둔다."
         },
         "bg-on-hover": {
           "value": "{brand.600}",
@@ -5347,7 +5348,8 @@
             "com.figma.codeSyntax": {
               "Web": "var(--bds-toggle-track-bg-on-hover)"
             }
-          }
+          },
+          "description": "켜짐 기본보다 한 단계 밝은 관계를 지킨다. 다크에서 켜짐 기본을 진하게 한 만큼 이쪽도 함께 내렸다."
         }
       },
       "knob": {
@@ -5860,7 +5862,7 @@
         }
       },
       "fg-hover": {
-        "value": "{text.brand}",
+        "value": "{text.primary}",
         "type": "color",
         "$extensions": {
           "com.figma.scopes": [
@@ -6041,6 +6043,7 @@
         "type": "color",
         "$extensions": {
           "com.figma.scopes": [
+            "SHAPE_FILL",
             "TEXT_FILL"
           ],
           "com.figma.hiddenFromPublishing": false,
@@ -10188,7 +10191,8 @@
             "com.figma.codeSyntax": {
               "Web": "var(--bds-toggle-track-bg-on)"
             }
-          }
+          },
+          "description": "다크에서 라이트와 같은 밝기를 쓰면 그 위에 올라가는 초점 표시가 3:1 에 못 미친다. 그래서 다크만 한 단계 진하게 둔다."
         },
         "bg-on-hover": {
           "value": "{blue.500}",
@@ -10202,7 +10206,8 @@
             "com.figma.codeSyntax": {
               "Web": "var(--bds-toggle-track-bg-on-hover)"
             }
-          }
+          },
+          "description": "켜짐 기본보다 한 단계 밝은 관계를 지킨다. 다크에서 켜짐 기본을 진하게 한 만큼 이쪽도 함께 내렸다."
         }
       },
       "knob": {
@@ -10715,7 +10720,7 @@
         }
       },
       "fg-hover": {
-        "value": "{text.brand}",
+        "value": "{text.primary}",
         "type": "color",
         "$extensions": {
           "com.figma.scopes": [
@@ -10896,6 +10901,7 @@
         "type": "color",
         "$extensions": {
           "com.figma.scopes": [
+            "SHAPE_FILL",
             "TEXT_FILL"
           ],
           "com.figma.hiddenFromPublishing": false,

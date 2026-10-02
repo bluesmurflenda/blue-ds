@@ -143,20 +143,24 @@
     var currentFile = location.pathname.split('/').pop() || 'index.html';
 
     html += '<div class="doc-sidebar__nav">';
-    NAV.forEach(function (group) {
+    NAV.forEach(function (group, groupIndex) {
       if (group.standalone) {
         html += '<div class="doc-nav-group">' + itemHtml(group, false) + '</div>';
         return;
       }
       var isOpen = groupMatchesCurrentFile(group, currentFile);
       html += '<div class="doc-nav-group' + (isOpen ? ' is-open' : '') + '" data-nav-group data-default-open="' + isOpen + '">';
-      html += '<div class="doc-nav-group__header">';
-      html += itemHtml(group, false);
-      html += '<button type="button" class="doc-nav-group__toggle" data-nav-toggle aria-expanded="' + isOpen + '" aria-label="하위 메뉴 펼치기/접기">';
-      html += iconSvg('chevron-right', 'bds-icon icon-sm doc-nav-group__chevron');
+      // 헤더 전체가 펼치기 버튼이다 — 그룹 헤더는 이동하지 않으므로 링크를 두지 않는다.
+      // <button> 이라 Tab·Enter·Space 가 브라우저 기본 동작으로 따라온다. 보이는 글자가
+      // 그룹 이름이라 aria-label 은 두지 않는다.
+      var childrenId = 'doc-nav-children-' + groupIndex;
+      html += '<button type="button" class="doc-nav-group__header bds-side-nav-item bds-side-nav-item-light"' +
+        ' data-nav-toggle aria-expanded="' + isOpen + '" aria-controls="' + childrenId + '">';
+      html += '<span class="bds-side-nav-item__content">' + iconSvg(group.icon) +
+        '<span class="bds-side-nav-item__label">' + group.label + '</span></span>';
+      html += '<span class="doc-nav-group__toggle">' + iconSvg('chevron-right', 'bds-icon icon-sm doc-nav-group__chevron') + '</span>';
       html += '</button>';
-      html += '</div>';
-      html += '<div class="doc-nav-group__children" data-nav-children><div class="doc-nav-group__children-inner">';
+      html += '<div class="doc-nav-group__children" id="' + childrenId + '" data-nav-children><div class="doc-nav-group__children-inner">';
       group.children.forEach(function (child) {
         html += itemHtml(child, true);
       });
@@ -178,8 +182,7 @@
       a.classList.toggle('bds-side-nav-item-selected', hrefFile === currentFile);
     });
 
-    // 아코디언 — 한 번에 하나의 그룹만 펼쳐진다. 화살표 토글만 펼치기/접기하고
-    // 그룹 헤더 링크(label 부분)는 기존처럼 그대로 이동한다.
+    // 아코디언 — 한 번에 하나의 그룹만 펼쳐진다. 헤더 전체가 토글이다.
     var navGroups = mount.querySelectorAll('[data-nav-group]');
     navGroups.forEach(function (group) {
       var toggle = group.querySelector('[data-nav-toggle]');
