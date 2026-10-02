@@ -19,7 +19,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 312px;
+  width: 270px;
   height: 100vh;
   overflow-y: auto;
   background-color: var(--bds-surface-default);
@@ -110,7 +110,7 @@ body {
 
 /* ---------- Main ---------- */
 .doc-main {
-  margin-left: 312px;
+  margin-left: 270px;
   flex: 1;
   min-width: 0;
   padding: 40px 48px 120px;
