@@ -14,7 +14,7 @@
     padding: $space-2 $space-3;
     border-radius: $radius-sm; // 2026-08-28 확인(table-nav-spec 0장): default 12/hover·selected 8로 갈리던 결함 — radius/sm(8)로 통일
 
-    @include mix.text(body-sm, medium);
+    @include mix.text(body-md, medium);
 
     cursor: pointer;
 

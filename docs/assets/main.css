@@ -4218,8 +4218,8 @@ table {
   height: 40px;
   padding: var(--bds-space-2) var(--bds-space-3);
   border-radius: var(--bds-radius-sm);
-  font-size: var(--bds-font-size-body-sm);
-  line-height: var(--bds-font-leading-body-sm);
+  font-size: var(--bds-font-size-body-md);
+  line-height: var(--bds-font-leading-body-md);
   font-weight: var(--bds-font-weight-medium);
   cursor: pointer;
 }

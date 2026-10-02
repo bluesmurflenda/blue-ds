@@ -148,13 +148,17 @@
         html += '<div class="doc-nav-group">' + itemHtml(group, false) + '</div>';
         return;
       }
+      // 현재 페이지가 이 그룹 안에 있나 — 펼침 여부와 선택 표시를 둘 다 이걸로 정한다.
+      // 선택 표시는 렌더 시점에 한 번 박는다. 검색·아코디언이 펼침 상태를 바꿔도
+      // 따라 움직이면 안 된다(그건 "현재 페이지"와 무관하다).
       var isOpen = groupMatchesCurrentFile(group, currentFile);
       html += '<div class="doc-nav-group' + (isOpen ? ' is-open' : '') + '" data-nav-group data-default-open="' + isOpen + '">';
       // 헤더 전체가 펼치기 버튼이다 — 그룹 헤더는 이동하지 않으므로 링크를 두지 않는다.
       // <button> 이라 Tab·Enter·Space 가 브라우저 기본 동작으로 따라온다. 보이는 글자가
       // 그룹 이름이라 aria-label 은 두지 않는다.
       var childrenId = 'doc-nav-children-' + groupIndex;
-      html += '<button type="button" class="doc-nav-group__header bds-side-nav-item bds-side-nav-item-light"' +
+      html += '<button type="button" class="doc-nav-group__header bds-side-nav-item bds-side-nav-item-light' +
+        (isOpen ? ' bds-side-nav-item-selected' : '') + '"' +
         ' data-nav-toggle aria-expanded="' + isOpen + '" aria-controls="' + childrenId + '">';
       html += '<span class="bds-side-nav-item__content">' + iconSvg(group.icon) +
         '<span class="bds-side-nav-item__label">' + group.label + '</span></span>';
