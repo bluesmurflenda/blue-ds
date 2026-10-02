@@ -153,23 +153,17 @@
       // 따라 움직이면 안 된다(그건 "현재 페이지"와 무관하다).
       var isOpen = groupMatchesCurrentFile(group, currentFile);
       html += '<div class="doc-nav-group' + (isOpen ? ' is-open' : '') + '" data-nav-group data-default-open="' + isOpen + '">';
-      // 헤더는 링크다 — 누르면 그 그룹의 첫 하위 페이지로 간다. 펼침은 chevron 이 맡는다.
-      // 둘을 형제로 두는 이유는 <a> 안에 <button> 을 넣으면 중첩 상호작용 요소가 되기 때문이다.
-      //
-      // 헤더에 data-nav 를 달지 않는다. 그 표시는 href 가 현재 파일과 같을 때만 붙는데,
-      // 여기서는 그룹 안 어느 페이지에 있든 붙어야 한다(2e70d36) — 그래서 렌더 시점에 직접 박는다.
+      // 헤더 전체가 펼치기 버튼이다 — 그룹 헤더는 이동하지 않으므로 링크를 두지 않는다.
+      // <button> 이라 Tab·Enter·Space 가 브라우저 기본 동작으로 따라온다. 보이는 글자가
+      // 그룹 이름이라 aria-label 은 두지 않는다.
       var childrenId = 'doc-nav-children-' + groupIndex;
-      html += '<div class="doc-nav-group__header">';
-      html += '<a class="bds-side-nav-item bds-side-nav-item-light' +
-        (isOpen ? ' bds-side-nav-item-selected' : '') + '" href="' + group.children[0].href + '">';
+      html += '<button type="button" class="doc-nav-group__header bds-side-nav-item bds-side-nav-item-light' +
+        (isOpen ? ' bds-side-nav-item-selected' : '') + '"' +
+        ' data-nav-toggle aria-expanded="' + isOpen + '" aria-controls="' + childrenId + '">';
       html += '<span class="bds-side-nav-item__content">' + iconSvg(group.icon) +
         '<span class="bds-side-nav-item__label">' + group.label + '</span></span>';
-      html += '</a>';
-      html += '<button type="button" class="doc-nav-group__toggle" data-nav-toggle' +
-        ' aria-expanded="' + isOpen + '" aria-controls="' + childrenId + '" aria-label="하위 메뉴 펼치기/접기">';
-      html += iconSvg('chevron-right', 'bds-icon icon-sm doc-nav-group__chevron');
+      html += '<span class="doc-nav-group__toggle">' + iconSvg('chevron-right', 'bds-icon icon-sm doc-nav-group__chevron') + '</span>';
       html += '</button>';
-      html += '</div>';
       html += '<div class="doc-nav-group__children" id="' + childrenId + '" data-nav-children><div class="doc-nav-group__children-inner">';
       group.children.forEach(function (child) {
         html += itemHtml(child, true);
@@ -192,7 +186,7 @@
       a.classList.toggle('bds-side-nav-item-selected', hrefFile === currentFile);
     });
 
-    // 아코디언 — 한 번에 하나의 그룹만 펼쳐진다. chevron 만 토글하고 헤더 링크는 이동한다.
+    // 아코디언 — 한 번에 하나의 그룹만 펼쳐진다. 헤더 전체가 토글이다.
     var navGroups = mount.querySelectorAll('[data-nav-group]');
     navGroups.forEach(function (group) {
       var toggle = group.querySelector('[data-nav-toggle]');

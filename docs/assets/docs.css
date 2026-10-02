@@ -54,16 +54,19 @@ body {
   margin-top: 2px;
 }
 
-/* ---------- 그룹 드롭다운(아코디언) — 헤더 링크는 첫 하위 페이지로 이동하고
-   chevron 만 펼치기/접기를 토글한다. 높이 애니메이션은 grid-template-rows
-   0fr/1fr 트릭을 써서 콘텐츠 높이를 JS로 재는 과정 없이 슬라이드된다. ---------- */
+/* ---------- 그룹 드롭다운(아코디언) — 헤더 전체가 펼치기/접기 버튼이다.
+   높이 애니메이션은 grid-template-rows 0fr/1fr 트릭을 써서 콘텐츠 높이를 JS로 재는
+   과정 없이 슬라이드된다. ---------- */
+
+/* <button> 의 브라우저 기본 표기만 지운다 — .bds-side-nav-item 은 <a> 를 전제로 만든
+   컴포넌트라 배치·여백·색·크기만 내고 <button> 고유의 기본값은 건드리지 않는다.
+   아래 다섯은 그 컴포넌트가 덮지 않아 UA 값이 그대로 새던 것들이다(실측 2026-10-02). */
 .doc-nav-group__header {
-  display: flex;
-  align-items: center;
-}
-.doc-nav-group__header .bds-side-nav-item {
-  flex: 1;
-  min-width: 0;
+  appearance: none;
+  border: none;
+  background: none;
+  font-family: inherit;
+  text-align: left;
 }
 .doc-nav-group__toggle {
   display: flex;
@@ -72,11 +75,6 @@ body {
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  background: none;
-  border: none;
-  padding: 0;
-  color: inherit;
-  cursor: pointer;
 }
 .doc-nav-group__chevron {
   transition: transform 0.2s ease;
