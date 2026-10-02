@@ -33,7 +33,7 @@
     },
     {
       icon: 'layout',
-      label: 'Basic Components',
+      label: 'Basic',
       href: BASE + 'components/button.html',
       children: [
         { label: 'Button', href: BASE + 'components/button.html' },
@@ -46,7 +46,7 @@
     },
     {
       icon: 'edit',
-      label: 'Form Components',
+      label: 'Form',
       href: BASE + 'components/input.html',
       children: [
         { label: 'Input', href: BASE + 'components/input.html' },
@@ -58,7 +58,7 @@
     },
     {
       icon: 'bell',
-      label: 'Feedback Components',
+      label: 'Feedback',
       href: BASE + 'components/alert.html',
       children: [
         { label: 'Alert', href: BASE + 'components/alert.html' },
@@ -70,7 +70,7 @@
     },
     {
       icon: 'bar-chart',
-      label: 'Data Components',
+      label: 'Data',
       href: BASE + 'components/table.html',
       children: [
         { label: 'Table', href: BASE + 'components/table.html' },
@@ -84,7 +84,7 @@
     },
     {
       icon: 'menu',
-      label: 'Navigation Components',
+      label: 'Navigation',
       href: BASE + 'components/side-nav-item.html',
       children: [
         { label: 'Side Nav Item', href: BASE + 'components/side-nav-item.html' },
