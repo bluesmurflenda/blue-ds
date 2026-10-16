@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "exportedAt": "2026-10-02",
+    "exportedAt": "2026-10-16",
     "source": "Tokens Studio (figma/tokens-studio.json) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Primitive",
-    "count": 208
+    "count": 220
   },
   "_modes": [
     "Primitive"
@@ -23,6 +23,18 @@
   "blue/950": "#172554",
   "border/hairline": 1,
   "border/thick": 2,
+  "cyan/100": "#cffafe",
+  "cyan/200": "#a5f3fc",
+  "cyan/25": "#f6ffff",
+  "cyan/300": "#67e8f9",
+  "cyan/400": "#22d3ee",
+  "cyan/50": "#ecfeff",
+  "cyan/500": "#06b6d4",
+  "cyan/600": "#0891b2",
+  "cyan/700": "#0e7490",
+  "cyan/800": "#155e75",
+  "cyan/900": "#164e63",
+  "cyan/950": "#083344",
   "font/family/display": "Pretendard",
   "font/family/primary": "Pretendard",
   "font/leading/body/2xl": 28,
