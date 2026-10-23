@@ -2089,6 +2089,9 @@ table {
   border-radius: var(--bds-radius-sm);
   overflow: hidden;
 }
+.bds-table-nowrap {
+  min-width: max-content;
+}
 
 .bds-table-header {
   display: flex;

@@ -60,6 +60,33 @@
   </section>
 
   <section class="doc-section">
+    <h2>열 폭이 다른 표 · 가로 스크롤</h2>
+    <p class="doc-desc">한 열만 늘어나고 나머지는 고정 폭입니다 — 고정 열의 셀에만 <code>flex: 0 0 &lt;폭&gt;</code>을 주고 늘어나는 열(여기서는 이메일)은 기본값을 그대로 둡니다. 전부 고정하면 표가 컨테이너보다 좁을 때 오른쪽에 빈 공간이 남습니다.</p>
+    <p class="doc-desc">늘어나는 열은 내용 + 패딩까지만 줄어들고, 그보다 좁아져야 하면 줄바꿈 대신 가로로 스크롤합니다 — 표에 <code>.bds-table-nowrap</code>, 바깥 감싸개에 <code>.bds-scroll-area .bds-scroll-area-x</code>를 씁니다(rounded 는 <code>overflow: hidden</code>이라 표 자신은 스크롤하지 못합니다). 아래 상자는 하한보다 좁게 묶어 스크롤이 보이게 한 것입니다.</p>
+    <div class="doc-card">
+      <div class="bds-scroll-area bds-scroll-area-x" style="max-width:360px;">
+        <div class="bds-table bds-table-rounded bds-table-nowrap">
+          <div class="bds-table-header">
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-header-col bds-table-cell-align-left" style="flex:0 0 120px;">이름</div>
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-header-col bds-table-cell-align-left">이메일</div>
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-header-col" style="flex:0 0 140px;">가입일</div>
+          </div>
+          <div class="bds-table-row">
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-body bds-table-cell-align-left" style="flex:0 0 120px;">김블루</div>
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-body bds-table-cell-align-left">kim.blue@bluesoft.co.kr</div>
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-body" style="flex:0 0 140px;">2026.01.15</div>
+          </div>
+          <div class="bds-table-row">
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-body bds-table-cell-align-left" style="flex:0 0 120px;">이소프트</div>
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-body bds-table-cell-align-left">soft.lee@bluesoft.co.kr</div>
+            <div class="bds-table-cell bds-table-cell-md bds-table-cell-body" style="flex:0 0 140px;">2026.02.02</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-section">
     <h2>header-row(왼쪽 라벨 열) 조합</h2>
     <p class="doc-desc">배경은 header-col과 같은 톤(surface/subtle)이고, 우측 보더만 추가됩니다.</p>
     <div class="doc-card" style="display:inline-flex;">

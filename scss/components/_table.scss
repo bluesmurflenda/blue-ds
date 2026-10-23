@@ -1,4 +1,6 @@
-// Figma DS Master > Table/Cell(1046:96) + Table/Header(1046:1073) + Table/Row(1046:1036) + Table(1046:9840)
+// Figma DS Master > Table/Cell(1046:96) + Table(세트 1622:10408, Container=Default 1046:9840)
+// 2026-10-23 조회: 행 마스터 이름이 기능과 반대다 — 헤더행이 Table/Row(1046:1073), 본문 행이
+// Table/Col(1046:1036)이다(Table 의 Header·Row 인스턴스 componentId 로 확인). STATUS.md 에 적어 뒀다.
 // 2026-08-27 라이브 실측. Size는 폰트가 아니라 밀도(높이 36/44/64) — 문서 설명 그대로 확인.
 // sm·md는 Body/Sm 폰트를 공유하고 lg만 Body/Lg로 커진다(실측 그대로, 균등 스케일 아님).
 // Role별: body(테두리만) / header-col(맨 위 헤더행) / header-row(왼쪽 라벨 열 + 우측 테두리 추가) —
@@ -60,6 +62,16 @@ $table-cell-sizes: (
     border-radius: $radius-sm;
     overflow: hidden;
   }
+
+  // Container 축과 무관한 폭 변형 — 셀이 '내용 + 패딩'보다 좁아지지 않게 하한을 둔다.
+  // min-content 가 아니라 max-content 다 — min-content 는 가장 긴 단어 폭이라 스크롤 전에 줄이 먼저 꺾인다.
+  // 넘치는 쪽은 바깥 감싸개가 맡는다(.bds-scroll-area + .bds-scroll-area-x) — rounded 가
+  // overflow: hidden 이라 표 자신에는 스크롤이 생기지 않는다.
+  // 2026-10-23 실측(컨테이너 900~320px, Chromium): 셀에도 같은 하한을 걸면 한 열만 늘어나는 표는
+  // 결과가 같고(표에만 걸어도 충분하다), 균등 폭 표는 열 폭이 서로 어긋난다 — 그래서 표에만 건다.
+  &-nowrap {
+    min-width: max-content;
+  }
 }
 
 .bds-table-header {
@@ -81,9 +93,9 @@ $table-cell-sizes: (
     background-color: $table-row-bg-hover;
   }
 
-  // 컬럼 폭이 다른 테이블은 Table/Row(균등 flex:1) 대신 셀을 오토레이아웃으로 나열한다 —
-  // 각 .bds-table-cell에 개별 width/flex-basis를 지정하고 flex:1 0 0을 쓰지 않으면 된다(디태치 아님,
-  // 셀은 그대로 인스턴스로 마스터 변경을 계속 받는다. FIGMA.md 「슬롯과 크기」).
+  // 컬럼 폭이 다른 테이블은 한 열만 늘어나고 나머지는 고정 폭이다. 늘어나는 열의 셀은 기본값
+  // (flex: 1 0 0)을 그대로 두고, 고정 열의 셀에만 flex: 0 0 <폭>을 준다. 전부 고정하면 표가
+  // 컨테이너보다 좁을 때 오른쪽에 빈 공간이 남는다. FIGMA.md 「슬롯과 크기」와 같은 규칙이다.
 }
 
 .bds-table-cell {
