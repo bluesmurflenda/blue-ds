@@ -2797,10 +2797,6 @@
         "value": "#f6ffff",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-25)"
           }
@@ -2811,10 +2807,6 @@
         "value": "#ecfeff",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-50)"
           }
@@ -2824,10 +2816,6 @@
         "value": "#cffafe",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-100)"
           }
@@ -2837,10 +2825,6 @@
         "value": "#a5f3fc",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-200)"
           }
@@ -2850,10 +2834,6 @@
         "value": "#67e8f9",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-300)"
           }
@@ -2863,10 +2843,6 @@
         "value": "#22d3ee",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-400)"
           }
@@ -2876,10 +2852,6 @@
         "value": "#06b6d4",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-500)"
           }
@@ -2889,10 +2861,6 @@
         "value": "#0891b2",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-600)"
           }
@@ -2902,10 +2870,6 @@
         "value": "#0e7490",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-700)"
           }
@@ -2916,10 +2880,6 @@
         "value": "#155e75",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-800)"
           }
@@ -2929,10 +2889,6 @@
         "value": "#164e63",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-900)"
           }
@@ -2942,10 +2898,6 @@
         "value": "#083344",
         "type": "color",
         "$extensions": {
-          "com.figma.scopes": [
-            "ALL_SCOPES"
-          ],
-          "com.figma.hiddenFromPublishing": false,
           "com.figma.codeSyntax": {
             "Web": "var(--bds-cyan-950)"
           }
@@ -7540,6 +7492,60 @@
           }
         },
         "description": "입력 계열 disabled 상태의 placeholder 글자색.\n\n기본은 field/fg-placeholder (라이트 400 · 다크 500). disabled 는 각 모드에서 한 단계씩\n덜 도드라지는 쪽으로 간다 — 라이트는 옅게, 다크는 어둡게.\nFigma 컴포넌트에 이 상태가 없어 값의 근거는 코드다."
+      },
+      "file-button": {
+        "bg": {
+          "value": "{surface.muted}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-field-file-button-bg)"
+            }
+          },
+          "description": "파일 입력의 \"파일 선택\" 버튼 영역 배경."
+        },
+        "bg-hover": {
+          "value": "{neutral.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-field-file-button-bg-hover)"
+            }
+          },
+          "description": "파일 선택 버튼 영역 hover 배경.\n\nsurface/muted 보다 한 단계 진한 배경 시맨틱이 없어 프리미티브를 직접 참조한다(컴포넌트 고유 톤).\n라이트는 구분선(field/border)과 같은 값이라 hover 중에는 버튼 오른쪽 선이 배경에 묻힌다 — 검토 후 수용."
+        },
+        "fg": {
+          "value": "{text.primary}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-field-file-button-fg)"
+            }
+          },
+          "description": "파일 선택 버튼 글자색. 글자 자체는 브라우저가 그린다."
+        },
+        "fg-disabled": {
+          "value": "{neutral.300}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-field-file-button-fg-disabled)"
+            }
+          },
+          "description": "비활성 파일 입력의 버튼 글자색.\nfield/fg-placeholder-disabled 와 같은 값이지만 형제를 거치지 않도록 같은 프리미티브를 각자 참조한다."
+        }
       }
     },
     "icon": {
@@ -12398,6 +12404,60 @@
           }
         },
         "description": "입력 계열 disabled 상태의 placeholder 글자색.\n\n기본은 field/fg-placeholder (라이트 400 · 다크 500). disabled 는 각 모드에서 한 단계씩\n덜 도드라지는 쪽으로 간다 — 라이트는 옅게, 다크는 어둡게.\nFigma 컴포넌트에 이 상태가 없어 값의 근거는 코드다."
+      },
+      "file-button": {
+        "bg": {
+          "value": "{surface.muted}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-field-file-button-bg)"
+            }
+          },
+          "description": "파일 입력의 \"파일 선택\" 버튼 영역 배경."
+        },
+        "bg-hover": {
+          "value": "{neutral.700}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-field-file-button-bg-hover)"
+            }
+          },
+          "description": "파일 선택 버튼 영역 hover 배경.\n\nsurface/muted 보다 한 단계 진한 배경 시맨틱이 없어 프리미티브를 직접 참조한다(컴포넌트 고유 톤).\n라이트는 구분선(field/border)과 같은 값이라 hover 중에는 버튼 오른쪽 선이 배경에 묻힌다 — 검토 후 수용."
+        },
+        "fg": {
+          "value": "{text.primary}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-field-file-button-fg)"
+            }
+          },
+          "description": "파일 선택 버튼 글자색. 글자 자체는 브라우저가 그린다."
+        },
+        "fg-disabled": {
+          "value": "{neutral.600}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-field-file-button-fg-disabled)"
+            }
+          },
+          "description": "비활성 파일 입력의 버튼 글자색.\nfield/fg-placeholder-disabled 와 같은 값이지만 형제를 거치지 않도록 같은 프리미티브를 각자 참조한다."
+        }
       }
     },
     "icon": {
