@@ -59,6 +59,12 @@ minor 를 올린 이유가 이것이다. 같은 묶음에서 `--bds-calendar-cel
 - 눈금 사이 절반 값을 스케일에 넣은 것을 ADR 로 남길지 — Toggle · Featured Icon · Tabs ·
   Modal 이 실제로 그 값을 물고 있어 이제 되돌리기 어렵다
 - 토큰 관리 방향을 Git 기준으로 바꿀지 정한다
+- File Input 의 빈 상태 글자색을 시안과 맞출 수 없다 — "선택된 파일 없음"과 파일명을
+  브라우저가 같은 `color` 로 그려서 CSS 로 가르지 못한다. 지금은 값 색(`field/fg`)을 쓴다.
+  시안은 빈 상태를 `field/fg-placeholder`, 비활성 빈 상태를 `text/disabled` 로 둔다.
+  `required` 를 쓰면 `:valid`·`:invalid` 로 가를 수 있지만 폼 의미가 바뀐다 — 그걸 받아들일지 정한다
+- invalid·valid 의 상태 아이콘(체크·경고)이 코드에 없다 — Input 과 File Input 둘 다 시안에는
+  보이는데 문서 예시에도 없다. 색을 어느 클래스로 줄지 정해야 한다(지금 `.bds-input__icon` 은 크기만 준다)
 - button-group 의 Prev·Next 가 라이브와 다르다 — 라이브는 텍스트 없이 아이콘만이고 아이콘도
   더 크다(코드는 텍스트 + 작은 아이콘). Pagination 세 타입만 손보기로 해서 두었다
 - `.bds-scroll-area-x` 가 단독 클래스인지 `.bds-scroll-area` 의 변형인지 정해져 있지 않다 —

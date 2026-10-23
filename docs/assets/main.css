@@ -429,6 +429,10 @@
   --bds-field-fg: var(--bds-text-primary);
   --bds-field-fg-placeholder: var(--bds-neutral-400);
   --bds-field-fg-placeholder-disabled: var(--bds-neutral-300);
+  --bds-field-file-button-bg: var(--bds-surface-muted);
+  --bds-field-file-button-bg-hover: var(--bds-neutral-200);
+  --bds-field-file-button-fg: var(--bds-text-primary);
+  --bds-field-file-button-fg-disabled: var(--bds-neutral-300);
   --bds-field-hint-fg: var(--bds-text-tertiary);
   --bds-field-hint-fg-invalid: var(--bds-text-danger);
   --bds-field-label-fg: var(--bds-text-primary);
@@ -643,6 +647,8 @@
   --bds-field-border-valid-hover: var(--bds-green-300);
   --bds-field-fg-placeholder: var(--bds-neutral-500);
   --bds-field-fg-placeholder-disabled: var(--bds-neutral-600);
+  --bds-field-file-button-bg-hover: var(--bds-neutral-700);
+  --bds-field-file-button-fg-disabled: var(--bds-neutral-600);
   --bds-icon-disabled: var(--bds-neutral-700);
   --bds-icon-inverse: var(--bds-neutral-900);
   --bds-icon-primary: var(--bds-neutral-400);
@@ -4409,6 +4415,10 @@ table {
   width: 16px;
   height: 16px;
 }
+.bds-input-sm .bds-input__control[type=file]::file-selector-button {
+  padding-inline: var(--bds-space-3);
+  margin-inline-end: var(--bds-space-3);
+}
 
 .bds-input-md .bds-input__field {
   height: 40px;
@@ -4427,6 +4437,10 @@ table {
 .bds-input-md .bds-input__icon {
   width: 16px;
   height: 16px;
+}
+.bds-input-md .bds-input__control[type=file]::file-selector-button {
+  padding-inline: var(--bds-space-4);
+  margin-inline-end: var(--bds-space-4);
 }
 
 .bds-input-lg .bds-input__field {
@@ -4447,6 +4461,10 @@ table {
   width: 20px;
   height: 20px;
 }
+.bds-input-lg .bds-input__control[type=file]::file-selector-button {
+  padding-inline: var(--bds-space-4);
+  margin-inline-end: var(--bds-space-4);
+}
 
 .bds-input-xl .bds-input__field {
   height: 56px;
@@ -4465,6 +4483,10 @@ table {
 .bds-input-xl .bds-input__icon {
   width: 20px;
   height: 20px;
+}
+.bds-input-xl .bds-input__control[type=file]::file-selector-button {
+  padding-inline: var(--bds-space-4);
+  margin-inline-end: var(--bds-space-4);
 }
 
 .bds-input-normal .bds-input__field {
@@ -4519,6 +4541,33 @@ table {
 
 .bds-input-valid.bds-input-disabled .bds-input__field {
   border-color: var(--bds-field-border-valid-disabled);
+}
+
+.bds-input__field:has(.bds-input__control[type=file]) {
+  padding-inline-start: 0;
+}
+
+.bds-input__control[type=file] {
+  align-self: stretch;
+  cursor: pointer;
+}
+.bds-input__control[type=file]::file-selector-button {
+  height: 100%;
+  border: none;
+  border-right: var(--bds-border-hairline) solid var(--bds-field-border);
+  border-radius: 0;
+  background-color: var(--bds-field-file-button-bg);
+  color: var(--bds-field-file-button-fg);
+  font: inherit;
+  font-weight: var(--bds-font-weight-medium);
+  cursor: pointer;
+}
+.bds-input__control[type=file]:hover::file-selector-button {
+  background-color: var(--bds-field-file-button-bg-hover);
+}
+.bds-input__control[type=file]:disabled::file-selector-button {
+  color: var(--bds-field-file-button-fg-disabled);
+  cursor: not-allowed;
 }
 
 .bds-textarea {

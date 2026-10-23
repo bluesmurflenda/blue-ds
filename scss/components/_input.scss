@@ -1,4 +1,5 @@
-// Figma DS Master > Inputs & Textarea & File 페이지 (node 281:1069 _Input base, 293:855 Input),
+// Figma DS Master > Inputs & Textarea & File 페이지 (node 281:1069 _Input base, 293:855 Input,
+// 2567:22561 _File input base, 2567:22796 File Input),
 // 2026-08-28 라이브 실측. Size(sm/md/lg/xl) × State(default/hover/focus/disabled) × Validation(normal/invalid/valid).
 // filled은 border/bg가 normal과 동일(값이 채워졌다는 의미만 가짐) — 실제 <input> 엘리먼트를 쓰므로
 // ::placeholder로 자연히 구분되고 별도 클래스가 필요 없다(select.scss와 동일 패턴).
@@ -22,6 +23,12 @@ $input-fg: var(--bds-field-fg);
 $input-placeholder-fg: var(--bds-field-fg-placeholder);
 $input-disabled-bg: var(--bds-field-bg-disabled);
 $input-disabled-placeholder-fg: var(--bds-field-fg-placeholder-disabled);
+
+// 2026-10-23 신설: File Input 의 "파일 선택" 버튼 영역 전용 토큰 4개.
+$input-file-button-bg: var(--bds-field-file-button-bg);
+$input-file-button-bg-hover: var(--bds-field-file-button-bg-hover);
+$input-file-button-fg: var(--bds-field-file-button-fg);
+$input-file-button-fg-disabled: var(--bds-field-file-button-fg-disabled);
 
 // 2026-08-28 실측: Shadow/xs — hover·disabled까지 공통, focus에서는 포커스 링으로 완전히 대체된다(합쳐지지 않음).
 $input-shadow: 0 1px 2px rgb(0 0 0 / 5%);
@@ -129,6 +136,12 @@ $input-validation-colors: (
       width: map.get($props, icon);
       height: map.get($props, icon);
     }
+
+    // 실측: 버튼 안쪽 좌우 여백과 버튼↔파일명 간격이 둘 다 입력 칸 좌우 여백과 같은 토큰이다.
+    .bds-input__control[type='file']::file-selector-button {
+      padding-inline: map.get($props, padding-x);
+      margin-inline-end: map.get($props, padding-x);
+    }
   }
 }
 
@@ -157,5 +170,51 @@ $input-validation-colors: (
 
   .bds-input-#{$validation}.bds-input-disabled .bds-input__field {
     border-color: map.get($c, border-disabled);
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
+// Type=file — File Input(2567:22796) · _File input base(2567:22561), 2026-10-23 실측.
+// 구조·상태·사이즈가 Input 과 같다. 다른 것은 입력 칸 왼쪽의 "파일 선택" 버튼 영역 하나뿐이라
+// 클래스를 새로 만들지 않고 .bds-input 세 벌을 그대로 쓰고 ::file-selector-button 만 더한다.
+// 버튼 글자와 파일명은 브라우저가 사용자 언어로 그린다 — 마크업이나 JS 로 대신 그리지 않는다.
+// ──────────────────────────────────────────────────────────────
+
+// 버튼이 테두리 안쪽에 딱 붙는다(실측: Input 프레임의 왼쪽 패딩이 0, 오른쪽만 남는다).
+// 왼쪽 여백은 버튼이 자기 패딩으로 갖는다. 사이즈 루프의 padding-inline 을 한쪽만 되돌리는 것이라
+// 그 뒤에 둔다 — :has() 가 specificity 로도 이기지만 순서로도 맞춰 둔다.
+.bds-input__field:has(.bds-input__control[type='file']) {
+  padding-inline-start: 0;
+}
+
+.bds-input__control[type='file'] {
+  align-self: stretch; // 버튼이 입력 칸 높이를 꽉 채운다
+  cursor: pointer;
+
+  &::file-selector-button {
+    height: 100%;
+    border: none;
+
+    // 버튼 영역은 오른쪽 선 하나로 파일명과 나뉜다 — 따로 테두리를 두지 않는다(실측).
+    border-right: $border-hairline solid var(--bds-field-border);
+    border-radius: 0;
+    background-color: $input-file-button-bg;
+    color: $input-file-button-fg;
+
+    // 브라우저 기본 버튼 글꼴을 입력 칸 글꼴로 되돌린다. 굵기만 다르다 — 실측: 본문 regular, 버튼 medium.
+    font: inherit;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+  }
+
+  // 실측: hover 에서 바뀌는 것은 버튼 배경뿐이다(테두리는 .bds-input__field 가 이미 바꾼다).
+  &:hover::file-selector-button {
+    background-color: $input-file-button-bg-hover;
+  }
+
+  // 실측: disabled 에서 바뀌는 것은 버튼 글자색뿐이다(배경·테두리는 .bds-input-disabled 가 바꾼다).
+  &:disabled::file-selector-button {
+    color: $input-file-button-fg-disabled;
+    cursor: not-allowed;
   }
 }
