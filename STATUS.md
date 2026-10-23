@@ -39,6 +39,7 @@ minor 를 올린 이유가 이것이다. 같은 묶음에서 `--bds-calendar-cel
 **배포 뒤에 몰아서 한다.** 하나씩 고치면 퍼블리시 → 스냅샷 → 빌드 한 바퀴가 매번 돈다.
 
 - Variables 문서 페이지의 초점 링 행이 아직 Primitive 그룹 자리에 있다 — 토큰은 Theme 으로 옮겼다
+- Pagination 의 화살표를 chevron 으로 통일한다 — 라이브는 arrow 다. 코드·문서는 chevron 으로 맞춰 뒀다
 - `Table` 의 행 마스터 이름이 기능과 반대다 — 헤더행이 `Table/Row`(1046:1073), 본문 행이
   `Table/Col`(1046:1036)이다. 이름을 바꿀지, 코드·문서가 라이브 이름을 그대로 쓸지 정해야 한다
 - 목록 항목·목록 패널의 반경에 맞는 Shape 토큰이 없다 — 각진·Pill 모드에서 걸린다
@@ -58,6 +59,8 @@ minor 를 올린 이유가 이것이다. 같은 묶음에서 `--bds-calendar-cel
 - 눈금 사이 절반 값을 스케일에 넣은 것을 ADR 로 남길지 — Toggle · Featured Icon · Tabs ·
   Modal 이 실제로 그 값을 물고 있어 이제 되돌리기 어렵다
 - 토큰 관리 방향을 Git 기준으로 바꿀지 정한다
+- button-group 의 Prev·Next 가 라이브와 다르다 — 라이브는 텍스트 없이 아이콘만이고 아이콘도
+  더 크다(코드는 텍스트 + 작은 아이콘). Pagination 세 타입만 손보기로 해서 두었다
 - `.bds-scroll-area-x` 가 단독 클래스인지 `.bds-scroll-area` 의 변형인지 정해져 있지 않다 —
   스크롤바 모양은 `.bds-scroll-area` 에만 있는데 `scrollbar.html` 은 `-x` 만 쓴다.
   Table 가로 스크롤 예시는 둘을 함께 쓴다

@@ -11,10 +11,12 @@
 
 // 번호 간격은 사이즈 축이 아니다 — 2026-09-11 실측: Numbers 프레임의 itemSpacing 은 sm·md·lg
 // 전부 space/1 이다. 맵에 있던 gap 키는 @each 가 읽지 않는 죽은 값이었다(lg 만 space/2 로 적혀 있었다).
+// 2026-10-23 실측: numbers 의 Prev·Next 는 아이콘만 남은 정사각이다 — 박스는 번호 셀과 같은
+// item 폭이고 아이콘만 따로 20/20/24 다(Icon Button 의 18/20/24 와 다르다).
 $pagination-sizes: (
-  sm: (item: 32px, type: body-sm),
-  md: (item: 40px, type: body-lg),
-  lg: (item: 48px, type: body-xl),
+  sm: (item: 32px, type: body-sm, nav-icon: 20px),
+  md: (item: 40px, type: body-lg, nav-icon: 20px),
+  lg: (item: 48px, type: body-xl, nav-icon: 24px),
 );
 $pagination-border: var(--bds-pagination-group-border);
 $pagination-fg: var(--bds-pagination-item-fg);
@@ -25,6 +27,11 @@ $pagination-current-fg: var(--bds-pagination-current-fg);
 $pagination-radius: var(--bds-pagination-radius); // 2026-08-28: [data-shape] 런타임 전환 반영
 $pagination-wrap-radius: var(--bds-pagination-wrap-radius); // 2026-09-11 신설 — 붙은 그룹의 바깥 반경
 $pagination-icon-fg: var(--bds-icon-primary);
+
+// 2026-10-23 실측: numbers 의 화살표는 icon/primary 가 아니라 btn/outline/fg 를 문다 —
+// simple-icon·numbers-buttons 의 아이콘 버튼과 같은 색이다. button-group·compact 는
+// 아직 icon/primary 라 위 변수를 그대로 쓴다(세 타입만 바뀌었다).
+$pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
 
 // ──────────────────────────────────────────────────────────────
 // 공용 숫자 셀 — .bds-pagination-number, 모든 Type에서 재사용
@@ -67,6 +74,14 @@ $pagination-icon-fg: var(--bds-icon-primary);
   }
 }
 
+// 번호 묶음 — numbers 와 numbers-buttons 가 같이 쓴다. 2026-10-23 실측: 두 타입의 Numbers
+// 프레임이 같다(Shape=rounded 셀 + itemSpacing space/1). 셀이 테두리로 붙는 것은 button-group 뿐이다.
+.bds-pagination__numbers {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+}
+
 @each $size, $props in $pagination-sizes {
   .bds-pagination-#{$size} {
     // font-weight는 State(현재 페이지 여부) 축이라 사이즈와 분리 — size/line-height만 $type-scale에서 읽는다.
@@ -90,16 +105,30 @@ $pagination-icon-fg: var(--bds-icon-primary);
       font-size: map.get($pagination-type, size);
       line-height: map.get($pagination-type, lh);
     }
+
+    // numbers 의 Prev·Next 만 정사각이다 — button-group 의 nav 는 텍스트가 남아 폭이 가변이다.
+    &.bds-pagination-numbers .bds-pagination__nav {
+      width: map.get($props, item);
+      height: map.get($props, item);
+
+      .bds-icon {
+        width: map.get($props, nav-icon);
+        height: map.get($props, nav-icon);
+      }
+    }
   }
 }
 
 // ──────────────────────────────────────────────────────────────
-// Type=numbers — 테두리 없는 텍스트 Prev/Next + 번호. 위쪽에 구분선(border-top)이 붙는다.
+// Type=numbers — 아이콘만 남은 Prev/Next + 번호. 셋을 가운데로 모은다.
+// 2026-10-23 실측: Prev·Next 의 텍스트가 없어지고 정사각 영역만 남았다. 루트 배치도
+// SPACE_BETWEEN 에서 CENTER + gap space/2 로 바뀌었다.
 // ──────────────────────────────────────────────────────────────
 .bds-pagination-numbers {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: $space-2;
   width: 100%;
 
   // 2026-09-11 실측(15변형 전수): 상 40/48/64 · 좌우 20 · 하 12/16/20. 좌우·아래 패딩이 없었다.
@@ -107,26 +136,22 @@ $pagination-icon-fg: var(--bds-icon-primary);
   // 없고 numbers-buttons 에만 있다. 코드가 그리던 border-top 을 뺀다.
   padding: $space-12 $space-5 $space-4;
 
+  // 아이콘만 남았으므로 <button> 으로 쓰고 이름은 aria-label 이 맡는다. 박스·아이콘 크기는
+  // 사이즈 축이라 아래 @each 가 준다.
   .bds-pagination__nav {
     display: inline-flex;
     align-items: center;
-    gap: $space-2;
-    color: $pagination-fg;
-    font-weight: $font-weight-medium;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: transparent;
     cursor: pointer;
 
     .bds-icon {
-      width: 20px;
-      height: 20px;
-      color: $pagination-icon-fg;
+      color: $pagination-numbers-icon-fg;
     }
   }
 
-  .bds-pagination__numbers {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-1;
-  }
 }
 
 .bds-pagination-numbers.bds-pagination-sm {
@@ -178,9 +203,10 @@ $pagination-icon-fg: var(--bds-icon-primary);
 }
 
 // ──────────────────────────────────────────────────────────────
-// Type=numbers-buttons / button-group — Prev·번호·Next가 하나의 테두리 그룹으로 붙어있다.
-// numbers-buttons: Prev/Next만 독립 버튼(.bds-btn .bds-btn-outline), 번호만 그룹으로 붙음.
-// button-group: Prev/Next까지 포함해 전부 하나의 그룹으로 붙음.
+// Type=button-group — Prev·번호·Next가 하나의 테두리 그룹으로 붙어있다.
+// 2026-10-23 실측: numbers-buttons 는 더 이상 이 그룹을 쓰지 않는다 — Prev/Next 가
+// Icon Button(outline, 같은 사이즈)이고 번호는 numbers 와 같은 낱개 둥근 셀이다.
+// 붙은 사각 그룹은 button-group 하나뿐이다.
 // ──────────────────────────────────────────────────────────────
 .bds-pagination-group {
   display: inline-flex;

@@ -3846,6 +3846,12 @@ table {
   margin-left: 0;
 }
 
+.bds-pagination__numbers {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bds-space-1);
+}
+
 .bds-pagination-sm .bds-pagination-number {
   width: 32px;
   height: 32px;
@@ -3859,6 +3865,14 @@ table {
 .bds-pagination-sm .bds-pagination__nav {
   font-size: var(--bds-font-size-body-sm);
   line-height: var(--bds-font-leading-body-sm);
+}
+.bds-pagination-sm.bds-pagination-numbers .bds-pagination__nav {
+  width: 32px;
+  height: 32px;
+}
+.bds-pagination-sm.bds-pagination-numbers .bds-pagination__nav .bds-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .bds-pagination-md .bds-pagination-number {
@@ -3875,6 +3889,14 @@ table {
   font-size: var(--bds-type-body-lg-size);
   line-height: var(--bds-type-body-lg-leading);
 }
+.bds-pagination-md.bds-pagination-numbers .bds-pagination__nav {
+  width: 40px;
+  height: 40px;
+}
+.bds-pagination-md.bds-pagination-numbers .bds-pagination__nav .bds-icon {
+  width: 20px;
+  height: 20px;
+}
 
 .bds-pagination-lg .bds-pagination-number {
   width: 48px;
@@ -3890,31 +3912,34 @@ table {
   font-size: var(--bds-type-body-xl-size);
   line-height: var(--bds-type-body-xl-leading);
 }
+.bds-pagination-lg.bds-pagination-numbers .bds-pagination__nav {
+  width: 48px;
+  height: 48px;
+}
+.bds-pagination-lg.bds-pagination-numbers .bds-pagination__nav .bds-icon {
+  width: 24px;
+  height: 24px;
+}
 
 .bds-pagination-numbers {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: var(--bds-space-2);
   width: 100%;
   padding: var(--bds-space-12) var(--bds-space-5) var(--bds-space-4);
 }
 .bds-pagination-numbers .bds-pagination__nav {
   display: inline-flex;
   align-items: center;
-  gap: var(--bds-space-2);
-  color: var(--bds-pagination-item-fg);
-  font-weight: var(--bds-font-weight-medium);
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
   cursor: pointer;
 }
 .bds-pagination-numbers .bds-pagination__nav .bds-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--bds-icon-primary);
-}
-.bds-pagination-numbers .bds-pagination__numbers {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--bds-space-1);
+  color: var(--bds-btn-outline-fg);
 }
 
 .bds-pagination-numbers.bds-pagination-sm {
