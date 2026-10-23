@@ -22,9 +22,10 @@
 `SCSS.md` 「컴포넌트 하나를 끝내는 흐름」으로 돌아간다.
 다음은 아래 「Figma 에서 한 번에 고친다」이다.
 
-**v0.3.0 에서 토큰이 하나 사라졌다 — `--bds-calendar-cell-unavailable-border`.**
-쓰는 쪽이 고쳐야 한다. 정의가 없어지면 그 값을 쓴 선언 전체가 무효가 되므로 조용히 깨진다.
-minor 를 올린 이유가 이것이다. 같은 묶음에서 `--bds-calendar-cell-available-fg` 가 새로 생겼다.
+**v0.5.0 에서 Pagination 마크업이 바뀌었다 — 쓰는 쪽이 고쳐야 한다.**
+Prev·Next 가 전 타입에서 글자 없이 아이콘만 남았고, numbers-buttons 의 번호가
+붙은 사각 그룹에서 낱개 둥근 셀로 바뀌었다. 클래스만 바꾸면 되고 조용히 깨지지는 않는다 —
+예전 마크업은 예전 모양으로 남는다. minor 를 올린 이유가 이것이다.
 
 **제외 대상** — logo · login-header · con · header · side-nav-item.
 
@@ -39,7 +40,6 @@ minor 를 올린 이유가 이것이다. 같은 묶음에서 `--bds-calendar-cel
 **배포 뒤에 몰아서 한다.** 하나씩 고치면 퍼블리시 → 스냅샷 → 빌드 한 바퀴가 매번 돈다.
 
 - Variables 문서 페이지의 초점 링 행이 아직 Primitive 그룹 자리에 있다 — 토큰은 Theme 으로 옮겼다
-- Pagination 의 화살표를 chevron 으로 통일한다 — 라이브는 arrow 다. 코드·문서는 chevron 으로 맞춰 뒀다
 - `Table` 의 행 마스터 이름이 기능과 반대다 — 헤더행이 `Table/Row`(1046:1073), 본문 행이
   `Table/Col`(1046:1036)이다. 이름을 바꿀지, 코드·문서가 라이브 이름을 그대로 쓸지 정해야 한다
 - 목록 항목·목록 패널의 반경에 맞는 Shape 토큰이 없다 — 각진·Pill 모드에서 걸린다
@@ -65,8 +65,9 @@ minor 를 올린 이유가 이것이다. 같은 묶음에서 `--bds-calendar-cel
   `required` 를 쓰면 `:valid`·`:invalid` 로 가를 수 있지만 폼 의미가 바뀐다 — 그걸 받아들일지 정한다
 - invalid·valid 의 상태 아이콘(체크·경고)이 코드에 없다 — Input 과 File Input 둘 다 시안에는
   보이는데 문서 예시에도 없다. 색을 어느 클래스로 줄지 정해야 한다(지금 `.bds-input__icon` 은 크기만 준다)
-- button-group 의 Prev·Next 가 라이브와 다르다 — 라이브는 텍스트 없이 아이콘만이고 아이콘도
-  더 크다(코드는 텍스트 + 작은 아이콘). Pagination 세 타입만 손보기로 해서 두었다
+- `.bds-pagination-compact__nav` 가 Icon Button ghost 와 같은 것을 따로 그린다 — 라이브는
+  Compact 의 Prev·Next 도 Icon Button(ghost) 인스턴스다. 전용 클래스를 접고 `.bds-icon-btn` 을
+  쓸지 정해야 한다. 지금은 값만 맞춰 뒀다
 - `.bds-scroll-area-x` 가 단독 클래스인지 `.bds-scroll-area` 의 변형인지 정해져 있지 않다 —
   스크롤바 모양은 `.bds-scroll-area` 에만 있는데 `scrollbar.html` 은 `-x` 만 쓴다.
   Table 가로 스크롤 예시는 둘을 함께 쓴다

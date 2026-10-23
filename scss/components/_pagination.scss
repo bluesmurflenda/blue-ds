@@ -13,10 +13,11 @@
 // 전부 space/1 이다. 맵에 있던 gap 키는 @each 가 읽지 않는 죽은 값이었다(lg 만 space/2 로 적혀 있었다).
 // 2026-10-23 실측: numbers 의 Prev·Next 는 아이콘만 남은 정사각이다 — 박스는 번호 셀과 같은
 // item 폭이고 아이콘만 따로 20/20/24 다(Icon Button 의 18/20/24 와 다르다).
+// nav-padding-x 는 button-group 의 Prev·Next 좌우 여백이다 — 2026-10-23 실측으로 사이즈마다 다르다.
 $pagination-sizes: (
-  sm: (item: 32px, type: body-sm, nav-icon: 20px),
-  md: (item: 40px, type: body-lg, nav-icon: 20px),
-  lg: (item: 48px, type: body-xl, nav-icon: 24px),
+  sm: (item: 32px, type: body-sm, nav-icon: 20px, nav-padding-x: $space-3),
+  md: (item: 40px, type: body-lg, nav-icon: 20px, nav-padding-x: $space-4),
+  lg: (item: 48px, type: body-xl, nav-icon: 24px, nav-padding-x: $space-5),
 );
 $pagination-border: var(--bds-pagination-group-border);
 $pagination-fg: var(--bds-pagination-item-fg);
@@ -26,12 +27,11 @@ $pagination-current-bg: var(--bds-pagination-current-bg);
 $pagination-current-fg: var(--bds-pagination-current-fg);
 $pagination-radius: var(--bds-pagination-radius); // 2026-08-28: [data-shape] 런타임 전환 반영
 $pagination-wrap-radius: var(--bds-pagination-wrap-radius); // 2026-09-11 신설 — 붙은 그룹의 바깥 반경
-$pagination-icon-fg: var(--bds-icon-primary);
-
-// 2026-10-23 실측: numbers 의 화살표는 icon/primary 가 아니라 btn/outline/fg 를 문다 —
-// simple-icon·numbers-buttons 의 아이콘 버튼과 같은 색이다. button-group·compact 는
-// 아직 icon/primary 라 위 변수를 그대로 쓴다(세 타입만 바뀌었다).
-$pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
+$pagination-wrap-radius-sm: var(--bds-pagination-wrap-radius-sm); // sm 만 한 단계 작다(실측)
+// 2026-10-23 실측: Pagination 의 화살표는 전 타입이 btn/outline/fg 다(아이콘 버튼을 쓰는
+// simple-icon·numbers-buttons 도 같은 색이 나온다). Compact 만 Icon Button ghost 라 btn/ghost/fg 다.
+$pagination-icon-fg: var(--bds-btn-outline-fg);
+$pagination-compact-icon-fg: var(--bds-btn-ghost-fg);
 
 // ──────────────────────────────────────────────────────────────
 // 공용 숫자 셀 — .bds-pagination-number, 모든 Type에서 재사용
@@ -62,15 +62,10 @@ $pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
     pointer-events: none;
   }
 
-  // numbers-buttons/button-group 안에서는 사각형(라운드 없음) + 테두리로 서로 붙어있는 형태
+  // Shape=square — 2026-10-23 실측: 셀 마스터에는 선이 없다(strokeWeight 는 1 인데 strokes 가 비어 있다).
+  // 칸을 가르는 선은 button-group 이 조립에서 긋는다.
   &-square {
     border-radius: 0;
-    border: $border-hairline solid $pagination-border;
-    margin-left: -1px;
-
-    &:first-child {
-      margin-left: 0;
-    }
   }
 }
 
@@ -101,12 +96,7 @@ $pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
       line-height: map.get($pagination-type, lh);
     }
 
-    .bds-pagination__nav {
-      font-size: map.get($pagination-type, size);
-      line-height: map.get($pagination-type, lh);
-    }
-
-    // numbers 의 Prev·Next 만 정사각이다 — button-group 의 nav 는 텍스트가 남아 폭이 가변이다.
+    // numbers 의 Prev·Next 는 번호 셀과 같은 정사각이다.
     &.bds-pagination-numbers .bds-pagination__nav {
       width: map.get($props, item);
       height: map.get($props, item);
@@ -115,6 +105,11 @@ $pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
         width: map.get($props, nav-icon);
         height: map.get($props, nav-icon);
       }
+    }
+
+    // button-group 의 Prev·Next 는 좌우 여백만 사이즈를 탄다 — 아이콘은 세 사이즈 모두 같다.
+    &.bds-pagination-group .bds-pagination__nav {
+      padding-inline: map.get($props, nav-padding-x);
     }
   }
 }
@@ -148,7 +143,7 @@ $pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
     cursor: pointer;
 
     .bds-icon {
-      color: $pagination-numbers-icon-fg;
+      color: $pagination-icon-fg;
     }
   }
 
@@ -218,19 +213,14 @@ $pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
   border: $border-hairline solid $pagination-border;
   overflow: hidden;
 
-  .bds-pagination-number-square {
-    border-top: none;
-    border-bottom: none;
-    border-radius: 0;
-  }
-
+  // Prev·Next 는 글자 없이 아이콘만이다. 좌우 여백은 사이즈 축이라 위 @each 가 준다.
   .bds-pagination__nav {
     display: inline-flex;
     align-items: center;
-    gap: $space-2;
-    padding-inline: $space-5;
-    color: $pagination-fg;
-    font-weight: $font-weight-medium;
+    justify-content: center;
+    padding-block: 0;
+    border: none;
+    background: transparent;
     cursor: pointer;
 
     &:hover {
@@ -238,11 +228,23 @@ $pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
     }
 
     .bds-icon {
-      width: 16px;
-      height: 16px;
+      width: 20px;
+      height: 20px;
       color: $pagination-icon-fg;
     }
   }
+
+  // 칸 구분선은 두 번째 칸부터 왼쪽 선 하나다(실측). 셀마다 테두리를 두르고 -1px 로 겹쳐 놓던 것을 바꿨다.
+  // Prev·Next 도 같은 규칙을 탄다 — Next 에만 왼쪽 선이 생긴다.
+  // nav 의 border:none 과 specificity 가 같아 소스 순서로 이겨야 한다 — 그래서 nav 뒤에 둔다.
+  > :not(:first-child) {
+    border-left: $border-hairline solid $pagination-border;
+  }
+}
+
+// 바깥 반경은 sm 만 다른 토큰이다(실측: sm radius/sm, md·lg radius/md).
+.bds-pagination-group.bds-pagination-sm {
+  border-radius: $pagination-wrap-radius-sm;
 }
 
 // 2026-09-11 실측: 이 Type 만 상단 구분선이 켜져 있다(다른 Type 은 stroke visible:false).
@@ -285,7 +287,7 @@ $pagination-numbers-icon-fg: var(--bds-btn-outline-fg);
     height: 32px;
     border-radius: $pagination-radius;
     background: transparent;
-    color: $pagination-icon-fg;
+    color: $pagination-compact-icon-fg;
     cursor: pointer;
 
     &:hover {
