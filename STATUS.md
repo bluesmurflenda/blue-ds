@@ -48,6 +48,7 @@ Prev·Next 가 전 타입에서 글자 없이 아이콘만 남았고, numbers-bu
 - 목록 항목에 focus 표시가 없다 — Figma 에 넣을지, 코드에서 링으로 그릴지
 - Modal 의 alert 계열에 큰 사이즈가 없다 — 의도인지 확인해야 한다
 - Featured Icon · Badge group 에 info 색이 없다 — 넣을지 그대로 둘지. Badge · Alert 에는 있다
+- 다크에서 `badge/neutral/bg` 가 `surface/subtle` 과 같아 페이지 배경에 묻힌다 — 다른 값을 줄지 정해야 한다
 - Nav 계열의 라이트·다크를 변형 축에 둘지 모드로 옮길지
 
 ### 코드에서 정할 것
