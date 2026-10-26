@@ -28,8 +28,9 @@ $progress-bar-colors: (
 // 45° 그라디언트를 같은 크기 타일로 깔면 가로 주기가 그대로 이 값이 된다.
 $progress-bar-stripe-step: 8px;
 
-// 줄무늬가 흐르는 한 바퀴. Figma 에 없는 값이라 Bootstrap 과 같은 1s 를 쓴다 —
-// motion 토큰은 전부 상태 전환용(150·250·400ms)이라 끝없이 도는 루프에 맞지 않는다.
+// 줄무늬가 흐르는 한 바퀴. 토큰 없이 1s 로 확정했다 — Figma 에 표현할 자리가 없는 코드 전용
+// 값이다. motion 토큰은 전부 상태 전환용(150·250·400ms)이라 끝없이 도는 루프에 맞지 않는다.
+// 값은 Bootstrap 의 progress-bar-animated 와 같다.
 $progress-bar-stripe-duration: 1s;
 
 @keyframes bds-progress-bar-stripes {
