@@ -7875,6 +7875,109 @@
         },
         "description": "검증 invalid 상태의 초점 링(반투명 바깥 겹, 30%). 별칭에 알파를 못 넣어 모드별 직접값이다 — field/border-invalid 가 바뀌면 여기도 손으로 맞춰야 한다."
       }
+    },
+    "progress": {
+      "track": {
+        "value": "{surface.muted}",
+        "type": "color",
+        "$extensions": {
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.codeSyntax": {
+            "Web": "var(--bds-progress-track)"
+          }
+        }
+      },
+      "brand": {
+        "fill": {
+          "value": "{brand.600}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-brand-fill)"
+            }
+          }
+        }
+      },
+      "success": {
+        "fill": {
+          "value": "{green.600}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-success-fill)"
+            }
+          }
+        }
+      },
+      "warning": {
+        "fill": {
+          "value": "{yellow.500}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-warning-fill)"
+            }
+          }
+        }
+      },
+      "error": {
+        "fill": {
+          "value": "{red.600}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-error-fill)"
+            }
+          }
+        }
+      },
+      "info": {
+        "fill": {
+          "value": "{sky.500}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-info-fill)"
+            }
+          }
+        }
+      },
+      "stripe": {
+        "value": "#ffffff26",
+        "type": "color",
+        "$extensions": {
+          "com.figma.scopes": [
+            "SHAPE_FILL"
+          ],
+          "com.figma.codeSyntax": {
+            "Web": "var(--bds-progress-stripe)"
+          }
+        },
+        "description": "줄무늬 겹. 별칭에 알파를 못 넣어 직접값으로 둔다"
+      }
     }
   },
   "Theme/Dark": {
@@ -12846,6 +12949,109 @@
           }
         },
         "description": "검증 invalid 상태의 초점 링(반투명 바깥 겹, 30%). 별칭에 알파를 못 넣어 모드별 직접값이다 — field/border-invalid 가 바뀌면 여기도 손으로 맞춰야 한다."
+      }
+    },
+    "progress": {
+      "track": {
+        "value": "{surface.muted}",
+        "type": "color",
+        "$extensions": {
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.codeSyntax": {
+            "Web": "var(--bds-progress-track)"
+          }
+        }
+      },
+      "brand": {
+        "fill": {
+          "value": "{brand.600}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-brand-fill)"
+            }
+          }
+        }
+      },
+      "success": {
+        "fill": {
+          "value": "{green.400}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-success-fill)"
+            }
+          }
+        }
+      },
+      "warning": {
+        "fill": {
+          "value": "{yellow.400}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-warning-fill)"
+            }
+          }
+        }
+      },
+      "error": {
+        "fill": {
+          "value": "{red.400}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-error-fill)"
+            }
+          }
+        }
+      },
+      "info": {
+        "fill": {
+          "value": "{sky.400}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-progress-info-fill)"
+            }
+          }
+        }
+      },
+      "stripe": {
+        "value": "#ffffff26",
+        "type": "color",
+        "$extensions": {
+          "com.figma.scopes": [
+            "SHAPE_FILL"
+          ],
+          "com.figma.codeSyntax": {
+            "Web": "var(--bds-progress-stripe)"
+          }
+        },
+        "description": "줄무늬 겹. 별칭에 알파를 못 넣어 직접값으로 둔다"
       }
     }
   },
