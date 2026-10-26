@@ -17,7 +17,8 @@
 생성되며(`_breakpoint.scss` 만 예외로 손으로 맞춘다 — 빌드가 만들지 않는다),
 코드 규약·값·화면을 각각 도구가 본다(`npm run check` · `npm run check:visual`).
 
-**Figma 와 다시 맞췄다.** 퍼블리시된 변경을 코드가 따라잡았다.
+**Figma 와 다시 맞췄다.** 퍼블리시된 변경을 코드가 따라잡았다 — 마지막으로 들어온 것이
+Badge group 이고, 그때 Badge 배경이 라이트에서 한 단계 진해졌다(쓰는 쪽이 고칠 것은 없다).
 컴포넌트를 다시 손볼 일이 생기면 그건 Figma 가 바뀐 것이므로
 `SCSS.md` 「컴포넌트 하나를 끝내는 흐름」으로 돌아간다.
 다음은 아래 「Figma 에서 한 번에 고친다」이다.
@@ -46,7 +47,7 @@ Prev·Next 가 전 타입에서 글자 없이 아이콘만 남았고, numbers-bu
 - Con · Card 에 disabled 표현이 없다 — Figma 에 상태를 넣을지, 코드에서 흐리게 할지
 - 목록 항목에 focus 표시가 없다 — Figma 에 넣을지, 코드에서 링으로 그릴지
 - Modal 의 alert 계열에 큰 사이즈가 없다 — 의도인지 확인해야 한다
-- Featured Icon 에 info 색이 없다 — 넣을지 그대로 둘지
+- Featured Icon · Badge group 에 info 색이 없다 — 넣을지 그대로 둘지. Badge · Alert 에는 있다
 - Nav 계열의 라이트·다크를 변형 축에 둘지 모드로 옮길지
 
 ### 코드에서 정할 것

@@ -40,6 +40,7 @@
         { label: 'Icon Button', href: BASE + 'components/icon-button.html' },
         { label: 'Social Button', href: BASE + 'components/social-button.html' },
         { label: 'Badge', href: BASE + 'components/badge.html' },
+        { label: 'Badge Group', href: BASE + 'components/badge-group.html' },
         { label: 'Con', href: BASE + 'components/con-chip.html' },
         { label: 'Tabs', href: BASE + 'components/tabs.html' },
       ],

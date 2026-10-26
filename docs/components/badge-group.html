@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Badge Group · BLUESOFT Design System</title>
+<link rel="stylesheet" href="../assets/main.css" />
+<link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+
+<nav class="doc-sidebar" id="sidebar-mount"></nav>
+
+<main class="doc-main">
+  <div class="doc-breadcrumb"><a href="../index.html">기본 컴포넌트</a> / Badge Group</div>
+  <div class="doc-page-header">
+    <h1>Badge Group</h1>
+    <p>톤 배경 위에 배지와 한 줄 메시지를 얹는 컴포넌트입니다. 안쪽 배지는 <strong>Badge와 별개</strong>입니다 — 흰 배경에 테두리가 있고 높이도 다릅니다(<code>.bds-badge-group__badge</code>). 색은 5종이고 <strong>info는 없습니다</strong>.</p>
+  </div>
+
+  <section class="doc-section">
+    <h2>Color</h2>
+    <p class="doc-desc">배경은 <code>badge/{color}/bg</code>, 글자와 아이콘은 <code>badge/{color}/fg</code>, 배지 테두리는 <code>badge/{color}/border</code>입니다. 테두리는 다크에서도 라이트와 같은 값을 씁니다.</p>
+    <div class="doc-col" id="group-color-list"></div>
+  </section>
+
+  <section class="doc-section">
+    <h2>Size</h2>
+    <p class="doc-desc">md·lg 2종입니다. 높이(28·32)·글자 스케일·배지 높이(20·24)와 항목 간격(8·12)이 갈립니다.</p>
+    <div class="doc-col" id="group-size-list"></div>
+  </section>
+
+  <section class="doc-section">
+    <h2>배치</h2>
+    <p class="doc-desc"><code>.bds-badge-group-trailing</code>을 붙이면 배지가 오른쪽으로 갑니다. 마크업 순서도 함께 뒤집고, 좌우 여백은 클래스가 알아서 바꿉니다.</p>
+    <div class="doc-col" id="group-placement-list"></div>
+  </section>
+
+  <section class="doc-section">
+    <h2>아이콘</h2>
+    <p class="doc-desc">아이콘은 항상 오른쪽 끝에 붙지만 <strong>들어가는 자리가 배치에 따라 다릅니다</strong>. Leading이면 메시지 옆(<code>.bds-badge-group__content</code> 안, 16px), Trailing이면 배지 안(12px)입니다. 배지 안에 들어가면 배지 오른쪽 여백이 한 눈금 줄어듭니다.</p>
+    <div class="doc-col" id="group-icon-list"></div>
+  </section>
+</main>
+
+<script>window.DOCS_BASE = '../';</script>
+<script src="../assets/nav.js"></script>
+<script>
+  // [color, 배지 글자, 메시지, Trailing 일 때 배지 글자]
+  // 문구는 Figma Badge group(2586:2126) 40변형에 실제로 들어 있는 것만 쓴다.
+  // error 만 Trailing 에서 배지 글자가 달라진다("Error" → "Fix now").
+  var COLORS = [
+    ['brand', 'New feature', 'We’ve just released a new feature', 'New feature'],
+    ['neutral', 'New feature', 'We’ve just released a new feature', 'New feature'],
+    ['success', 'Success', 'You’ve updated your profile and details', 'Success'],
+    ['warning', 'Warning', 'Just to let you know this might be a problem', 'Warning'],
+    ['error', 'Error', 'There was a problem with that action', 'Fix now'],
+  ];
+
+  function iconSvg() {
+    return '<svg class="bds-badge-group__icon"><use href="../assets/icons/sprite.svg#icon-base-arrow-right"></use></svg>';
+  }
+
+  // placement: 'leading' | 'trailing'
+  function groupHtml(size, c, placement, withIcon) {
+    var cls = 'bds-badge-group bds-badge-group-' + size + ' bds-badge-group-' + c[0] +
+      (placement === 'trailing' ? ' bds-badge-group-trailing' : '');
+    var message = '<span class="bds-badge-group__message">' + c[2] + '</span>';
+
+    if (placement === 'trailing') {
+      // 아이콘은 배지 안으로 들어간다.
+      var badge = '<span class="bds-badge-group__badge">' + c[3] + (withIcon ? iconSvg() : '') + '</span>';
+      return '<span class="' + cls + '">' + message + badge + '</span>';
+    }
+    // Leading — 아이콘이 있을 때만 메시지와 __content 로 묶인다(간격이 컨테이너 gap 과 다르다).
+    var body = withIcon ? '<span class="bds-badge-group__content">' + message + iconSvg() + '</span>' : message;
+    return '<span class="' + cls + '"><span class="bds-badge-group__badge">' + c[1] + '</span>' + body + '</span>';
+  }
+
+  function addCell(mountId, html, caption) {
+    var wrap = document.createElement('div');
+    wrap.className = 'doc-cell';
+    wrap.innerHTML = html + '<span class="doc-cell__caption">' + caption + '</span>';
+    document.getElementById(mountId).appendChild(wrap);
+  }
+
+  (function () {
+    COLORS.forEach(function (c) {
+      addCell('group-color-list', groupHtml('md', c, 'leading', false),
+        'badge-group badge-group-md badge-group-' + c[0]);
+    });
+  })();
+
+  (function () {
+    ['md', 'lg'].forEach(function (size) {
+      addCell('group-size-list', groupHtml(size, COLORS[0], 'leading', false),
+        'badge-group badge-group-' + size + ' badge-group-brand');
+    });
+  })();
+
+  (function () {
+    addCell('group-placement-list', groupHtml('md', COLORS[0], 'leading', false),
+      'badge-group badge-group-md badge-group-brand (기본 = Leading)');
+    addCell('group-placement-list', groupHtml('md', COLORS[4], 'trailing', false),
+      'badge-group badge-group-md badge-group-error badge-group-trailing');
+  })();
+
+  (function () {
+    ['md', 'lg'].forEach(function (size) {
+      addCell('group-icon-list', groupHtml(size, COLORS[0], 'leading', true),
+        'badge-group badge-group-' + size + ' badge-group-brand + __content > __icon (16)');
+      addCell('group-icon-list', groupHtml(size, COLORS[4], 'trailing', true),
+        'badge-group badge-group-' + size + ' badge-group-error badge-group-trailing + __badge > __icon (12)');
+    });
+  })();
+</script>
+</body>
+</html>
