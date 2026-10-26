@@ -3,7 +3,7 @@
     "exportedAt": "2026-10-26",
     "source": "Tokens Studio (figma/tokens-studio.json) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
-    "count": 327
+    "count": 334
   },
   "_modes": [
     "Default",
@@ -1044,6 +1044,34 @@
   "pagination/item/fg-hover": {
     "Default": "var(--text-secondary)",
     "Dark": "var(--text-secondary)"
+  },
+  "progress/brand/fill": {
+    "Default": "var(--brand-600)",
+    "Dark": "var(--brand-600)"
+  },
+  "progress/error/fill": {
+    "Default": "var(--red-600)",
+    "Dark": "var(--red-400)"
+  },
+  "progress/info/fill": {
+    "Default": "var(--sky-500)",
+    "Dark": "var(--sky-400)"
+  },
+  "progress/stripe": {
+    "Default": "#ffffff26",
+    "Dark": "#ffffff26"
+  },
+  "progress/success/fill": {
+    "Default": "var(--green-600)",
+    "Dark": "var(--green-400)"
+  },
+  "progress/track": {
+    "Default": "var(--surface-muted)",
+    "Dark": "var(--surface-muted)"
+  },
+  "progress/warning/fill": {
+    "Default": "var(--yellow-500)",
+    "Dark": "var(--yellow-400)"
   },
   "scrollbar/thumb/bg": {
     "Default": "var(--neutral-400)",
