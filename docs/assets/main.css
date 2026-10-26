@@ -2953,6 +2953,14 @@ table {
   overflow: auto hidden;
 }
 
+@keyframes bds-progress-bar-stripes {
+  from {
+    background-position-x: 8px;
+  }
+  to {
+    background-position-x: 0;
+  }
+}
 .bds-progress-bar {
   display: flex;
   align-items: center;
@@ -2962,14 +2970,15 @@ table {
   flex: 1;
   height: 8px;
   border-radius: var(--bds-radius-full);
-  background-color: var(--bds-surface-brand-subtle);
+  background-color: var(--bds-progress-track);
   overflow: hidden;
 }
 .bds-progress-bar__fill {
   height: 100%;
   border-radius: var(--bds-radius-full);
-  background-color: var(--bds-brand-600);
+  background-color: var(--bds-progress-brand-fill);
   width: var(--bds-progress-bar-value, 0%);
+  transition: width var(--bds-motion-base);
 }
 .bds-progress-bar__value {
   flex-shrink: 0;
@@ -2978,7 +2987,40 @@ table {
   font-weight: var(--bds-font-weight-medium);
   color: var(--bds-text-primary);
 }
+.bds-progress-bar-striped .bds-progress-bar__fill {
+  background-image: linear-gradient(45deg, var(--bds-progress-stripe) 25%, transparent 25%, transparent 50%, var(--bds-progress-stripe) 50%, var(--bds-progress-stripe) 75%, transparent 75%, transparent);
+  background-size: 8px 8px;
+}
+.bds-progress-bar-animated .bds-progress-bar__fill {
+  animation: bds-progress-bar-stripes 1s linear infinite;
+}
 
+.bds-progress-bar-brand .bds-progress-bar__fill {
+  background-color: var(--bds-progress-brand-fill);
+}
+
+.bds-progress-bar-success .bds-progress-bar__fill {
+  background-color: var(--bds-progress-success-fill);
+}
+
+.bds-progress-bar-warning .bds-progress-bar__fill {
+  background-color: var(--bds-progress-warning-fill);
+}
+
+.bds-progress-bar-error .bds-progress-bar__fill {
+  background-color: var(--bds-progress-error-fill);
+}
+
+.bds-progress-bar-info .bds-progress-bar__fill {
+  background-color: var(--bds-progress-info-fill);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bds-progress-bar__fill {
+    transition: none;
+    animation: none;
+  }
+}
 .bds-avatar, .bds-avatar-group__more {
   position: relative;
   display: inline-flex;

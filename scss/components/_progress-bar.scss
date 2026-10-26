@@ -1,14 +1,46 @@
-// Figma DS Master > Progress bar (node 1360:23347), 2026-08-28 라이브 인스턴스 실측
+// Figma DS Master > Progress bar (node 1360:23512) + _Progress fill (node 2616:22832),
+// 2026-10-26 라이브 실측
 // Progress 축(0~100, 11단계)은 값 자체라 컴포넌트가 아니라 인라인 style(--bds-progress-bar-value)로 받는다.
+// Label 축(right|none)은 `.bds-progress-bar__value` 를 두느냐 마느냐다.
 // Fill 은 Figma에서 SCALE 제약이라 트랙 폭이 달라져도 비율이 유지된다 — CSS는 width:%로 동일하게 재현.
+
+// 채움이 _Progress fill 컴포넌트로 빠지면서 Color 5종 × Striped 축이 생겼다.
+// 색 클래스를 안 붙이면 brand 다 — Figma 의 기본 변형이 brand 고, 예전 마크업이 그대로 돌아야 한다.
+
+// 움직이는 줄무늬(`.bds-progress-bar-animated`)는 Figma 에 없다. 코드에만 둔다 —
+// Bootstrap 의 `progress-bar-animated` 와 같은 방식으로 배경 위치를 한 칸씩 민다.
 
 @use '../tokens/primitive' as *;
 @use '../tokens/theme' as *;
 @use '../abstracts/mixins' as mix;
 
-$progress-bar-track-bg: $surface-brand-subtle;
-$progress-bar-fill-bg: $brand-600;
-$progress-bar-value-fg: $text-primary;
+$progress-bar-colors: (
+  brand: $progress-brand-fill,
+  success: $progress-success-fill,
+  warning: $progress-warning-fill,
+  error: $progress-error-fill,
+  info: $progress-info-fill,
+);
+
+// 줄무늬 한 칸 — Figma Stripes 벡터의 path 를 읽어 쟀다(2616:22818).
+// 줄 하나가 `M x 0 L x+4 0 L x+12 8 L x+8 8 Z` 이고 x 가 8 씩 늘어난다:
+// 가로로 줄 4 · 빈칸 4 · 주기 8 이고, 아래로 8 내려가는 동안 가로로 8 밀리므로 45° 다.
+// 45° 그라디언트를 같은 크기 타일로 깔면 가로 주기가 그대로 이 값이 된다.
+$progress-bar-stripe-step: 8px;
+
+// 줄무늬가 흐르는 한 바퀴. Figma 에 없는 값이라 Bootstrap 과 같은 1s 를 쓴다 —
+// motion 토큰은 전부 상태 전환용(150·250·400ms)이라 끝없이 도는 루프에 맞지 않는다.
+$progress-bar-stripe-duration: 1s;
+
+@keyframes bds-progress-bar-stripes {
+  from {
+    background-position-x: $progress-bar-stripe-step;
+  }
+
+  to {
+    background-position-x: 0;
+  }
+}
 
 .bds-progress-bar {
   display: flex;
@@ -19,15 +51,18 @@ $progress-bar-value-fg: $text-primary;
     flex: 1;
     height: 8px;
     border-radius: $radius-full;
-    background-color: $progress-bar-track-bg;
+    background-color: $progress-track;
     overflow: hidden;
   }
 
   &__fill {
     height: 100%;
     border-radius: $radius-full;
-    background-color: $progress-bar-fill-bg;
+    background-color: $progress-brand-fill;
     width: var(--bds-progress-bar-value, 0%);
+
+    // 값이 바뀌면 폭이 부드럽게 따라간다. 색 전환(fast)보다 거리가 길어 base 를 쓴다.
+    transition: width $motion-base;
   }
 
   &__value {
@@ -35,6 +70,39 @@ $progress-bar-value-fg: $text-primary;
 
     @include mix.text(body-sm, medium);
 
-    color: $progress-bar-value-fg;
+    color: $text-primary;
+  }
+
+  &-striped &__fill {
+    background-image: linear-gradient(
+      45deg,
+      $progress-stripe 25%,
+      transparent 25%,
+      transparent 50%,
+      $progress-stripe 50%,
+      $progress-stripe 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: $progress-bar-stripe-step $progress-bar-stripe-step;
+  }
+
+  // 줄무늬가 있을 때만 쓴다 — 깔린 무늬가 없으면 움직일 것도 없다.
+  &-animated &__fill {
+    animation: bds-progress-bar-stripes $progress-bar-stripe-duration linear infinite;
+  }
+}
+
+@each $color, $fill in $progress-bar-colors {
+  .bds-progress-bar-#{$color} .bds-progress-bar__fill {
+    background-color: $fill;
+  }
+}
+
+// 움직임을 줄이라고 한 사용자에게는 둘 다 끈다 — 폭이 즉시 바뀌고 줄무늬는 멈춘다.
+@media (prefers-reduced-motion: reduce) {
+  .bds-progress-bar__fill {
+    transition: none;
+    animation: none;
   }
 }

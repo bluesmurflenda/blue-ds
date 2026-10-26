@@ -15,35 +15,93 @@
   <div class="doc-breadcrumb"><a href="../index.html">피드백 컴포넌트</a> / Progress Bar</div>
   <div class="doc-page-header">
     <h1>Progress Bar</h1>
-    <p>별도 컬러·사이즈 variant 없이 값 하나(0~100%)로 동작합니다. 값은 <code>--bds-progress-bar-value</code> 커스텀 프로퍼티를 인라인 <code>style</code>로 넘겨 <code>.bds-progress-bar__fill</code> 폭에 반영합니다.</p>
+    <p>값 하나(0~100%)로 동작합니다. 값은 <code>--bds-progress-bar-value</code> 커스텀 프로퍼티를 인라인 <code>style</code>로 넘겨 <code>.bds-progress-bar__fill</code> 폭에 반영합니다. 채움에 <strong>색 5종과 줄무늬 축</strong>이 생겼습니다.</p>
   </div>
 
   <section class="doc-section">
     <h2>0~100% (11단계)</h2>
-    <p class="doc-desc">구조: <code>.bds-progress-bar &gt; .bds-progress-bar__track &gt; .bds-progress-bar__fill</code> + <code>.bds-progress-bar__value</code>(텍스트).</p>
+    <p class="doc-desc">
+      구조: <code>.bds-progress-bar &gt; .bds-progress-bar__track &gt; .bds-progress-bar__fill</code> + <code>.bds-progress-bar__value</code>(텍스트).
+      값이 바뀌면 폭이 <code>motion/base</code>(250ms)로 따라갑니다 — 아래는 정적이라 보이지 않습니다.
+    </p>
     <div class="doc-col" id="progress-bar-list"></div>
+  </section>
+
+  <section class="doc-section">
+    <h2>Color</h2>
+    <p class="doc-desc">색 클래스를 안 붙이면 <code>brand</code>입니다 — Figma <code>_Progress fill</code>의 기본 변형이 brand라 예전 마크업이 그대로 돕니다. 트랙은 색과 무관하게 <code>progress/track</code> 하나입니다.</p>
+    <div class="doc-col" id="progress-bar-colors"></div>
+  </section>
+
+  <section class="doc-section">
+    <h2>Striped · Animated</h2>
+    <p class="doc-desc">
+      <code>.bds-progress-bar-striped</code>는 <code>progress/stripe</code>로 45° 사선을 깝니다 — 가로로 줄 4px · 빈칸 4px · 주기 8px이며 Figma의 Stripes 벡터를 그대로 잰 값입니다.
+      <code>.bds-progress-bar-animated</code>는 <strong>Figma에 없고 코드에만 있습니다</strong> — 줄무늬와 함께 써야 하며, 배경 위치를 한 칸씩 밀어 흐르게 합니다(Bootstrap의 <code>progress-bar-animated</code>와 같은 방식).
+      <code>prefers-reduced-motion: reduce</code>에서는 이 애니메이션과 폭 transition이 모두 꺼집니다.
+    </p>
+    <div class="doc-col" id="progress-bar-striped"></div>
+  </section>
+
+  <section class="doc-section">
+    <h2>Label=none</h2>
+    <p class="doc-desc"><code>.bds-progress-bar__value</code>를 빼면 트랙이 전체 폭을 차지합니다.</p>
+    <div class="doc-col" id="progress-bar-nolabel"></div>
   </section>
 </main>
 
 <script>window.DOCS_BASE = '../';</script>
 <script src="../assets/nav.js"></script>
 <script>
+  var COLORS = ['brand', 'success', 'warning', 'error', 'info'];
+
+  // extra: 루트에 덧붙일 클래스(색·줄무늬). withValue: 값 라벨을 둘지.
+  function barHtml(value, extra, withValue) {
+    return (
+      '<div class="bds-progress-bar' + (extra ? ' ' + extra : '') + '" style="width:100%;">' +
+      '<div class="bds-progress-bar__track">' +
+      '<div class="bds-progress-bar__fill" style="--bds-progress-bar-value: ' + value + '%;"></div>' +
+      '</div>' +
+      (withValue ? '<div class="bds-progress-bar__value">' + value + '%</div>' : '') +
+      '</div>'
+    );
+  }
+
+  function addCell(mountId, html, caption) {
+    var wrap = document.createElement('div');
+    wrap.className = 'doc-cell';
+    wrap.style.width = '100%';
+    wrap.innerHTML = html + '<span class="doc-cell__caption">' + caption + '</span>';
+    document.getElementById(mountId).appendChild(wrap);
+  }
+
   (function () {
-    var el = document.getElementById('progress-bar-list');
     for (var value = 0; value <= 100; value += 10) {
-      var wrap = document.createElement('div');
-      wrap.className = 'doc-cell';
-      wrap.style.width = '100%';
-      wrap.innerHTML =
-        '<div class="bds-progress-bar" style="width:100%;">' +
-        '<div class="bds-progress-bar__track">' +
-        '<div class="bds-progress-bar__fill" style="--bds-progress-bar-value: ' + value + '%;"></div>' +
-        '</div>' +
-        '<div class="bds-progress-bar__value">' + value + '%</div>' +
-        '</div>' +
-        '<span class="doc-cell__caption">--bds-progress-bar-value: ' + value + '%</span>';
-      el.appendChild(wrap);
+      addCell('progress-bar-list', barHtml(value, '', true), '--bds-progress-bar-value: ' + value + '%');
     }
+  })();
+
+  (function () {
+    COLORS.forEach(function (color) {
+      addCell('progress-bar-colors', barHtml(60, 'bds-progress-bar-' + color, true),
+        'progress-bar progress-bar-' + color);
+    });
+    addCell('progress-bar-colors', barHtml(60, '', true), 'progress-bar (색 클래스 없음 = brand)');
+  })();
+
+  (function () {
+    COLORS.forEach(function (color) {
+      addCell('progress-bar-striped', barHtml(60, 'bds-progress-bar-' + color + ' bds-progress-bar-striped', true),
+        'progress-bar progress-bar-' + color + ' progress-bar-striped');
+    });
+    addCell('progress-bar-striped', barHtml(60, 'bds-progress-bar-striped bds-progress-bar-animated', true),
+      'progress-bar progress-bar-striped progress-bar-animated (코드 전용)');
+  })();
+
+  (function () {
+    addCell('progress-bar-nolabel', barHtml(60, '', false), 'progress-bar (value 없음)');
+    addCell('progress-bar-nolabel', barHtml(60, 'bds-progress-bar-success bds-progress-bar-striped', false),
+      'progress-bar progress-bar-success progress-bar-striped (value 없음)');
   })();
 </script>
 </body>

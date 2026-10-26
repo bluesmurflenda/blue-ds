@@ -18,7 +18,7 @@
 코드 규약·값·화면을 각각 도구가 본다(`npm run check` · `npm run check:visual`).
 
 **Figma 와 다시 맞췄다.** 퍼블리시된 변경을 코드가 따라잡았다 — 마지막으로 손본 것이
-Tooltip 이다. 컴포넌트를 다시 손볼 일이 생기면 그건 Figma 가 바뀐 것이므로
+Progress bar 다. 컴포넌트를 다시 손볼 일이 생기면 그건 Figma 가 바뀐 것이므로
 `SCSS.md` 「컴포넌트 하나를 끝내는 흐름」으로 돌아간다.
 다음은 아래 「Figma 에서 한 번에 고친다」이다.
 
@@ -75,6 +75,8 @@ minor 를 올린 이유가 이것이다.
   쓸지 정해야 한다. 지금은 값만 맞춰 뒀다
 - Tooltip 의 `bottom-left`·`bottom-right`(코너 오프셋)에 대응하는 CSS 클래스가 없다 — Figma 에는
   dark 쪽에 둘 다 있다. 넣을지 정해야 한다
+- 끝없이 도는 애니메이션의 주기를 담을 토큰이 없다 — Progress bar 의 줄무늬가 리터럴 `1s` 를 쓴다.
+  `motion/*`(150·250·400ms)은 전부 상태 전환용이라 맞지 않는다. 토큰을 만들지 정해야 한다
 - `.bds-scroll-area-x` 가 단독 클래스인지 `.bds-scroll-area` 의 변형인지 정해져 있지 않다 —
   스크롤바 모양은 `.bds-scroll-area` 에만 있는데 `scrollbar.html` 은 `-x` 만 쓴다.
   Table 가로 스크롤 예시는 둘을 함께 쓴다
