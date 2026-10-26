@@ -4357,6 +4357,19 @@
               "Web": "var(--bds-badge-brand-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{brand.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-brand-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "neutral": {
@@ -4388,6 +4401,19 @@
               "Web": "var(--bds-badge-neutral-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{neutral.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-neutral-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "success": {
@@ -4419,6 +4445,19 @@
               "Web": "var(--bds-badge-success-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{green.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-success-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "warning": {
@@ -4450,6 +4489,19 @@
               "Web": "var(--bds-badge-warning-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{yellow.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-warning-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "error": {
@@ -4481,6 +4533,19 @@
               "Web": "var(--bds-badge-error-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{red.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-error-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "info": {
@@ -9269,6 +9334,19 @@
               "Web": "var(--bds-badge-brand-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{brand.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-brand-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "neutral": {
@@ -9300,6 +9378,19 @@
               "Web": "var(--bds-badge-neutral-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{neutral.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-neutral-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "success": {
@@ -9331,6 +9422,19 @@
               "Web": "var(--bds-badge-success-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{green.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-success-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "warning": {
@@ -9362,6 +9466,19 @@
               "Web": "var(--bds-badge-warning-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{yellow.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-warning-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "error": {
@@ -9393,6 +9510,19 @@
               "Web": "var(--bds-badge-error-fg)"
             }
           }
+        },
+        "border": {
+          "value": "{red.200}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "STROKE_COLOR"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-badge-error-border)"
+            }
+          },
+          "description": "Badge group 의 Badge 테두리 색. 다크 값은 라이트와 같은 대상을 임시로 참조한다 — 다크 대응 미정"
         }
       },
       "info": {
