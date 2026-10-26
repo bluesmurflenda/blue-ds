@@ -17,16 +17,19 @@
 생성되며(`_breakpoint.scss` 만 예외로 손으로 맞춘다 — 빌드가 만들지 않는다),
 코드 규약·값·화면을 각각 도구가 본다(`npm run check` · `npm run check:visual`).
 
-**Figma 와 다시 맞췄다.** 퍼블리시된 변경을 코드가 따라잡았다 — 마지막으로 들어온 것이
-Badge group 이고, 그때 Badge 배경이 라이트에서 한 단계 진해졌다(쓰는 쪽이 고칠 것은 없다).
-컴포넌트를 다시 손볼 일이 생기면 그건 Figma 가 바뀐 것이므로
+**Figma 와 다시 맞췄다.** 퍼블리시된 변경을 코드가 따라잡았다 — 마지막으로 손본 것이
+Tooltip 이다. 컴포넌트를 다시 손볼 일이 생기면 그건 Figma 가 바뀐 것이므로
 `SCSS.md` 「컴포넌트 하나를 끝내는 흐름」으로 돌아간다.
 다음은 아래 「Figma 에서 한 번에 고친다」이다.
 
-**v0.5.0 에서 Pagination 마크업이 바뀌었다 — 쓰는 쪽이 고쳐야 한다.**
-Prev·Next 가 전 타입에서 글자 없이 아이콘만 남았고, numbers-buttons 의 번호가
-붙은 사각 그룹에서 낱개 둥근 셀로 바뀌었다. 클래스만 바꾸면 되고 조용히 깨지지는 않는다 —
-예전 마크업은 예전 모양으로 남는다. minor 를 올린 이유가 이것이다.
+**쓰는 쪽이 마크업을 고쳐야 하는 변경이 둘 있다.** 둘 다 클래스·엘리먼트만 바꾸면 되고
+조용히 깨지지는 않는다 — 예전 마크업은 예전 모양으로 남거나 아무것도 안 그린다.
+minor 를 올린 이유가 이것이다.
+
+- v0.5.0 Pagination — Prev·Next 가 전 타입에서 글자 없이 아이콘만 남았고, numbers-buttons 의
+  번호가 붙은 사각 그룹에서 낱개 둥근 셀로 바뀌었다
+- v0.6.0 Tooltip — light 에 화살표가 없어졌다(Figma 가 `Arrow=none` 만 남겼다). `.bds-tooltip__arrow`
+  를 지운다. 남겨 두면 배경색을 못 받아 안 보일 뿐이다. 보조 텍스트는 `<p>`·`<ul>` 로 쓴다
 
 **제외 대상** — logo · login-header · con · header · side-nav-item.
 
@@ -70,6 +73,8 @@ Prev·Next 가 전 타입에서 글자 없이 아이콘만 남았고, numbers-bu
 - `.bds-pagination-compact__nav` 가 Icon Button ghost 와 같은 것을 따로 그린다 — 라이브는
   Compact 의 Prev·Next 도 Icon Button(ghost) 인스턴스다. 전용 클래스를 접고 `.bds-icon-btn` 을
   쓸지 정해야 한다. 지금은 값만 맞춰 뒀다
+- Tooltip 의 `bottom-left`·`bottom-right`(코너 오프셋)에 대응하는 CSS 클래스가 없다 — Figma 에는
+  dark 쪽에 둘 다 있다. 넣을지 정해야 한다
 - `.bds-scroll-area-x` 가 단독 클래스인지 `.bds-scroll-area` 의 변형인지 정해져 있지 않다 —
   스크롤바 모양은 `.bds-scroll-area` 에만 있는데 `scrollbar.html` 은 `-x` 만 쓴다.
   Table 가로 스크롤 예시는 둘을 함께 쓴다

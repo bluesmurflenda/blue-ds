@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tooltip & Help Icon · BLUESOFT Design System</title>
+<title>Tooltip &amp; Help Icon · BLUESOFT Design System</title>
 <link rel="stylesheet" href="../assets/main.css" />
 <link rel="stylesheet" href="../assets/docs.css" />
 </head>
@@ -12,21 +12,30 @@
 <nav class="doc-sidebar" id="sidebar-mount"></nav>
 
 <main class="doc-main">
-  <div class="doc-breadcrumb"><a href="../index.html">피드백 컴포넌트</a> / Tooltip & Help Icon</div>
+  <div class="doc-breadcrumb"><a href="../index.html">피드백 컴포넌트</a> / Tooltip &amp; Help Icon</div>
   <div class="doc-page-header">
-    <h1>Tooltip & Help Icon</h1>
-    <p>Tooltip: Theme(light/dark) × Arrow(none/top/bottom/left/right) 조합입니다. Help Icon: 아이콘 + Tooltip 조합이며, 대표 Arrow만 표시합니다(풀 매트릭스 아님).</p>
+    <h1>Tooltip &amp; Help Icon</h1>
+    <p>Tooltip: Theme(light/dark) × Arrow × Supporting(text/list). <strong>light에는 화살표가 없습니다</strong> — 대신 테두리가 있습니다. Help Icon: 아이콘 + Tooltip 조합이며 대표 Arrow만 표시합니다(풀 매트릭스 아님).</p>
   </div>
 
   <section class="doc-section">
-    <h2>Tooltip</h2>
+    <h2>Theme × Arrow</h2>
     <p class="doc-desc">
-      <code>_tooltip.scss</code>에 실제로 정의된 arrow 클래스는 <code>tooltip-arrow-none/top/bottom/left/right</code>뿐입니다.
-      Figma 축에 있는 <code>bottom-left</code>/<code>bottom-right</code>(코너 오프셋)는 대응하는 CSS 클래스가 아직 없어 이 페이지에서는 제외했습니다 — 추정으로 만들지 않습니다.
       <code>Theme=dark/light</code>는 사이트 다크모드가 아니라 컴포넌트 자체의 고정된 스타일(어두운 배경 스타일 / 밝은 배경 스타일)입니다 — 사이트를 다크모드로 바꿔도 이 배경·글자색은 반전되지 않습니다.
-      <code>bds-tooltip-light</code>는 배경·글자·보조 텍스트가 전부 완전히 고정이고, <code>bds-tooltip-dark</code>는 배경과 제목 글자는 고정이지만 보조 텍스트(<code>fg-supporting</code>)만 사이트 다크모드에서 대비를 낮춘 색으로 바뀝니다 — 이 페이지는 라이트 테마로 고정돼 있어 그 차이는 보이지 않습니다.
+      <code>bds-tooltip-light</code>는 배경·글자·보조 텍스트가 전부 고정이고, <code>bds-tooltip-dark</code>는 배경과 제목은 고정이지만 보조 텍스트(<code>fg-supporting</code>)만 사이트 다크모드에서 대비를 낮춘 색으로 바뀝니다 — 이 페이지는 라이트 테마로 고정돼 있어 그 차이는 보이지 않습니다.
+      <strong>light은 <code>Arrow=none</code> 하나뿐</strong>이라 화살표 엘리먼트를 두지 않습니다. 예전 마크업에 남아 있는 <code>.bds-tooltip__arrow</code>는 배경색을 못 받아 보이지 않습니다.
+      Figma 축에 있는 <code>bottom-left</code>/<code>bottom-right</code>(코너 오프셋)는 대응하는 CSS 클래스가 아직 없어 제외했습니다 — 추정으로 만들지 않습니다.
     </p>
     <div class="doc-row" id="tooltip-matrix"></div>
+  </section>
+
+  <section class="doc-section">
+    <h2>Supporting</h2>
+    <p class="doc-desc">
+      보조 텍스트가 문단이냐 글머리표 목록이냐를 가르는 축입니다. <strong>클래스가 아니라 태그로 가릅니다</strong> — <code>&lt;p class="bds-tooltip__supporting"&gt;</code>이면 문단, <code>&lt;ul class="bds-tooltip__supporting"&gt;</code>이면 목록입니다.
+      툴팁 폭은 내용이 정합니다(<code>max-width: 320px</code>) — 아래 두 칸의 폭이 다른 이유입니다.
+    </p>
+    <div class="doc-row" id="tooltip-supporting"></div>
   </section>
 
   <section class="doc-section">
@@ -34,7 +43,8 @@
     <p class="doc-desc">
       <code>_help-icon.scss</code>는 <code>.bds-tooltip</code>을 <code>:hover</code>/<code>:focus</code>에서만 <code>display:flex</code>로 보여줍니다.
       정적 문서에서는 상호작용을 재현할 수 없어 <code>.bds-tooltip</code> 엘리먼트에 인라인 <code>style="display:flex; position:static;"</code>를 직접 얹어 강제로 표시했습니다.
-      또한 <code>_help-icon.scss</code> 자체는 테마를 고정하지 않습니다(어떤 <code>.bds-tooltip-light</code>/<code>.bds-tooltip-dark</code>를 조합할지는 사용하는 쪽 자유) — 아래 예시는 관례적으로 <code>bds-tooltip-dark</code>를 사용했습니다.
+      실제 컴포넌트에서 툴팁은 <code>position:absolute</code>라 16×16 아이콘 상자 밖에 떠 있지만, 강제로 흐름 안에 넣으면 그 상자 폭에 눌립니다 — 그래서 아래 예시는 아이콘 상자에도 <code>width:auto; height:auto;</code>를 얹었습니다.
+      또한 <code>_help-icon.scss</code> 자체는 테마를 고정하지 않습니다(어떤 <code>.bds-tooltip-light</code>/<code>.bds-tooltip-dark</code>를 조합할지는 사용하는 쪽 자유) — 아래 예시는 화살표가 있는 <code>bds-tooltip-dark</code>를 사용했습니다.
       Figma의 Property 축(top-left/top-right/top-no-arrow 포함)도 Tooltip 쪽 arrow 클래스와 1:1로 대응하지 않아, 실제 존재하는 클래스만으로 대표(top/bottom/right)만 나열합니다.
     </p>
     <div class="doc-row" id="help-icon-demo"></div>
@@ -44,51 +54,65 @@
 <script>window.DOCS_BASE = '../';</script>
 <script src="../assets/nav.js"></script>
 <script>
-  var THEMES = ['dark', 'light'];
+  // 문구는 Figma Tooltip(273:1927)에 실제로 들어 있는 것만 쓴다.
+  var TITLE = 'This is a tooltip';
+  var SUPPORTING = 'Tooltips are used to describe or identify an element. In most scenarios, tooltips help the user understand the meaning, function or alt-text of an element.';
+  var LIST_ITEMS = ['List item', 'List item', 'List item'];
+
+  // light 은 Figma 에 Arrow=none 만 있다. dark 만 화살표를 쓴다.
   var ARROWS = ['none', 'top', 'bottom', 'left', 'right'];
 
-  function tooltipHtml(theme, arrow) {
+  function supportingHtml(kind) {
+    if (kind === 'list') {
+      return '<ul class="bds-tooltip__supporting"><li>' + LIST_ITEMS.join('</li><li>') + '</li></ul>';
+    }
+    return '<p class="bds-tooltip__supporting">' + SUPPORTING + '</p>';
+  }
+
+  function tooltipHtml(theme, arrow, kind, style) {
     return (
-      '<div class="bds-tooltip bds-tooltip-' + theme + ' bds-tooltip-arrow-' + arrow + '">' +
+      '<div class="bds-tooltip bds-tooltip-' + theme + ' bds-tooltip-arrow-' + arrow + '"' + (style ? ' style="' + style + '"' : '') + '>' +
       '<div class="bds-tooltip__content">' +
-      '<div class="bds-tooltip__title">Tooltip 제목</div>' +
-      '<div class="bds-tooltip__supporting">보조 설명 텍스트입니다.</div>' +
+      '<div class="bds-tooltip__title">' + TITLE + '</div>' +
+      supportingHtml(kind) +
       '</div>' +
-      '<div class="bds-tooltip__arrow"></div>' +
+      // 화살표 엘리먼트는 dark 에만 둔다 — light 에는 Figma 에 화살표가 없다.
+      (theme === 'dark' && arrow !== 'none' ? '<div class="bds-tooltip__arrow"></div>' : '') +
       '</div>'
     );
   }
 
+  function addCell(mountId, html, caption) {
+    var cell = document.createElement('div');
+    cell.className = 'doc-cell';
+    cell.innerHTML = html + '<span class="doc-cell__caption">' + caption + '</span>';
+    document.getElementById(mountId).appendChild(cell);
+  }
+
   (function () {
-    var el = document.getElementById('tooltip-matrix');
-    THEMES.forEach(function (theme) {
-      ARROWS.forEach(function (arrow) {
-        var cell = document.createElement('div');
-        cell.className = 'doc-cell';
-        cell.innerHTML = tooltipHtml(theme, arrow) +
-          '<span class="doc-cell__caption">tooltip tooltip-' + theme + ' bds-tooltip-arrow-' + arrow + '</span>';
-        el.appendChild(cell);
-      });
+    addCell('tooltip-matrix', tooltipHtml('light', 'none', 'text'),
+      'tooltip tooltip-light tooltip-arrow-none');
+    ARROWS.forEach(function (arrow) {
+      addCell('tooltip-matrix', tooltipHtml('dark', arrow, 'text'),
+        'tooltip tooltip-dark tooltip-arrow-' + arrow);
     });
   })();
 
   (function () {
-    var el = document.getElementById('help-icon-demo');
+    [['dark', 'text'], ['dark', 'list'], ['light', 'text'], ['light', 'list']].forEach(function (p) {
+      addCell('tooltip-supporting', tooltipHtml(p[0], 'none', p[1]),
+        'tooltip tooltip-' + p[0] + ' + ' + (p[1] === 'list' ? '&lt;ul&gt;' : '&lt;p&gt;') + '.tooltip__supporting');
+    });
+  })();
+
+  (function () {
     ['top', 'bottom', 'right'].forEach(function (arrow) {
-      var cell = document.createElement('div');
-      cell.className = 'doc-cell';
-      cell.innerHTML =
-        '<div class="bds-help-icon" style="gap:8px;align-items:flex-start;">' +
+      addCell('help-icon-demo',
+        '<div class="bds-help-icon" style="gap:8px;align-items:flex-start;width:auto;height:auto;">' +
         '<svg class="bds-icon icon-sm"><use href="../assets/icons/sprite.svg#icon-base-help-circle"></use></svg>' +
-        '<div class="bds-tooltip bds-tooltip-dark bds-tooltip-arrow-' + arrow + '" style="display:flex;position:static;">' +
-        '<div class="bds-tooltip__content">' +
-        '<div class="bds-tooltip__title">도움말 제목</div>' +
-        '<div class="bds-tooltip__supporting">보조 설명 텍스트입니다.</div>' +
-        '</div>' +
-        '<div class="bds-tooltip__arrow"></div>' +
-        '</div></div>' +
-        '<span class="doc-cell__caption">.help-icon &gt; .tooltip.tooltip-dark.tooltip-arrow-' + arrow + ' (강제 표시)</span>';
-      el.appendChild(cell);
+        tooltipHtml('dark', arrow, 'text', 'display:flex;position:static;') +
+        '</div>',
+        '.help-icon &gt; .tooltip.tooltip-dark.tooltip-arrow-' + arrow + ' (강제 표시)');
     });
   })();
 </script>
