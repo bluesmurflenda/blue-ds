@@ -1,0 +1,141 @@
+// Figma DS Master > Badge group (node 2586:2126), 2026-10-26 라이브 40변형 전수 실측
+// Badge(Leading|Trailing) × Icon(False|True) × Size(md|lg) × Color(Brand|Gray|Error|Warning|Success).
+// info 축은 없다 — Badge·Alert 에는 있는데 이 세트에는 안 만들어져 있다.
+// 색 축 이름은 Figma 가 Gray 지만 토큰이 badge/neutral/* 이라 클래스는 neutral 로 맞춘다.
+
+// 안쪽 배지는 .bds-badge 가 아니다. Figma 도 _Badge base 라는 별개 컴포넌트를 쓰고,
+// 흰 배경 + 1px 테두리에 높이(20·24)와 좌우 여백이 .bds-badge(22·24·28)와 달라
+// 재사용이 안 된다 — 이 파일의 요소 클래스로 따로 그린다.
+
+// 마크업 — 아이콘이 붙는 자리가 배치에 따라 다르다(Figma 구조 그대로다).
+//   Leading  : 배지 → 글자 → 아이콘. 아이콘은 글자와 __content 로 묶인다(둘 사이 간격이 4 라
+//              컨테이너 gap 8·12 과 다르다). 아이콘은 16.
+//   Trailing : 글자 → 배지. 아이콘은 배지 **안**으로 들어가고 12 로 작아진다.
+// __message 에는 규칙이 없다 — 글자는 전부 컨테이너에서 상속받는다. Figma 레이어명과 맞추고
+// 쓰는 쪽이 잡을 자리를 주기 위해 이름만 둔다.
+
+//   <span class="bds-badge-group bds-badge-group-md bds-badge-group-brand">
+//     <span class="bds-badge-group__badge">New feature</span>
+//     <span class="bds-badge-group__content">
+//       <span class="bds-badge-group__message">We've just released a new feature</span>
+//       <svg class="bds-badge-group__icon"><use href="…#icon-base-arrow-right"></use></svg>
+//     </span>
+//   </span>
+
+//   <span class="bds-badge-group bds-badge-group-md bds-badge-group-brand bds-badge-group-trailing">
+//     <span class="bds-badge-group__message">We've just released a new feature</span>
+//     <span class="bds-badge-group__badge">
+//       New feature
+//       <svg class="bds-badge-group__icon"><use href="…#icon-base-arrow-right"></use></svg>
+//     </span>
+//   </span>
+
+@use '../tokens/primitive' as *;
+@use '../tokens/theme' as *;
+@use '../abstracts/mixins' as mix;
+@use 'sass:map';
+
+// 2026-10-26 실측(40변형 전수): 세로 여백 4, 배지가 붙는 쪽 좌우 여백 4, 테두리 반경 16 은
+// 사이즈·배치·색과 무관해 base 로 올렸다. 사이즈로 갈리는 것만 Map 에 둔다.
+//   pad-text    배치가 Trailing 일 때 글자쪽(왼쪽) 여백. Leading 쪽은 md·lg 가 둘 다 10 이라 base 에 있다.
+//   badge-pad   배지 좌우 여백. 배지 안에 아이콘이 들어가면 오른쪽만 한 눈금 줄어든다(badge-pad-icon).
+$badge-group-sizes: (
+  md: (gap: $space-2, type: body-2xs, pad-text: $space-3, badge-height: 20px, badge-pad: $space-2, badge-pad-icon: $space-1-5),
+  lg: (gap: $space-3, type: body-sm, pad-text: $space-3-5, badge-height: 24px, badge-pad: $space-2-5, badge-pad-icon: $space-2),
+);
+$badge-group-colors: (
+  brand: (bg: $badge-brand-bg, fg: $badge-brand-fg, border: $badge-brand-border),
+  neutral: (bg: $badge-neutral-bg, fg: $badge-neutral-fg, border: $badge-neutral-border),
+  success: (bg: $badge-success-bg, fg: $badge-success-fg, border: $badge-success-border),
+  warning: (bg: $badge-warning-bg, fg: $badge-warning-fg, border: $badge-warning-border),
+  error: (bg: $badge-error-bg, fg: $badge-error-fg, border: $badge-error-border),
+);
+
+.bds-badge-group {
+  display: inline-flex;
+  align-items: center;
+
+  // Leading(기본) 기준 — 배지쪽 4, 글자쪽 10. Trailing 은 아래에서 뒤집는다.
+  padding-block: $space-1;
+  padding-inline: $space-1 $space-2-5;
+  border-radius: $radius-lg;
+
+  // Figma 는 Message·배지 글자 둘 다 nowrap 이다. 라이브대로 둔다.
+  white-space: nowrap;
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-1;
+    flex-shrink: 0;
+
+    // 테두리 색은 아래 색 루프가 준다. Figma 는 stroke 가 INSIDE(1px)라 배지 높이에 안 더해진다 —
+    // 여기서는 box-sizing: border-box + 명시 높이가 같은 결과를 낸다.
+    border: $border-hairline solid;
+
+    // Figma 가 변수를 안 물고 리터럴 16 이다(2026-10-26 실측). 값이 같은 radius/lg 로 적는다.
+    border-radius: $radius-lg;
+    background-color: $surface-default;
+  }
+
+  // Leading 에서 아이콘은 글자와 한 묶음이다 — 이 간격(4)은 컨테이너 gap(8·12)과 다르다.
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  // 배지 안으로 들어간 아이콘(Trailing)만 12 다.
+  &__badge &__icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+// 배치 — 글자와 배지가 자리를 바꾸면 좌우 여백도 바뀐다. 왼쪽 값은 사이즈마다 달라 아래 루프에 있다.
+.bds-badge-group-trailing {
+  padding-inline-end: $space-1;
+}
+
+@each $size, $props in $badge-group-sizes {
+  .bds-badge-group-#{$size} {
+    gap: map.get($props, gap);
+
+    // 배지 글자와 Message 가 같은 스케일이라 컨테이너에서 한 번만 준다.
+    @include mix.text(map.get($props, type), medium);
+
+    &.bds-badge-group-trailing {
+      padding-inline-start: map.get($props, pad-text);
+    }
+
+    .bds-badge-group__badge {
+      height: map.get($props, badge-height);
+      padding-inline: map.get($props, badge-pad);
+
+      // 실측: 배지 안에 아이콘이 있으면 오른쪽 여백만 줄어든다(md 8/6 · lg 10/8).
+      &:has(.bds-badge-group__icon) {
+        padding-inline-end: map.get($props, badge-pad-icon);
+      }
+    }
+  }
+}
+
+@each $color, $c in $badge-group-colors {
+  .bds-badge-group-#{$color} {
+    background-color: map.get($c, bg);
+
+    // 배지 글자·Message·아이콘이 전부 이 색이다 — 아이콘은 currentColor 라 따로 주지 않는다.
+    color: map.get($c, fg);
+
+    .bds-badge-group__badge {
+      border-color: map.get($c, border);
+    }
+  }
+}
