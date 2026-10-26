@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "exportedAt": "2026-10-23",
+    "exportedAt": "2026-10-26",
     "source": "Tokens Studio (figma/tokens-studio.json) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
     "count": 322
@@ -214,7 +214,7 @@
     "Dark": "var(--green-400)"
   },
   "badge/brand/bg": {
-    "Default": "var(--brand-50)",
+    "Default": "var(--brand-100)",
     "Dark": "var(--brand-50)"
   },
   "badge/brand/fg": {
@@ -222,7 +222,7 @@
     "Dark": "var(--brand-700)"
   },
   "badge/error/bg": {
-    "Default": "var(--red-50)",
+    "Default": "var(--red-100)",
     "Dark": "var(--red-950)"
   },
   "badge/error/fg": {
@@ -230,7 +230,7 @@
     "Dark": "var(--red-400)"
   },
   "badge/info/bg": {
-    "Default": "var(--surface-brand-subtle)",
+    "Default": "var(--blue-100)",
     "Dark": "var(--surface-brand-subtle)"
   },
   "badge/info/fg": {
@@ -238,7 +238,7 @@
     "Dark": "var(--blue-400)"
   },
   "badge/neutral/bg": {
-    "Default": "var(--surface-subtle)",
+    "Default": "var(--neutral-200)",
     "Dark": "var(--surface-subtle)"
   },
   "badge/neutral/fg": {
@@ -246,7 +246,7 @@
     "Dark": "var(--text-tertiary)"
   },
   "badge/success/bg": {
-    "Default": "var(--green-50)",
+    "Default": "var(--green-100)",
     "Dark": "var(--green-950)"
   },
   "badge/success/fg": {
@@ -254,7 +254,7 @@
     "Dark": "var(--green-400)"
   },
   "badge/warning/bg": {
-    "Default": "var(--yellow-50)",
+    "Default": "var(--yellow-100)",
     "Dark": "var(--yellow-950)"
   },
   "badge/warning/fg": {

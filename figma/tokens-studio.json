@@ -4330,7 +4330,7 @@
     "badge": {
       "brand": {
         "bg": {
-          "value": "{brand.50}",
+          "value": "{brand.100}",
           "type": "color",
           "$extensions": {
             "com.figma.scopes": [
@@ -4361,7 +4361,7 @@
       },
       "neutral": {
         "bg": {
-          "value": "{surface.subtle}",
+          "value": "{neutral.200}",
           "type": "color",
           "$extensions": {
             "com.figma.scopes": [
@@ -4392,7 +4392,7 @@
       },
       "success": {
         "bg": {
-          "value": "{green.50}",
+          "value": "{green.100}",
           "type": "color",
           "$extensions": {
             "com.figma.scopes": [
@@ -4423,7 +4423,7 @@
       },
       "warning": {
         "bg": {
-          "value": "{yellow.50}",
+          "value": "{yellow.100}",
           "type": "color",
           "$extensions": {
             "com.figma.scopes": [
@@ -4454,7 +4454,7 @@
       },
       "error": {
         "bg": {
-          "value": "{red.50}",
+          "value": "{red.100}",
           "type": "color",
           "$extensions": {
             "com.figma.scopes": [
@@ -4485,7 +4485,7 @@
       },
       "info": {
         "bg": {
-          "value": "{surface.brand-subtle}",
+          "value": "{blue.100}",
           "type": "color",
           "$extensions": {
             "com.figma.scopes": [
