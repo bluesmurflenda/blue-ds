@@ -1,0 +1,117 @@
+#!/bin/sh
+# 배포물이 바뀌었는데 버전 태그가 없는 push 를 막는다.
+#
+# 왜 있나 — 이 저장소는 push 되는 순간 다른 프로젝트가 가져다 쓴다. 태그가 없으면 쓰는 쪽이
+# 어느 버전을 받았는지 알 수 없다. 실제로 그렇게 나갔다 — e6bdcf8 이 토큰과 생성된 SCSS 를
+# 바꾸고도 태그 없이 올라갔고, v0.7.0 은 뒤에 따로 붙였다(2026-10-28).
+#
+# 등급(patch·minor·major)은 이 훅이 정하지 않는다. 무엇이 깨지는지는 사람만 안다.
+#
+# 모든 브랜치에 적용한다. 가져다 쓰는 쪽이 어느 브랜치를 집어가는지 이 저장소가 모른다.
+#
+# 건너뛰려면 git push --no-verify — 태그 없는 배포물이 나간다는 뜻이므로 이유가 있을 때만.
+
+set -e
+
+remote="$1"
+
+# 배포물 — 다른 프로젝트가 실제로 가져다 쓰는 것. docs/ 는 문서 사이트라 대상이 아니다.
+# 이 경로가 안 바뀐 push(문서·설정만)는 태그 없이 지나간다.
+paths_scss='scss'
+paths_icons='icons'
+paths_tokens='figma/tokens*.json'
+
+# stdin 은 한 번만 읽힌다. 브랜치 줄과 태그 줄을 둘 다 봐야 해서 파일로 받는다.
+refs=$(mktemp)
+remote_tags=$(mktemp)
+remote_tags_loaded=0
+trap 'rm -f "$refs" "$remote_tags"' EXIT
+cat > "$refs"
+
+# 원격이 볼 수 있는 태그인가 — 이번 push 에 함께 가거나, 이미 원격에 있거나.
+# 로컬에만 있는 태그는 쓰는 쪽이 볼 수 없으므로 아무것도 배포하지 않은 것과 같다.
+tag_travels() {
+  if grep -q "^refs/tags/$1 " "$refs"; then
+    return 0
+  fi
+  if [ "$remote_tags_loaded" -eq 0 ]; then
+    git ls-remote --tags "$remote" 'refs/tags/v*' 2>/dev/null \
+      | sed -n 's|.*refs/tags/\(v[^^]*\)$|\1|p' | sort -u > "$remote_tags" || true
+    remote_tags_loaded=1
+  fi
+  grep -qx "$1" "$remote_tags"
+}
+
+fail=0
+
+# <local-ref> <local-sha> <remote-ref> <remote-sha>
+while read -r local_ref local_sha remote_ref remote_sha; do
+  # 브랜치만 본다 — 태그만 따로 보내는 push 는 대상이 아니다.
+  case "$local_ref" in
+    refs/heads/*) ;;
+    *) continue ;;
+  esac
+  # 0 만 들어 있으면 브랜치 삭제다.
+  case "$local_sha" in
+    *[!0]*) ;;
+    *) continue ;;
+  esac
+
+  # 볼 구간의 시작점 — 원격이 이미 가진 끝과, 원격이 볼 수 있는 마지막 v* 태그 중 더 뒤엣것.
+  # 태그까지 보는 이유: 중간에 태그가 있으면 그 앞의 배포물 변경은 이미 번호를 받았다.
+  base=''
+  case "$remote_sha" in
+    *[!0]*) base="$remote_sha" ;;
+  esac
+  last_tag=$(git describe --tags --abbrev=0 --match 'v*' "$local_sha" 2>/dev/null || true)
+  if [ -n "$last_tag" ] && tag_travels "$last_tag"; then
+    tag_commit=$(git rev-parse -q --verify "$last_tag^{commit}" || true)
+    if [ -n "$tag_commit" ]; then
+      if [ -z "$base" ] || git merge-base --is-ancestor "$base" "$tag_commit"; then
+        base="$tag_commit"
+      fi
+    fi
+  fi
+
+  if [ -n "$base" ]; then
+    changed=$(git diff --name-only "$base" "$local_sha" -- "$paths_scss" "$paths_icons" "$paths_tokens")
+  else
+    # 원격에도 없고 볼 수 있는 태그도 없다 — 아직 어디에도 없는 커밋 전부를 본다.
+    changed=$(git log --name-only --pretty=format: "$local_sha" --not --remotes="$remote" \
+      -- "$paths_scss" "$paths_icons" "$paths_tokens" | sed '/^$/d' | sort -u)
+  fi
+
+  [ -n "$changed" ] || continue
+
+  version=$(node -p "require('./package.json').version" 2>/dev/null || true)
+  if [ -z "$version" ]; then
+    echo "pre-push: package.json 의 version 을 못 읽어 판정할 수 없다." >&2
+    fail=1
+    continue
+  fi
+  tag="v$version"
+  tag_sha=$(git rev-parse -q --verify "refs/tags/$tag^{commit}" || true)
+  head_sha=$(git rev-parse "$local_sha^{commit}")
+
+  if [ -z "$tag_sha" ]; then
+    echo "pre-push: 배포물이 바뀌었는데 $tag 태그가 없다 — npm version <patch|minor|major> 후 git push --follow-tags" >&2
+    fail=1
+  elif [ "$tag_sha" != "$head_sha" ]; then
+    echo "pre-push: 배포물이 바뀌었는데 $tag 가 올라가는 끝 커밋이 아닌 다른 커밋을 가리킨다 — npm version <patch|minor|major> 후 git push --follow-tags" >&2
+    fail=1
+  elif ! tag_travels "$tag"; then
+    echo "pre-push: $tag 가 이번 push 에 함께 가지 않고 원격에도 없다 — git push --follow-tags 로 보낸다" >&2
+    fail=1
+  else
+    continue
+  fi
+
+  echo "          바뀐 배포물: $(printf '%s' "$changed" | tr '\n' ' ')" >&2
+done < "$refs"
+
+if [ "$fail" -ne 0 ]; then
+  echo "          이유가 있어 그냥 보내려면 git push --no-verify" >&2
+  exit 1
+fi
+
+exit 0
