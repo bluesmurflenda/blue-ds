@@ -438,9 +438,9 @@
   --bds-field-file-button-bg-hover: var(--bds-neutral-200);
   --bds-field-file-button-fg: var(--bds-text-primary);
   --bds-field-file-button-fg-disabled: var(--bds-neutral-300);
-  --bds-field-hint-fg: var(--bds-text-tertiary);
+  --bds-field-hint-fg: var(--bds-text-quaternary);
   --bds-field-hint-fg-invalid: var(--bds-text-danger);
-  --bds-field-label-fg: var(--bds-text-primary);
+  --bds-field-label-fg: var(--bds-text-quaternary);
   --bds-icon-brand: var(--bds-brand-600);
   --bds-icon-disabled: var(--bds-neutral-300);
   --bds-icon-inverse: var(--bds-white);
@@ -542,6 +542,7 @@
   --bds-text-disabled: var(--bds-neutral-400);
   --bds-text-inverse: var(--bds-white);
   --bds-text-primary: var(--bds-neutral-800);
+  --bds-text-quaternary: var(--bds-neutral-500);
   --bds-text-secondary: var(--bds-neutral-700);
   --bds-text-success: var(--bds-green-700);
   --bds-text-tertiary: var(--bds-neutral-600);
@@ -697,6 +698,7 @@
   --bds-text-disabled: var(--bds-neutral-600);
   --bds-text-inverse: var(--bds-neutral-900);
   --bds-text-primary: var(--bds-neutral-50);
+  --bds-text-quaternary: var(--bds-neutral-400);
   --bds-text-secondary: var(--bds-neutral-300);
   --bds-text-success: var(--bds-green-400);
   --bds-text-tertiary: var(--bds-neutral-400);

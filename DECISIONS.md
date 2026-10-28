@@ -1581,3 +1581,35 @@ codeSyntax 가 깨져 있다는 기록.
 
 `THEME_GROUPS` 를 되살리고 컴포넌트 선언을 되돌린다. stylelint override 도 지운다.
 커밋 하나다 — 이 ADR 을 만든 커밋을 revert 하면 된다.
+
+---
+
+## ADR-040 — 폼 라벨·도움말은 tertiary 와 disabled 사이 단계를 쓴다
+
+상태: Accepted 확신도: 높음 날짜: 2026-10-28
+
+### 맥락
+
+폼 안의 글자색을 위계로 나누려 했다 — 입력값이 가장 진하고, 라벨·도움말은 그보다 한 단계 연하게.
+`text/*` 에는 tertiary 와 disabled 사이 단계가 없었다.
+
+Input · Textarea · File Input 의 라벨 레이어는 `field/label/fg` 가 아니라 `text/primary` 를
+직접 물고 있었다. 그래서 `field/label/fg` 를 바꿔도 Select 라벨만 바뀌었다.
+
+### 결정
+
+- `text/quaternary` 를 추가한다. 라이트는 tertiary 와 disabled 사이 값이다
+- **다크는 tertiary 와 같은 값으로 둔다.** 사이 값은 다크 배경 위에서 4.5:1 에 못 미친다.
+  라벨·도움말은 꼭 읽어야 하는 글자라 위계보다 대비가 앞선다
+- `field/label/fg` · `field/hint/fg` 가 `text/quaternary` 를 가리킨다
+- 폼 라벨 레이어는 `text/*` 를 직접 물지 않고 `field/label/fg` 를 거친다
+
+### 근거
+
+라벨과 도움말을 같은 단계로 둔 것은 사람이 정했다(시각적 판단).
+다크 값은 사람이 대비 기준을 보고 골랐다.
+
+### 뒤집으려면
+
+`field/label/fg` · `field/hint/fg` 의 별칭을 되돌리고 `text/quaternary` 를 지운다.
+지우기 전에 다른 프로젝트 파일의 참조를 센다.
