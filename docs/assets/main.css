@@ -956,6 +956,7 @@ textarea {
 }
 
 button {
+  padding: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -1307,7 +1308,6 @@ table {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
   border: none;
   cursor: pointer;
   transition: background-color var(--bds-motion-fast), border-color var(--bds-motion-fast), color var(--bds-motion-fast);
