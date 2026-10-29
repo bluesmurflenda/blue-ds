@@ -1,5 +1,5 @@
 // Figma DS Master > Button (node 182:45) + Theme > button 그룹, 2026-08-27 라이브 인스턴스 실측
-// 변형 9종(primary/secondary/tertiary/outline/ghost/danger/scrim-dark/scrim-light/link) × 사이즈 4(sm/md/lg/xl, ADR-015로 xs 제외) × 상태 5
+// 변형 9종(primary/secondary/tertiary/outline/ghost/danger/scrim-dark/scrim-light/link) × 사이즈 5(xs/sm/md/lg/xl) × 상태 5
 
 @use '../tokens/primitive' as *;
 @use '../abstracts/mixins' as mix;
@@ -7,10 +7,15 @@
 
 $btn-radius: var(--bds-btn-radius);
 
-// ADR-015: Size는 4단계(sm·md·lg·xl)다. xs는 Figma에 45변형 있지만 실제 인스턴스 사용처가
-// 0건이라 제외 — Figma 쪽 변형 자체는 삭제하지 않는다(코드만 4단계).
+// xs 만 반경 토큰이 따로 있다 — Figma 가 Button·Icon Button·ButtonGroup xs 전부에
+// btn/radius-xs 를 바인딩한다(2026-10-29 조회).
+$btn-radius-xs: var(--bds-btn-radius-xs);
+
+// ADR-041: Size는 5단계(xs·sm·md·lg·xl)다. xs 는 Figma 에 원래 있었고 코드에서만 빠져
+// 있었다(ADR-015 — 실사용 0건을 근거로 제외했는데 ADR-041 이 뒤집었다).
 // padding-x는 sm·xl이 Pill 모드에서만 값이 달라져 var(--bds-btn-padding-x-*)로 뺐다(6장).
 $btn-sizes: (
+  xs: (height: 28px, padding-x: var(--bds-btn-padding-x-xs), type: body-2xs, radius: $btn-radius-xs, gap: $space-1),
   sm: (height: 32px, padding-x: var(--bds-btn-padding-x-sm), type: body-sm, radius: $btn-radius, gap: $space-1),
   md: (height: 40px, padding-x: var(--bds-btn-padding-x-md), type: body-md, radius: $btn-radius, gap: $space-2),
   lg: (height: 48px, padding-x: var(--bds-btn-padding-x-lg), type: body-lg, radius: $btn-radius, gap: $space-2),
@@ -21,6 +26,7 @@ $btn-sizes: (
 
 // 아이콘·라벨 내부 gap 은 사이즈에 딸린다 — 2026-09-11 실측(225변형 전수): sm 만 space/1(4px)
 // 이고 md·lg·xl 은 space/2(8px) 다. 전 사이즈 space/2 단일값이었다.
+// xs 도 space/1 이다(2026-10-29 조회) — 아이콘은 16, 글자는 Body/2Xs/Medium(12/16).
 
 // 8개 변형(link 제외) 전부 같은 패턴 — 프리미티브를 직접 물지 않고 위 --bds-btn-* 커스텀
 // 프로퍼티만 참조한다. 값이 라이트·다크 동일한 것(primary/danger 등)도 결과는 같다 —
@@ -152,8 +158,9 @@ $button-group-divider: var(--bds-button-group-divider);
 }
 
 // ──────────────────────────────────────────────────────────────
-// ButtonGroup — 버튼을 붙여 한 덩어리로 쓴다(node 1860:455, 2026-09-14 실측).
-// 항목은 .bds-btn .bds-btn-secondary 를 그대로 쓰고 바깥 모서리만 둥글게 남긴다.
+// ButtonGroup — 버튼을 붙여 한 덩어리로 쓴다(node 1860:455, 2026-10-29 재실측).
+// 항목은 .bds-btn .bds-btn-primary 를 그대로 쓰고 바깥 모서리만 둥글게 남긴다 —
+// 전 사이즈가 btn/primary/* 를 문다(secondary 가 섞여 있었다).
 // 사이즈는 항목의 .bds-btn-{size} 가 정하므로 그룹 쪽에 사이즈 축을 두지 않는다.
 
 // Figma 는 항목 사이에 1px Divider 노드를 따로 둔다 — 오토레이아웃이 음수 간격을 못 줘서
@@ -179,6 +186,20 @@ $button-group-divider: var(--bds-button-group-divider);
     &:last-child {
       border-start-end-radius: $btn-radius;
       border-end-end-radius: $btn-radius;
+    }
+  }
+
+  // xs 만 반경 토큰이 다르다 — Figma 도 xs 그룹의 바깥 모서리에 btn/radius-xs 를 물린다
+  // (안쪽은 다른 사이즈와 같이 radius/none). 위 규칙과 특정도가 같아 순서로 이긴다.
+  .bds-btn-xs {
+    &:first-child {
+      border-start-start-radius: $btn-radius-xs;
+      border-end-start-radius: $btn-radius-xs;
+    }
+
+    &:last-child {
+      border-start-end-radius: $btn-radius-xs;
+      border-end-end-radius: $btn-radius-xs;
     }
   }
 }

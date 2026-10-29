@@ -20,8 +20,9 @@ const TMP = path.join(ROOT, 'node_modules', '.cache', 'bds-tokens');
 // 각 컴포넌트 SCSS 가 손으로 선언했는데, 같은 토큰이 스냅샷과 코드 양쪽에 있어 어긋나도
 // 검사가 통과했다(--bds-field-border-hover 가 실제 사례). 이제 Figma 에 있는 값은 여기서만
 // 선언하고 컴포넌트 SCSS 는 쓰기만 한다.
-// ADR-015 — Button Size xs 는 코드에서 제외한다.
-const SHAPE_EXCLUDE = new Set(['btn/radius-xs', 'btn/padding-x/xs']);
+// Shape 도 전부 내보낸다. 예전에는 btn/radius-xs · btn/padding-x/xs 둘을 뺐는데(ADR-015 —
+// Button Size xs 를 코드에서 제외), ADR-041 이 버튼 계열에 xs 를 넣으면서 근거가 없어졌다.
+// 결정을 뒤집으면 그 결정을 집행하던 자리를 같이 고친다 — 안 고치면 토큰이 조용히 안 나간다.
 
 // ── 값을 어떻게 찍나 ────────────────────────────────────────────────
 // 이름으로 종류를 정한다. Primitive 는 모드가 하나라 값이 바로 들어 있다.
@@ -139,7 +140,7 @@ async function main() {
 
   // shape — 기본은 Rounded. 각진·Pill 은 Rounded 와 값이 다른 것만 덮는다.
   const shape = SNAP('tokens.shape.json');
-  const sKeep = entries(shape).filter(([k]) => !SHAPE_EXCLUDE.has(k));
+  const sKeep = entries(shape);
   const shapeRoot = await block(nest(sKeep.map(([k, v]) => [k, v.Rounded])), ':root', 'shape-rounded', orderOf(sKeep));
   let shapeScss = shapeRoot;
   for (const [mode, sel] of [['Square', "[data-shape='square']"], ['Pill', "[data-shape='pill']"]]) {

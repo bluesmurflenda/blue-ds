@@ -15,7 +15,7 @@
   <div class="doc-breadcrumb"><a href="../index.html">기본 컴포넌트</a> / Icon Button</div>
   <div class="doc-page-header">
     <h1>Icon Button</h1>
-    <p>변형은 button과 공유하는 것(primary/secondary/tertiary/outline/ghost/danger/scrim-dark/scrim-light)과 아이콘버튼 전용(ghost-inverse/ghost-brand)으로 나뉩니다. hover·pressed·focus는 정적 페이지로 재현할 수 없는 상호작용 상태라 제외하고, 실제 클래스로 켤 수 있는 default/disabled만 나열합니다.</p>
+    <p>변형은 button과 공유하는 것(primary/secondary/tertiary/outline/ghost/danger/scrim-dark/scrim-light)과 아이콘버튼 전용(ghost-inverse/ghost-brand)으로 나뉩니다. hover·pressed·focus는 정적 페이지로 재현할 수 없는 상호작용 상태라 제외하고, 실제 클래스로 켤 수 있는 default/disabled만 나열합니다. 사이즈는 xs/sm/md/lg/xl이며 <strong>xs만 모서리 반경이 다릅니다</strong>(<code>btn/radius-xs</code> — Button xs와 같은 토큰, ADR-041).</p>
   </div>
 
   <section class="doc-section">
@@ -24,7 +24,7 @@
     <div class="doc-scroll-x">
       <table class="doc-table">
         <thead>
-          <tr><th></th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
+          <tr><th></th><th>xs</th><th>sm</th><th>md</th><th>lg</th><th>xl</th></tr>
         </thead>
         <tbody id="iconbtn-matrix"></tbody>
       </table>
@@ -42,7 +42,7 @@
 <script src="../assets/nav.js"></script>
 <script>
   var VARIANTS = ['primary', 'secondary', 'tertiary', 'outline', 'ghost', 'danger', 'scrim-dark', 'scrim-light', 'ghost-inverse', 'ghost-brand'];
-  var SIZES = ['sm', 'md', 'lg', 'xl'];
+  var SIZES = ['xs', 'sm', 'md', 'lg', 'xl'];
   var DARK_WRAP_VARIANTS = ['scrim-dark', 'ghost-inverse'];
   var LIGHT_WRAP_VARIANTS = ['scrim-light'];
 

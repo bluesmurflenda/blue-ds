@@ -837,7 +837,9 @@
   --bds-btn-padding-x-md: var(--bds-space-5);
   --bds-btn-padding-x-sm: var(--bds-space-3);
   --bds-btn-padding-x-xl: var(--bds-space-6);
+  --bds-btn-padding-x-xs: var(--bds-space-2);
   --bds-btn-radius: var(--bds-radius-sm);
+  --bds-btn-radius-xs: var(--bds-radius-xsm);
   --bds-calendar-cell-radius: var(--bds-radius-full);
   --bds-calendar-gap-cell: var(--bds-space-1);
   --bds-calendar-gap-row: var(--bds-space-1);
@@ -871,6 +873,7 @@
   --bds-accordion-rounded-radius: var(--bds-radius-none);
   --bds-alert-radius: var(--bds-radius-none);
   --bds-btn-radius: var(--bds-radius-none);
+  --bds-btn-radius-xs: var(--bds-radius-none);
   --bds-calendar-cell-radius: var(--bds-radius-none);
   --bds-calendar-radius: var(--bds-radius-none);
   --bds-card-radius: var(--bds-radius-none);
@@ -887,6 +890,7 @@
   --bds-btn-padding-x-sm: var(--bds-space-4);
   --bds-btn-padding-x-xl: var(--bds-space-7);
   --bds-btn-radius: var(--bds-radius-full);
+  --bds-btn-radius-xs: var(--bds-radius-full);
   --bds-calendar-radius: var(--bds-radius-2xl);
   --bds-card-radius: var(--bds-radius-2xl);
   --bds-field-radius: var(--bds-radius-full);
@@ -1072,6 +1076,16 @@ table {
 .bds-btn:focus:not(:disabled, [aria-disabled=true], .bds-btn-disabled), .bds-btn.bds-btn-focus:not(:disabled, [aria-disabled=true]) {
   outline: none;
   box-shadow: inset 0 0 0 1px currentcolor, 0 0 0 2px var(--bds-effect-focus-halo);
+}
+
+.bds-btn-xs {
+  height: 28px;
+  padding-inline: var(--bds-btn-padding-x-xs);
+  gap: var(--bds-space-1);
+  font-size: var(--bds-font-size-body-2xs);
+  line-height: var(--bds-font-leading-body-2xs);
+  font-weight: var(--bds-font-weight-medium);
+  border-radius: var(--bds-btn-radius-xs);
 }
 
 .bds-btn-sm {
@@ -1280,13 +1294,21 @@ table {
   border-start-end-radius: var(--bds-btn-radius);
   border-end-end-radius: var(--bds-btn-radius);
 }
+.bds-button-group .bds-btn-xs:first-child {
+  border-start-start-radius: var(--bds-btn-radius-xs);
+  border-end-start-radius: var(--bds-btn-radius-xs);
+}
+.bds-button-group .bds-btn-xs:last-child {
+  border-start-end-radius: var(--bds-btn-radius-xs);
+  border-end-end-radius: var(--bds-btn-radius-xs);
+}
 
 .bds-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
   border: none;
-  border-radius: var(--bds-btn-radius);
   cursor: pointer;
   transition: background-color var(--bds-motion-fast), border-color var(--bds-motion-fast), color var(--bds-motion-fast);
 }
@@ -1326,9 +1348,20 @@ table {
   color: var(--bds-btn-ghost-brand-fg-disabled);
 }
 
+.bds-icon-btn-xs {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--bds-btn-radius-xs);
+}
+.bds-icon-btn-xs .bds-icon {
+  width: 16px;
+  height: 16px;
+}
+
 .bds-icon-btn-sm {
   width: 32px;
   height: 32px;
+  border-radius: var(--bds-btn-radius);
 }
 .bds-icon-btn-sm .bds-icon {
   width: 18px;
@@ -1338,6 +1371,7 @@ table {
 .bds-icon-btn-md {
   width: 40px;
   height: 40px;
+  border-radius: var(--bds-btn-radius);
 }
 .bds-icon-btn-md .bds-icon {
   width: 20px;
@@ -1347,6 +1381,7 @@ table {
 .bds-icon-btn-lg {
   width: 48px;
   height: 48px;
+  border-radius: var(--bds-btn-radius);
 }
 .bds-icon-btn-lg .bds-icon {
   width: 24px;
@@ -1356,6 +1391,7 @@ table {
 .bds-icon-btn-xl {
   width: 56px;
   height: 56px;
+  border-radius: var(--bds-btn-radius);
 }
 .bds-icon-btn-xl .bds-icon {
   width: 24px;

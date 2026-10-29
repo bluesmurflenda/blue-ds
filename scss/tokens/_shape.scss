@@ -1,8 +1,6 @@
 // Figma DS Master > Shape collection(Rounded/Square/Pill) — 자동 생성, 손으로 고치지 않는다.
 // 출처: figma/tokens.shape.json. 값을 바꾸려면 Figma를 고치고 스냅샷을 다시 뽑은 뒤 재생성한다.
 // 기본값은 Rounded. [data-shape='square'|'pill'] 는 Rounded와 값이 다른 항목만 오버라이드한다.
-// 예외: btn/radius-xs·btn/padding-x/xs는 Figma Shape에 있지만 내보내지 않는다(ADR-015 —
-// Button Size xs는 코드에서 제외, 실사용 0건).
 
 :root {
   --bds-accordion-rounded-radius: var(--bds-radius-sm);
@@ -17,7 +15,9 @@
   --bds-btn-padding-x-md: var(--bds-space-5);
   --bds-btn-padding-x-sm: var(--bds-space-3);
   --bds-btn-padding-x-xl: var(--bds-space-6);
+  --bds-btn-padding-x-xs: var(--bds-space-2);
   --bds-btn-radius: var(--bds-radius-sm);
+  --bds-btn-radius-xs: var(--bds-radius-xsm);
   --bds-calendar-cell-radius: var(--bds-radius-full);
   --bds-calendar-gap-cell: var(--bds-space-1);
   --bds-calendar-gap-row: var(--bds-space-1);
@@ -51,6 +51,7 @@
   --bds-accordion-rounded-radius: var(--bds-radius-none);
   --bds-alert-radius: var(--bds-radius-none);
   --bds-btn-radius: var(--bds-radius-none);
+  --bds-btn-radius-xs: var(--bds-radius-none);
   --bds-calendar-cell-radius: var(--bds-radius-none);
   --bds-calendar-radius: var(--bds-radius-none);
   --bds-card-radius: var(--bds-radius-none);
@@ -67,6 +68,7 @@
   --bds-btn-padding-x-sm: var(--bds-space-4);
   --bds-btn-padding-x-xl: var(--bds-space-7);
   --bds-btn-radius: var(--bds-radius-full);
+  --bds-btn-radius-xs: var(--bds-radius-full);
   --bds-calendar-radius: var(--bds-radius-2xl);
   --bds-card-radius: var(--bds-radius-2xl);
   --bds-field-radius: var(--bds-radius-full);
@@ -91,7 +93,9 @@ $btn-padding-x-lg: var(--bds-btn-padding-x-lg);
 $btn-padding-x-md: var(--bds-btn-padding-x-md);
 $btn-padding-x-sm: var(--bds-btn-padding-x-sm);
 $btn-padding-x-xl: var(--bds-btn-padding-x-xl);
+$btn-padding-x-xs: var(--bds-btn-padding-x-xs);
 $btn-radius: var(--bds-btn-radius);
+$btn-radius-xs: var(--bds-btn-radius-xs);
 $calendar-cell-radius: var(--bds-calendar-cell-radius);
 $calendar-gap-cell: var(--bds-calendar-gap-cell);
 $calendar-gap-row: var(--bds-calendar-gap-row);
