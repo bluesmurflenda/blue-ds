@@ -4717,6 +4717,7 @@ table {
 
 .bds-input__field:has(.bds-input__control[type=file]) {
   padding-inline-start: 0;
+  overflow: hidden;
 }
 
 .bds-input__control[type=file] {

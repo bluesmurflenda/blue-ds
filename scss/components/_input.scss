@@ -185,6 +185,13 @@ $input-validation-colors: (
 // 그 뒤에 둔다 — :has() 가 specificity 로도 이기지만 순서로도 맞춰 둔다.
 .bds-input__field:has(.bds-input__control[type='file']) {
   padding-inline-start: 0;
+
+  // 버튼이 네모라 칸의 둥근 모서리 밖으로 나가 테두리를 덮는다. Figma 도 버튼에 반경을 주지
+  // 않고 Input 프레임의 clipsContent 로 자른다(2567:22561 · 2567:22796 둘 다 Input 은
+  // clipsContent=true · radius 8, File button 은 반경 없음 — 2026-10-29 조회).
+  // overflow 는 패딩 상자의 안쪽 곡선대로 자르므로 INSIDE 스트로크 + 클립과 결과가 같다.
+  // 칸 자신의 box-shadow(그림자·초점 링)는 자기 overflow 에 안 잘린다.
+  overflow: hidden;
 }
 
 .bds-input__control[type='file'] {
