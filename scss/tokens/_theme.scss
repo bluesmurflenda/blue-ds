@@ -27,7 +27,7 @@
   --bds-alert-error-border: var(--bds-red-200);
   --bds-alert-error-fg: var(--bds-red-700);
   --bds-alert-fg-supporting: var(--bds-text-tertiary);
-  --bds-alert-info-bg: var(--bds-surface-brand-subtle);
+  --bds-alert-info-bg: var(--bds-blue-50);
   --bds-alert-info-border: var(--bds-blue-200);
   --bds-alert-info-fg: var(--bds-blue-700);
   --bds-alert-neutral-bg: var(--bds-surface-subtle);
@@ -72,8 +72,8 @@
   --bds-badge-warning-bg: var(--bds-yellow-100);
   --bds-badge-warning-border: var(--bds-yellow-200);
   --bds-badge-warning-fg: var(--bds-yellow-700);
-  --bds-border-accent: var(--bds-sky-500);
-  --bds-border-brand: var(--bds-blue-500);
+  --bds-border-accent: var(--bds-accent-500);
+  --bds-border-brand: var(--bds-brand-500);
   --bds-border-control: var(--bds-neutral-200);
   --bds-border-danger: var(--bds-red-600);
   --bds-border-default: var(--bds-neutral-200);
@@ -274,7 +274,7 @@
   --bds-scrollbar-thumb-bg-hover: var(--bds-neutral-500);
   --bds-scrollbar-track-bg: var(--bds-neutral-100);
   --bds-surface-accent-subtle: var(--bds-sky-25);
-  --bds-surface-brand-subtle: var(--bds-blue-50);
+  --bds-surface-brand-subtle: var(--bds-brand-50);
   --bds-surface-default: var(--bds-white);
   --bds-surface-inverse: var(--bds-neutral-900);
   --bds-surface-muted: var(--bds-neutral-100);
@@ -318,7 +318,7 @@
   --bds-tabs-underline-fg-disabled: var(--bds-text-disabled);
   --bds-tabs-underline-fg-hover: var(--bds-text-secondary);
   --bds-tabs-underline-indicator: var(--bds-neutral-800);
-  --bds-text-brand: var(--bds-blue-600);
+  --bds-text-brand: var(--bds-brand-600);
   --bds-text-danger: var(--bds-red-600);
   --bds-text-disabled: var(--bds-neutral-400);
   --bds-text-inverse: var(--bds-white);
@@ -354,6 +354,7 @@
   --bds-alert-error-bg: var(--bds-red-950);
   --bds-alert-error-border: var(--bds-red-700);
   --bds-alert-error-fg: var(--bds-red-400);
+  --bds-alert-info-bg: var(--bds-blue-950);
   --bds-alert-info-border: var(--bds-blue-700);
   --bds-alert-info-fg: var(--bds-blue-400);
   --bds-alert-success-bg: var(--bds-green-950);
@@ -380,7 +381,7 @@
   --bds-badge-brand-bg: var(--bds-brand-50);
   --bds-badge-error-bg: var(--bds-red-950);
   --bds-badge-error-fg: var(--bds-red-400);
-  --bds-badge-info-bg: var(--bds-surface-brand-subtle);
+  --bds-badge-info-bg: var(--bds-blue-950);
   --bds-badge-info-fg: var(--bds-blue-400);
   --bds-badge-neutral-bg: var(--bds-surface-subtle);
   --bds-badge-success-bg: var(--bds-green-950);
@@ -406,9 +407,9 @@
   --bds-btn-ghost-bg-pressed: var(--bds-neutral-800);
   --bds-btn-outline-bg: var(--bds-neutral-950);
   --bds-btn-outline-bg-pressed: var(--bds-neutral-900);
-  --bds-btn-primary-bg: var(--bds-blue-600);
-  --bds-btn-primary-bg-hover: var(--bds-blue-700);
-  --bds-btn-primary-bg-pressed: var(--bds-blue-800);
+  --bds-btn-primary-bg: var(--bds-brand-400);
+  --bds-btn-primary-bg-hover: var(--bds-brand-300);
+  --bds-btn-primary-bg-pressed: var(--bds-brand-200);
   --bds-btn-tertiary-bg: var(--bds-neutral-400);
   --bds-btn-tertiary-bg-hover: var(--bds-neutral-300);
   --bds-btn-tertiary-bg-pressed: var(--bds-neutral-200);
@@ -429,8 +430,8 @@
   --bds-con-color-border: var(--bds-brand-700);
   --bds-con-gray-bg-hover: var(--bds-neutral-900);
   --bds-con-white-bg: var(--bds-neutral-950);
-  --bds-con-white-bg-selected: var(--bds-blue-600);
-  --bds-con-white-border-selected: var(--bds-blue-600);
+  --bds-con-white-bg-selected: var(--bds-brand-400);
+  --bds-con-white-border-selected: var(--bds-brand-400);
   --bds-effect-focus-halo: #60a5fa4d;
   --bds-effect-focus-halo-invalid: #fca5a54d;
   --bds-effect-focus-halo-valid: #4ade804d;
@@ -465,7 +466,6 @@
   --bds-scrollbar-thumb-bg: var(--bds-neutral-600);
   --bds-scrollbar-track-bg: var(--bds-neutral-900);
   --bds-surface-accent-subtle: var(--bds-sky-950);
-  --bds-surface-brand-subtle: var(--bds-blue-950);
   --bds-surface-default: var(--bds-neutral-900);
   --bds-surface-inverse: var(--bds-neutral-50);
   --bds-surface-muted: var(--bds-neutral-800);
@@ -474,7 +474,6 @@
   --bds-tabs-segmented-fg-active: var(--bds-neutral-100);
   --bds-tabs-track-bg: var(--bds-neutral-900);
   --bds-tabs-underline-indicator: var(--bds-neutral-200);
-  --bds-text-brand: var(--bds-blue-400);
   --bds-text-danger: var(--bds-red-400);
   --bds-text-disabled: var(--bds-neutral-600);
   --bds-text-inverse: var(--bds-neutral-900);
@@ -486,8 +485,8 @@
   --bds-toggle-knob-bg: var(--bds-neutral-950);
   --bds-toggle-track-bg-off: var(--bds-neutral-700);
   --bds-toggle-track-bg-off-hover: var(--bds-neutral-600);
-  --bds-toggle-track-bg-on: var(--bds-blue-600);
-  --bds-toggle-track-bg-on-hover: var(--bds-blue-500);
+  --bds-toggle-track-bg-on: var(--bds-brand-400);
+  --bds-toggle-track-bg-on-hover: var(--bds-brand-500);
   --bds-tooltip-dark-fg-supporting: var(--bds-neutral-300);
 }
 

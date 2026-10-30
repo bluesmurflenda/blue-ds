@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "exportedAt": "2026-10-28",
+    "exportedAt": "2026-10-30",
     "source": "Tokens Studio (figma/tokens-studio.json) — DS Master kJD5jv7RNKxLD1hP8oKtBG",
     "collection": "Theme",
     "count": 335
@@ -102,8 +102,8 @@
     "Dark": "var(--text-tertiary)"
   },
   "alert/info/bg": {
-    "Default": "var(--surface-brand-subtle)",
-    "Dark": "var(--surface-brand-subtle)"
+    "Default": "var(--blue-50)",
+    "Dark": "var(--blue-950)"
   },
   "alert/info/border": {
     "Default": "var(--blue-200)",
@@ -239,7 +239,7 @@
   },
   "badge/info/bg": {
     "Default": "var(--blue-100)",
-    "Dark": "var(--surface-brand-subtle)"
+    "Dark": "var(--blue-950)"
   },
   "badge/info/fg": {
     "Default": "var(--blue-700)",
@@ -282,12 +282,12 @@
     "Dark": "var(--yellow-400)"
   },
   "border/accent": {
-    "Default": "var(--sky-500)",
-    "Dark": "var(--sky-500)"
+    "Default": "var(--accent-500)",
+    "Dark": "var(--accent-500)"
   },
   "border/brand": {
-    "Default": "var(--blue-500)",
-    "Dark": "var(--blue-500)"
+    "Default": "var(--brand-500)",
+    "Dark": "var(--brand-500)"
   },
   "border/control": {
     "Default": "var(--neutral-200)",
@@ -467,15 +467,15 @@
   },
   "btn/primary/bg": {
     "Default": "var(--brand-600)",
-    "Dark": "var(--blue-600)"
+    "Dark": "var(--brand-400)"
   },
   "btn/primary/bg-hover": {
     "Default": "var(--brand-700)",
-    "Dark": "var(--blue-700)"
+    "Dark": "var(--brand-300)"
   },
   "btn/primary/bg-pressed": {
     "Default": "var(--brand-800)",
-    "Dark": "var(--blue-800)"
+    "Dark": "var(--brand-200)"
   },
   "btn/primary/fg": {
     "Default": "var(--white)",
@@ -759,7 +759,7 @@
   },
   "con/white/bg-selected": {
     "Default": "var(--brand-600)",
-    "Dark": "var(--blue-600)"
+    "Dark": "var(--brand-400)"
   },
   "con/white/border": {
     "Default": "var(--border-default)",
@@ -771,7 +771,7 @@
   },
   "con/white/border-selected": {
     "Default": "var(--brand-600)",
-    "Dark": "var(--blue-600)"
+    "Dark": "var(--brand-400)"
   },
   "con/white/fg-hover": {
     "Default": "var(--brand-600)",
@@ -1090,8 +1090,8 @@
     "Dark": "var(--sky-950)"
   },
   "surface/brand-subtle": {
-    "Default": "var(--blue-50)",
-    "Dark": "var(--blue-950)"
+    "Default": "var(--brand-50)",
+    "Dark": "var(--brand-50)"
   },
   "surface/default": {
     "Default": "var(--white)",
@@ -1266,8 +1266,8 @@
     "Dark": "var(--neutral-200)"
   },
   "text/brand": {
-    "Default": "var(--blue-600)",
-    "Dark": "var(--blue-400)"
+    "Default": "var(--brand-600)",
+    "Dark": "var(--brand-600)"
   },
   "text/danger": {
     "Default": "var(--red-600)",
@@ -1319,11 +1319,11 @@
   },
   "toggle/track/bg-on": {
     "Default": "var(--brand-500)",
-    "Dark": "var(--blue-600)"
+    "Dark": "var(--brand-400)"
   },
   "toggle/track/bg-on-hover": {
     "Default": "var(--brand-600)",
-    "Dark": "var(--blue-500)"
+    "Dark": "var(--brand-500)"
   },
   "tooltip/dark/bg": {
     "Default": "var(--neutral-900)",
