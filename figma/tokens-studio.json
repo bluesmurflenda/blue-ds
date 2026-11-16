@@ -3796,6 +3796,64 @@
             }
           }
         }
+      },
+      "link-inverse": {
+        "fg": {
+          "value": "#ffffffe6",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-btn-link-inverse-fg)"
+            }
+          },
+          "description": "어두운 배경 위 링크 버튼. 알파가 필요해 직접값으로 둔다(별칭으로는 알파를 넣을 수 없다). 두 모드 값이 같다 — 다크모드에서 뒤집히지 않는다."
+        },
+        "fg-hover": {
+          "value": "{white}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-btn-link-inverse-fg-hover)"
+            }
+          },
+          "description": "어두운 배경 위 링크 버튼. 두 모드 모두 white 를 가리킨다 — 다크모드에서 뒤집히지 않는다. hover 는 밑줄로 기본과 구별한다."
+        },
+        "fg-pressed": {
+          "value": "{white}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-btn-link-inverse-fg-pressed)"
+            }
+          },
+          "description": "어두운 배경 위 링크 버튼. 두 모드 모두 white 를 가리킨다 — 다크모드에서 뒤집히지 않는다."
+        },
+        "fg-disabled": {
+          "value": "#ffffff99",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-btn-link-inverse-fg-disabled)"
+            }
+          },
+          "description": "어두운 배경 위 링크 버튼. 알파가 필요해 직접값으로 둔다(별칭으로는 알파를 넣을 수 없다). 두 모드 값이 같다 — 다크모드에서 뒤집히지 않는다."
+        }
       }
     },
     "pagination": {
@@ -8884,6 +8942,64 @@
               "Web": "var(--bds-btn-ghost-brand-fg-disabled)"
             }
           }
+        }
+      },
+      "link-inverse": {
+        "fg": {
+          "value": "#ffffffe6",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-btn-link-inverse-fg)"
+            }
+          },
+          "description": "어두운 배경 위 링크 버튼. 알파가 필요해 직접값으로 둔다(별칭으로는 알파를 넣을 수 없다). 두 모드 값이 같다 — 다크모드에서 뒤집히지 않는다."
+        },
+        "fg-hover": {
+          "value": "{white}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-btn-link-inverse-fg-hover)"
+            }
+          },
+          "description": "어두운 배경 위 링크 버튼. 두 모드 모두 white 를 가리킨다 — 다크모드에서 뒤집히지 않는다. hover 는 밑줄로 기본과 구별한다."
+        },
+        "fg-pressed": {
+          "value": "{white}",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-btn-link-inverse-fg-pressed)"
+            }
+          },
+          "description": "어두운 배경 위 링크 버튼. 두 모드 모두 white 를 가리킨다 — 다크모드에서 뒤집히지 않는다."
+        },
+        "fg-disabled": {
+          "value": "#ffffff99",
+          "type": "color",
+          "$extensions": {
+            "com.figma.scopes": [
+              "SHAPE_FILL",
+              "TEXT_FILL"
+            ],
+            "com.figma.codeSyntax": {
+              "Web": "var(--bds-btn-link-inverse-fg-disabled)"
+            }
+          },
+          "description": "어두운 배경 위 링크 버튼. 알파가 필요해 직접값으로 둔다(별칭으로는 알파를 넣을 수 없다). 두 모드 값이 같다 — 다크모드에서 뒤집히지 않는다."
         }
       }
     },
